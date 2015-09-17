@@ -3,12 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace NHN.DtoContracts.FLR
+namespace NHN.DtoContracts.Flr
 {
     /// <summary>
     /// Dette representerer en fastlegeavtale og implisitt en fastlegeliste.
     /// </summary>
-    [DataContract(Namespace = FLRXmlNamespace.V1)]
+    [DataContract(Namespace = FlrXmlNamespace.V1)]
     public class GPContract
     {
         /// <summary>

@@ -1,4 +1,4 @@
-﻿namespace NHN.DtoContracts.FLR
+﻿namespace NHN.DtoContracts.Flr
 {
     /// <summary>
     /// Mulige listestatuser.

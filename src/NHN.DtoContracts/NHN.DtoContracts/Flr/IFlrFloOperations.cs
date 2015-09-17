@@ -1,26 +1,36 @@
 ﻿using NHN.DtoContracts.Common.en;
 using System.Collections.Generic;
+using System.ServiceModel;
 
-namespace NHN.DtoContracts.FLR
+namespace NHN.DtoContracts.Flr
 {
-    public interface IFLOOperations
+    [ServiceContract(Namespace = FlrXmlNamespace.V1)]
+    public interface IFlrFloOperations
     {
         // --------------------------
         // Fastlegeavtale
         // --------------------------
 
         //OpprettFastlegeavtale
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
         void CreateGPContract(GPContract newGPContract);
 
 
         //OppdaterFastlegeavtale
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
         void UpdateGPContract(GPContract gpContract);
 
 
         //OppdaterFastlegeavtaleMaksAntall
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
         void UpdateGPContractMaxPatients(int gpContractId, int maxPatients);
 
         //SettFastlegeListeStatus
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
         void UpdateGPContractStatus(int gpContractId, Code status); //Kun tillate Åpne, Lukke 
 
 

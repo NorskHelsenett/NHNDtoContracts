@@ -1,9 +1,9 @@
 ﻿using System.Runtime.Serialization;
 using NHN.DtoContracts.Common.en;
 
-namespace NHN.DtoContracts.FLR
+namespace NHN.DtoContracts.Flr
 {
-    [DataContract(Namespace = FLRXmlNamespace.V1)]
+    [DataContract(Namespace = FlrXmlNamespace.V1)]
     public class GPOnContractAssociation
     {
         /// <summary>
