@@ -50,11 +50,11 @@
     <Compile Include="Common\en\GenericFault.cs" />
     <Compile Include="Flr\FlrXmlNamespace.cs" />
     <Compile Include="Flr\GPOnContractAssociation.cs" />
-    <Compile Include="Flr\IFlrFloOperations.cs" />
+    <Compile Include="Flr\IFlrWriteOperations.cs" />
     <Compile Include="Common\en\OpeningHours.cs" />
     <Compile Include="Common\en\Period.cs" />
     <Compile Include="Flr\ListStatus.cs" />
-    <Compile Include="Flr\OutOfOfficeOffice.cs" />
+    <Compile Include="Flr\OutOfOfficeLocation.cs" />
     <Compile Include="Flr\PatientToGPContractAssociation.cs" />
     <Compile Include="Common\en\PhysicalAddress.cs" />
     <Compile Include="Flr\GPContract.cs" />

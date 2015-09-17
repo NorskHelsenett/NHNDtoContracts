@@ -7,7 +7,7 @@ namespace NHN.DtoContracts.Flr
     /// Representerer informasjon om et utekontor
     /// </summary>
     [DataContract(Namespace = FlrXmlNamespace.V1)]
-    public class OutOfOfficeOffice
+    public class OutOfOfficeLocation
     {
         /// <summary>
         /// ID. This Id is owned by FLO.

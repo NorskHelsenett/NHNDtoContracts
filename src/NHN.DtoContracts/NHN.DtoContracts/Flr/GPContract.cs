@@ -81,7 +81,7 @@ namespace NHN.DtoContracts.Flr
         /// Liste over utekontor for denne listen.
         /// </summary>
         [DataMember]
-        public ICollection<OutOfOfficeOffice> OutOfOfficeOffices { get; set; }
+        public ICollection<OutOfOfficeLocation> OutOfOfficeOffices { get; set; }
 
         /// <summary>
         /// Kommune
