@@ -16,17 +16,22 @@ namespace NHN.DtoContracts.Flr
         [FaultContract(typeof(GenericFault))]
         void CreateGPContract(GPContract newGPContract);
 
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        void CreateGPContractBulk(List<GPContract> bulkGPContracts);
+
 
         //OppdaterFastlegeavtale
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         void UpdateGPContract(GPContract gpContract);
-
-
+        
+        
         //OppdaterFastlegeavtaleMaksAntall
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         void UpdateGPContractMaxPatients(int gpContractId, int maxPatients);
+
 
         //SettFastlegeListeStatus
         [OperationContract]
@@ -43,6 +48,7 @@ namespace NHN.DtoContracts.Flr
         [FaultContract(typeof(GenericFault))]
         void CreateOutOfOfficeLocation(int gpContractId, OutOfOfficeLocation office);
 
+
         //OppdaterUtekontor
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
@@ -52,6 +58,7 @@ namespace NHN.DtoContracts.Flr
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         void RemoveOutOfOfficeLocation(OutOfOfficeLocation office);
+        
         // --------------------------
         // Legeperiode
         // --------------------------
@@ -60,6 +67,11 @@ namespace NHN.DtoContracts.Flr
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         void CreateGPOnContractAssociation(int gpContractId, GPOnContractAssociation association);
+
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        void CreateGPOnContractAssociationBulk(List<CreateGPOnContractAssociationDto>);
+
 
         //OppdaterLegePeriode
         [OperationContract]
@@ -84,6 +96,11 @@ namespace NHN.DtoContracts.Flr
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         void CreatePatientToGPContractAssociation(PatientToGPContractAssociation patientToGPContractAssociation);
+
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        void CreatePatientToGPContractAssociationBulk(List<PatientToGPContractAssociation> patientToGPContractAssociation);
+
 
         //FlyttInnbyggereOperasjon
         [OperationContract]
