@@ -70,7 +70,7 @@ namespace NHN.DtoContracts.Flr
 
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        void CreateGPOnContractAssociationBulk(List<CreateGPOnContractAssociationDto>);
+        void CreateGPOnContractAssociationBulk(List<CreateGPOnContractAssociationBulk> creates);
 
 
         //OppdaterLegePeriode
