@@ -16,22 +16,34 @@ namespace NHN.DtoContracts.Flr
         public int Id { get; set; }
 
         /// <summary>
+        /// ID til GPContract
+        /// </summary>
+        [DataMember]
+        public int GPContractId { get; set; }
+        
+        /// <summary>
         /// Beskrivelse av utekontoret
         /// </summary>
         [DataMember]
         public string Description { get; set; } 
 
         /// <summary>
-        /// Adressen til utekontoret.
+        /// Besøksadressen til utekontoret.
         /// </summary>
         [DataMember]
-        public PhysicalAddress Address { get; set; }
+        public PhysicalAddress VisitingAddress { get; set; }
 
         /// <summary>
-        /// Åpningstider
+        /// Postadressen til utekontoret.
         /// </summary>
         [DataMember]
-        public OpeningHours OpeningHours { get; set; }
+        public PhysicalAddress PostalAddress { get; set; }
+
+        /// <summary>
+        /// Telefonnummer til utekontoret.
+        /// </summary>
+        [DataMember]
+        public string TelephoneNumber{ get; set; }
 
         /// <summary>
         /// For hvilken periode er dette utekontoret relevant
