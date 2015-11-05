@@ -41,7 +41,7 @@ namespace NHN.DtoContracts.Flr
         /// <returns></returns>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        ICollection<GPContract> GetGPContractsOnOffice(string organizationNumber);
+        ICollection<GPContract> GetGPContractsOnOffice(int organizationNumber);
 
         /// <summary>
         /// Henter fastlegeliste.
