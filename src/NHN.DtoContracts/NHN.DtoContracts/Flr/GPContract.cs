@@ -27,19 +27,20 @@ namespace NHN.DtoContracts.Flr
         /// Hvorvidt listen er en del av "gruppepraksis".
         /// </summary>
         [DataMember]
-        public bool FactionPractice { get; set; }
+        public bool GroupGPOffice { get; set; }
 
         /// <summary>
         /// Hvis det kreves medlemskap for være på en liste, så er innholdet av RequiresMembership satt til ID'en for dette medlemskapet.
         /// </summary>
         [DataMember]
-        public string RequiresMembership { get; set; }
+        public Code RequiresMembership { get; set; }
 
         /// <summary>
-        /// Organisasjonsnummer. Dette er orgnummeret en vil finne i Adresseregisteret og eventuelt RESH.
+        /// Legekontor.
+        /// Orgnummeret vil en finne i Adresseregisteret og eventuelt RESH.
         /// </summary>
         [DataMember]
-        public int TreatmentCenterOrgNr { get; set; }
+        public Business TreatmentCenter { get; set; }
 
         /// <summary>
         /// Listetak
@@ -51,7 +52,7 @@ namespace NHN.DtoContracts.Flr
         /// Listestatus.
         /// </summary>
         [DataMember]
-        public ListStatus Status { get; set; }
+        public Code Status { get; set; }
 
         /// <summary>
         /// Navn på listen. ??? Trenger vi dette?
@@ -87,10 +88,10 @@ namespace NHN.DtoContracts.Flr
         /// Kommune
         /// </summary>
         [DataMember]
-        public Code Municipality { get; set; }
+        public Business Municipality { get; set; }
 
         /// <summary>
-        /// Bydel
+        /// Bydel. Ukjent om vi har dette p.t.
         /// </summary>
         [DataMember]
         public Code District { get; set; }

@@ -5,6 +5,7 @@ namespace NHN.DtoContracts.Common.en
 {
     /// <summary>
     /// En tidsperiode uten informasjon om dato.
+    /// Implementerer IComparable for sortering, hvor det sorteres på Fra og så Til.
     /// </summary>
     [DataContract(Namespace = CommonXmlNamespaces.XmlNsCommonEnglishOld)]
     [Serializable]

@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
 using NHN.DtoContracts.Common.en;
 
 namespace NHN.DtoContracts.Flr
@@ -28,10 +29,10 @@ namespace NHN.DtoContracts.Flr
         public string Description { get; set; } 
 
         /// <summary>
-        /// Besøksadressen til utekontoret.
+        /// Adressen til utekontoret. Kan være både besøksadresse (RES)  og/eller Postadresse (PST)
         /// </summary>
         [DataMember]
-        public PhysicalAddress VisitingAddress { get; set; }
+        public List<PhysicalAddress> Addresses { get; set; }
 
         /// <summary>
         /// Postadressen til utekontoret.

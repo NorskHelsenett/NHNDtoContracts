@@ -24,7 +24,6 @@ namespace NHN.DtoContracts.Common.en
         [DataMember]
         public DateTime LastChanged { get; set; }
 
-        #pragma warning disable 618 ///TypeCodeValue is Obsolete, it is here because of historical reasons.
         private Code _type;
         /// <summary>
         /// Type adresse. (RES/PST/ osv)
@@ -32,13 +31,7 @@ namespace NHN.DtoContracts.Common.en
         [DataMember]
         public Code Type
         {
-            get
-            {
-                if (_type == null && !string.IsNullOrEmpty(TypeCodeValue))
-                    _type = CreateAddressTypeCode(TypeCodeValue);
-
-                return _type;
-            }
+            get { return _type; }
 
             set
             {
@@ -51,19 +44,8 @@ namespace NHN.DtoContracts.Common.en
                 }
 
                 _type = value;
-                if (_type != null && TypeCodeValue != _type.CodeValue)
-                    TypeCodeValue = _type.CodeValue;
             }
         }
-        #pragma warning restore 618
-
-        /// <summary>
-        /// Type adresse, f.eks. besøks-, post- eller fakturaadresse.
-        /// Gyldige verdier: OID 3401
-        /// </summary>
-        [DataMember]
-        [Obsolete("Use Type instead")]
-        public string TypeCodeValue { get; set; }
 
         /// <summary>
         /// Postboks

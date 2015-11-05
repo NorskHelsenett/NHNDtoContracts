@@ -12,8 +12,11 @@ namespace NHN.DtoContracts.Flr
         [DataMember]
         public int Id { get; set; }
 
+        [DataMember]
+        public int GPContractId { get; set; }
+
         /// <summary>
-        /// Fastlegeavtale/liste
+        /// Fastlegeavtale/liste. Satt ved lesing, må være null ved skriveoperasjoner.
         /// </summary>
         [DataMember]
         public GPContract GPContract { get; set; }
@@ -46,6 +49,6 @@ namespace NHN.DtoContracts.Flr
         /// Avslutningsårsak
         /// </summary>
         [DataMember]
-        public Code EndOfCycleReason { get; set; }
+        public Code EndReason { get; set; }
     }
 }

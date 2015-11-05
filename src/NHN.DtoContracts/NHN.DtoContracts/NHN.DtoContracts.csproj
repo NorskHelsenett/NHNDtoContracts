@@ -45,16 +45,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\en\Business.cs" />
     <Compile Include="Common\en\Code.cs" />
     <Compile Include="Common\CommonXmlNamespaces.cs" />
+    <Compile Include="Common\en\ElectronicAddress.cs" />
     <Compile Include="Common\en\GenericFault.cs" />
+    <Compile Include="Flr\Person.cs" />
+    <Compile Include="Common\en\Status.cs" />
     <Compile Include="Flr\FlrXmlNamespace.cs" />
+    <Compile Include="Flr\GPDetails.cs" />
+    <Compile Include="Flr\GPDetailsWithContracts.cs" />
     <Compile Include="Flr\GPOnContractAssociation.cs" />
-    <Compile Include="Flr\CreateGPOnContractAssociationBulk.cs" />
+    <Compile Include="Flr\IFlrExportOperations.cs" />
     <Compile Include="Flr\IFlrWriteOperations.cs" />
     <Compile Include="Common\en\OpeningHours.cs" />
     <Compile Include="Common\en\Period.cs" />
-    <Compile Include="Flr\ListStatus.cs" />
+    <Compile Include="Flr\IFlrReadOperations.cs" />
     <Compile Include="Flr\OutOfOfficeLocation.cs" />
     <Compile Include="Flr\PatientToGPContractAssociation.cs" />
     <Compile Include="Common\en\PhysicalAddress.cs" />
