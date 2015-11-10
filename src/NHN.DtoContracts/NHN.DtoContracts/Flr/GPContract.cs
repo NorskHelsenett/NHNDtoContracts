@@ -40,13 +40,13 @@ namespace NHN.DtoContracts.Flr
         /// Orgnummeret vil en finne i Adresseregisteret og eventuelt RESH. Denne SKAL være NULL ved skriving, og vil være satt ved lesing når det er relevant.
         /// </summary>
         [DataMember]
-        public Business TreatmentCenter { get; set; }
+        public Business GPOffice { get; set; }
 
         /// <summary>
-        /// Brukes ved skriving. Vil være satt ved lesing, og vil ha samme verdi som TreatmentCenter.OrganizationNumber
+        /// Brukes ved skriving. Vil være satt ved lesing, og vil ha samme verdi som GPOffice.OrganizationNumber
         /// </summary>
         [DataMember]
-        public int TreatmentCenterOrganizationNumber { get; set; }
+        public int GPOfficeOrganizationNumber { get; set; }
 
         /// <summary>
         /// Listetak

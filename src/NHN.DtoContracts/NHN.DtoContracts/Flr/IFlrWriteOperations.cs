@@ -14,9 +14,10 @@ namespace NHN.DtoContracts.Flr
         /// All other data must be null.
         /// </summary>
         /// <param name="business"></param>
+        /// <returns>ID'er til opprettede business'es. Den returnerte arrayen mapper 1-1 til business parameteren. Dvs business[i]'s ID vil komme i ret[i].</returns>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        int[] CreateHistoricalBusinessBulk(Business[] business);
+        int[] CreateHistoricalBusinessBulk(Business[] businesses);
 
         /// <summary>
         /// Dekker både create/update.
@@ -29,14 +30,22 @@ namespace NHN.DtoContracts.Flr
         void SetCustomFloAddress(int organizationNumber, PhysicalAddress resFlo);
 
         /// <summary>
+        /// Oppdater elektroniske adresser for en GPOffice
+        /// For å slette en adresse, sett alle elementer i ElectronicAddres bortsett fra .Type til NULL/0.
+        /// </summary>
+        /// <param name="organizationNumber"></param>
+        /// <param name="electronicAddresses"></param>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        void SetElectronicAddresses(int organizationNumber,  ICollection<ElectronicAddress> electronicAddresses);
+
+        /// <summary>
         /// Fjern RES_FLO adresse på en organisasjonsenhet.
         /// </summary>
         /// <param name="organizationNumber"></param>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        void DeleteCustomFloAddressOnTreatmentCenter(int organizationNumber);
-
-
+        void DeleteCustomFloAddressOnGPOffice(int organizationNumber);
 
         // --------------------------
         // Fastlegeavtale
