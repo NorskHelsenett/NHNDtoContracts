@@ -40,17 +40,22 @@ namespace NHN.DtoContracts.Flr
         public Period Period { get; set; } //FraDato ?TilDato;
 
         /// <summary>
+        /// Kode på hvorfor perioden er endret (avsluttet). Er NULL normalt sett med mindre personen har forlatt ordnignen.
+        /// </summary>
+        [DataMember]
+        public Code EndCode { get; set; }
+
+        /// <summary>
         /// Kode på hvorfor perioden er endret (avsluttet).
         /// </summary>
         [DataMember]
-        public Code LastChangeCode { get; set; }
+        public Code BeginCode { get; set; }
 
         /// <summary>
         /// Detaljer om pasienten. Dette vil være satt på leseoperasjoner når det er relevant, men må være NULL på skriveoperasjoner.
         /// </summary>
         [DataMember]
         public Person Patient { get; set; }
-
 
         /// <summary>
         /// Detaljer om legen tilknyttet denne assiosasjonen. Denne er satt ved lesing når det er relevant, men Skal være null ved skriving.
