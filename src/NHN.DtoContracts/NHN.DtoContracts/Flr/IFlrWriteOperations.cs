@@ -18,6 +18,26 @@ namespace NHN.DtoContracts.Flr
         [FaultContract(typeof(GenericFault))]
         int[] CreateHistoricalBusinessBulk(Business[] business);
 
+        /// <summary>
+        /// Dekker både create/update.
+        /// resFlo.Type MÅ være RES_FLO.
+        /// </summary>
+        /// <param name="organizationNumber"></param>
+        /// <param name="resFlo"></param>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        void SetCustomFloAddress(int organizationNumber, PhysicalAddress resFlo);
+
+        /// <summary>
+        /// Fjern RES_FLO adresse på en organisasjonsenhet.
+        /// </summary>
+        /// <param name="organizationNumber"></param>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        void DeleteCustomFloAddressOnTreatmentCenter(int organizationNumber);
+
+
+
         // --------------------------
         // Fastlegeavtale
         // --------------------------
