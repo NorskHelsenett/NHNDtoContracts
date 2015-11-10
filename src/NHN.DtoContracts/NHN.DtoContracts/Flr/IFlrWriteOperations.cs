@@ -66,7 +66,7 @@ namespace NHN.DtoContracts.Flr
         //OpprettLegePeriode
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        void CreateGPOnContractAssociation(int gpContractId, GPOnContractAssociation association);
+        void CreateGPOnContractAssociation(GPOnContractAssociation association);
 
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
@@ -76,7 +76,7 @@ namespace NHN.DtoContracts.Flr
         //OppdaterLegePeriode
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        void UpdateGPOnContractAssociation(int gpContractId, GPOnContractAssociation association);
+        void UpdateGPOnContractAssociation(GPOnContractAssociation association);
 
         // --------------------------
         // LegeSprak 
