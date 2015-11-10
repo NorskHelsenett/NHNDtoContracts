@@ -7,6 +7,17 @@ namespace NHN.DtoContracts.Flr
     [ServiceContract(Namespace = FlrXmlNamespace.V1)]
     public interface IFlrWriteOperations
     {
+        /// <summary>
+        /// Create a bunch of historical businesses. The returned array maps one to one with the provided businesses. The orgnumber of the provided businesses must be null.
+        /// The only accepted data is:
+        /// OrganizationName, PhysicalAddreses, ElectronicAddresses,
+        /// All other data must be null.
+        /// </summary>
+        /// <param name="business"></param>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        int[] CreateHistoricalBusinessBulk(Business[] business);
+
         // --------------------------
         // Fastlegeavtale
         // --------------------------
