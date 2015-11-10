@@ -16,10 +16,16 @@ namespace NHN.DtoContracts.Flr
         public int Id { get; set; }
 
         /// <summary>
-        /// ID til GPContract
+        /// ID til GPContract. Må være satt ved skriving, vil være satt ved lesing og vil være identisk med GPContract.Id.
         /// </summary>
         [DataMember]
         public int GPContractId { get; set; }
+
+        /// <summary>
+        ///  Kontakten denne assoisasjonen peker til. Satt ved lesing, skal være null ved skriving.
+        /// </summary>
+        [DataMember]
+        public GPContract GPContract { get; set; }
 
         /// <summary>
         /// Personnummer til innbygger
@@ -44,6 +50,7 @@ namespace NHN.DtoContracts.Flr
         /// </summary>
         [DataMember]
         public Person Patient { get; set; }
+
 
         /// <summary>
         /// Detaljer om legen tilknyttet denne assiosasjonen. Denne er satt ved lesing når det er relevant, men Skal være null ved skriving.

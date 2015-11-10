@@ -37,10 +37,16 @@ namespace NHN.DtoContracts.Flr
 
         /// <summary>
         /// Legekontor.
-        /// Orgnummeret vil en finne i Adresseregisteret og eventuelt RESH.
+        /// Orgnummeret vil en finne i Adresseregisteret og eventuelt RESH. Denne SKAL være NULL ved skriving, og vil være satt ved lesing når det er relevant.
         /// </summary>
         [DataMember]
         public Business TreatmentCenter { get; set; }
+
+        /// <summary>
+        /// Brukes ved skriving. Vil være satt ved lesing, og vil ha samme verdi som TreatmentCenter.OrganizationNumber
+        /// </summary>
+        [DataMember]
+        public int TreatmentCenterOrganizationNumber { get; set; }
 
         /// <summary>
         /// Listetak
@@ -88,7 +94,7 @@ namespace NHN.DtoContracts.Flr
         /// Kommune
         /// </summary>
         [DataMember]
-        public Business Municipality { get; set; }
+        public Code Municipality { get; set; }
 
         /// <summary>
         /// Bydel. Ukjent om vi har dette p.t.
