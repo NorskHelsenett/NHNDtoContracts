@@ -13,7 +13,7 @@ namespace NHN.DtoContracts.Flr
         /// OrganizationName, PhysicalAddreses, ElectronicAddresses,
         /// All other data must be null.
         /// </summary>
-        /// <param name="business"></param>
+        /// <param name="businesses"></param>
         /// <returns>ID'er til opprettede business'es. Den returnerte arrayen mapper 1-1 til business parameteren. Dvs business[i]'s ID vil komme i ret[i].</returns>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
@@ -86,13 +86,13 @@ namespace NHN.DtoContracts.Flr
         //OpprettUtekontor
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        void CreateOutOfOfficeLocation(int gpContractId, OutOfOfficeLocation office);
+        void CreateOutOfOfficeLocation(OutOfOfficeLocation office);
 
 
         //OppdaterUtekontor
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        void UpdateOutOfOfficeLocation(int gpContractId, OutOfOfficeLocation office);
+        void UpdateOutOfOfficeLocation(OutOfOfficeLocation office);
 
         //Fjerne utekontor 
         [OperationContract]
