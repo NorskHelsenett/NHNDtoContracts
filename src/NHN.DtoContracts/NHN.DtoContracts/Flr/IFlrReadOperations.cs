@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ServiceModel;
 using NHN.DtoContracts.Common.en;
+using System;
 
 namespace NHN.DtoContracts.Flr
 {
@@ -56,9 +57,10 @@ namespace NHN.DtoContracts.Flr
         /// Henter fastlege og tilhørende praksis(er)
         /// </summary>
         /// <param name="hprNumber">Legens HPR-nummer.</param>
+        /// <param name="atTime">Hvis null, historiske og framtidige. Hvis satt, kun kontrakter relevant på det tidspunkt.</param>
         /// <returns></returns>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        GPDetailsWithContracts GetGPWithAssociatedGPContracts(int hprNumber);
+        GPDetailsWithContracts GetGPWithAssociatedGPContracts(int hprNumber, DateTime? atTime);
     }
 }
