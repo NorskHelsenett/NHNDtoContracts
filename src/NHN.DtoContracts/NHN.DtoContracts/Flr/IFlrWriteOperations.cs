@@ -8,13 +8,13 @@ namespace NHN.DtoContracts.Flr
     public interface IFlrWriteOperations
     {
         /// <summary>
-        /// Create a bunch of historical businesses. The returned array maps one to one with the provided businesses. The orgnumber of the provided businesses must be null.
-        /// The only accepted data is:
-        /// OrganizationName, PhysicalAddreses, ElectronicAddresses,
-        /// All other data must be null.
+        /// Lag en mengde historiske bedrifter. Historiske bedrifter er Business-objekter med et negativt organisasjonsnummer for å skille dem fra bedrifter med gyldige, faktiske organisasjonsnummer.
+        /// Den eneste feltene i det innkommende Business objektet som skal være satt er:
+        /// OrganizationName, PhysicalAddreses, ElectronicAddresses, Name, DisplayName, Valid
+        /// Alle andre datafelter må være null/0.
         /// </summary>
-        /// <param name="businesses"></param>
-        /// <returns>ID'er til opprettede business'es. Den returnerte arrayen mapper 1-1 til business parameteren. Dvs business[i]'s ID vil komme i ret[i].</returns>
+        /// <param name="businesses">Listen over bedrifter man ønsker lage.</param>
+        /// <returns>ID'er til opprettede business'es. Den returnerte arrayen mapper 1-1 til business parameteren. Dvs business[i]'s ID vil komme i ret[i]. Dette vil være _negative_ nummer.</returns>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         int[] CreateHistoricalBusinessBulk(Business[] businesses);
