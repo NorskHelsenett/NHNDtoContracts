@@ -97,7 +97,7 @@ namespace NHN.DtoContracts.Flr
         //Fjerne utekontor 
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        void RemoveOutOfOfficeLocation(OutOfOfficeLocation office);
+        void RemoveOutOfOfficeLocation(int outOfOfficeId);
         
         // --------------------------
         // Legeperiode
