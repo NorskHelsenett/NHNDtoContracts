@@ -50,7 +50,6 @@
     <Compile Include="Common\en\Status.cs" />
     <Compile Include="Flr\FlrXmlNamespace.cs" />
     <Compile Include="Flr\GPDetails.cs" />
-    <Compile Include="Flr\GPDetailsWithContracts.cs" />
     <Compile Include="Flr\GPOnContractAssociation.cs" />
     <Compile Include="Flr\IFlrExportOperations.cs" />
     <Compile Include="Flr\IFlrWriteOperations.cs" />

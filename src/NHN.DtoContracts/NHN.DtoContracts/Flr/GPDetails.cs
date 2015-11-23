@@ -32,5 +32,10 @@ namespace NHN.DtoContracts.Flr
         /// </summary>
         [DataMember]
         public Period Period { get; set; }
+
+        /// <summary>
+        /// Tilknyttede kontrakter. Kun satt ved relevante leseoperasjoner, må være null ellers.
+        /// </summary>
+        public ICollection<GPOnContractAssociation> Contracts { get; set; }
     }
 }
