@@ -36,9 +36,15 @@ namespace NHN.DtoContracts.Flr
         [DataMember]
         public string LastName { get; set; }
 
+        /// <summary>
+        /// Fødselsdato
+        /// </summary>
         [DataMember]
         public DateTime DateOfBirth { get; set; }
 
+        /// <summary>
+        /// Tidspunkt perioden døde på
+        /// </summary>
         [DataMember]
         public DateTime DateOfDeath { get; set; }
 

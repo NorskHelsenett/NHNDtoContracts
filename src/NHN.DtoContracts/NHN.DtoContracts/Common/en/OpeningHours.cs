@@ -22,6 +22,11 @@ namespace NHN.DtoContracts.Common.en
         [DataMember]
         public string FreeText { get; set; }
 
+        /// <summary>
+        /// Sjekker om to OpeningHours objekter er identiske
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public override bool Equals(object obj)
         {
             var oh = obj as OpeningHours;
@@ -30,6 +35,11 @@ namespace NHN.DtoContracts.Common.en
             return Equals(oh);
         }
 
+
+        /// <summary>
+        /// Hash code.
+        /// </summary>
+        /// <returns></returns>
         public override int GetHashCode()
         {
             var e1 = FreeText.GetHashCode();
@@ -39,6 +49,11 @@ namespace NHN.DtoContracts.Common.en
             return e1;
         }
 
+        /// <summary>
+        /// Sjekker om to OpeningHours objekter er identiske
+        /// </summary>
+        /// <param name="oh"></param>
+        /// <returns></returns>
         public bool Equals(OpeningHours oh)
         {
             if (FreeText != oh.FreeText)

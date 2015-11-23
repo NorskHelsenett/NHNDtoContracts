@@ -15,6 +15,9 @@ namespace NHN.DtoContracts.Common.en
     [Serializable]
     public class Code
     {
+        /// <summary>
+        /// Tomt Code objekt, Active = true
+        /// </summary>
         public Code()
         {
             Active = true;
@@ -26,6 +29,9 @@ namespace NHN.DtoContracts.Common.en
             Active = true;
         }
 
+        /// <summary>
+        /// Opprett Code.
+        /// </summary>
         public Code(string simpleType, int oid=0, string value=null)
         {
             if (string.IsNullOrWhiteSpace(simpleType))

@@ -4,6 +4,9 @@ using NHN.DtoContracts.Common.en;
 
 namespace NHN.DtoContracts.Flr
 {
+    /// <summary>
+    /// Eksport av FLR.
+    /// </summary>
     [ServiceContract(Namespace = FlrXmlNamespace.V1)]
     public interface IFlrExportOperations
     {

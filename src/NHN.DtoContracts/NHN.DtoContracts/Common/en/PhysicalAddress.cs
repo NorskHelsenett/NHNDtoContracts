@@ -89,6 +89,11 @@ namespace NHN.DtoContracts.Common.en
         [DataMember]
         public Code Country { get; set; }
 
+        /// <summary>
+        /// Opprette Code for en fysisk adresse basert på adresssens kodeveri..
+        /// </summary>
+        /// <param name="codeValue"></param>
+        /// <returns></returns>
         public static Code CreateAddressTypeCode(string codeValue)
         {
             return new Code("adressetype", 3401, codeValue);

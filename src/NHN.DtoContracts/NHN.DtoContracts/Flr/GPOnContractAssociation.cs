@@ -3,6 +3,9 @@ using NHN.DtoContracts.Common.en;
 
 namespace NHN.DtoContracts.Flr
 {
+    /// <summary>
+    /// Beskriver en periode en lege er tilknyttet en GPContract.
+    /// </summary>
     [DataContract(Namespace = FlrXmlNamespace.V1)]
     public class GPOnContractAssociation
     {
@@ -12,6 +15,9 @@ namespace NHN.DtoContracts.Flr
         [DataMember]
         public int Id { get; set; }
 
+        /// <summary>
+        /// Fremmednøkkel til GPContract.ID
+        /// </summary>
         [DataMember]
         public int GPContractId { get; set; }
 

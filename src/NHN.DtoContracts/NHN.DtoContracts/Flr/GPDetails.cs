@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
 using NHN.DtoContracts.Common.en;
 
 namespace NHN.DtoContracts.Flr
@@ -9,6 +10,9 @@ namespace NHN.DtoContracts.Flr
     [DataContract(Namespace = FlrXmlNamespace.V1)]
     public class GPDetails
     {
+        /// <summary>
+        /// HPR nummeret til legen
+        /// </summary>
         [DataMember]
         public int HprNumber { get; set; }
 
@@ -24,6 +28,9 @@ namespace NHN.DtoContracts.Flr
         [DataMember]
         public Business Business { get; set; }
 
+        /// <summary>
+        /// Statuskode
+        /// </summary>
         [DataMember]
         public Code Status { get; set; }
 

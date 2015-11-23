@@ -5,6 +5,9 @@ using System;
 
 namespace NHN.DtoContracts.Flr
 {
+    /// <summary>
+    /// Leseoperasjoner for FLR (GP v2)
+    /// </summary>
     [ServiceContract(Namespace = FlrXmlNamespace.V1)]
     public interface IFlrReadOperations
     {
@@ -61,6 +64,6 @@ namespace NHN.DtoContracts.Flr
         /// <returns></returns>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        GPDetailsWithContracts GetGPWithAssociatedGPContracts(int hprNumber, DateTime? atTime);
+        GPContract GetGPWithAssociatedGPContracts(int hprNumber, DateTime? atTime);
     }
 }

@@ -26,18 +26,29 @@ namespace NHN.DtoContracts.Common.en
         [DataMember]
         public DateTime? To { get; set; }
 
+        /// <summary>
+        /// Oppretter et ny Period objekt
+        /// </summary>
         public Period()
         {
             From = DateTime.Now;
             To = null;
         }
 
+        /// <summary>
+        /// Oppretter et ny Period objekt med fra/til satt til spesifiserte verdier.
+        /// </summary>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
         public Period(DateTime from, DateTime? to = null)
         {
             From = from;
             To = to;
         }
 
+        /// <summary>
+        /// Oppretter et nytt Period objekt med fra/Til satt til spesifiserte verdier.
+        /// </summary>
         public Period(int fromYear, int fromMonth, int fromDay, int toYear = 0, int toMonth = 0, int toDay = 0)
         {
             From = new DateTime(fromYear, fromMonth, fromDay);
@@ -53,6 +64,9 @@ namespace NHN.DtoContracts.Common.en
             get { return Overlaps(DateTime.Now); }
         }
 
+        /// <summary>
+        /// Gir Periode objektet mening? Sjekker at T > From.
+        /// </summary>
         public bool Sane
         {
             get
@@ -65,6 +79,11 @@ namespace NHN.DtoContracts.Common.en
             }
         }
 
+        /// <summary>
+        /// Sjekker om to perioder overlapper hverandre.
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns>true hvis periodene overlapper, false ellers.</returns>
         public bool Overlaps(Period other)
         {
             if (object.ReferenceEquals(this, other))
@@ -79,6 +98,11 @@ namespace NHN.DtoContracts.Common.en
                 return this.To == null || other.From < this.To.Value;
         }
 
+        /// <summary>
+        /// Sjekker om et tidspunkt er innenfor en Periode
+        /// </summary>
+        /// <param name="pointInTime"></param>
+        /// <returns></returns>
         public bool Overlaps(DateTime pointInTime)
         {
             if (this.From > pointInTime)
@@ -86,6 +110,11 @@ namespace NHN.DtoContracts.Common.en
             return (this.To == null || this.To.Value > pointInTime);
         }
 
+        /// <summary>
+        /// Sjekker om periodene er like
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public override bool Equals(object obj)
         {
             var po = obj as Period;
@@ -94,14 +123,22 @@ namespace NHN.DtoContracts.Common.en
             return To == po.To && From == po.From;
         }
 
+        /// <summary>
+        /// Hash code
+        /// </summary>
+        /// <returns></returns>
         public override int GetHashCode()
         {
             return From.GetHashCode() + (To ?? default(DateTime)).GetHashCode();
         }
 
+        /// <summary>
+        /// For en grei stringrepresentasjon av Periode for debugging.
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
-            return $"Period: {From.ToShortDateString()}, To: {(To == null ? " (null)" : To.Value.ToShortDateString())}";
+            return $"Period: {From.ToShortDateString()}, To: {To?.ToShortDateString() ?? " (null)"}";
         }
     }
 }

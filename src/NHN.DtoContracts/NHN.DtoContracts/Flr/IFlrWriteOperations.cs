@@ -4,6 +4,9 @@ using System.ServiceModel;
 
 namespace NHN.DtoContracts.Flr
 {
+    /// <summary>
+    /// Skriveoperasjoner til FLR. Eneste bruker er FLO p.t.
+    /// </summary>
     [ServiceContract(Namespace = FlrXmlNamespace.V1)]
     public interface IFlrWriteOperations
     {
@@ -47,33 +50,48 @@ namespace NHN.DtoContracts.Flr
         [FaultContract(typeof(GenericFault))]
         void DeleteCustomFloAddressOnGPOffice(int organizationNumber);
 
-        // --------------------------
-        // Fastlegeavtale
-        // --------------------------
 
-        //OpprettFastlegeavtale
+        /// <summary>
+        /// Oppretter en ny fastlegeavtale
+        /// </summary>
+        /// <param name="newGPContract"></param>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         void CreateGPContract(GPContract newGPContract);
 
+        /// <summary>
+        /// Oppretter en ny fastlegeavtale - importversjon
+        /// </summary>
+        /// <param name="bulkGPContracts"></param>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         void CreateGPContractBulk(List<GPContract> bulkGPContracts);
 
 
-        //OppdaterFastlegeavtale
+        /// <summary>
+        /// Oppdaterere en fastlegeavtale
+        /// </summary>
+        /// <param name="gpContract"></param>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         void UpdateGPContract(GPContract gpContract);
         
-        
-        //OppdaterFastlegeavtaleMaksAntall
+
+        /// <summary>
+        /// Setter maks antall pasienter på en fastlegeliste.
+        /// </summary>
+        /// <param name="gpContractId"></param>
+        /// <param name="maxPatients"></param>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         void UpdateGPContractMaxPatients(int gpContractId, int maxPatients);
 
 
-        //SettFastlegeListeStatus
+        /// <summary>
+        /// Oppdaterer status på en GPContract
+        /// </summary>
+        /// <param name="gpContractId"></param>
+        /// <param name="status"></param>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         void UpdateGPContractStatus(int gpContractId, Code status); //Kun tillate Åpne, Lukke 
@@ -83,37 +101,53 @@ namespace NHN.DtoContracts.Flr
         // Utekontor 
         // --------------------------
 
-        //OpprettUtekontor
+        /// <summary>
+        /// Oppretter et utekontor
+        /// </summary>
+        /// <param name="office">Utekontordata</param>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         void CreateOutOfOfficeLocation(OutOfOfficeLocation office);
 
 
-        //OppdaterUtekontor
+        /// <summary>
+        /// Oppdatererer et utekontor
+        /// </summary>
+        /// <param name="office"></param>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         void UpdateOutOfOfficeLocation(OutOfOfficeLocation office);
 
-        //Fjerne utekontor 
+        /// <summary>
+        /// Fjerner et utekontor. Dette er det samme som å sette utekontoret til utløpt.
+        /// </summary>
+        /// <param name="outOfOfficeId"></param>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         void RemoveOutOfOfficeLocation(int outOfOfficeId);
-        
-        // --------------------------
-        // Legeperiode
-        // --------------------------
 
-        //OpprettLegePeriode
+        /// <summary>
+        /// Oppretter en kontraktsperiode for en lege på en GPContract
+        /// </summary>
+        /// <param name="association"></param>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         void CreateGPOnContractAssociation(GPOnContractAssociation association);
 
+
+        /// <summary>
+        /// Oppretter en kontraktsperiode for en lege på en GPContract - importversjon
+        /// </summary>
+        /// <param name="creates"></param>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         void CreateGPOnContractAssociationBulk(List<GPOnContractAssociation> creates);
 
 
-        //OppdaterLegePeriode
+        /// <summary>
+        /// Oppdaterer en kontraktsperiode for en lege på en GPContract
+        /// </summary>
+        /// <param name="association"></param>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         void UpdateGPOnContractAssociation(GPOnContractAssociation association);
@@ -122,31 +156,44 @@ namespace NHN.DtoContracts.Flr
         // LegeSprak 
         // --------------------------
 
-        //OppdaterLegeSprak
+        /// <summary>
+        /// Oppdaterer listen over språk en lege kan snakke.
+        /// </summary>
+        /// <param name="hprNumber"></param>
+        /// <param name="languages"></param>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        void UpdateGPLanguages(int hprNumber, ICollection<Code> languages);  //Alle språk sendes hver gang
+        void UpdateGPLanguages(int hprNumber, ICollection<Code> languages);
 
 
         // --------------------------
         // ListeTilhorighet
         // --------------------------
 
-        //OpprettListeTilhorighet
+        /// <summary>
+        /// Kobler en pasient til en fastlegeliste.
+        /// </summary>
+        /// <param name="patientToGPContractAssociation"></param>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         void CreatePatientToGPContractAssociation(PatientToGPContractAssociation patientToGPContractAssociation);
 
+        /// <summary>
+        /// Kobler en pasient til en fastlegeliste - importversjon
+        /// </summary>
+        /// <param name="patientToGPContractAssociation"></param>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         void CreatePatientToGPContractAssociationBulk(List<PatientToGPContractAssociation> patientToGPContractAssociation);
 
-
-        //FlyttInnbyggereOperasjon
+        /// <summary>
+        /// Flytter en innbyger fra en liste til en annen.
+        /// </summary>
+        /// <param name="fromGPContract">ID til fastlegeliste en innbygger skal flyttes FRA.</param>
+        /// <param name="patientsToMove"></param>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         void MovePatients(int fromGPContract, ICollection<PatientToGPContractAssociation> patientsToMove);
-
 
         /// <summary>
         /// AvsluttFastlegeavtaleOgFlyttInnbyggere  

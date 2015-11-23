@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace NHN.DtoContracts.Flr
 {
+    /// <summary>
+    /// FLR Namespace
+    /// </summary>
     public static class FlrXmlNamespace
     {
+        /// <summary>
+        /// V1
+        /// </summary>
         public const string V1= "http://schemas.nhn.no/reg/flr";
     }
 }
