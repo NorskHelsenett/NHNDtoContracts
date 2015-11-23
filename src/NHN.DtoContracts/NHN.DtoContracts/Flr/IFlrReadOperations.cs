@@ -64,6 +64,6 @@ namespace NHN.DtoContracts.Flr
         /// <returns></returns>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        GPContract GetGPWithAssociatedGPContracts(int hprNumber, DateTime? atTime);
+        GPDetails GetGPWithAssociatedGPContracts(int hprNumber, DateTime? atTime);
     }
 }
