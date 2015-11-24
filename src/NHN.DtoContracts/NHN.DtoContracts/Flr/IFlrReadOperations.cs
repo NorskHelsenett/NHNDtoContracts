@@ -39,13 +39,14 @@ namespace NHN.DtoContracts.Flr
         GPContract GetGPContract(int gpContractId);
 
         /// <summary>
-        /// Henter fastlegeavtaler tilknyttet virksomheten.
+        /// Henter fastlegeavtaler tilknyttet virksomheten på et gitt tidspunkt. Hvis tidspunktet er NULL, så returneres alle kontrakter inklusive historiske.
         /// </summary>
-        /// <param name="organizationNumber"></param>
-        /// <returns></returns>
+        /// <param name="organizationNumber">Legekontor orgnummer</param>
+        /// <param name="atTime">Hent kontrakter for dette tidspunktet. NULL for historiske.</param>
+        /// <returns>Alle kontrakter på relevant tidspunkt.</returns>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        ICollection<GPContract> GetGPContractsOnOffice(int organizationNumber);
+        ICollection<GPContract> GetGPContractsOnOffice(int organizationNumber, DateTime? atTime);
 
         /// <summary>
         /// Henter fastlegeliste.
