@@ -14,13 +14,13 @@ namespace NHN.DtoContracts.Flr
         /// ID. This Id is owned by FLO.
         /// </summary>
         [DataMember]
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>
         /// ID til GPContract
         /// </summary>
         [DataMember]
-        public int GPContractId { get; set; }
+        public long GPContractId { get; set; }
         
         /// <summary>
         /// Beskrivelse av utekontoret

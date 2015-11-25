@@ -13,13 +13,13 @@ namespace NHN.DtoContracts.Flr
         /// Denne ID'en eies av FLO.
         /// </summary>
         [DataMember]
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>
         /// Fremmednøkkel til GPContract.ID
         /// </summary>
         [DataMember]
-        public int GPContractId { get; set; }
+        public long GPContractId { get; set; }
 
         /// <summary>
         /// Fastlegeavtale/liste. Satt ved lesing, må være null ved skriveoperasjoner.

@@ -13,13 +13,13 @@ namespace NHN.DtoContracts.Flr
         /// Id til denne assiosasjonen.
         /// </summary>
         [DataMember]
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>
         /// ID til GPContract. Må være satt ved skriving, vil være satt ved lesing og vil være identisk med GPContract.Id.
         /// </summary>
         [DataMember]
-        public int GPContractId { get; set; }
+        public long GPContractId { get; set; }
 
         /// <summary>
         ///  Kontakten denne assoisasjonen peker til. Satt ved lesing, skal være null ved skriving.

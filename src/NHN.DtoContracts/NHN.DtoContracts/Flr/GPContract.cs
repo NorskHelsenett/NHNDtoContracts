@@ -15,7 +15,7 @@ namespace NHN.DtoContracts.Flr
         /// This ID is owned by and set by FLO. Must be a positive integer.
         /// </summary>
         [DataMember]
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>
         /// Hvorvidt listen er en del av en "Fellesliste".

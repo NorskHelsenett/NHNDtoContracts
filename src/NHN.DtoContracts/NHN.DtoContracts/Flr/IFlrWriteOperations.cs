@@ -84,7 +84,7 @@ namespace NHN.DtoContracts.Flr
         /// <param name="maxPatients"></param>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        void UpdateGPContractMaxPatients(int gpContractId, int maxPatients);
+        void UpdateGPContractMaxPatients(long gpContractId, int maxPatients);
 
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace NHN.DtoContracts.Flr
         /// <param name="status"></param>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        void UpdateGPContractStatus(int gpContractId, Code status); //Kun tillate Åpne, Lukke 
+        void UpdateGPContractStatus(long gpContractId, Code status); //Kun tillate Åpne, Lukke 
 
 
         // --------------------------
@@ -124,7 +124,7 @@ namespace NHN.DtoContracts.Flr
         /// <param name="outOfOfficeId"></param>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        void RemoveOutOfOfficeLocation(int outOfOfficeId);
+        void RemoveOutOfOfficeLocation(long outOfOfficeId);
 
         /// <summary>
         /// Oppretter en kontraktsperiode for en lege på en GPContract
@@ -193,7 +193,7 @@ namespace NHN.DtoContracts.Flr
         /// <param name="patientsToMove"></param>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        void MovePatients(int fromGPContract, ICollection<PatientToGPContractAssociation> patientsToMove);
+        void MovePatients(long fromGPContract, ICollection<PatientToGPContractAssociation> patientsToMove);
 
         /// <summary>
         /// AvsluttFastlegeavtaleOgFlyttInnbyggere  
@@ -204,7 +204,7 @@ namespace NHN.DtoContracts.Flr
         /// <param name="capitaToMove"></param>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        void CancelGPContractAndMovePatients(int gpContractId, Code listStatus, Period period, ICollection<PatientToGPContractAssociation> capitaToMove);
+        void CancelGPContractAndMovePatients(long gpContractId, Code listStatus, Period period, ICollection<PatientToGPContractAssociation> capitaToMove);
 
         /// <summary>
         /// AvsluttInnbyggerPåListe.
@@ -212,7 +212,7 @@ namespace NHN.DtoContracts.Flr
         /// </summary>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        void CancelPatientOnGPContract(int gpContractId, string patientNin, Code lastChangeCode);
+        void CancelPatientOnGPContract(long gpContractId, string patientNin, Code lastChangeCode);
 
         /// <summary>
         /// Brukes for å sette visningsnavnet på et legekontor. Merk at legekontoret selv kan overskrive det som eventuelt settes her selv.

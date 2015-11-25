@@ -36,7 +36,7 @@ namespace NHN.DtoContracts.Flr
         /// <returns></returns>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        GPContract GetGPContract(int gpContractId);
+        GPContract GetGPContract(long gpContractId);
 
         /// <summary>
         /// Henter fastlegeavtaler tilknyttet virksomheten på et gitt tidspunkt. Hvis tidspunktet er NULL, så returneres alle kontrakter inklusive historiske.
@@ -55,7 +55,7 @@ namespace NHN.DtoContracts.Flr
         /// <returns></returns>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        ICollection<PatientToGPContractAssociation> GetGPPatientList(int gpContractId);
+        ICollection<PatientToGPContractAssociation> GetGPPatientList(long gpContractId);
 
         /// <summary>
         /// Henter fastlege og tilhørende praksis(er)
