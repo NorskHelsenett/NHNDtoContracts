@@ -46,14 +46,6 @@ namespace NHN.DtoContracts.Common.en
 
             set
             {
-                if (value != null)
-                {
-                    if (value.OID != 0 && value.OID != 9044)
-                        throw new InvalidOperationException("ElectronicAddress can only have OID value 9044");
-                    if (!string.IsNullOrEmpty(value.SimpleType) && value.SimpleType != "type_adressekomponeneter")
-                        throw new InvalidOperationException("ElectronicAddress can only have code group 'type_adressekomponeneter'");
-                }
-
                 _type = value;
                 if (_type != null && _typeCodeValue != _type.CodeValue)
                     _typeCodeValue = _type.CodeValue;
