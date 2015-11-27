@@ -32,19 +32,7 @@ namespace NHN.DtoContracts.Common.en
         public Code Type
         {
             get { return _type; }
-
-            set
-            {
-                if (value != null)
-                {
-                    if (value.OID != 0 && value.OID != 3401)
-                        throw new InvalidOperationException("PhysicalAddress can only have OID value 3401");
-                    if (!string.IsNullOrEmpty(value.SimpleType) && value.SimpleType != "adressetype")
-                        throw new InvalidOperationException("PhysicalAddress can only have code group 'adressetype'");
-                }
-
-                _type = value;
-            }
+            set { _type = value; }
         }
 
         /// <summary>
