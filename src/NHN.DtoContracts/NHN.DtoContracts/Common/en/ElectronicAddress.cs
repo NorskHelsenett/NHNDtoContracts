@@ -11,6 +11,22 @@ namespace NHN.DtoContracts.Common.en
     public class ElectronicAddress
     {
         /// <summary>
+        /// Ctor.
+        /// </summary>
+        public ElectronicAddress()
+        {
+        }
+
+        /// <summary>
+        /// Oppretter en ElectronicAddress med gitt type
+        /// </summary>
+        /// <param name="type"></param>
+        public ElectronicAddress(string type)
+        {
+            _type = CreateAddressTypeCode(type);
+        }
+
+        /// <summary>
         /// Dato og tid for siste endring til objektet
         /// </summary>
         [DataMember]
@@ -65,6 +81,15 @@ namespace NHN.DtoContracts.Common.en
         /// </summary>
         [DataMember]
         public bool Inherited { get; set; }
-        
+
+        /// <summary>
+        /// Lager Code objekt for gitte elektroniske adressetype.
+        /// </summary>
+        /// <param name="codeValue">E_TLF|E_ICE....</param>
+        /// <returns>Kodeobjekt. Description vil ikke være satt.</returns>
+        public static Code CreateAddressTypeCode(string codeValue)
+        {
+            return new Code("type_adressekomponeneter", 9044, codeValue);
+        }
     }
 }

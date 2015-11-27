@@ -32,19 +32,13 @@ namespace NHN.DtoContracts.Flr
         /// Adressen til utekontoret. Kan være både besøksadresse (RES)  og/eller Postadresse (PST)
         /// </summary>
         [DataMember]
-        public List<PhysicalAddress> Addresses { get; set; }
+        public ICollection<PhysicalAddress> PhysicalAddresses { get; set; }
 
         /// <summary>
-        /// Postadressen til utekontoret.
+        /// Liste over elektroniske adresser dette utekontoret har
         /// </summary>
         [DataMember]
-        public PhysicalAddress PostalAddress { get; set; }
-
-        /// <summary>
-        /// Telefonnummer til utekontoret.
-        /// </summary>
-        [DataMember]
-        public string TelephoneNumber{ get; set; }
+        public ICollection<ElectronicAddress> ElectronicAddresses { get; set; }
 
         /// <summary>
         /// For hvilken periode er dette utekontoret relevant

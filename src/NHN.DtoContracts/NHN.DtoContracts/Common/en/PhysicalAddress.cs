@@ -11,6 +11,22 @@ namespace NHN.DtoContracts.Common.en
     public class PhysicalAddress
     {
         /// <summary>
+        /// Ctor
+        /// </summary>
+        public PhysicalAddress()
+        {
+        }
+
+        /// <summary>
+        /// Ctor med gitt Type.CodeValue
+        /// </summary>
+        /// <param name="codeValue"></param>
+        public PhysicalAddress(string codeValue)
+        {
+            _type = CreateAddressTypeCode(codeValue);
+        }
+
+        /// <summary>
         /// Note: Reference to Type will not be cloned.
         /// </summary>
         public PhysicalAddress Clone()
