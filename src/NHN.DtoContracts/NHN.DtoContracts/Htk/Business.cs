@@ -1,13 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using NHN.DtoContracts.Common;
+using NHN.DtoContracts.Common.en;
 
-namespace NHN.DtoContracts.Common.en
+namespace NHN.DtoContracts.Htk
 {
     /// <summary>
-    /// Virksomhet
+    /// Virksomhet.
     /// </summary>
-    [DataContract(Namespace = CommonXmlNamespaces.XmlNsCommonEnglishOld)]
+    [DataContract(Namespace =  CorporateXmlNamespace.XmlNsCorporate)]
     public class Business
     {
         /// <summary>

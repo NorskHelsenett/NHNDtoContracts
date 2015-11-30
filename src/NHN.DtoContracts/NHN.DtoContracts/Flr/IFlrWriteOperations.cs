@@ -1,6 +1,7 @@
 ﻿using NHN.DtoContracts.Common.en;
 using System.Collections.Generic;
 using System.ServiceModel;
+using NHN.DtoContracts.Htk;
 
 namespace NHN.DtoContracts.Flr
 {

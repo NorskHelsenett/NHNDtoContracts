@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 using NHN.DtoContracts.Common.en;
+using NHN.DtoContracts.Htk;
 
 namespace NHN.DtoContracts.Flr
 {
