@@ -41,25 +41,25 @@
     <Reference Include="System.ServiceModel" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Flr\Data\GPContract.cs" />
+    <Compile Include="Flr\Data\GPDetails.cs" />
+    <Compile Include="Flr\Data\GPOnContractAssociation.cs" />
+    <Compile Include="Flr\Data\OutOfOfficeLocation.cs" />
+    <Compile Include="Flr\Data\PatientToGPContractAssociation.cs" />
+    <Compile Include="Flr\Data\Person.cs" />
+    <Compile Include="Flr\Service\IFlrExportOperations.cs" />
+    <Compile Include="Flr\Service\IFlrReadOperations.cs" />
+    <Compile Include="Flr\Service\IFlrWriteOperations.cs" />
     <Compile Include="Htk\Business.cs" />
     <Compile Include="Common\en\Code.cs" />
     <Compile Include="Common\CommonXmlNamespaces.cs" />
     <Compile Include="Common\en\ElectronicAddress.cs" />
     <Compile Include="Common\en\GenericFault.cs" />
-    <Compile Include="Flr\Person.cs" />
     <Compile Include="Common\en\Status.cs" />
     <Compile Include="Flr\FlrXmlNamespace.cs" />
-    <Compile Include="Flr\GPDetails.cs" />
-    <Compile Include="Flr\GPOnContractAssociation.cs" />
-    <Compile Include="Flr\IFlrExportOperations.cs" />
-    <Compile Include="Flr\IFlrWriteOperations.cs" />
     <Compile Include="Common\en\OpeningHours.cs" />
     <Compile Include="Common\en\Period.cs" />
-    <Compile Include="Flr\IFlrReadOperations.cs" />
-    <Compile Include="Flr\OutOfOfficeLocation.cs" />
-    <Compile Include="Flr\PatientToGPContractAssociation.cs" />
     <Compile Include="Common\en\PhysicalAddress.cs" />
-    <Compile Include="Flr\GPContract.cs" />
     <Compile Include="Htk\CorporateXmlNamespace.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Common\en\TimePeriod.cs" />

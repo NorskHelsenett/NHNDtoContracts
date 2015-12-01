@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using NHN.DtoContracts.Common.en;
 using NHN.DtoContracts.Htk;
 
-namespace NHN.DtoContracts.Flr
+namespace NHN.DtoContracts.Flr.Data
 {
     /// <summary>
     /// Dette representerer en fastlege.

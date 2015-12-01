@@ -2,8 +2,9 @@
 using System.ServiceModel;
 using NHN.DtoContracts.Common.en;
 using System;
+using NHN.DtoContracts.Flr.Data;
 
-namespace NHN.DtoContracts.Flr
+namespace NHN.DtoContracts.Flr.Service
 {
     /// <summary>
     /// Leseoperasjoner for FLR (GP v2)

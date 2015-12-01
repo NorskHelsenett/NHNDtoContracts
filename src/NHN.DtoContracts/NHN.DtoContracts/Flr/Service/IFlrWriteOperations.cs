@@ -1,9 +1,10 @@
 ﻿using NHN.DtoContracts.Common.en;
 using System.Collections.Generic;
 using System.ServiceModel;
+using NHN.DtoContracts.Flr.Data;
 using NHN.DtoContracts.Htk;
 
-namespace NHN.DtoContracts.Flr
+namespace NHN.DtoContracts.Flr.Service
 {
     /// <summary>
     /// Skriveoperasjoner til FLR. Eneste bruker er FLO p.t.

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using NHN.DtoContracts.Htk;
 
-namespace NHN.DtoContracts.Flr
+namespace NHN.DtoContracts.Flr.Data
 {
     /// <summary>
     /// Dette representerer en fastlegeavtale og implisitt en fastlegeliste.

@@ -2,7 +2,7 @@
 using System.Runtime.Serialization;
 using NHN.DtoContracts.Common.en;
 
-namespace NHN.DtoContracts.Flr
+namespace NHN.DtoContracts.Flr.Data
 {
     /// <summary>
     /// Representerer informasjon om et utekontor

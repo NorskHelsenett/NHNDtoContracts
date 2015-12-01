@@ -1,7 +1,7 @@
 ﻿using System.Runtime.Serialization;
 using NHN.DtoContracts.Common.en;
 
-namespace NHN.DtoContracts.Flr
+namespace NHN.DtoContracts.Flr.Data
 {
     /// <summary>
     /// Beskriver en periode en lege er tilknyttet en GPContract.
