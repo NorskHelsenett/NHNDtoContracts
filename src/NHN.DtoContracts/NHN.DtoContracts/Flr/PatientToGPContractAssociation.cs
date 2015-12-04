@@ -10,7 +10,7 @@ namespace NHN.DtoContracts.Flr
     public class PatientToGPContractAssociation
     {
         /// <summary>
-        /// Id til denne assiosasjonen.
+        /// Id til denne assiosasjonen. TilhørighetsId.
         /// </summary>
         [DataMember]
         public int Id { get; set; }
@@ -29,12 +29,14 @@ namespace NHN.DtoContracts.Flr
 
         /// <summary>
         /// For hvilken periode er denne assiosasjonen gyldig?
+        /// For Move metoden så er FraDato -> fradatoen til nye tilhørigheten, TilDato -> tildatoen til den gamle.
         /// </summary>
         [DataMember]
         public Period Period { get; set; } //FraDato ?TilDato;
 
         /// <summary>
-        /// Kode p� hvorfor perioden er endret (avsluttet).
+        /// Kode på hvorfor perioden er endret (avsluttet).
+        /// For Move metoden så er LastChangeCode -> OpprettelsesKode for ny tilhørigheten
         /// </summary>
         [DataMember]
         public Code LastChangeCode { get; set; }
