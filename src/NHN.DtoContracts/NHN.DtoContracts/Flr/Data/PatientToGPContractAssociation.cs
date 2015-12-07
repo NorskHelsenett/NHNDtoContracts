@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 using NHN.DtoContracts.Common.en;
 
@@ -58,9 +59,10 @@ namespace NHN.DtoContracts.Flr.Data
         public Person Patient { get; set; }
 
         /// <summary>
-        /// Detaljer om legen tilknyttet denne assiosasjonen. Denne er satt ved lesing når det er relevant, men Skal være null ved skriving.
+        /// Legeperioder som overlapper med denne pasientperioden på listen. Dette vil være satt på leseoperasjoner når det er relevant, 
+        /// men må være NULL på skriveoperasjoner.
         /// </summary>
         [DataMember]
-        public GPDetails GPDetails { get; set; }
+        public ICollection<GPOnContractAssociation> DoctorCycles { get; set; }
     }
 }
