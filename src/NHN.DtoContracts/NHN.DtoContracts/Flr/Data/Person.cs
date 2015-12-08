@@ -40,13 +40,13 @@ namespace NHN.DtoContracts.Flr.Data
         /// Fødselsdato
         /// </summary>
         [DataMember]
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
 
         /// <summary>
         /// Tidspunkt perioden døde på
         /// </summary>
         [DataMember]
-        public DateTime DateOfDeath { get; set; }
+        public DateTime? DateOfDeath { get; set; }
 
         /// <summary>
         /// Kjønn. Gyldig simpletype er "kjonn".
