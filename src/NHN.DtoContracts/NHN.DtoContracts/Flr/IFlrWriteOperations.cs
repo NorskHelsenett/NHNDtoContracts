@@ -77,6 +77,10 @@ namespace NHN.DtoContracts.Flr
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         void UpdateGPOnContractAssociation(int gpContractId, GPOnContractAssociation association);
+        
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        void DeleteGPOnContractAssociation(int gpOnConctractAssociationId)
 
         // --------------------------
         // LegeSprak 
