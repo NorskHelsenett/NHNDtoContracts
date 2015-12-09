@@ -67,5 +67,16 @@ namespace NHN.DtoContracts.Flr.Service
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         GPDetails GetGPWithAssociatedGPContracts(int hprNumber, DateTime? atTime);
+
+        /// <summary>
+        /// Sjekker om en lege er pasientens fastlege på et gitt tidspunkt
+        /// </summary>
+        /// <param name="patientNin"></param>
+        /// <param name="hprNumber">Legens HPR-nummer.</param>
+        /// <param name="atTime">Hvis null, akkurat nå. Hvis satt, sjekk om legen var fastlege på det tidspunkt.</param>
+        /// <returns></returns>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        bool ConfirmGP(string patientNin, int hprNumber, DateTime? atTime);
     }
 }
