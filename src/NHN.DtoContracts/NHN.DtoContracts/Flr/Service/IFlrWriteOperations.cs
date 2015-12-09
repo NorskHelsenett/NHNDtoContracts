@@ -128,6 +128,11 @@ namespace NHN.DtoContracts.Flr.Service
         [FaultContract(typeof(GenericFault))]
         void RemoveOutOfOfficeLocation(long outOfOfficeId);
 
+		
+		// --------------------------
+        // Listetilhørighet 
+        // --------------------------
+		
         /// <summary>
         /// Oppretter en kontraktsperiode for en lege på en GPContract
         /// </summary>
@@ -154,6 +159,14 @@ namespace NHN.DtoContracts.Flr.Service
         [FaultContract(typeof(GenericFault))]
         void UpdateGPOnContractAssociation(GPOnContractAssociation association);
 
+		
+		/// <summary>
+        /// Sletter en kontraktsperiode for en lege på en GPContract
+        /// </summary>
+        /// <param name="association"></param>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        void DeleteGPOnContractAssociation(int gpOnContractAssociationId);
         // --------------------------
         // LegeSprak 
         // --------------------------
