@@ -129,7 +129,7 @@ namespace NHN.DtoContracts.Flr.Service
         void RemoveOutOfOfficeLocation(long outOfOfficeId);
 
 		
-		// --------------------------
+	// --------------------------
         // Listetilhørighet 
         // --------------------------
 		
@@ -166,7 +166,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <param name="association"></param>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        void DeleteGPOnContractAssociation(int gpOnContractAssociationId);
+        void DeleteGPOnContractAssociation(long gpOnContractAssociationId);
         // --------------------------
         // LegeSprak 
         // --------------------------
