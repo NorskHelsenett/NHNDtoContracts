@@ -163,7 +163,7 @@ namespace NHN.DtoContracts.Flr.Service
 		/// <summary>
         /// Sletter en kontraktsperiode for en lege på en GPContract
         /// </summary>
-        /// <param name="association"></param>
+        /// <param name="gpOnContractAssociationId"></param>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         void DeleteGPOnContractAssociation(long gpOnContractAssociationId);
