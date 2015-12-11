@@ -92,6 +92,11 @@ namespace NHN.DtoContracts.Flr.Data
         public ICollection<OutOfOfficeLocation> OutOfOfficeOffices { get; set; }
 
         /// <summary>
+        /// Pasienter som er koblet til denne kontrakten
+        /// </summary>
+        public ICollection<PatientToGPContractAssociation> PatientList { get; set; }
+
+        /// <summary>
         /// Kommune
         /// </summary>
         [DataMember]
