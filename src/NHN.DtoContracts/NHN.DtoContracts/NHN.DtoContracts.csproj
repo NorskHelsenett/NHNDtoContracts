@@ -50,6 +50,7 @@
     <Compile Include="Flr\Service\IFlrExportOperations.cs" />
     <Compile Include="Flr\Service\IFlrReadOperations.cs" />
     <Compile Include="Flr\Service\IFlrWriteOperations.cs" />
+    <Compile Include="Flr\Data\QueryParameters.cs" />
     <Compile Include="Htk\Business.cs" />
     <Compile Include="Common\en\Code.cs" />
     <Compile Include="Common\CommonXmlNamespaces.cs" />
