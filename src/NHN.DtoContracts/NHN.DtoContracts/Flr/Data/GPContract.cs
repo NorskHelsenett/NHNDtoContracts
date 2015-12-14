@@ -94,6 +94,7 @@ namespace NHN.DtoContracts.Flr.Data
         /// <summary>
         /// Pasienter som er koblet til denne kontrakten
         /// </summary>
+        [DataMember]
         public ICollection<PatientToGPContractAssociation> PatientList { get; set; }
 
         /// <summary>
