@@ -8,7 +8,7 @@ namespace NHN.DtoContracts.Flr.Data
     /// Parametere for export
     /// </summary>
     [DataContract(Namespace = FlrXmlNamespace.V1)]
-    public class QueryParameters   
+    public class ContractsQueryParameters   
     {
         /// <summary>
         /// Kun pasientlister som tilhører i disse kommunene blir returnert

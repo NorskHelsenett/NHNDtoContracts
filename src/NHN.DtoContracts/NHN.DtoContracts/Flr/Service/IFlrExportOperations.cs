@@ -22,6 +22,6 @@ namespace NHN.DtoContracts.Flr.Service
         /// </returns>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        Stream ExportGPDetails(QueryParameters searchParameters);
+        Stream ExportGPContracts(ContractsQueryParameters searchParameters);
     }
 }
