@@ -237,5 +237,84 @@ namespace NHN.DtoContracts.Flr.Service
         [OperationContract]
         [FaultContract(typeof (GenericFault))]
         void SetDisplayNameOnGPOffice(int organizationNumber, string displayName);
+
+        /// <summary>
+        /// Sletter avtale, med ALLE relaterte relasjoner (Legeperioder, Tilhørigheter, Utekontor).
+        /// Kun tilgjengelig i testmiljø.
+        /// </summary>
+        /// <param name="gpContractId">Id til fastlegeavtale.</param>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        void CleanupGPContract(long gpContractId);
+
+        /// <summary>
+        /// Sletter legekontorets avtaler, med ALLE relaterte relasjoner (Legeperioder, Tilhørigheter, Utekontor).
+        /// Kun tilgjengelig i testmiljø.
+        /// </summary>
+        /// <param name="orgNr">Organisasjonsnummer til legekontoret.</param>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        void CleanupGPContractByOrgNr(int orgNr);
+
+        /// <summary>
+        /// Sletter legeperiode. 
+        /// Kun tilgjengelig i testmiljø.
+        /// </summary>
+        /// <param name="gpOnContractAssociationId">Id til legeperiode.</param>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        void CleanupGPOnContractAssociation(long gpOnContractAssociationId);
+
+        /// <summary>
+        /// Sletter ALT om legen - Legeperioder, legespråk.
+        /// Kun tilgjengelig i testmiljø.
+        /// </summary>
+        /// <param name="doctorHprNumber">HPR-nummer til legen.</param>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        void CleanupGP(int doctorHprNumber);
+
+        /// <summary>
+        /// Sletter legespråk.
+        /// Kun tilgjengelig i testmiljø.
+        /// </summary>
+        /// <param name="doctorHprNumber">HPR-nummer til legen.</param>
+        void CleanupGPLanguages(int doctorHprNumber);
+
+        /// <summary>
+        /// Sletter utekontor.
+        /// Kun tilgjengelig i testmiljø.
+        /// </summary>
+        /// <param name="outOfOfficeId">Id til utekontor.</param>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        void CleanupOutOfOffice(long outOfOfficeId);
+
+        /// <summary>
+        /// Sletter tilhørighet.
+        /// Kun tilgjengelig i testmiljø.
+        /// </summary>
+        /// <param name="patientToGPContractAssociation">Id til tilhørighet.</param>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        void CleanupPatientToGPContractAssociation(long patientToGPContractAssociation);
+
+        /// <summary>
+        /// Sletter samtlige entiteter i FLR innenfor et id-range med tilhørende relasjoner om de måtte treffe.
+        /// Kun tilgjengelig i testmiljø.
+        /// </summary>
+        /// <param name="fromAndWithId">Fra og med Id.</param>
+        /// <param name="toAndWithId">Til og med Id.</param>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        void CleanupByIdSeed(long fromAndWithId, long toAndWithId);
+
+        /// <summary>
+        /// Sletter alt.
+        /// Kun tilgjengelig i testmiljø.
+        /// </summary>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        void CleanupEverything();
     }
 }
