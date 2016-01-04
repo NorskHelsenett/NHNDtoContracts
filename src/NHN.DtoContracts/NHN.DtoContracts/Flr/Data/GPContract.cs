@@ -31,6 +31,12 @@ namespace NHN.DtoContracts.Flr.Data
         public bool GroupGPOffice { get; set; }
 
         /// <summary>
+        /// Hvorvidt dette er en fastlønnet avtale.
+        /// </summary>
+        [DataMember]
+        public bool IsFixedSalary { get; set; }
+
+        /// <summary>
         /// Hvis det kreves medlemskap for være på en liste, så er innholdet av RequiresMembership satt til ID'en for dette medlemskapet.
         /// </summary>
         [DataMember]
