@@ -15,8 +15,15 @@ namespace NHN.DtoContracts.Flr.Service
         /// <summary>
         /// Henter fastlege for en gitt person.
         /// </summary>
-        /// <param name="patientNin"></param>
-        /// <returns></returns>
+        /// <remarks>Returnere nødvendige opplysninger om aktiv fastlegeforhold til en innbygger</remarks>
+        /// <param name="patientNin">Referanse ID til innbygger-objektet (fødselsnummer/D-nummer)</param>
+        /// <value></value>
+        /// <returns>Sammensatt liste med detaljer over innbyggerens aktiv fastlege med relevante objekter (fastlege-objekt/behandlingssted-objekt/Gyldighetsperiode)</returns>
+        /// <example>
+        /// <code>
+        /// var patientGP = flrReadService.GetPatientGPDetails(patientNin);
+        /// </code>
+        /// </example>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         GPDetails GetPatientGPDetails(string patientNin);
@@ -24,8 +31,15 @@ namespace NHN.DtoContracts.Flr.Service
         /// <summary>
         /// Henter fastlegebytte historikken
         /// </summary>
-        /// <param name="patientNin"></param>
-        /// <returns></returns>
+        /// <remarks>Henter pasientens fastlege og all historikk som er knyttet til fastlegebytter i fortiden.</remarks>
+        /// <param name="patientNin">Referanse ID til innbygger-objektet (fødselsnummer/D-nummer)</param>
+        /// <value></value>
+        /// <returns>Liste over alle innbyggerens fastlegeavtaler</returns>
+        /// <example>
+        /// <code>
+        /// var patientGPHistoryList = flrReadService.GetPatientGPHistory(patientNin);
+        /// </code>
+        /// </example>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         ICollection<PatientToGPContractAssociation> GetPatientGPHistory(string patientNin);
@@ -33,18 +47,39 @@ namespace NHN.DtoContracts.Flr.Service
         /// <summary>
         /// Henter en enkelt fastlegeavtale
         /// </summary>
+        /// <remarks>Metode for å hente ut en enkel fastlegeavtale</remarks>
         /// <param name="gpContractId">Kontraktens id.</param>
-        /// <returns></returns>
+        /// <value></value>
+        /// <returns>En fastlegeavtale</returns>
+        /// <example>
+        /// <code>
+        /// var gpContract = flrReadService.GetGPContract(gpContractId);
+        /// </code>
+        /// </example>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         GPContract GetGPContract(long gpContractId);
 
         /// <summary>
-        /// Henter fastlegeavtaler tilknyttet virksomheten på et gitt tidspunkt. Hvis tidspunktet er NULL, så returneres alle kontrakter inklusive historiske.
+        /// Henter fastlegeavtaler tilknyttet virksomheten.
         /// </summary>
+        /// <remarks>
+        /// Metoden som henter alle aktive fastlegelister som er knyttet til et behandlingssted på et gitt tidspunkt. 
+        /// Hvis tidspunktet er NULL, så returneres alle kontrakter inklusive historiske.
+        /// </remarks>
         /// <param name="organizationNumber">Legekontor orgnummer</param>
         /// <param name="atTime">Hent kontrakter for dette tidspunktet. NULL for historiske.</param>
-        /// <returns>Alle kontrakter på relevant tidspunkt.</returns>
+        /// <value></value>
+        /// <returns>Objekt med liste av fastlegelister tilknyttet gitt behandlingssted</returns>
+        /// <example>
+        /// <code>
+        /// //For et gitt tidspunkt
+        /// var atTime = DateTime.Now;
+        /// var contractsOnOfficeList = flrReadService.GetGPContractsOnOffice(organizationNumber, atTime);
+        /// //Alle kontrakter også historiske
+        /// var contractsOnOfficeList = flrReadService.GetGPContractsOnOffice(organizationNumber, null);
+        /// </code>
+        /// </example>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         ICollection<GPContract> GetGPContractsOnOffice(int organizationNumber, DateTime? atTime);
@@ -52,8 +87,15 @@ namespace NHN.DtoContracts.Flr.Service
         /// <summary>
         /// Henter fastlegeliste.
         /// </summary>
-        /// <param name="gpContractId">Fastlegeavtalen.</param>
-        /// <returns></returns>
+        /// <remarks>Henter alle innbyggere på fastlegens liste over pasienter på hentetidspunktet.</remarks>
+        /// <param name="gpContractId">Id til fastlegens kontrakt.</param>
+        /// <value></value>
+        /// <returns>Liste over aktuelle innbyggere på fastlegens pasientliste</returns>
+        /// <example>
+        /// <code>
+        /// var gpPatientList = flrReadService.GetGPPatientList(gpContractId);
+        /// </code>
+        /// </example>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         ICollection<PatientToGPContractAssociation> GetGPPatientList(long gpContractId);
@@ -61,9 +103,23 @@ namespace NHN.DtoContracts.Flr.Service
         /// <summary>
         /// Henter fastlege og tilhørende praksis(er)
         /// </summary>
-        /// <param name="hprNumber">Legens HPR-nummer.</param>
+        /// <remarks>Informasjon om fastlege og tilhørende fastlegepraksis</remarks>
+        /// <param name="hprNumber">Legens HPR-nummer. Må være høyere enn 0</param>
         /// <param name="atTime">Hvis null, historiske og framtidige. Hvis satt, kun kontrakter relevant på det tidspunkt.</param>
-        /// <returns></returns>
+        /// <value></value>
+        /// <returns>Fastlegeavtaler som er tilknyttet til samme en lege</returns>
+        /// <example>
+        /// <code>
+        /// //For et gitt tidspunkt
+        /// var atTime = DateTime.Now;
+        /// var gpDetail = flrReadService.GetGPWithAssociatedGPContracts(hprNumber, atTime);
+        /// var contractsList = gpDetail.Contracts;
+        /// 
+        /// //Alle kontrakter også historiske
+        /// var gpDetail = flrReadService.GetGPWithAssociatedGPContracts(hprNumber, null);
+        /// var contractsList = gpDetail.Contracts;
+        /// </code>
+        /// </example>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         GPDetails GetGPWithAssociatedGPContracts(int hprNumber, DateTime? atTime);
