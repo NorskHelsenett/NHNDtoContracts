@@ -134,5 +134,16 @@ namespace NHN.DtoContracts.Flr.Service
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         bool ConfirmGP(string patientNin, int hprNumber, DateTime? atTime);
+
+        /// <summary>
+        /// Denne operasjonen er kun tilgjengelig for NAV. For å hente fastlegeliste med pasienter basert på personnummer til legen og kommune.
+        /// </summary>
+        /// <param name="doctorNin">Legens personnummer</param>
+        /// <param name="kommuneNr">Kommune fastlegelisten gjelder</param>
+        /// <param name="doSubstituteSearch">Hvorvidt legen kan være en vikar. Hvis ikke søker vi utelukkende på legen.</param>
+        /// <returns>GPContract funnet. På kontrakten vil PatientList være fyllt ut.</returns>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        GPContract GetGpContractForNav(string doctorNin, int kommuneNr, bool doSubstituteSearch);
     }
 }
