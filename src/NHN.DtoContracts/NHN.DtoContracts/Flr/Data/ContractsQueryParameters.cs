@@ -16,5 +16,12 @@ namespace NHN.DtoContracts.Flr.Data
         /// </summary>
         [DataMember]
         public ICollection<Code> Municipalities { get; set; }
+
+        /// <summary>
+        /// Om man absolutt må hente personinfo fra personregisteret, settes denne til true.
+        /// Oppslag i personregisteret vil gjøre at svar vil ta VESENTLIG lengre tid
+        /// </summary>
+        [DataMember]
+        public bool GetFullPersonInfo { get; set; }
     }
 }
