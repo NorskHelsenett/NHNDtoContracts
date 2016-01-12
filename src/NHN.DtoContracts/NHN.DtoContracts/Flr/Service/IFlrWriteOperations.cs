@@ -438,6 +438,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// Kun tilgjengelig i testmiljø.
         /// </summary>
         /// <param name="doctorHprNumber">HPR-nummer til legen.</param>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
         void CleanupGPLanguages(int doctorHprNumber);
 
         /// <summary>
