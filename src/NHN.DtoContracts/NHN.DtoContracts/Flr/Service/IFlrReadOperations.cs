@@ -145,5 +145,13 @@ namespace NHN.DtoContracts.Flr.Service
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         GPContract GetGpContractForNav(string doctorNin, int kommuneNr, bool doSubstituteSearch);
+
+
+        /// <summary>
+        /// Hent ut alle GPContractId's på kontrakter hvis legekontor har et postnummer som er lik eller begynner på postNr.
+        /// </summary>
+        /// <param name="postNr">Postnummer eller starten av postnummer. Dvs. at postNr.Lenght må være 2 eller 4.</param>
+        /// <returns>Liste over alle aktive GPContracts.Id hvis legekontor har en besøksadresse (RES/FLO_RES) som begynner med </returns>
+        ICollection<long> GetGPContractIdsOperatingInPostalCode(string postNr);
     }
 }
