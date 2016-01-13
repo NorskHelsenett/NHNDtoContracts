@@ -23,5 +23,10 @@ namespace NHN.DtoContracts.Flr.Data
         /// </summary>
         [DataMember]
         public bool GetFullPersonInfo { get; set; }
+        /// <summary>
+        /// Om man skal benytte svaret til statistic.
+        /// Gjør at brukere uten extendedRead rettigheter kan benytte exporten
+        /// </summary>
+        public bool StatisticsQuery { get; set; }
     }
 }
