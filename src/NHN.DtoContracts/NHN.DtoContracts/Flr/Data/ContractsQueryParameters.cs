@@ -27,6 +27,7 @@ namespace NHN.DtoContracts.Flr.Data
         /// Om man skal benytte svaret til statistic.
         /// Gjør at brukere uten extendedRead rettigheter kan benytte exporten
         /// </summary>
+        [DataMember]
         public bool StatisticsQuery { get; set; }
     }
 }
