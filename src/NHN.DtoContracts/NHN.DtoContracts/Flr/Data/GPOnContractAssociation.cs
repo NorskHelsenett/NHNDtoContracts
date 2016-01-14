@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 using NHN.DtoContracts.Common.en;
 
 namespace NHN.DtoContracts.Flr.Data
@@ -56,5 +57,11 @@ namespace NHN.DtoContracts.Flr.Data
         /// </summary>
         [DataMember]
         public Code EndReason { get; set; }
+
+        /// <summary>
+        /// Tidspunkt data ble sist oppdatert
+        /// </summary>
+        [DataMember]
+        public DateTime UpdatedOn { get; set; }
     }
 }
