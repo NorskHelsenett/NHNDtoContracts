@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 using NHN.DtoContracts.Common.en;
 
@@ -45,5 +46,11 @@ namespace NHN.DtoContracts.Flr.Data
         /// </summary>
         [DataMember]
         public Period Valid { get; set; }
+
+        /// <summary>
+        /// Tidspunkt data ble sist oppdatert
+        /// </summary>
+        [DataMember]
+        public DateTime UpdatedOn { get; set; }
     }
 }

@@ -114,5 +114,11 @@ namespace NHN.DtoContracts.Flr.Data
         /// </summary>
         [DataMember]
         public Code District { get; set; }
+
+        /// <summary>
+        /// Tidspunkt data ble sist oppdatert
+        /// </summary>
+        [DataMember]
+        public DateTime UpdatedOn { get; set; }
     }
 }
