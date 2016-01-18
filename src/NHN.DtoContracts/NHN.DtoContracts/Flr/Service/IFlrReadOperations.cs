@@ -29,6 +29,13 @@ namespace NHN.DtoContracts.Flr.Service
         GPDetails GetPatientGPDetails(string patientNin);
 
         /// <summary>
+        /// Henter fastleger for en liste med personer
+        /// </summary>
+        /// <param name="patientNins">Liste over pasienter</param>
+        /// <returns>PatientToGPContractAssociation</returns>
+        ICollection<PatientToGPContractAssociation> GetPatientsGPDetails(string[] patientNins);
+
+        /// <summary>
         /// Henter fastlegebytte historikken
         /// </summary>
         /// <remarks>Henter pasientens fastlege og all historikk som er knyttet til fastlegebytter i fortiden.</remarks>
