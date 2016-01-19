@@ -14,13 +14,17 @@ namespace NHN.DtoContracts.Flr.Service
     public interface IFlrWriteOperations
     {
         /// <summary>
-        /// Lag en mengde historiske bedrifter. Historiske bedrifter er Business-objekter med et negativt organisasjonsnummer for å skille dem fra bedrifter med gyldige, faktiske organisasjonsnummer.
+        /// Lag en mengde historiske bedrifter. Historiske bedrifter er Business-objekter med et negativt organisasjonsnummer 
+        /// for å skille dem fra bedrifter med gyldige, faktiske organisasjonsnummer.
         /// Den eneste feltene i det innkommende Business objektet som skal være satt er:
         /// OrganizationName, PhysicalAddreses, ElectronicAddresses, Name, DisplayName, Valid
-        /// Alle andre datafelter må være null/0.
+        /// Alle andre datafelter må være null/0. 
         /// </summary>
         /// <param name="businesses">Listen over bedrifter man ønsker lage.</param>
-        /// <returns>ID'er til opprettede business'es. Den returnerte arrayen mapper 1-1 til business parameteren. Dvs business[i]'s ID vil komme i ret[i]. Dette vil være _negative_ nummer.</returns>
+        /// <returns>
+        /// ID'er til opprettede business'es. Den returnerte arrayen mapper 1-1 til business parameteren. 
+        /// Dvs business[i]'s ID vil komme i ret[i]. Dette vil være _negative_ nummer.
+        /// </returns>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         int[] CreateHistoricalBusinessBulk(Business[] businesses);
@@ -84,11 +88,14 @@ namespace NHN.DtoContracts.Flr.Service
         void DeleteCustomFloAddressOnGPOffice(int organizationNumber);
 
         /// <summary>
-        /// Opprette en ny fastlegeavtale slik at ny fastlegeliste med relevante attributter blir etablert i registerplattform
+        /// Opprette en ny fastlegeavtale slik at ny fastlegeliste med relevante attributter blir etablert i registerplattform.
         /// </summary>
         /// <remarks>
         /// Opprette avtalen mellom en lege og kommune.
-        /// Det forutsettes at lege finnes allerede fra før i HPR og at legen er tilknyttet en legekontor(TreatmentCenter) som finnes i Adresseregisteret/Bedriftsregisteret.</remarks>
+        /// Det forutsettes at lege finnes allerede fra før i HPR og at legen er tilknyttet en legekontor(TreatmentCenter) som finnes i Adresseregisteret/Bedriftsregisteret.
+        /// 
+        /// Publiserer event "ContractCreated" ved vellykket operasjon.
+        /// </remarks>
         /// <param name="newGPContract">En ny legekontrakt</param>
         /// <value></value>
         /// <returns></returns>
@@ -104,6 +111,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <summary>
         /// Oppretter en ny fastlegeavtale - importversjon (se CreateGPContract)
         /// </summary>
+        /// <remarks>Publiserer ikke events.</remarks>
         /// <seealso cref="CreateGPContract"/>
         /// <param name="bulkGPContracts"></param>
         [OperationContract]
@@ -113,7 +121,11 @@ namespace NHN.DtoContracts.Flr.Service
         /// <summary>
         /// Oppdatere en eksisterende fastlegeavtale med nye opplysninger slik at fastlegeliste i registerplattform får oppdatert registrerte verdier
         /// </summary>
-        /// <remarks>Benyttes for oppdatering/endring/avslutning av en eksisterende fastlegeavtale</remarks>
+        /// <remarks>
+        /// Benyttes for oppdatering/endring/avslutning av en eksisterende fastlegeavtale
+        /// 
+        /// Publiserer event "ContractUpdated" ved vellykket operasjon.
+        /// </remarks>
         /// <param name="gpContract">En eksisterende legekontrakt, som skal oppdateres</param>
         /// <value></value>
         /// <returns></returns>
@@ -128,9 +140,9 @@ namespace NHN.DtoContracts.Flr.Service
 
 
         /// <summary>
-        /// Oppdatering av listetak på en fastlegeavtale uten at andre verdier skal endre seg
+        /// Oppdatering av listetak på en fastlegeavtale uten at andre verdier skal endre seg.
         /// </summary>
-        /// <remarks></remarks>
+        /// <remarks>Publiserer event "ContractUpdated" ved vellykket operasjon.</remarks>
         /// <param name="gpContractId">Id på fastlegeavtalen</param>
         /// <param name="maxPatients">Listetak på en avtale</param>
         /// <value></value>
@@ -145,9 +157,13 @@ namespace NHN.DtoContracts.Flr.Service
         void UpdateGPContractMaxPatients(long gpContractId, int maxPatients);
 
         /// <summary>
-        /// Oppdatering av listestatus uten endringer av andre verdier
+        /// Oppdatering av listestatus uten endringer av andre verdier.
         /// </summary>
-        /// <remarks>Kun endring til statusene Åpne og Lukke</remarks>
+        /// <remarks>
+        /// Kun endring til statusene Åpne og Lukke.
+        /// 
+        /// Publiserer event "ContractUpdated" ved vellykket operasjon.
+        /// </remarks>
         /// <param name="gpContractId">Id på fastlegeavtalen</param>
         /// <param name="status">Status på liste status med referanse til kodeverk</param>
         /// <value></value>
@@ -167,9 +183,13 @@ namespace NHN.DtoContracts.Flr.Service
         // --------------------------
 
         /// <summary>
-        /// Oppretter et utekontor registrert på overordnet fastlegepraksis/avtale
+        /// Oppretter et utekontor registrert på overordnet fastlegepraksis/avtale.
         /// </summary>
-        /// <remarks>Hvis et fastlegekontor har dislokerte behandlingssteder (utekontorer) så skal det kunne registreres på overordnet fastlegepraksis/avtale.</remarks>
+        /// <remarks>
+        /// Hvis et fastlegekontor har dislokerte behandlingssteder (utekontorer) så skal det kunne registreres på overordnet fastlegepraksis/avtale.
+        /// 
+        /// Publiserer event "OutOfOfficeLocationCreated" ved vellykket operasjon.
+        /// </remarks>
         /// <param name="office">Utekontordata</param>
         /// <value></value>
         /// <returns></returns>
@@ -183,9 +203,13 @@ namespace NHN.DtoContracts.Flr.Service
         void CreateOutOfOfficeLocation(OutOfOfficeLocation office);
 
         /// <summary>
-        /// Oppdatererer et utekontor
+        /// Oppdatererer et utekontor.
         /// </summary>
-        /// <remarks>Oppdatering av opplysninger om et utekontor</remarks>
+        /// <remarks>
+        /// Oppdatering av opplysninger om et utekontor.
+        /// 
+        /// Publiserer event "OutOfOfficeLocationUpdated" ved vellykket operasjon.
+        /// </remarks>
         /// <param name="office">Eksisterende utekontordata</param>
         /// <value></value>
         /// <returns></returns>
@@ -201,7 +225,11 @@ namespace NHN.DtoContracts.Flr.Service
         /// <summary>
         /// Fjerner et utekontor. Dette er det samme som å sette utekontoret til utløpt.
         /// </summary>
-        /// <remarks>Sletter et utekontor fra liste over utekontorer.</remarks>
+        /// <remarks>
+        /// Sletter et utekontor fra liste over utekontorer.
+        /// 
+        /// Publiserer event "OutOfOfficeLocationDeleted" ved vellykket operasjon.
+        /// </remarks>
         /// <param name="outOfOfficeId">Id til utekontoret som skal slettes</param>
         /// <value></value>
         /// <returns></returns>
@@ -214,15 +242,19 @@ namespace NHN.DtoContracts.Flr.Service
         [FaultContract(typeof(GenericFault))]
         void RemoveOutOfOfficeLocation(long outOfOfficeId);
 
-		
-	// --------------------------
+
+        // --------------------------
         // Listetilhørighet 
         // --------------------------
-		
+
         /// <summary>
-        /// Oppretter en kontraktsperiode for en lege på en fastlegeavtale
+        /// Oppretter en kontraktsperiode for en lege på en fastlegeavtale.
         /// </summary>
-        /// <remarks>Lager en lenke mellom lege i bestemt rolle til en fastlegeavtale</remarks>
+        /// <remarks>
+        /// Lager en lenke mellom lege i bestemt rolle til en fastlegeavtale.
+        /// 
+        /// Publiserer event "GPOnContractCreated" ved vellykket operasjon.
+        ///  </remarks>
         /// <param name="association">Koblingen for en periode legen er tilknyttet en fastlegeavtale</param>
         /// <value></value>
         /// <returns></returns>
@@ -237,8 +269,9 @@ namespace NHN.DtoContracts.Flr.Service
 
 
         /// <summary>
-        /// Oppretter en kontraktsperiode for en lege på en GPContract - importversjon 
+        /// Oppretter en kontraktsperiode for en lege på en GPContract - importversjon.
         /// </summary>
+        /// <remarks>Publiserer ikke events.</remarks>
         /// <seealso cref="CreateGPOnContractAssociation"/>
         /// <remarks>Se CreateGPOnContractAssociation(GPOnContractAssociation association. Tar i mot en liste av koblinger.</remarks>
         /// <param name="creates"></param>
@@ -247,9 +280,13 @@ namespace NHN.DtoContracts.Flr.Service
         void CreateGPOnContractAssociationBulk(List<GPOnContractAssociation> creates);
 
         /// <summary>
-        /// Oppdatere eksisterende kobling mellom leger og eksisterende avtaler
+        /// Oppdatere eksisterende kobling mellom leger og eksisterende avtaler.
         /// </summary>
-        /// <remarks>Oppdaterer informasjonen mellom lege i bestemt rolle til en fastlegeavtale</remarks>
+        /// <remarks>
+        /// Oppdaterer informasjonen mellom lege i bestemt rolle til en fastlegeavtale.
+        /// 
+        /// Publiserer event "GPOnContractUpdated" ved vellykket operasjon.
+        /// </remarks>
         /// <param name="association">Eksisterende koblingen for en periode legen er tilknyttet en fastlegeavtale</param>
         /// <value></value>
         /// <returns></returns>
@@ -262,10 +299,13 @@ namespace NHN.DtoContracts.Flr.Service
         [FaultContract(typeof(GenericFault))]
         void UpdateGPOnContractAssociation(GPOnContractAssociation association);
 
-		
-		/// <summary>
-        /// Sletter en kontraktsperiode for en lege på en GPContract
+
+        /// <summary>
+        /// Sletter en kontraktsperiode for en lege på en GPContract.
         /// </summary>
+        /// <remarks>
+        /// Publiserer event "GPOnContractDeleted" ved vellykket operasjon.
+        /// </remarks>
         /// <param name="gpOnContractAssociationId"></param>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
@@ -303,7 +343,11 @@ namespace NHN.DtoContracts.Flr.Service
         /// <summary>
         /// Kobler en pasient til en fastlegeliste.
         /// </summary>
-        /// <remarks>Opprette nyregistrert person i PREG til en eksisterende fastlegeavtale i FLR</remarks>
+        /// <remarks>
+        /// Opprette nyregistrert person i PREG til en eksisterende fastlegeavtale i FLR.
+        /// 
+        /// Publiserer event "PatientOnContractCreated" ved vellykket operasjon.
+        /// </remarks>
         /// <param name="patientToGPContractAssociation">Kobling mellom innbygger og fastlegeavtale</param>
         /// <value></value>
         /// <returns></returns>
@@ -319,6 +363,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <summary>
         /// Kobler en pasient til en fastlegeliste - importversjon
         /// </summary>
+        /// <remarks>Publiserer ikke events.</remarks>
         /// <seealso cref="CreatePatientToGPContractAssociation"/>
         /// <remarks>Se CreatePatientToGPContractAssociation. Tar i mot en liste med koblinger for bulk operasjoner</remarks>
         /// <param name="patientToGPContractAssociation"></param>
@@ -329,7 +374,11 @@ namespace NHN.DtoContracts.Flr.Service
         /// <summary>
         ///  Flytter en innbyger fra en liste til en annen.
         /// </summary>
-        /// <remarks>Flytte pasienter mellom to fastlegelister. Fødselsnummer valideres. Feiler en pasient så kastes exception på alt.</remarks>
+        /// <remarks>
+        /// Flytte pasienter mellom to fastlegelister. Fødselsnummer valideres. Feiler en pasient så kastes exception på alt.
+        /// 
+        /// Publiserer event "PatientOnContractCreated" for hver pasient som blir flyttet.
+        /// </remarks>
         /// <param name="fromGPContract">ID til fastlegeliste en innbygger skal flyttes FRA.</param>
         /// <param name="patientsToMove">Liste over innbyggere på eksisterende fastlegelister som skal flyttes</param>
         /// <value></value>
@@ -344,9 +393,14 @@ namespace NHN.DtoContracts.Flr.Service
         void MovePatients(long fromGPContract, ICollection<PatientToGPContractAssociation> patientsToMove);
 
         /// <summary>
-        /// Avslutter fastlegeavtale og flytter innbyggere  
+        /// Avslutter fastlegeavtale og flytter innbyggere.
         /// </summary>
-        /// <remarks>Flytte alle pasienter mellom listene og deretter avslutter listen hvor innbyggere ble flyttet fra.</remarks>
+        /// <remarks>
+        /// Flytte alle pasienter mellom listene og deretter avslutter listen hvor innbyggere ble flyttet fra.
+        /// 
+        /// Publiserer event "ContractCanceled" samt "PatientOnContractCreated" for hver pasient som blir flyttet
+        /// ved vellykket operasjon.
+        /// </remarks>
         /// <param name="gpContractId">Referanse til fastlegeliste som skal avsluttes</param>
         /// <param name="listStatus">Referanse til kode for avsluttet status</param>
         /// <param name="period">Sluttdato på kontrakt</param>
@@ -363,9 +417,11 @@ namespace NHN.DtoContracts.Flr.Service
         void CancelGPContractAndMovePatients(long gpContractId, Code listStatus, Period period, ICollection<PatientToGPContractAssociation> capitaToMove);
 
         /// <summary>
-        /// Avslutte innbyggerens tilhørighet på en fastlegeliste/avtale
+        /// Avslutte innbyggerens tilhørighet på en fastlegeliste/avtale.
         /// </summary>
-        /// <remarks></remarks>
+        /// <remarks>
+        /// Publiserer event "PatientOnContractCanceled" ved vellykket operasjon.
+        /// </remarks>
         /// <param name="gpContractId">Referanse til fastlegelisten</param>
         /// <param name="patientNin">Referanse til innbyggerens fødselsnummer (eller D-nummer)</param>
         /// <param name="lastChangeCode">Referanse til kodeverk for avslutningskode</param>
