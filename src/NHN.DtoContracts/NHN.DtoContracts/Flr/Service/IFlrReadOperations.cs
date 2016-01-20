@@ -159,6 +159,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// </summary>
         /// <param name="postNr">Postnummer eller starten av postnummer. Dvs. at postNr.Lenght må være 2 eller 4.</param>
         /// <returns>Liste over alle aktive GPContracts.Id hvis legekontor har en besøksadresse (RES/FLO_RES) som begynner med </returns>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
         ICollection<long> GetGPContractIdsOperatingInPostalCode(string postNr);
     }
 }
