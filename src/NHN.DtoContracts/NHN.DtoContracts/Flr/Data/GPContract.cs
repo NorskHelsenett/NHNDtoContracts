@@ -116,6 +116,12 @@ namespace NHN.DtoContracts.Flr.Data
         public Code District { get; set; }
 
         /// <summary>
+        /// Avslutningsårsak
+        /// </summary>
+        [DataMember]
+        public Code EndReason { get; set; }
+
+        /// <summary>
         /// Tidspunkt data ble sist oppdatert
         /// </summary>
         [DataMember]

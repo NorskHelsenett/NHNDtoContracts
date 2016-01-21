@@ -54,12 +54,6 @@ namespace NHN.DtoContracts.Flr.Data
         public Code Relationship { get; set; } //ForholdsKode;
 
         /// <summary>
-        /// Avslutningsårsak
-        /// </summary>
-        [DataMember]
-        public Code EndReason { get; set; }
-
-        /// <summary>
         /// Tidspunkt data ble sist oppdatert
         /// </summary>
         [DataMember]
