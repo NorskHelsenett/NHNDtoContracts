@@ -23,5 +23,12 @@ namespace NHN.DtoContracts.Flr.Data
         /// </summary>
         [DataMember]
         public bool GetFullPersonInfo { get; set; }
+
+        /// <summary>
+        /// Sett til true om man vil ha alle historiske data, 
+        /// dvs alle leger og pasienter som har vært knyttet til en GPContract med perioden
+        /// </summary>
+        [DataMember]
+        public bool GetHistoricalData { get; set; }
     }
 }
