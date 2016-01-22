@@ -33,6 +33,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// </summary>
         /// <param name="patientNins">Liste over pasienter</param>
         /// <returns>PatientToGPContractAssociation</returns>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
         ICollection<PatientToGPContractAssociation> GetPatientsGPDetails(string[] patientNins);
 
         /// <summary>
