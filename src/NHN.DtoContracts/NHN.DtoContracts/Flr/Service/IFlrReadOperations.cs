@@ -3,6 +3,7 @@ using System.ServiceModel;
 using NHN.DtoContracts.Common.en;
 using System;
 using NHN.DtoContracts.Flr.Data;
+using NHN.DtoContracts.Htk;
 
 namespace NHN.DtoContracts.Flr.Service
 {
@@ -164,5 +165,14 @@ namespace NHN.DtoContracts.Flr.Service
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         ICollection<long> GetGPContractIdsOperatingInPostalCode(string postNr);
+
+
+        /// <summary>
+        /// Search for GP.
+        /// Dersom du ønsker å søke etter legekontor, gå på HTK tjenesten.
+        /// </summary>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        ICollection<GPDetails> SearchForGP(GPSearchParameters searchParameters);
     }
 }
