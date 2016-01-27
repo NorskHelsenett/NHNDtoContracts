@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using NHN.DtoContracts.Common;
 using NHN.DtoContracts.Common.en;
 
 namespace NHN.DtoContracts.Htk
@@ -119,6 +118,12 @@ namespace NHN.DtoContracts.Htk
         /// </summary>
         [DataMember]
         public OpeningHours OpeningHours { get; set; }
+
+        /// <summary>
+        /// Koordinator for besøksadresse. Angitt i breddegrad/lengdegrad.
+        /// </summary>
+        [DataMember]
+        public LatitudeLongitude? GeographicalCoordinates { get; set; }
 
         /// <summary>
         /// Når bedriften er sist oppdatert

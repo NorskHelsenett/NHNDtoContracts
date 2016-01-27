@@ -41,6 +41,8 @@
     <Reference Include="System.ServiceModel" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\en\GeographicalCoordinates.cs" />
+    <Compile Include="Common\HelperInterfaces\IHasGeographicalCoordinates.cs" />
     <Compile Include="Flr\Data\GPContract.cs" />
     <Compile Include="Flr\Data\GPDetails.cs" />
     <Compile Include="Flr\Data\GPOnContractAssociation.cs" />
