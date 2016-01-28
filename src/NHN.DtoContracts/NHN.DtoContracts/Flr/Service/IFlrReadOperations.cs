@@ -149,13 +149,12 @@ namespace NHN.DtoContracts.Flr.Service
         /// Denne operasjonen er kun tilgjengelig for NAV. For å hente fastlegeliste med pasienter basert på personnummer til legen og kommune.
         /// </summary>
         /// <param name="doctorNin">Legens personnummer</param>
-        /// <param name="kommuneNr">Kommune fastlegelisten gjelder</param>
+        /// <param name="municipalityNr">Kommune fastlegelisten gjelder</param>
         /// <param name="doSubstituteSearch">Hvorvidt legen kan være en vikar. Hvis ikke søker vi utelukkende på legen.</param>
         /// <returns>GPContract funnet. På kontrakten vil PatientList være fyllt ut.</returns>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        GPContract GetGpContractForNav(string doctorNin, int kommuneNr, bool doSubstituteSearch);
-
+        GPContract GetGPContractForNav(string doctorNin, string municipalityNr, bool doSubstituteSearch);
 
         /// <summary>
         /// Hent ut alle GPContractId's på kontrakter hvis legekontor har et postnummer som er lik eller begynner på postNr.
@@ -165,7 +164,6 @@ namespace NHN.DtoContracts.Flr.Service
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         ICollection<long> GetGPContractIdsOperatingInPostalCode(string postNr);
-
 
         /// <summary>
         /// Search for GP.

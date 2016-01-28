@@ -20,7 +20,7 @@ namespace NHN.DtoContracts.Flr.Data
         /// Lege
         /// </summary>
         [DataMember]
-        public Person Practitioner { get; set; }
+        public Person GP { get; set; }
 
         /// <summary>
         /// Tilknyttede kontrakter. Kun satt ved relevante leseoperasjoner, må være null ellers.

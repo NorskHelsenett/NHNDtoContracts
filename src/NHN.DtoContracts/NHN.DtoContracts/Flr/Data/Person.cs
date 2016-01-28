@@ -16,7 +16,7 @@ namespace NHN.DtoContracts.Flr.Data
         /// Fødselsnummer, D-nummer eller H-nummer.
         /// </summary>
         [DataMember]
-        public string SSN { get; set; }
+        public string NIN { get; set; }
 
         /// <summary>
         /// Fornavn

@@ -33,7 +33,7 @@ namespace NHN.DtoContracts.Flr.Data
         /// Personnummer til innbygger
         /// </summary>
         [DataMember]
-        public string PatientSSN { get; set; }
+        public string PatientNIN { get; set; }
 
         /// <summary>
         /// For hvilken periode er denne assiosasjonen gyldig?

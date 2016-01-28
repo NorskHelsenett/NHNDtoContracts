@@ -33,13 +33,13 @@ namespace NHN.DtoContracts.Flr.Data
         /// HPR nummeret til legen
         /// </summary>
         [DataMember]
-        public int DoctorHprNumber { get; set; }
+        public int HprNumber { get; set; }
 
         /// <summary>
         /// Hvis satt, så representerer denne GPOnContract en vikar, og dette feltet viser for hvilken lege han er vikar.
         /// </summary>
         [DataMember]
-        public int? SubstituteForDoctorHprNumber { get; set; } //VikarForLege
+        public int? SubstituteForHprNumber { get; set; } //VikarForLege
 
         /// <summary>
         /// Når er denne knytningen gyldig.
