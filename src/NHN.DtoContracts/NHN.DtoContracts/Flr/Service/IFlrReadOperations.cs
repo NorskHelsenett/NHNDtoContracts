@@ -171,6 +171,6 @@ namespace NHN.DtoContracts.Flr.Service
         /// </summary>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        ICollection<GPDetails> SearchForGP(GPSearchParameters searchParameters);
+        PagedResult<GPDetails> SearchForGP(GPSearchParameters searchParameters);
     }
 }

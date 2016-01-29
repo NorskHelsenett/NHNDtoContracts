@@ -1,7 +1,7 @@
 ﻿using System.Runtime.Serialization;
 using NHN.DtoContracts.Common.en;
 
-namespace NHN.DtoContracts.Flr.Service
+namespace NHN.DtoContracts.Flr.Data
 {
     /// <summary>
     /// Search parameters for GP Search
@@ -27,5 +27,17 @@ namespace NHN.DtoContracts.Flr.Service
         /// </summary>
         [DataMember]
         public LatitudeLongitude SortResultsByDistanceTo { get; set; }
+        
+        /// <summary>
+        /// Sidenummer
+        /// </summary>
+        [DataMember]
+        public int Page { get; set; }
+        
+        /// <summary>
+        /// Antall resultater per side
+        /// </summary>
+        [DataMember]
+        public int PageSize { get; set; }
     }
 }
