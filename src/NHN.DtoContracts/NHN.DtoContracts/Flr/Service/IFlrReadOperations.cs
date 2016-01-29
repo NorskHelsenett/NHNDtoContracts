@@ -43,6 +43,10 @@ namespace NHN.DtoContracts.Flr.Service
         /// </summary>
         /// <remarks>Henter pasientens fastlege og all historikk som er knyttet til fastlegebytter i fortiden.</remarks>
         /// <param name="patientNin">Referanse ID til innbygger-objektet (fødselsnummer/D-nummer)</param>
+        /// <param name="includePatientData">
+        /// Hvorvidt personopplysinger om pasient skal hentes opp. Dette vil føre til redusert ytelse, 
+        /// så ikke bruk hvis du allerede har opplysningene.
+        /// </param>
         /// <value></value>
         /// <returns>Liste over alle innbyggerens fastlegeavtaler</returns>
         /// <example>
@@ -52,7 +56,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// </example>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        ICollection<PatientToGPContractAssociation> GetPatientGPHistory(string patientNin);
+        ICollection<PatientToGPContractAssociation> GetPatientGPHistory(string patientNin, bool includePatientData);
 
         /// <summary>
         /// Henter en enkelt fastlegeavtale
