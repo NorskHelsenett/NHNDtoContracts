@@ -77,7 +77,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <param name="organizationNumber">Referanse til virksomhet i Bedriftsregister</param>
         /// <value></value>
         /// <returns></returns>
-        /// <exception cref="NullReferenceException">Kastes når en organisasjonsenhet med angitt organisasjonsnummer ikke har en besøksadresse for fastlegeordningen</exception>
+        /// <exception cref="ArgumentException">Kastes når en organisasjonsenhet med angitt organisasjonsnummer ikke har en besøksadresse for fastlegeordningen</exception>
         /// <example>
         /// <code>
         /// flrWriteService.DeleteCustomFloAddressOnGPOffice(organizationNumber);
