@@ -35,7 +35,7 @@ namespace NHN.DtoContracts.Common.en
         public Code(string simpleType, int oid=0, string value=null)
         {
             if (string.IsNullOrWhiteSpace(simpleType))
-                throw new ArgumentNullException("simpleType");
+                throw new ArgumentNullException(nameof(simpleType));
             SimpleType = simpleType;
             if (oid > 0)
                 OID = oid;
@@ -73,5 +73,14 @@ namespace NHN.DtoContracts.Common.en
         /// </summary>
         [DataMember]
         public bool Active { get; set; }
+
+        /// <summary>
+        /// Tekstlig kompakt representasjon.
+        /// </summary>
+        /// <returns>String.</returns>
+        public override string ToString()
+        {
+            return $"Code[{SimpleType}({OID}):{CodeValue}{(Active?"":":Inactive")}]";
+        }
     }
 }
