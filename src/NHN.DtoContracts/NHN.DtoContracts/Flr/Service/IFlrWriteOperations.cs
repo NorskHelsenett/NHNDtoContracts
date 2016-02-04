@@ -35,8 +35,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>Registrere egen type av besøksadresse som er unik for FLO. Benyttes for opprettelse og oppdatering av denne type adresse.</remarks>
         /// <param name="organizationNumber">Referanse til virksomhet i Bedriftsregister</param>
         /// <param name="resFlo">Type MÅ være RES_FLO. Generisk objekt for fysisk adressetype</param>
-        /// <value></value>
         /// <returns></returns>
+        /// <exception chref="CallerArgumentException">Kastes hvis adresse typen er feil, må være RES_FLO</exception>
         /// <example>
         /// <code>
         /// //physicalAddresse.Type.CodeValue = RES_FLO
@@ -52,9 +52,9 @@ namespace NHN.DtoContracts.Flr.Service
         /// </summary>
         /// <remarks>For å slette en adresse, sett alle elementer i ElektroniskeAdresser bortsett fra .Type til NULL/0.</remarks>
         /// <param name="organizationNumber">Referanse til virksomhet i Bedriftsregister</param>
-        /// <param name="electronicAddresses">Liste av elektroniske kontakmuligheter som er koblet til en virksomhet</param>
-        /// <value></value>
+        /// <param name="electronicAddresses">Liste av elektroniske kontaktmuligheter som er koblet til en virksomhet</param>
         /// <returns></returns>
+        /// <exception chref="CallerArgumentException">Kastes hvis listen med elektroniske adresser er tom</exception>
         /// <example>
         /// <code>
         /// //For å legge til eller endre en elektroniskadresse
@@ -75,9 +75,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// </summary>
         /// <remarks></remarks>
         /// <param name="organizationNumber">Referanse til virksomhet i Bedriftsregister</param>
-        /// <value></value>
         /// <returns></returns>
-        /// <exception cref="ArgumentException">Kastes når en organisasjonsenhet med angitt organisasjonsnummer ikke har en besøksadresse for fastlegeordningen</exception>
+        /// <exception chref="CallerArgumentException">Kastes når en organisasjonsenhet med angitt organisasjonsnummer ikke har en besøksadresse for fastlegeordningen</exception>
         /// <example>
         /// <code>
         /// flrWriteService.DeleteCustomFloAddressOnGPOffice(organizationNumber);
@@ -97,8 +96,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// Publiserer event "ContractCreated" ved vellykket operasjon.
         /// </remarks>
         /// <param name="newGPContract">En ny legekontrakt</param>
-        /// <value></value>
         /// <returns></returns>
+        /// <exception chref="CallerArgumentException">Kastes hvis legeperiode i kontrakten eksisterer men har en ugyldig id</exception>
         /// <example>
         /// <code>
         /// flrWriteService.CreateGPContract(newGPContract);
@@ -127,7 +126,6 @@ namespace NHN.DtoContracts.Flr.Service
         /// Publiserer event "ContractUpdated" ved vellykket operasjon.
         /// </remarks>
         /// <param name="gpContract">En eksisterende legekontrakt, som skal oppdateres</param>
-        /// <value></value>
         /// <returns></returns>
         /// <example>
         /// <code>
@@ -145,8 +143,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>Publiserer event "ContractUpdated" ved vellykket operasjon.</remarks>
         /// <param name="gpContractId">Id på fastlegeavtalen</param>
         /// <param name="maxPatients">Listetak på en avtale</param>
-        /// <value></value>
         /// <returns></returns>
+        /// <exception chref="CallerArgumentException">Kastes hvis listetaket på en avtale ikke er høyere enn 0</exception>
         /// <example>
         /// <code>
         /// flrWriteService.GetPatientGPDetails(gpContractId, maxPatients);
@@ -191,7 +189,6 @@ namespace NHN.DtoContracts.Flr.Service
         /// Publiserer event "OutOfOfficeLocationCreated" ved vellykket operasjon.
         /// </remarks>
         /// <param name="office">Utekontordata</param>
-        /// <value></value>
         /// <returns></returns>
         /// <example>
         /// <code>
@@ -211,7 +208,6 @@ namespace NHN.DtoContracts.Flr.Service
         /// Publiserer event "OutOfOfficeLocationUpdated" ved vellykket operasjon.
         /// </remarks>
         /// <param name="office">Eksisterende utekontordata</param>
-        /// <value></value>
         /// <returns></returns>
         /// <example>
         /// <code>
@@ -231,8 +227,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// Publiserer event "OutOfOfficeLocationDeleted" ved vellykket operasjon.
         /// </remarks>
         /// <param name="outOfOfficeId">Id til utekontoret som skal slettes</param>
-        /// <value></value>
         /// <returns></returns>
+        /// <exception chref="NullReferenceException">Kastes hvis et legekontor ikke har besøksadresse for fastlegeordningen</exception>
         /// <example>
         /// <code>
         /// flrWriteService.RemoveOutOfOfficeLocation(outOfOfficeId);
@@ -256,7 +252,6 @@ namespace NHN.DtoContracts.Flr.Service
         /// Publiserer event "GPOnContractCreated" ved vellykket operasjon.
         ///  </remarks>
         /// <param name="association">Koblingen for en periode legen er tilknyttet en fastlegeavtale</param>
-        /// <value></value>
         /// <returns></returns>
         /// <example>
         /// <code>
@@ -288,7 +283,6 @@ namespace NHN.DtoContracts.Flr.Service
         /// Publiserer event "GPOnContractUpdated" ved vellykket operasjon.
         /// </remarks>
         /// <param name="association">Eksisterende koblingen for en periode legen er tilknyttet en fastlegeavtale</param>
-        /// <value></value>
         /// <returns></returns>
         /// <example>
         /// <code>
@@ -320,8 +314,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>Registrerer språk på helsepersonell. En tom liste sletter alle språk på angitt helsepersonell.</remarks>
         /// <param name="hprNumber">Referanse id til helsepersonell</param>
         /// <param name="languages">Liste av språk med referanse til kodeverk (OID=3303 og OID=3301)</param>
-        /// <value></value>
         /// <returns></returns>
+        /// <exception chref="CallerArgumentException">Kastes hvis listen med språk er trom</exception>
         /// <example>
         /// <code>
         /// //For å sette språk
@@ -349,7 +343,6 @@ namespace NHN.DtoContracts.Flr.Service
         /// Publiserer event "PatientOnContractCreated" ved vellykket operasjon.
         /// </remarks>
         /// <param name="patientToGPContractAssociation">Kobling mellom innbygger og fastlegeavtale</param>
-        /// <value></value>
         /// <returns></returns>
         /// <example>
         /// <code>
@@ -381,7 +374,6 @@ namespace NHN.DtoContracts.Flr.Service
         /// </remarks>
         /// <param name="fromGPContract">ID til fastlegeliste en innbygger skal flyttes FRA.</param>
         /// <param name="patientsToMove">Liste over innbyggere på eksisterende fastlegelister som skal flyttes</param>
-        /// <value></value>
         /// <returns></returns>
         /// <example>
         /// <code>
@@ -405,8 +397,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// <param name="listStatus">Referanse til kode for avsluttet status</param>
         /// <param name="period">Sluttdato på kontrakt</param>
         /// <param name="capitaToMove">Liste over innbyggere som skal flyttes til ny liste</param>
-        /// <value></value>
         /// <returns></returns>
+        /// <exception chref="CallerArgumentException">Kastes hvis en pasient ikke finnes på fastlegelisten i den gitte perioden</exception>
         /// <example>
         /// <code>
         /// flrWriteService.CancelGPContractAndMovePatients(gpContractId, listStatus, period, capitaToMove);
@@ -425,8 +417,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// <param name="gpContractId">Referanse til fastlegelisten</param>
         /// <param name="patientNin">Referanse til innbyggerens fødselsnummer (eller D-nummer)</param>
         /// <param name="lastChangeCode">Referanse til kodeverk for avslutningskode</param>
-        /// <value></value>
         /// <returns></returns>
+        /// <exception chref="CallerArgumentException">Kastes hvis en pasient ikke finnes på fastlegelisten i den gitte perioden</exception>
         /// <example>
         /// <code>
         /// flrWriteService.CancelPatientOnGPContract(patientNin);
@@ -442,8 +434,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks></remarks>
         /// <param name="organizationNumber">Organisasjonsnummer til legekontoret</param>
         /// <param name="displayName">Visningsnavnet man ønsker sette. Maks 150 tegn.</param>
-        /// <value></value>
         /// <returns></returns>
+        /// <exception chref="CallerArgumentException">Kastes når et organisasjonsnummer ikke er høyere enn 0</exception>
         /// <example>
         /// <code>
         /// flrWriteService.SetDisplayNameOnGPOffice(organizationNumber, displayName);
