@@ -48,8 +48,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// så ikke bruk hvis du allerede har opplysningene.
         /// </param>
         /// <returns>Liste over alle innbyggerens fastlegeavtaler</returns>
-        /// <exception chref="CallerArgumentException">Kastes hvis en pasients referanse id er ugyldig</exception>
-        /// <exception chref="CallerArgumentException">Kastes hvis en person ikke har noen fastlege</exception>
+        /// <exception cref="ArgumentException">Kastes hvis en pasients referanse id er ugyldig</exception>
+        /// <exception cref="ArgumentException">Kastes hvis en person ikke har noen fastlege</exception>
         /// <example>
         /// <code>
         /// var patientGPHistoryList = flrReadService.GetPatientGPHistory(patientNin);
@@ -65,7 +65,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>Metode for å hente ut en enkel fastlegeavtale</remarks>
         /// <param name="gpContractId">Kontraktens id.</param>
         /// <returns>En fastlegeavtale</returns>
-        /// <exception chref="CallerArgumentException">Kastes hvis en kontrakt ikke finnes</exception>
+        /// <exception cref="ArgumentException">Kastes hvis en kontrakt ikke finnes</exception>
         /// <example>
         /// <code>
         /// var gpContract = flrReadService.GetGPContract(gpContractId);
@@ -85,8 +85,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// <param name="organizationNumber">Legekontor orgnummer</param>
         /// <param name="atTime">Hent kontrakter for dette tidspunktet. NULL for historiske.</param>
         /// <returns>Objekt med liste av fastlegelister tilknyttet gitt behandlingssted</returns>
-        /// <exception chref="CallerArgumentException">Kastes hvis et ugyldig organisasjonsnummer er gitt</exception>
-        /// <exception chref="CallerArgumentException">Kastes hvis en virksomhet ikke har noen fastlegeavtaler</exception>
+        /// <exception cref="ArgumentException">Kastes hvis et ugyldig organisasjonsnummer er gitt</exception>
+        /// <exception cref="ArgumentException">Kastes hvis en virksomhet ikke har noen fastlegeavtaler</exception>
         /// <example>
         /// <code>
         /// //For et gitt tidspunkt
@@ -106,10 +106,10 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>Henter alle innbyggere på fastlegens liste over pasienter på hentetidspunktet.</remarks>
         /// <param name="gpContractId">Id til fastlegens kontrakt.</param>
         /// <returns>Liste over aktuelle innbyggere på fastlegens pasientliste</returns>
-        /// <exception chref="CallerArgumentException">Kastes hvis kontraktens id ikke er høyere enn 0</exception>
-        /// <exception chref="CallerArgumentException">Kastes hvis en kontrakt ikke finnes</exception>
-        /// <exception chref="CallerArgumentException">Kastes hvis en kontrakt er assosiert med en enhet uten orgnummer</exception>
-        /// <exception chref="CallerArgumentException">Kastes hvis en liste ikke kan utleveres</exception>
+        /// <exception cref="ArgumentException">Kastes hvis kontraktens id ikke er høyere enn 0</exception>
+        /// <exception cref="ArgumentException">Kastes hvis en kontrakt ikke finnes</exception>
+        /// <exception cref="ArgumentException">Kastes hvis en kontrakt er assosiert med en enhet uten orgnummer</exception>
+        /// <exception cref="ArgumentException">Kastes hvis en liste ikke kan utleveres</exception>
         /// <example>
         /// <code>
         /// var gpPatientList = flrReadService.GetGPPatientList(gpContractId);
@@ -126,7 +126,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <param name="hprNumber">Legens HPR-nummer. Må være høyere enn 0</param>
         /// <param name="atTime">Hvis null, historiske og framtidige. Hvis satt, kun kontrakter relevant på det tidspunkt.</param>
         /// <returns>Fastlegeavtaler som er tilknyttet til samme en lege</returns>
-        /// <exception chref="CallerArgumentException">Kastes hvis en leges hpr-nummer ikke er registrert som fastlege</exception>
+        /// <exception cref="ArgumentException">Kastes hvis en leges hpr-nummer ikke er registrert som fastlege</exception>
         /// <example>
         /// <code>
         /// //For et gitt tidspunkt
@@ -178,6 +178,16 @@ namespace NHN.DtoContracts.Flr.Service
         /// Search for GP.
         /// Dersom du ønsker å søke etter legekontor, gå på HTK tjenesten.
         /// </summary>
+        /// <remarks>Søk etter leger</remarks>
+        /// <param name="searchParameters">Søkeparametere for det tilhørende søk</param>
+        /// <returns>Paginert liste med  leger basert på søkeparametetere</returns>
+        /// <exception cref="ArgumentException">Kastes hvis feil søkeparameter er oppgitt</exception>
+        /// <example>
+        /// <code>
+        /// //For et gitt tidspunkt
+        /// var searchResult = flrReadService.SearchForGP(searchCriteria);
+        /// </code>
+        /// </example>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         PagedResult<GPDetails> SearchForGP(GPSearchParameters searchParameters);
