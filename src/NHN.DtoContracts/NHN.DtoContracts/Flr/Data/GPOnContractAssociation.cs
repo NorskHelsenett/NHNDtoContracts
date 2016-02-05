@@ -36,6 +36,12 @@ namespace NHN.DtoContracts.Flr.Data
         public int HprNumber { get; set; }
 
         /// <summary>
+        /// Må være Null ved skriving, vil være satt ved lesing når det er relevant.
+        /// </summary>
+        [DataMember]
+        public Person GP { get; set; }
+
+        /// <summary>
         /// Hvis satt, så representerer denne GPOnContract en vikar, og dette feltet viser for hvilken lege han er vikar.
         /// </summary>
         [DataMember]

@@ -27,7 +27,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// </example>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        GPDetails GetPatientGPDetails(string patientNin);
+        PatientToGPContractAssociation GetPatientGPDetails(string patientNin);
 
         /// <summary>
         /// Henter fastleger for en liste med personer
