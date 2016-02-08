@@ -39,6 +39,31 @@ namespace NHN.DtoContracts.Flr.Service
         ICollection<PatientToGPContractAssociation> GetPatientsGPDetails(string[] patientNins);
 
         /// <summary>
+        /// Henter fastlegen på et gitt tidspunkt per pasient for en liste med pasienter.
+        /// </summary>
+        /// <param name="patientNins">Liste over pasienter og tidspunktet en ønsker informasjon om pasienten på.</param>
+        /// <remarks>Hvis noen av personene ikke eksisterer i FLR/ikke har noen lege på tidspunktet vil de ikke finnes i resultatsettet.</remarks>
+        /// <returns>Usortert liste over pasienter-til-kontrakt assiosasjoner.</returns>
+        /// <example>
+        /// <code language="C#">
+        /// var patients = GetPatientsGPDetailsAtTime(new [] { new NinWithTimestamp("10109012345", new DateTime(1999,2,3)) });
+        /// if (patients.Length > 0) 
+        /// {
+        ///     foreach (var patientAssoc in ret)
+        ///     {
+        ///         var gps = string.Join(", ", patientAssoc.DoctorCycles.Select(dc => $"#{dc.HprNumber}: {dc.GP.FirstName} {dc.GP.MiddleName} {dc.GP.LastName}"));
+        ///         Console.WriteLine($"{patientAssoc.PatientNIN}: ContractID: {patientAssoc.GPContractId} GP(s): {gps}");
+        ///     }
+        /// }
+        /// else 
+        /// {
+        ///    Console.WriteLine("Pasienten har ingen fastlege på tidspunktet");
+        /// }
+        /// </code>
+        /// </example>
+        IList<PatientToGPContractAssociation> GetPatientsGPDetailsAtTime(NinWithTimestamp[] patientNins);
+
+        /// <summary>
         /// Henter fastlegebytte historikken
         /// </summary>
         /// <remarks>Henter pasientens fastlege og all historikk som er knyttet til fastlegebytter i fortiden.</remarks>
