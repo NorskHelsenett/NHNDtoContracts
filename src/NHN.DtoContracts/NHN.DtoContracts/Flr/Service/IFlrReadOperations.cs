@@ -61,6 +61,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// }
         /// </code>
         /// </example>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
         IList<PatientToGPContractAssociation> GetPatientsGPDetailsAtTime(NinWithTimestamp[] patientNins);
 
         /// <summary>
