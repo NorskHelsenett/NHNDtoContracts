@@ -49,7 +49,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// var patients = GetPatientsGPDetailsAtTime(new [] { new NinWithTimestamp("10109012345", new DateTime(1999,2,3)) });
         /// if (patients.Length > 0) 
         /// {
-        ///     foreach (var patientAssoc in ret)
+        ///     foreach (var patientAssoc in patients)
         ///     {
         ///         var gps = string.Join(", ", patientAssoc.DoctorCycles.Select(dc => $"#{dc.HprNumber}: {dc.GP.FirstName} {dc.GP.MiddleName} {dc.GP.LastName}"));
         ///         Console.WriteLine($"{patientAssoc.PatientNIN}: ContractID: {patientAssoc.GPContractId} GP(s): {gps}");
@@ -195,7 +195,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <summary>
         /// Hent ut alle GPContractId's på kontrakter hvis legekontor har et postnummer som er lik eller begynner på postNr.
         /// </summary>
-        /// <param name="postNr">Postnummer eller starten av postnummer. Dvs. at postNr.Lenght må være 2 eller 4.</param>
+        /// <param name="postNr">Postnummer eller starten av postnummer. Dvs. at postNr.Lenght må være 2, 3 eller 4.</param>
         /// <returns>Liste over alle aktive GPContracts.Id hvis legekontor har en besøksadresse (RES/FLO_RES) som begynner med </returns>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
