@@ -20,6 +20,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <param name="patientNin">Referanse ID til innbygger-objektet (fødselsnummer/D-nummer)</param>
         /// <value></value>
         /// <returns>Sammensatt liste med detaljer over innbyggerens aktiv fastlege med relevante objekter (fastlege-objekt/behandlingssted-objekt/Gyldighetsperiode)</returns>
+        /// <exception cref="ArgumentException">Kastes hvis en pasients referanse id er ugyldig</exception>
         /// <example>
         /// <code>
         /// var patientGP = flrReadService.GetPatientGPDetails(patientNin);
@@ -34,6 +35,13 @@ namespace NHN.DtoContracts.Flr.Service
         /// </summary>
         /// <param name="patientNins">Liste over pasienter</param>
         /// <returns>PatientToGPContractAssociation</returns>
+        /// <exception cref="ArgumentException">Kastes hvis en pasients referanse id er ugyldig</exception>
+        /// <exception cref="ArgumentException">Kastes hvis en pasients ikke har en fastlegekobling</exception>
+        /// <example>
+        /// <code>
+        /// var patientGPAssociationList = flrReadService.GetPatientsGPDetails(listOfPatientNins);
+        /// </code>
+        /// </example>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         ICollection<PatientToGPContractAssociation> GetPatientsGPDetails(string[] patientNins);
@@ -44,6 +52,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <param name="patientNins">Liste over pasienter og tidspunktet en ønsker informasjon om pasienten på.</param>
         /// <remarks>Hvis noen av personene ikke eksisterer i FLR/ikke har noen lege på tidspunktet vil de ikke finnes i resultatsettet.</remarks>
         /// <returns>Usortert liste over pasienter-til-kontrakt assiosasjoner.</returns>
+        /// <exception cref="ArgumentException">Kastes hvis en pasients referanse id er ugyldig</exception>
         /// <example>
         /// <code language="C#">
         /// var patients = GetPatientsGPDetailsAtTime(new [] { new NinWithTimestamp("10109012345", new DateTime(1999,2,3)) });
@@ -176,7 +185,19 @@ namespace NHN.DtoContracts.Flr.Service
         /// <param name="patientNin"></param>
         /// <param name="hprNumber">Legens HPR-nummer.</param>
         /// <param name="atTime">Hvis null, akkurat nå. Hvis satt, sjekk om legen var fastlege på det tidspunkt.</param>
-        /// <returns></returns>
+        /// <returns>Sant hvis en lege er pasientens fastlege</returns>
+        /// <exception cref="ArgumentException">Kastes hvis en pasients referanse id er ugyldig</exception>
+        /// <exception cref="ArgumentException">Kastes hvis hpr nummer er ugyldig</exception>
+        /// <example>
+        /// <code>
+        /// //For et gitt tidspunkt
+        /// var atTime = DateTime.Now;
+        /// var isConfirmedGP = flrReadService.ConfirmGP(patientNin,hprNumber, atTime);
+        /// 
+        /// //Alle kontrakter også historiske
+        /// var isConfirmedGP = flrReadService.ConfirmGP(patientNin,hprNumber, null);
+        /// </code>
+        /// </example>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         bool ConfirmGP(string patientNin, int hprNumber, DateTime? atTime);
@@ -188,6 +209,15 @@ namespace NHN.DtoContracts.Flr.Service
         /// <param name="municipalityNr">Kommune fastlegelisten gjelder</param>
         /// <param name="doSubstituteSearch">Hvorvidt legen kan være en vikar. Hvis ikke søker vi utelukkende på legen.</param>
         /// <returns>GPContract funnet. På kontrakten vil PatientList være fyllt ut.</returns>
+        /// <exception cref="ArgumentException">Kastest hvis kommunenr er ugyldig</exception>
+        /// <exception cref="ArgumentException">Kastest hvis personnummer er ugyldig</exception>
+        /// <exception cref="ArgumentException">Kastest hvis aktive fastlegelister i gitt kommune er funnet</exception>
+        /// <exception cref="ArgumentException">Kastest hvis det mer en en aktiv legeperiode</exception>
+        /// <example>
+        /// <code>
+        /// var contract = flrReadService.GetGPContractForNav(doctorNin,municipalityNr, doSubstituteSearch);
+        /// </code>
+        /// </example>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         GPContract GetGPContractForNav(string doctorNin, string municipalityNr, bool doSubstituteSearch);
@@ -197,6 +227,13 @@ namespace NHN.DtoContracts.Flr.Service
         /// </summary>
         /// <param name="postNr">Postnummer eller starten av postnummer. Dvs. at postNr.Lenght må være 2, 3 eller 4.</param>
         /// <returns>Liste over alle aktive GPContracts.Id hvis legekontor har en besøksadresse (RES/FLO_RES) som begynner med </returns>
+        /// <exception cref="ArgumentException">Kastest hvis postnr er feil</exception>
+        /// <exception cref="ArgumentException">Kastest hvis postnr ikke er på 2 eller 4 tegn</exception>
+        /// <example>
+        /// <code>
+        /// var contractIdList = flrReadService.GetGPContractIdsOperatingInPostalCode(postnr);
+        /// </code>
+        /// </example>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         ICollection<long> GetGPContractIdsOperatingInPostalCode(string postNr);
