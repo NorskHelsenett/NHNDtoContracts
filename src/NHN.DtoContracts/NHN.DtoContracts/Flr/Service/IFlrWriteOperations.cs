@@ -394,19 +394,19 @@ namespace NHN.DtoContracts.Flr.Service
         /// ved vellykket operasjon.
         /// </remarks>
         /// <param name="gpContractId">Referanse til fastlegeliste som skal avsluttes</param>
-        /// <param name="listStatus">Referanse til kode for avsluttet status</param>
+        /// <param name="endReason">Referanse til kode for avsluttet status</param>
         /// <param name="period">Sluttdato på kontrakt</param>
         /// <param name="capitaToMove">Liste over innbyggere som skal flyttes til ny liste</param>
         /// <returns></returns>
         /// <exception cref="ArgumentException">Kastes hvis en pasient ikke finnes på fastlegelisten i den gitte perioden</exception>
         /// <example>
         /// <code>
-        /// flrWriteService.CancelGPContractAndMovePatients(gpContractId, listStatus, period, capitaToMove);
+        /// flrWriteService.CancelGPContractAndMovePatients(gpContractId, endReason, period, capitaToMove);
         /// </code>
         /// </example>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        void CancelGPContractAndMovePatients(long gpContractId, Code listStatus, Period period, ICollection<PatientToGPContractAssociation> capitaToMove);
+        void CancelGPContractAndMovePatients(long gpContractId, Code endReason, Period period, ICollection<PatientToGPContractAssociation> capitaToMove);
 
         /// <summary>
         /// Avslutte innbyggerens tilhørighet på en fastlegeliste/avtale.
@@ -416,7 +416,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// </remarks>
         /// <param name="gpContractId">Referanse til fastlegelisten</param>
         /// <param name="patientNin">Referanse til innbyggerens fødselsnummer (eller D-nummer)</param>
-        /// <param name="lastChangeCode">Referanse til kodeverk for avslutningskode</param>
+        /// <param name="endReason">Referanse til kodeverk for avslutningskode</param>
         /// <returns></returns>
         /// <exception cref="ArgumentException">Kastes hvis en pasient ikke finnes på fastlegelisten i den gitte perioden</exception>
         /// <example>
@@ -426,7 +426,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// </example>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        void CancelPatientOnGPContract(long gpContractId, string patientNin, Code lastChangeCode);
+        void CancelPatientOnGPContract(long gpContractId, string patientNin, Code endReason);
 
         /// <summary>
         /// Brukes for å sette visningsnavnet på et legekontor. Merk at legekontoret selv kan overskrive det som eventuelt settes her selv.
