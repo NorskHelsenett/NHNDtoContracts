@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHN.Contracts", "NHN.DtoContracts\NHN.DtoContracts.csproj", "{91DF12D2-BFBC-4D81-B794-00FA6B64BC39}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHN.DtoContracts", "NHN.DtoContracts\NHN.DtoContracts.csproj", "{91DF12D2-BFBC-4D81-B794-00FA6B64BC39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHN.WcfClientFactory", "NHN.WcfClientFactory\NHN.WcfClientFactory.csproj", "{FD9D5FE6-AB59-4B6D-9481-CB029F5C11F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{91DF12D2-BFBC-4D81-B794-00FA6B64BC39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91DF12D2-BFBC-4D81-B794-00FA6B64BC39}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91DF12D2-BFBC-4D81-B794-00FA6B64BC39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD9D5FE6-AB59-4B6D-9481-CB029F5C11F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD9D5FE6-AB59-4B6D-9481-CB029F5C11F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD9D5FE6-AB59-4B6D-9481-CB029F5C11F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD9D5FE6-AB59-4B6D-9481-CB029F5C11F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
