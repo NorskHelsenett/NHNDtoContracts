@@ -59,6 +59,12 @@ namespace NHN.DtoContracts.Flr.Data
         /// Gyldige verdier: OID 5510 og OID 5511
         /// </summary>
         [DataMember]
-        public List<Status> Status { get; set; }
+        public IList<Status> Status { get; set; }
+
+        /// <summary>
+        /// Adresser tilhørende personen
+        /// </summary>
+        [DataMember]
+        public IList<PhysicalAddress> PhysicalAddresses { get; set; }
     }
 }
