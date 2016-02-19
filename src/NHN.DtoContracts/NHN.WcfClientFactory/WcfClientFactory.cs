@@ -134,6 +134,12 @@ namespace NHN.WcfClientFactory
             }
         }
 
+        /// <summary>
+        /// If you get the exception System.ServiceModel.Security.MessageSecurityException: The Identity check failed for the outgoing message. We enable this by default.
+        /// http://stackoverflow.com/questions/34910373/wcf-sslstreamsecurity-dns-identity-check-failing-for-just-4-6-framework
+        /// </summary>
+        public bool FixDnsIdentiyProblem { get; set; } = true;
+
         private static readonly Dictionary<string, ServiceContractConfig> ServiceContractConfigs = new Dictionary<string, ServiceContractConfig>();
         private readonly Dictionary<Type, ChannelFactory> _channelFactories = new Dictionary<Type, ChannelFactory>();
         private readonly object _syncRoot = new object();
@@ -153,9 +159,9 @@ namespace NHN.WcfClientFactory
 
         private void AddDefaultServiceContractsConfig()
         {
-            Add<IFlrReadOperations>(new ServiceContractConfig("/v2/flr"));
-            Add<IFlrWriteOperations>(new ServiceContractConfig("/v2/flrwrite"));
-            Add<IFlrExportOperations>(new ServiceContractConfig("/v2/flrexport")
+            AddKnownConfig<IFlrReadOperations>(new ServiceContractConfig("/v2/flr"));
+            AddKnownConfig<IFlrWriteOperations>(new ServiceContractConfig("/v2/flrwrite"));
+            AddKnownConfig<IFlrExportOperations>(new ServiceContractConfig("/v2/flrexport")
             {
                 TransferMode = TransferMode.StreamedResponse,
                 ReceiveTimeout = TimeSpan.FromMinutes(70),
@@ -168,9 +174,9 @@ namespace NHN.WcfClientFactory
         /// </summary>
         /// <typeparam name="T">Typen til servicekontrakten.</typeparam>
         /// <param name="config">Config-objekt som inneholder WCF-instillinger som skal gjelde for servicekontrakten.</param>
-        public void Add<T>(ServiceContractConfig config)
+        public void AddKnownConfig<T>(ServiceContractConfig config)
         {
-            ServiceContractConfigs.Add(typeof(T).Name, config);
+            AddKnownConfig(typeof (T).Name, config);
         }
 
         /// <summary>
@@ -178,7 +184,7 @@ namespace NHN.WcfClientFactory
         /// </summary>
         /// <param name="nameOfType">Navn på typen til servicekontrakten.</param>
         /// <param name="config">Config-objekt som inneholder WCF-instillinger som skal gjelde for servicekontrakten.</param>
-        public void Add(string nameOfType, ServiceContractConfig config)
+        public void AddKnownConfig(string nameOfType, ServiceContractConfig config)
         {
             ServiceContractConfigs.Add(nameOfType, config);
         }
@@ -191,6 +197,9 @@ namespace NHN.WcfClientFactory
         /// <returns></returns>
         public T Get<T>(string pathOverride = null)
         {
+            if (FixDnsIdentiyProblem) AppContext.SetSwitch("Switch.System.IdentityModel.DisableMultipleDNSEntriesInSANCertificate", true);
+
+            _locked = true;
             var serviceContractType = typeof (T);
 
             ChannelFactory<T> channelFactory;
@@ -215,7 +224,6 @@ namespace NHN.WcfClientFactory
                 }
             }
 
-            _locked = true;
             return channelFactory.CreateChannel();
         }
 
@@ -261,7 +269,7 @@ namespace NHN.WcfClientFactory
             ServiceContractConfig config;
 
             if (!ServiceContractConfigs.TryGetValue(serviceContractType.Name, out config))
-                throw new ArgumentException($"{serviceContractType.Name} har ingen konfigurasjon knyttet til seg. Bruk .{nameof(Add)}() for å legge til nye konfigurasjoner.");
+                throw new ArgumentException($"{serviceContractType.Name} har ingen konfigurasjon knyttet til seg. Bruk .{nameof(AddKnownConfig)}() for å legge til nye konfigurasjoner.");
 
             return config;
         }
