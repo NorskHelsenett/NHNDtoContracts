@@ -209,10 +209,10 @@ namespace NHN.DtoContracts.Flr.Service
         /// <param name="municipalityNr">Kommune fastlegelisten gjelder</param>
         /// <param name="doSubstituteSearch">Hvorvidt legen kan være en vikar. Hvis ikke søker vi utelukkende på legen.</param>
         /// <returns>GPContract funnet. På kontrakten vil PatientList være fyllt ut.</returns>
-        /// <exception cref="ArgumentException">Kastest hvis kommunenr er ugyldig</exception>
-        /// <exception cref="ArgumentException">Kastest hvis personnummer er ugyldig</exception>
-        /// <exception cref="ArgumentException">Kastest hvis aktive fastlegelister i gitt kommune er funnet</exception>
-        /// <exception cref="ArgumentException">Kastest hvis det mer en en aktiv legeperiode</exception>
+        /// <exception cref="ArgumentException">Kastes hvis kommunenr er ugyldig</exception>
+        /// <exception cref="ArgumentException">Kastes hvis personnummer er ugyldig</exception>
+        /// <exception cref="ArgumentException">Kastes hvis aktive fastlegelister i gitt kommune er funnet</exception>
+        /// <exception cref="ArgumentException">Kastes hvis det mer en en aktiv legeperiode</exception>
         /// <example>
         /// <code>
         /// var contract = flrReadService.GetGPContractForNav(doctorNin,municipalityNr, doSubstituteSearch);
@@ -227,8 +227,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// </summary>
         /// <param name="postNr">Postnummer eller starten av postnummer. Dvs. at postNr.Lenght må være 2, 3 eller 4.</param>
         /// <returns>Liste over alle aktive GPContracts.Id hvis legekontor har en besøksadresse (RES/FLO_RES) som begynner med </returns>
-        /// <exception cref="ArgumentException">Kastest hvis postnr er feil</exception>
-        /// <exception cref="ArgumentException">Kastest hvis postnr ikke er på 2 eller 4 tegn</exception>
+        /// <exception cref="ArgumentException">Kastes hvis postnr er feil</exception>
+        /// <exception cref="ArgumentException">Kastes hvis postnr ikke er på 2 eller 4 tegn</exception>
         /// <example>
         /// <code>
         /// var contractIdList = flrReadService.GetGPContractIdsOperatingInPostalCode(postnr);
