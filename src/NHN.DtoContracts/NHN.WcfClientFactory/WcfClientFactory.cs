@@ -138,7 +138,7 @@ namespace NHN.WcfClientFactory
         /// If you get the exception System.ServiceModel.Security.MessageSecurityException: The Identity check failed for the outgoing message. We enable this by default.
         /// http://stackoverflow.com/questions/34910373/wcf-sslstreamsecurity-dns-identity-check-failing-for-just-4-6-framework
         /// </summary>
-        public bool FixDnsIdentiyProblem { get; set; } = true;
+        public bool FixDnsIdentityProblem { get; set; }
 
         private static readonly Dictionary<string, ServiceContractConfig> ServiceContractConfigs = new Dictionary<string, ServiceContractConfig>();
         private readonly Dictionary<Type, ChannelFactory> _channelFactories = new Dictionary<Type, ChannelFactory>();
@@ -197,7 +197,7 @@ namespace NHN.WcfClientFactory
         /// <returns></returns>
         public T Get<T>(string pathOverride = null)
         {
-            if (FixDnsIdentiyProblem) AppContext.SetSwitch("Switch.System.IdentityModel.DisableMultipleDNSEntriesInSANCertificate", true);
+            if (FixDnsIdentityProblem) AppContext.SetSwitch("Switch.System.IdentityModel.DisableMultipleDNSEntriesInSANCertificate", true);
 
             _locked = true;
             var serviceContractType = typeof (T);
