@@ -25,7 +25,12 @@ namespace NHN.DtoContracts.Flr.Service
         /// ID'er til opprettede business'es. Den returnerte arrayen mapper 1-1 til business parameteren. 
         /// Dvs business[i]'s ID vil komme i ret[i]. Dette vil være _negative_ nummer.
         /// </returns>
-        [OperationContract]
+        /// <exception cref="ArgumentException">Kastes hvis kontoret har en ugyldig id</exception>
+        /// <example>
+        /// <code>
+        /// flrWriteService.CreateHistoricalBusinessBulk(businessesList);
+        /// </code>
+        /// </example>ract]
         [FaultContract(typeof(GenericFault))]
         int[] CreateHistoricalBusinessBulk(Business[] businesses);
 
@@ -96,7 +101,6 @@ namespace NHN.DtoContracts.Flr.Service
         /// Publiserer event "ContractCreated" ved vellykket operasjon.
         /// </remarks>
         /// <param name="newGPContract">En ny legekontrakt</param>
-        /// <returns></returns>
         /// <exception cref="ArgumentException">Kastes hvis legeperiode i kontrakten eksisterer men har en ugyldig id</exception>
         /// <example>
         /// <code>
@@ -113,6 +117,12 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>Publiserer ikke events.</remarks>
         /// <seealso cref="CreateGPContract"/>
         /// <param name="bulkGPContracts"></param>
+        /// /// <exception cref="ArgumentException">Kastes hvis legeperiode i kontrakten eksisterer men har en ugyldig id</exception>
+        /// <example>
+        /// <code>
+        /// flrWriteService.CreateGPContract(listOfContracts);
+        /// </code>
+        /// </example>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         void CreateGPContractBulk(List<GPContract> bulkGPContracts);
@@ -127,6 +137,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// </remarks>
         /// <param name="gpContract">En eksisterende legekontrakt, som skal oppdateres</param>
         /// <returns></returns>
+        /// <exception cref="ArgumentException">Kastes hvis id på en avtale ikke er høyere enn 0</exception>
+        /// <exception cref="ArgumentException">Kastes hvis avtalen ikke finnes</exception>
         /// <example>
         /// <code>
         /// flrWriteService.UpdateGPContract(gpContract);
@@ -166,6 +178,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <param name="status">Status på liste status med referanse til kodeverk</param>
         /// <value></value>
         /// <returns></returns>
+        /// <exception cref="ArgumentException">Kastes hvis avtalen ikke finnes</exception>
         /// <example>
         /// <code>
         /// flrWriteService.GetPatientGPDetails(gpContractId, status);
@@ -190,6 +203,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// </remarks>
         /// <param name="office">Utekontordata</param>
         /// <returns></returns>
+        /// <exception cref="ArgumentException">Kastes hvis enkontrakts id er ugyldig</exception>
+        /// <exception cref="ArgumentException">Kastes hvis et utekontor med samme id finnes</exception>
         /// <example>
         /// <code>
         /// flrWriteService.CreateOutOfOfficeLocation(office);
@@ -209,6 +224,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// </remarks>
         /// <param name="office">Eksisterende utekontordata</param>
         /// <returns></returns>
+        /// <exception cref="ArgumentException">Kastes hvis avtalen ikke finnes</exception>
+        /// <exception cref="ArgumentException">Kastes hvis legekontoret ikke finnes</exception>
         /// <example>
         /// <code>
         /// flrWriteService.UpdateOutOfOfficeLocation(office);
@@ -228,7 +245,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// </remarks>
         /// <param name="outOfOfficeId">Id til utekontoret som skal slettes</param>
         /// <returns></returns>
-        /// <exception chref="NullReferenceException">Kastes hvis et legekontor ikke har besøksadresse for fastlegeordningen</exception>
+        /// <exception cref="ArgumentException">Kastes hvis et legekontor ikke har besøksadresse for fastlegeordningen</exception>
         /// <example>
         /// <code>
         /// flrWriteService.RemoveOutOfOfficeLocation(outOfOfficeId);
@@ -253,6 +270,9 @@ namespace NHN.DtoContracts.Flr.Service
         ///  </remarks>
         /// <param name="association">Koblingen for en periode legen er tilknyttet en fastlegeavtale</param>
         /// <returns></returns>
+        /// <exception cref="ArgumentException">Kastes hvis perioden ikke er gyldig</exception>
+        /// <exception cref="ArgumentException">Kastes hvis hpr nummeret er ugyldig</exception>
+        /// <exception cref="ArgumentException">Kastes hvis kontrakten ikke finnes</exception>
         /// <example>
         /// <code>
         /// flrWriteService.CreateGPOnContractAssociation(association);
@@ -270,6 +290,14 @@ namespace NHN.DtoContracts.Flr.Service
         /// <seealso cref="CreateGPOnContractAssociation"/>
         /// <remarks>Se CreateGPOnContractAssociation(GPOnContractAssociation association. Tar i mot en liste av koblinger.</remarks>
         /// <param name="creates"></param>
+        /// <exception cref="ArgumentException">Kastes hvis perioden ikke er gyldig</exception>
+        /// <exception cref="ArgumentException">Kastes hvis hpr nummeret er ugyldig</exception>
+        /// <exception cref="ArgumentException">Kastes hvis kontrakten ikke finnes</exception>
+        /// <example>
+        /// <code>
+        /// flrWriteService.CreateGPOnContractAssociationBulk(ContractAssociationList);
+        /// </code>
+        /// </example>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         void CreateGPOnContractAssociationBulk(List<GPOnContractAssociation> creates);
@@ -284,6 +312,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// </remarks>
         /// <param name="association">Eksisterende koblingen for en periode legen er tilknyttet en fastlegeavtale</param>
         /// <returns></returns>
+        /// <exception cref="ArgumentException">Kastes hvis fastlegeavtalen med den angitte id ikke finnes</exception>
         /// <example>
         /// <code>
         /// flrWriteService.UpdateGPOnContractAssociation(association);
@@ -315,7 +344,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <param name="hprNumber">Referanse id til helsepersonell</param>
         /// <param name="languages">Liste av språk med referanse til kodeverk (OID=3303 og OID=3301)</param>
         /// <returns></returns>
-        /// <exception cref="ArgumentException">Kastes hvis listen med språk er trom</exception>
+        /// <exception cref="ArgumentException">Kastes hvis listen med språk er tom</exception>
         /// <example>
         /// <code>
         /// //For å sette språk
@@ -344,6 +373,11 @@ namespace NHN.DtoContracts.Flr.Service
         /// </remarks>
         /// <param name="patientToGPContractAssociation">Kobling mellom innbygger og fastlegeavtale</param>
         /// <returns></returns>
+        /// <exception cref="ArgumentException">Kastes hvis pasientens nin mangler</exception>
+        /// <exception cref="ArgumentException">Kastes hvis perioden ikke er gyldig</exception>
+        /// <exception cref="ArgumentException">Kastes hvis hpr nummeret er ugyldig</exception>
+        /// <exception cref="ArgumentException">Kastes hvis kontrakten ikke finnes</exception>
+        /// <exception cref="ArgumentException">Kastes hvis perioder er overlappende</exception>
         /// <example>
         /// <code>
         /// flrWriteService.CreatePatientToGPContractAssociation(patientToGPContractAssociation);
@@ -360,6 +394,17 @@ namespace NHN.DtoContracts.Flr.Service
         /// <seealso cref="CreatePatientToGPContractAssociation"/>
         /// <remarks>Se CreatePatientToGPContractAssociation. Tar i mot en liste med koblinger for bulk operasjoner</remarks>
         /// <param name="patientToGPContractAssociation"></param>
+        /// /// <returns></returns>
+        /// <exception cref="ArgumentException">Kastes hvis pasientens nin mangler</exception>
+        /// <exception cref="ArgumentException">Kastes hvis perioden ikke er gyldig</exception>
+        /// <exception cref="ArgumentException">Kastes hvis hpr nummeret er ugyldig</exception>
+        /// <exception cref="ArgumentException">Kastes hvis kontrakten ikke finnes</exception>
+        /// <exception cref="ArgumentException">Kastes hvis perioder er overlappende</exception>
+        /// <example>
+        /// <code>
+        /// flrWriteService.CreatePatientToGPContractAssociationBulk(patientToGPContractAssociationList);
+        /// </code>
+        /// </example>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         void CreatePatientToGPContractAssociationBulk(List<PatientToGPContractAssociation> patientToGPContractAssociation);
@@ -375,6 +420,10 @@ namespace NHN.DtoContracts.Flr.Service
         /// <param name="fromGPContract">ID til fastlegeliste en innbygger skal flyttes FRA.</param>
         /// <param name="patientsToMove">Liste over innbyggere på eksisterende fastlegelister som skal flyttes</param>
         /// <returns></returns>
+        /// <exception cref="ArgumentException">Kastes hvis kontraktid er ugyldig</exception>
+        /// <exception cref="ArgumentException">Kastes hvis listen er tom</exception> 
+        /// <exception cref="ArgumentException">Kastes hvis en pasient ikke finnes på fastlegelisten i den gitte perioden</exception> 
+        /// <exception cref="ArgumentException">Kastes hvis en pasient allerede finnes på destinasjonskontrakten</exception> 
         /// <example>
         /// <code>
         /// flrWriteService.MovePatients(fromGPContract, patientsToMove);
