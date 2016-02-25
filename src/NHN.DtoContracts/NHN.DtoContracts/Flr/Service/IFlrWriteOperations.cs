@@ -30,7 +30,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// <code>
         /// flrWriteService.CreateHistoricalBusinessBulk(businessesList);
         /// </code>
-        /// </example>ract]
+        /// </example>
+        [OperationContract]
         [FaultContract(typeof(GenericFault))]
         int[] CreateHistoricalBusinessBulk(Business[] businesses);
 
