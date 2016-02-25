@@ -496,6 +496,29 @@ namespace NHN.DtoContracts.Flr.Service
         void SetDisplayNameOnGPOffice(int organizationNumber, string displayName);
 
         /// <summary>
+        /// Oppdaterer alle referanser til en pasient som har byttet personnummer. (I praksis, alle <see cref="PatientToGPContractAssociation"/> objekter).
+        /// </summary>
+        /// <param name="oldNin">Gammelt personnummer</param>
+        /// <param name="newNin">Nytt personnummer</param>
+        /// <exception cref="ArgumentException">Hvis newNin/oldNin er ugyldige, eller det ikke finnes noen personer i FLR med personnummer oldNin</exception>
+        /// <exception cref="ArgumentException">Hvis newNin ikke finnes i personregisteret</exception>
+        /// <remarks>Service bus: Denne metoden sender event PatientNinChanged med property NewNin og OldNin. Den sender også PatientOnContractUpdated per <see cref="PatientToGPContractAssociation"/> som oppdateres.
+        /// </remarks>
+        [OperationContract]
+        [FaultContract(typeof (GenericFault))]
+        void UpdatePatientNin(string oldNin, string newNin);
+
+        /// <summary>
+        /// Oppdaterer GPOfficeOrganizationNumber på alle GpContracts.
+        /// </summary>
+        /// <param name="oldOrganizationNumber">Orgnummeret til det gamle kontoret</param>
+        /// <param name="newOrganizationNumber">Orgnummeret til det nye kontoret</param>
+        [OperationContract]
+        [FaultContract(typeof (GenericFault))]
+        void UpdateGPOfficeOnGPContracts(int oldOrganizationNumber, int newOrganizationNumber);
+
+        #region Cleanup methods
+        /// <summary>
         /// Sletter avtale, med ALLE relaterte relasjoner (Legeperioder, Tilhørigheter, Utekontor).
         /// Kun tilgjengelig i testmiljø.
         /// </summary>
@@ -575,5 +598,6 @@ namespace NHN.DtoContracts.Flr.Service
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         void CleanupEverything();
+        #endregion
     }
 }
