@@ -459,7 +459,7 @@ namespace NHN.DtoContracts.Flr.Service
         void CancelGPContractAndMovePatients(long gpContractId, Code endReason, Period period, ICollection<PatientToGPContractAssociation> capitaToMove);
 
         /// <summary>
-        /// Avslutte innbyggerens tilhørighet på en fastlegeliste/avtale.
+        /// Avslutte innbyggerens tilhørighet på en fastlegeliste/avtale. Denne metoden avslutter også alle fremtidige tilhørigheter for innbyggeren på denne kontrakten. Dvs, assiosasjoner hvor Valid.To > DateTime.Now.
         /// </summary>
         /// <remarks>
         /// Publiserer event "PatientOnContractCanceled" ved vellykket operasjon.
@@ -467,16 +467,11 @@ namespace NHN.DtoContracts.Flr.Service
         /// <param name="gpContractId">Referanse til fastlegelisten</param>
         /// <param name="patientNin">Referanse til innbyggerens fødselsnummer (eller D-nummer)</param>
         /// <param name="endReason">Referanse til kodeverk for avslutningskode</param>
-        /// <returns></returns>
+        /// <param name="endTime">På hvilket tidspunkt skal kontrakten avsluttes.</param>
         /// <exception cref="ArgumentException">Kastes hvis en pasient ikke finnes på fastlegelisten i den gitte perioden</exception>
-        /// <example>
-        /// <code>
-        /// flrWriteService.CancelPatientOnGPContract(patientNin);
-        /// </code>
-        /// </example>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        void CancelPatientOnGPContract(long gpContractId, string patientNin, Code endReason);
+        void CancelPatientOnGPContract(long gpContractId, string patientNin, Code endReason, DateTime endTime);
 
         /// <summary>
         /// Brukes for å sette visningsnavnet på et legekontor. Merk at legekontoret selv kan overskrive det som eventuelt settes her selv.
