@@ -37,7 +37,7 @@ namespace NHN.DtoContracts.Flr.Data
         public bool IsFixedSalary { get; set; }
 
         /// <summary>
-        /// Hvis det kreves medlemskap for være på en liste, så er innholdet av RequiresMembership satt til ID'en for dette medlemskapet.
+        /// Hvis det kreves medlemskap for være på en liste, så er innholdet av RequiresMembership satt til ID'en for dette medlemskapet. Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/flrv2_membership">flrv2_membership</see>
         /// </summary>
         [DataMember]
         public Code RequiresMembership { get; set; }
@@ -56,25 +56,25 @@ namespace NHN.DtoContracts.Flr.Data
         public int GPOfficeOrganizationNumber { get; set; }
 
         /// <summary>
-        /// Listetak
+        /// Listetak. Det maksimalt antallet pasienter som kan være på en liste under normale omstendigheter. I visse tilfeller vil listetaket kunne overskrides.
         /// </summary>
         [DataMember]
         public int MaxPatients { get; set; }
 
         /// <summary>
-        /// Listestatus.
+        /// Listestatus. Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/flrv2_statuscode">flrv2_statuscode</see>
         /// </summary>
         [DataMember]
         public Code Status { get; set; }
 
         /// <summary>
-        /// Navn på listen. ??? Trenger vi dette?
+        /// Navn på listen, brukt ifbm. felleslister. ??? Trenger vi dette?
         /// </summary>
         [DataMember]
         public string Name { get; set; }
 
         /// <summary>
-        /// Når avtalen ble opprettet
+        /// Når avtalen ble opprettet.
         /// </summary>
         [DataMember]
         public DateTime AgreementDate { get; set; }
@@ -104,19 +104,19 @@ namespace NHN.DtoContracts.Flr.Data
         public ICollection<PatientToGPContractAssociation> PatientList { get; set; }
 
         /// <summary>
-        /// Kommune
+        /// Kommune. Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/kommune">kommune</see>.
         /// </summary>
         [DataMember]
         public Code Municipality { get; set; }
 
         /// <summary>
-        /// Bydel. Ukjent om vi har dette p.t.
+        /// Bydel. Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/bydel">bydel</see>.
         /// </summary>
         [DataMember]
         public Code District { get; set; }
 
         /// <summary>
-        /// Avslutningsårsak
+        /// Avslutningsårsak. Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/flrv2_contract_endreason">flrv2_contract_endreason</see> OID 7753.
         /// </summary>
         [DataMember]
         public Code EndReason { get; set; }
