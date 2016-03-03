@@ -50,12 +50,14 @@ namespace NHN.DtoContracts.Common.en
         /// <summary>
         /// Tidsperiode fra
         /// </summary>
-        public TimeSpan From { get; }
+        [DataMember]
+        public TimeSpan From { get; private set; }
 
         /// <summary>
         /// Tidsperiode til
         /// </summary>
-        public TimeSpan To { get; }
+        [DataMember]
+        public TimeSpan To { get; private set; }
 
         /// <summary>
         /// Sammenlikner to TimePeriode objekter for sortering
