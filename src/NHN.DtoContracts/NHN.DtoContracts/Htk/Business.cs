@@ -87,21 +87,22 @@ namespace NHN.DtoContracts.Htk
         public string ResponsiblePerson { get; set; }
 
         /// <summary>
-        /// Kommunenummer.
-        /// Gyldige verdier: OID 3402
+        /// Kommune.
+        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/kommune">kommune</see> (OID 3402).
         /// </summary>
         [DataMember]
         public Code Municipality { get; set; }
 
         /// <summary>
         /// Næringskoder.
-        /// Gyldige verdier: SN2007
+        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/naringskode">naringskode</see> (SN2007).
         /// </summary>
         [DataMember]
         public IList<Code> IndustryCodes { get; set; }
 
         /// <summary>
-        /// Industriell sektorkode.
+        /// Industriell sektorkode. 
+        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/institusjonell_sektorkode">institusjonell_sektorkode</see>.
         /// </summary>
         [DataMember]
         public Code SectorCode { get; set; }

@@ -18,7 +18,7 @@ namespace NHN.DtoContracts.Common.en
         }
 
         /// <summary>
-        /// Oppretter en ElectronicAddress med gitt type
+        /// Oppretter en ElectronicAddress med gitt type.
         /// </summary>
         /// <param name="type"></param>
         public ElectronicAddress(string type)
@@ -27,15 +27,13 @@ namespace NHN.DtoContracts.Common.en
         }
 
         /// <summary>
-        /// Dato og tid for siste endring til objektet
+        /// Dato og tid for siste endring til objektet.
         /// </summary>
         [DataMember]
         public DateTime LastChanged { get; set; }
 
         /// <summary>
-        /// OBSOLETE: Bruk Type istedet.
-        /// Type elektronisk adresse
-        /// Gyldige verdier: OID 9044 (verdiene som starter med E_)
+        /// OBSOLETE: Bruk <see cref="Type">Type</see> istedet.
         /// </summary>
         [Obsolete("Use Type instead")]
         [DataMember]
@@ -46,8 +44,9 @@ namespace NHN.DtoContracts.Common.en
         }
 
         /// <summary>
-        /// Type elektronisk adresse
-        /// Gyldige verdier er fra OID 9044 (verdiene som starter med E_)
+        /// Type elektronisk adresse.
+        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/type_adressekomponeneter">type_adressekomponeneter</see> (OID 9044).
+        /// Gyldige verdier er verdiene som starter med E_.
         /// </summary>
         [DataMember]
         public Code Type
@@ -77,7 +76,7 @@ namespace NHN.DtoContracts.Common.en
         public string Address { get; set; }
 
         /// <summary>
-        /// Indikerer om adressen er arvet fra overliggende enhet(er)
+        /// Indikerer om adressen er arvet fra overliggende enhet(er).
         /// </summary>
         [DataMember]
         public bool Inherited { get; set; }

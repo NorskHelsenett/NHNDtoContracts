@@ -43,6 +43,7 @@ namespace NHN.DtoContracts.Common.en
         private Code _type;
         /// <summary>
         /// Type adresse. (RES/PST/ osv)
+        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/adressetype">adressetype</see> (OID 3401).
         /// </summary>
         [DataMember]
         public Code Type
@@ -88,7 +89,8 @@ namespace NHN.DtoContracts.Common.en
         public bool Inherited { get; set; }
 
         /// <summary>
-        /// Landkode
+        /// Landkode.
+        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/landkoder">landkoder</see> (OID 9043).
         /// </summary>
         [DataMember]
         public Code Country { get; set; }

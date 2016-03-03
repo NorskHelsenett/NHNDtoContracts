@@ -176,7 +176,10 @@ namespace NHN.DtoContracts.Flr.Service
         /// Publiserer event "ContractUpdated" ved vellykket operasjon.
         /// </remarks>
         /// <param name="gpContractId">Id på fastlegeavtalen</param>
-        /// <param name="status">Status på liste status med referanse til kodeverk</param>
+        /// <param name="status">
+        /// Status på liste status med referanse til kodeverk.
+        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/flrv2_statuscode">flrv2_statuscode</see> (OID 7751).
+        /// </param>
         /// <value></value>
         /// <returns></returns>
         /// <exception cref="ArgumentException">Kastes hvis avtalen ikke finnes</exception>
@@ -343,7 +346,9 @@ namespace NHN.DtoContracts.Flr.Service
         /// </summary>
         /// <remarks>Registrerer språk på helsepersonell. En tom liste sletter alle språk på angitt helsepersonell.</remarks>
         /// <param name="hprNumber">Referanse id til helsepersonell</param>
-        /// <param name="languages">Liste av språk med referanse til kodeverk (OID=3303 og OID=3301)</param>
+        /// <param name="languages">Liste av språk med referanse til kodeverk.
+        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/sprak">sprak</see> (OID 3303), <see href="/CodeAdmin/EditCodesInGroup/norsksprak">norsksprak</see> (OID 3301).
+        /// </param>
         /// <returns></returns>
         /// <exception cref="ArgumentException">Kastes hvis listen med språk er tom</exception>
         /// <example>
@@ -444,7 +449,10 @@ namespace NHN.DtoContracts.Flr.Service
         /// ved vellykket operasjon.
         /// </remarks>
         /// <param name="gpContractId">Referanse til fastlegeliste som skal avsluttes</param>
-        /// <param name="endReason">Referanse til kode for avsluttet status</param>
+        /// <param name="endReason">
+        ///     Referanse til kode for avsluttet status.
+        ///     Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/flrv2_contract_endreason">flrv2_contract_endreason</see> (OID 7753).
+        /// </param>
         /// <param name="period">Sluttdato på kontrakt</param>
         /// <param name="capitaToMove">Liste over innbyggere som skal flyttes til ny liste</param>
         /// <returns></returns>
@@ -466,7 +474,10 @@ namespace NHN.DtoContracts.Flr.Service
         /// </remarks>
         /// <param name="gpContractId">Referanse til fastlegelisten</param>
         /// <param name="patientNin">Referanse til innbyggerens fødselsnummer (eller D-nummer)</param>
-        /// <param name="endReason">Referanse til kodeverk for avslutningskode</param>
+        /// <param name="endReason">
+        ///     Referanse til kodeverk for avslutningskode.
+        ///     Kodeverk: Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/flrv2_endreason">flrv2_endreason</see> (OID 7753).
+        /// </param>
         /// <param name="endTime">På hvilket tidspunkt skal kontrakten avsluttes.</param>
         /// <exception cref="ArgumentException">Kastes hvis en pasient ikke finnes på fastlegelisten i den gitte perioden</exception>
         [OperationContract]

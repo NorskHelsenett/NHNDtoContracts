@@ -54,7 +54,8 @@ namespace NHN.DtoContracts.Flr.Data
         public Period Valid { get; set; }
 
         /// <summary>
-        /// Hvordan type knytning er dette mot GPContract
+        /// Hvordan type knytning er dette mot GPContract.
+        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/flrv2_relationship">flrv2_contract_relationship</see> (OID 7750).
         /// </summary>
         [DataMember]
         public Code Relationship { get; set; } //ForholdsKode;

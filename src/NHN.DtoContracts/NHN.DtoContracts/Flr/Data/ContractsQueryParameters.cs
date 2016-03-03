@@ -11,8 +11,9 @@ namespace NHN.DtoContracts.Flr.Data
     public class ContractsQueryParameters   
     {
         /// <summary>
-        /// Kun pasientlister som tilhører i disse kommunene blir returnert
-        /// Er denne listen tom, returneres alle pasientlister
+        /// Kun pasientlister som tilhører i disse kommunene blir returnert.
+        /// Er denne listen tom, returneres alle pasientlister.
+        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/kommune">kommune</see> (OID 3402).
         /// </summary>
         [DataMember]
         public ICollection<Code> Municipalities { get; set; }

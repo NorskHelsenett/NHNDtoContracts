@@ -43,13 +43,15 @@ namespace NHN.DtoContracts.Flr.Data
         public Period Period { get; set; } //FraDato ?TilDato;
 
         /// <summary>
-        /// Kode på hvorfor perioden er endret (avsluttet). Er NULL normalt sett med mindre personen har forlatt ordnignen.
+        /// Kode på hvorfor perioden er endret (avsluttet). Er NULL normalt sett med mindre personen har forlatt ordningen.
+        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/flrv2_endreason">flrv2_endreason</see> (OID 7753).
         /// </summary>
         [DataMember]
         public Code EndCode { get; set; }
 
         /// <summary>
-        /// Kode på hvorfor perioden er endret (avsluttet).
+        /// Kode på hvorfor perioden er startet.
+        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/flrv2_beginreason">flrv2_beginreason</see> (OID 7754).
         /// </summary>
         [DataMember]
         public Code BeginCode { get; set; }

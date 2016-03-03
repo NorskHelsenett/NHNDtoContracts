@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NHN.DtoContracts.Common.en
 {
@@ -59,10 +55,7 @@ namespace NHN.DtoContracts.Common.en
         /// <summary>
         /// Hvorvidt nåtid er mellom From og To
         /// </summary>
-        public bool IsActiveNow
-        {
-            get { return Overlaps(DateTime.Now); }
-        }
+        public bool IsActiveNow => Overlaps(DateTime.Now);
 
         /// <summary>
         /// Gir Periode objektet mening? Sjekker at T > From.
