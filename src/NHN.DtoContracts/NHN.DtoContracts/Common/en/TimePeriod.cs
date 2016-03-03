@@ -50,11 +50,13 @@ namespace NHN.DtoContracts.Common.en
         /// <summary>
         /// Tidsperiode fra
         /// </summary>
+        [DataMember]
         public TimeSpan From { get; private set; }
 
         /// <summary>
         /// Tidsperiode til
         /// </summary>
+        [DataMember]
         public TimeSpan To { get; private set; }
 
         /// <summary>

@@ -49,7 +49,8 @@ namespace NHN.DtoContracts.Flr.Data
         public DateTime? DateOfDeath { get; set; }
 
         /// <summary>
-        /// Kjønn. Gyldig simpletype er "kjonn".
+        /// Kjønn.
+        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/kjonn">kjonn</see> (OID 3101).
         /// </summary>
         [DataMember]
         public Code Sex { get; set; }

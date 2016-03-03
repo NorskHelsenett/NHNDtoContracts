@@ -16,7 +16,8 @@ namespace NHN.DtoContracts.Flr.Data
         public string FullText { get; set; }
 
         /// <summary>
-        /// Hvis satt så har returnerte fastleger et legekontor i kommunen
+        /// Hvis satt så har returnerte fastleger et legekontor i kommunen.
+        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/kommune">kommune</see> (OID 3402).
         /// </summary>
         [DataMember]
         public Code HasGPOfficeInMunicipality { get; set; }

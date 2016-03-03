@@ -37,7 +37,8 @@ namespace NHN.DtoContracts.Flr.Data
         public bool IsFixedSalary { get; set; }
 
         /// <summary>
-        /// Hvis det kreves medlemskap for være på en liste, så er innholdet av RequiresMembership satt til ID'en for dette medlemskapet. Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/flrv2_membership">flrv2_membership</see>
+        /// Hvis det kreves medlemskap for være på en liste, så er innholdet av RequiresMembership satt til ID'en for dette medlemskapet. 
+        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/flrv2_membership">flrv2_membership</see> (OID 7755).
         /// </summary>
         [DataMember]
         public Code RequiresMembership { get; set; }
@@ -62,7 +63,7 @@ namespace NHN.DtoContracts.Flr.Data
         public int MaxPatients { get; set; }
 
         /// <summary>
-        /// Listestatus. Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/flrv2_statuscode">flrv2_statuscode</see>
+        /// Listestatus. Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/flrv2_statuscode">flrv2_statuscode</see> (OID 7751).
         /// </summary>
         [DataMember]
         public Code Status { get; set; }
@@ -104,19 +105,20 @@ namespace NHN.DtoContracts.Flr.Data
         public ICollection<PatientToGPContractAssociation> PatientList { get; set; }
 
         /// <summary>
-        /// Kommune. Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/kommune">kommune</see>.
+        /// Kommune. Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/kommune">kommune</see> (OID 3402).
         /// </summary>
         [DataMember]
         public Code Municipality { get; set; }
 
         /// <summary>
-        /// Bydel. Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/bydel">bydel</see>.
+        /// Bydel. Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/bydel">bydel</see> (OID 3403).
         /// </summary>
         [DataMember]
         public Code District { get; set; }
 
         /// <summary>
-        /// Avslutningsårsak. Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/flrv2_contract_endreason">flrv2_contract_endreason</see> OID 7753.
+        /// Avslutningsårsak. 
+        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/flrv2_contract_endreason">flrv2_contract_endreason</see> (OID 7753).
         /// </summary>
         [DataMember]
         public Code EndReason { get; set; }
