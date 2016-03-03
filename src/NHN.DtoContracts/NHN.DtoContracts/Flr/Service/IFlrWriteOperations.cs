@@ -16,7 +16,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <summary>
         /// Lag en mengde historiske bedrifter. Historiske bedrifter er Business-objekter med et negativt organisasjonsnummer 
         /// for å skille dem fra bedrifter med gyldige, faktiske organisasjonsnummer.
-        /// Den eneste feltene i det innkommende Business objektet som skal være satt er:
+        /// De eneste feltene i det innkommende Business objektet som skal være satt er:
         /// OrganizationName, PhysicalAddreses, ElectronicAddresses, Name, DisplayName, Valid
         /// Alle andre datafelter må være null/0. 
         /// </summary>
@@ -25,7 +25,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// ID'er til opprettede business'es. Den returnerte arrayen mapper 1-1 til business parameteren. 
         /// Dvs business[i]'s ID vil komme i ret[i]. Dette vil være _negative_ nummer.
         /// </returns>
-        /// <exception cref="ArgumentException">Kastes hvis kontoret har en ugyldig id</exception>
+        /// <exception cref="ArgumentException">Kastes hvis bedriften har en ugyldig id</exception>
         /// <example>
         /// <code>
         /// flrWriteService.CreateHistoricalBusinessBulk(businessesList);
