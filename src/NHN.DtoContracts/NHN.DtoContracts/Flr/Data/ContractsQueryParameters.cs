@@ -26,8 +26,11 @@ namespace NHN.DtoContracts.Flr.Data
         public bool GetFullPersonInfo { get; set; }
 
         /// <summary>
-        /// Sett til true om man vil ha alle historiske data, 
-        /// dvs alle leger og pasienter som har vært knyttet til en GPContract med perioden
+        /// Er denne false, vil kun <see cref="GPContract"/>s som var aktive på eksporttidspunktet bli returnert. 
+        /// <see cref="GPContract.PatientList"/> vil da også kun inneholde pasienter som var aktive på listen på eksporttidspunktet.
+        /// 
+        /// Er denne true, vil alle <see cref="GPContract"/>s, inkludert de som er kansellert/utgått/etc bli returnert.
+        /// <see cref="GPContract.PatientList"/> vil da også inneholde full pasienthistorikk.
         /// </summary>
         [DataMember]
         public bool GetHistoricalData { get; set; }

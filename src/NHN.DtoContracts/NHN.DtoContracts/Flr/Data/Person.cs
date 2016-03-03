@@ -19,31 +19,31 @@ namespace NHN.DtoContracts.Flr.Data
         public string NIN { get; set; }
 
         /// <summary>
-        /// Fornavn
+        /// Fornavn.
         /// </summary>
         [DataMember]
         public string FirstName { get; set; }
 
         /// <summary>
-        /// Mellomnavn
+        /// Mellomnavn.
         /// </summary>
         [DataMember]
         public string MiddleName { get; set; }
 
         /// <summary>
-        /// Etternavn
+        /// Etternavn.
         /// </summary>
         [DataMember]
         public string LastName { get; set; }
 
         /// <summary>
-        /// Fødselsdato
+        /// Fødselsdato.
         /// </summary>
         [DataMember]
         public DateTime? DateOfBirth { get; set; }
 
         /// <summary>
-        /// Tidspunkt perioden døde på
+        /// Tidspunkt personen døde på.
         /// </summary>
         [DataMember]
         public DateTime? DateOfDeath { get; set; }
@@ -63,7 +63,7 @@ namespace NHN.DtoContracts.Flr.Data
         public IList<Status> Status { get; set; }
 
         /// <summary>
-        /// Adresser tilhørende personen
+        /// Adresser tilhørende personen.
         /// </summary>
         [DataMember]
         public IList<PhysicalAddress> PhysicalAddresses { get; set; }
