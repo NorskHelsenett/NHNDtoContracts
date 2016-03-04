@@ -4,6 +4,7 @@ using NHN.DtoContracts.Common.en;
 using System;
 using NHN.DtoContracts.Flr.Data;
 using NHN.DtoContracts.Htk;
+using System.IO;
 
 namespace NHN.DtoContracts.Flr.Service
 {
@@ -221,6 +222,15 @@ namespace NHN.DtoContracts.Flr.Service
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         GPContract GetGPContractForNav(string doctorNin, string municipalityNr, bool doSubstituteSearch);
+
+        /// <summary>
+        /// Returnerer pasientlister på gammelt kith/nav format. Se <see cref="NavEncryptedPatientListParameters"/> for inputinfo.
+        /// </summary>
+        /// <param name="param">Parametre for uttrek</param>
+        /// <returns>Kryptert stream.</returns>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        Stream NavGetEncryptedPatientList(NavEncryptedPatientListParameters param);
 
         /// <summary>
         /// Hent ut alle GPContractId's på kontrakter hvis legekontor har et postnummer som er lik eller begynner på postNr.
