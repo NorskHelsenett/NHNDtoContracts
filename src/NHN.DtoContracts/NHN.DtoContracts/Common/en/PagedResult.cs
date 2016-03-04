@@ -14,7 +14,7 @@ namespace NHN.DtoContracts.Common.en
         /// Paginert resultat.
         /// </summary>
         [DataMember]
-        public ICollection<T> Results { get; set; }
+        public IList<T> Results { get; set; }
 
         /// <summary>
         /// Total antall resultat.

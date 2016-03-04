@@ -26,6 +26,6 @@ namespace NHN.DtoContracts.Flr.Data
         /// Tilknyttede kontrakter. Kun satt ved relevante leseoperasjoner, må være null ellers.
         /// </summary>
         [DataMember]
-        public ICollection<GPOnContractAssociation> Contracts { get; set; }
+        public IList<GPOnContractAssociation> Contracts { get; set; }
     }
 }

@@ -90,19 +90,19 @@ namespace NHN.DtoContracts.Flr.Data
         /// Legetilknytninger.
         /// </summary>
         [DataMember]
-        public ICollection<GPOnContractAssociation> DoctorCycles { get; set; }
+        public IList<GPOnContractAssociation> DoctorCycles { get; set; }
 
         /// <summary>
         /// Liste over utekontor for denne listen.
         /// </summary>
         [DataMember]
-        public ICollection<OutOfOfficeLocation> OutOfOfficeOffices { get; set; }
+        public IList<OutOfOfficeLocation> OutOfOfficeOffices { get; set; }
 
         /// <summary>
         /// Pasienter som er koblet til denne kontrakten
         /// </summary>
         [DataMember]
-        public ICollection<PatientToGPContractAssociation> PatientList { get; set; }
+        public IList<PatientToGPContractAssociation> PatientList { get; set; }
 
         /// <summary>
         /// Kommune. Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/kommune">kommune</see> (OID 3402).

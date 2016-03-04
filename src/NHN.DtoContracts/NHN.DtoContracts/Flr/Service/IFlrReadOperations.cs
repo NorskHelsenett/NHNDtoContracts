@@ -44,7 +44,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// </example>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        ICollection<PatientToGPContractAssociation> GetPatientsGPDetails(string[] patientNins);
+        IList<PatientToGPContractAssociation> GetPatientsGPDetails(string[] patientNins);
 
         /// <summary>
         /// Henter fastlegen på et gitt tidspunkt per pasient for en liste med pasienter.
@@ -93,7 +93,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// </example>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        ICollection<PatientToGPContractAssociation> GetPatientGPHistory(string patientNin, bool includePatientData);
+        IList<PatientToGPContractAssociation> GetPatientGPHistory(string patientNin, bool includePatientData);
 
         /// <summary>
         /// Henter en enkelt fastlegeavtale
@@ -134,7 +134,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// </example>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        ICollection<GPContract> GetGPContractsOnOffice(int organizationNumber, DateTime? atTime);
+        IList<GPContract> GetGPContractsOnOffice(int organizationNumber, DateTime? atTime);
 
         /// <summary>
         /// Henter fastlegeliste.
@@ -153,7 +153,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// </example>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        ICollection<PatientToGPContractAssociation> GetGPPatientList(long gpContractId);
+        IList<PatientToGPContractAssociation> GetGPPatientList(long gpContractId);
 
         /// <summary>
         /// Henter fastlege og tilhørende praksis(er)
@@ -236,7 +236,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// </example>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        ICollection<long> GetGPContractIdsOperatingInPostalCode(string postNr);
+        IList<long> GetGPContractIdsOperatingInPostalCode(string postNr);
 
         /// <summary>
         /// Search for GP.

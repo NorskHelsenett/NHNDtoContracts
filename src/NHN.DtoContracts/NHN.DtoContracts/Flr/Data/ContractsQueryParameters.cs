@@ -16,7 +16,7 @@ namespace NHN.DtoContracts.Flr.Data
         /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/kommune">kommune</see> (OID 3402).
         /// </summary>
         [DataMember]
-        public ICollection<Code> Municipalities { get; set; }
+        public IList<Code> Municipalities { get; set; }
 
         /// <summary>
         /// Om man absolutt må hente personinfo fra personregisteret, settes denne til true.

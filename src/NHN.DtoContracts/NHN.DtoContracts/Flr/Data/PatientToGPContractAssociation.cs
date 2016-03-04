@@ -67,7 +67,7 @@ namespace NHN.DtoContracts.Flr.Data
         /// men må være NULL på skriveoperasjoner.
         /// </summary>
         [DataMember]
-        public ICollection<GPOnContractAssociation> DoctorCycles { get; set; }
+        public IList<GPOnContractAssociation> DoctorCycles { get; set; }
 
         /// <summary>
         /// Tidspunkt data ble sist oppdatert

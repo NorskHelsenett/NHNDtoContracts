@@ -19,8 +19,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>Søk etter leger</remarks>
         /// <param name="searchParameters">Begrenser innholdet i eksporten</param>
         /// <returns>>Zip file som stream.
-        /// Innholdet i zip filen er en eller flere ICollection av GPContracts serialisert som xml
-        /// Alle GPContracts i en ICollection tilhører samme kontor</returns>
+        /// Innholdet i zip filen er en eller flere IList av GPContracts serialisert som xml
+        /// Alle GPContracts i en IList tilhører samme kontor</returns>
         /// <exception cref="ArgumentException">Kastes hvis feil søkeparameter er oppgitt</exception>
         /// <example>
         /// <code>
