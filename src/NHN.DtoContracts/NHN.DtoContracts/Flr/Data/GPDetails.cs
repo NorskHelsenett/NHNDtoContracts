@@ -27,5 +27,13 @@ namespace NHN.DtoContracts.Flr.Data
         /// </summary>
         [DataMember]
         public IList<GPOnContractAssociation> Contracts { get; set; }
+
+        /// <summary>
+        /// Legens språk. Kun satt ved relevante leseoperasjoner, må være null ellers.
+        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/sprak">sprak</see> (OID 3303),
+        /// <see href="/CodeAdmin/EditCodesInGroup/norsksprak">norsksprak</see> (OID 3301).
+        /// </summary>
+        [DataMember]
+        public IList<Code> Languages { get; set; }
     }
 }
