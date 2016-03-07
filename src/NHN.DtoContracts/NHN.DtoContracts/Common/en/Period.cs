@@ -81,14 +81,7 @@ namespace NHN.DtoContracts.Common.en
         {
             if (object.ReferenceEquals(this, other))
                 throw new InvalidOperationException("Period overlaps self, should not be tested..");
-
-            if (this.From == other.From || this.To == other.To)
-                return true;
-
-            if (this.From > other.From)
-                return other.To == null || other.To > this.From;
-            else
-                return this.To == null || other.From < this.To.Value;
+            return (other.To == null || this.From < other.To) && (this.To == null || this.To.Value > other.From);
         }
 
         /// <summary>
