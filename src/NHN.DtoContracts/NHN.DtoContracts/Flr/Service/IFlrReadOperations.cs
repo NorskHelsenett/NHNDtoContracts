@@ -224,7 +224,7 @@ namespace NHN.DtoContracts.Flr.Service
         GPContract GetGPContractForNav(string doctorNin, string municipalityNr, bool doSubstituteSearch);
 
         /// <summary>
-        /// Returnerer pasientlister på gammelt kith/nav format. Se <see cref="NavEncryptedPatientListParameters"/> for inputinfo.
+        /// Returnerer pasientlister på gammelt kith/nav format. Se <see cref="NavEncryptedPatientListParameters"/> for inputinfo. MERK: Metoden returnerer IKKE KRYPTERTE data per dags dato.
         /// </summary>
         /// <param name="param">Parametre for uttrek</param>
         /// <returns>Kryptert stream.</returns>

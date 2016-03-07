@@ -96,6 +96,12 @@ namespace NHN.DtoContracts.Common.en
         public Code Country { get; set; }
 
         /// <summary>
+        /// Kommune.  <see href="/CodeAdmin/EditCodesInGroup/kommune">kommune</see> (OID 3402).
+        /// </summary>
+        [DataMember]
+        public Code Municipality { get; set; }
+
+        /// <summary>
         /// Opprette Code for en fysisk adresse basert på adresssens kodeveri..
         /// </summary>
         /// <param name="codeValue"></param>
