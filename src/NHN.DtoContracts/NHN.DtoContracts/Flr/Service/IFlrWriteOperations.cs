@@ -523,6 +523,15 @@ namespace NHN.DtoContracts.Flr.Service
         [FaultContract(typeof (GenericFault))]
         void UpdateGPOfficeOnGPContracts(int oldOrganizationNumber, int newOrganizationNumber);
 
+        /// <summary>
+        /// Forsikre om at angitte personer finnes i Cache, legger til de som mangler.
+        /// Dette er en slags initialisering av PersonServiceCache, for å spare tid ved Export og andre metoder som trenger personopplysninger
+        /// </summary>
+        /// <param name="nins">Alle Personnr til personer som skal hentes fra PersonService og inn i PersonServiceCache</param>
+        [OperationContract]
+        [FaultContract(typeof (GenericFault))]
+        void EnsurePeopleInCache(IList<string> nins);
+
         #region Cleanup methods
         /// <summary>
         /// Sletter avtale, med ALLE relaterte relasjoner (Legeperioder, Tilhørigheter, Utekontor).
