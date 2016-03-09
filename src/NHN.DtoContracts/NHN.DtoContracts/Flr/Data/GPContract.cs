@@ -111,6 +111,13 @@ namespace NHN.DtoContracts.Flr.Data
         public Code Municipality { get; set; }
 
         /// <summary>
+        /// Kommuner som samarbeider med hovedkommunen på denne kontrakten.
+        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/kommune">kommune</see> (OID 3402).
+        /// </summary>
+        [DataMember]
+        public IList<Code> CoopMunicipalities { get; set; }
+
+        /// <summary>
         /// Bydel. Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/bydel">bydel</see> (OID 3403).
         /// </summary>
         [DataMember]

@@ -192,6 +192,31 @@ namespace NHN.DtoContracts.Flr.Service
         [FaultContract(typeof(GenericFault))]
         void UpdateGPContractStatus(long gpContractId, Code status); //Kun tillate Åpne, Lukke 
 
+        /// <summary>
+        /// Oppdaterer samarbeidende kommuner på kontrakt. En tom liste sletter alle
+        /// samarbeidende kommuner på kontrakten.
+        /// Kodeverk kommuner: <see href="/CodeAdmin/EditCodesInGroup/kommune">kommune</see> (OID 3402).
+        /// </summary>
+        /// <param name="gpContractId">Id på kontrakten</param>
+        /// <param name="coopMunicipalities">Liste med samarbeidende kommuner.</param>
+        /// <exception cref="ArgumentException">Kastes hvis listen med kommuner er null</exception>
+        /// <exception cref="ArgumentException">Kastes hvis kontrakten med angitt id ikke finnes</exception>
+        /// <exception cref="ArgumentException">Kastes hvis listen med kommuner inneholder duplikater</exception>
+        /// <exception cref="ArgumentException">Kastes hvis listen med kommuner inneholder hovedkommunen på kontrakten</exception>
+        /// <example>
+        /// <code>
+        /// //For å sette kommuner
+        /// flrWriteService.UpdateGPContractCoopMunicipalities(contractId, coopMunicipalities);
+        /// 
+        /// //For å slette alle registrerte kommuner
+        /// flrWriteService.UpdateGPContractCoopMunicipalities(contractId, new Code[0]);
+        /// </code>
+        /// </example>
+        [OperationContract]
+        [FaultContract(typeof (GenericFault))]
+        void UpdateGPContractCoopMunicipalities(long gpContractId, IList<Code> coopMunicipalities);
+        
+
 
         // --------------------------
         // Utekontor 
@@ -350,7 +375,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/sprak">sprak</see> (OID 3303), <see href="/CodeAdmin/EditCodesInGroup/norsksprak">norsksprak</see> (OID 3301).
         /// </param>
         /// <returns></returns>
-        /// <exception cref="ArgumentException">Kastes hvis listen med språk er tom</exception>
+        /// <exception cref="ArgumentException">Kastes hvis listen med språk er null</exception>
         /// <example>
         /// <code>
         /// //For å sette språk
