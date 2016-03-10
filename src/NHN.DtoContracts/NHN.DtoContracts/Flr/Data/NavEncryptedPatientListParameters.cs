@@ -14,25 +14,25 @@ namespace NHN.DtoContracts.Flr.Data
     public class NavEncryptedPatientListParameters
     {
         /// <summary>
-        /// Legens personnummer
+        /// Legens personnummer. Påkrevd.
         /// </summary>
         [DataMember]
         public string DoctorNIN { get; set; }
 
         /// <summary>
-        /// Kommunenummer legen opererer i. 
+        /// Kommunenummer legen opererer i. Påkrevd.
         /// </summary>
         [DataMember]
         public int MunicipalityId { get; set; }
 
         /// <summary>
-        /// Sertifikat som skal brukes for å kryptere innholdet. I betaversjon: Må være satt til null.
+        /// Sertifikat som skal brukes for å kryptere innholdet. I betaversjon: Må være satt til null. I ikke-beta: Påkrevd.
         /// </summary>
         [DataMember]
         public byte[] EncryptWithX509Certificate { get; set; }
 
         /// <summary>
-        /// Måneden uttrekket skal gjelde for. Dette feltet må være den første i måneden man ønsker, med tidsstempesl satt til 0
+        /// Måneden uttrekket skal gjelde for. Dette feltet må være den første i måneden man ønsker, med tidsstempesl satt til 0. Påkrevd
         /// Med andre ord: Month kan f.eks være 2016-03-01 00:00:00 men IKKE 2016-03-02 00:00:01.
         /// </summary>
         [DataMember]
@@ -45,7 +45,7 @@ namespace NHN.DtoContracts.Flr.Data
         public bool DoSubstituteSearch { get; set; }
 
         /// <summary>
-        /// XML av MsgHead.MsgInfo.Sender objektet. Merk at xmlns:mh må være med.
+        /// XML av MsgHead.MsgInfo.Sender objektet. Merk at xmlns:mh må være med. Påkrevd
         /// </summary>
         /// <example>
         /// <code language="xml">
@@ -70,14 +70,14 @@ namespace NHN.DtoContracts.Flr.Data
         public string SenderXml { get; set; }
 
         /// <summary>
-        /// XML av MsgHead.MsgInfo.Receiver objektet. Merk at xmlns:mh må være med.
+        /// XML av MsgHead.MsgInfo.Receiver objektet. Merk at xmlns:mh må være med. Påkrevd
         /// Se Senderxml for prinsipp.
         /// </summary>
         [DataMember]
         public string ReceiverXml { get; set; }
 
         /// <summary>
-        /// Om det diskettformat "disc" eller XML "xml".
+        /// Om det diskettformat "disk" eller XML "xml". Påkrevd.
         /// </summary>
         [DataMember]
         public string ListType { get; set; }
