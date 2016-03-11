@@ -93,13 +93,12 @@ namespace NHN.DtoContracts.Flr.Service
         void DeleteCustomFloAddressOnGPOffice(int organizationNumber);
 
         /// <summary>
-        /// Opprette en ny fastlegeavtale slik at ny fastlegeliste med relevante attributter blir etablert i registerplattform.
+        /// Oppretter en ny fastlegeavtale slik at ny fastlegeliste med relevante attributter blir etablert i registerplattformen.
         /// </summary>
         /// <remarks>
-        /// Opprette avtalen mellom en lege og kommune.
-        /// Det forutsettes at lege finnes allerede fra før i HPR og at legen er tilknyttet en legekontor(TreatmentCenter) som finnes i Adresseregisteret/Bedriftsregisteret.
-        /// 
-        /// Publiserer event "ContractCreated" ved vellykket operasjon.
+        /// Oppretter avtalen mellom en lege og kommune.
+        /// Det forutsettes at lege finnes allerede fra før i HPR og at legen er tilknyttet et legekontor(TreatmentCenter) som finnes i Adresseregisteret/Bedriftsregisteret.
+        /// Service bus: Denne metoden sender event "ContractCreated" med eventobjekt <see cref="GPContract"/>.
         /// </remarks>
         /// <param name="newGPContract">En ny legekontrakt</param>
         /// <exception cref="ArgumentException">Kastes hvis legeperiode i kontrakten eksisterer men har en ugyldig id</exception>
@@ -133,8 +132,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// </summary>
         /// <remarks>
         /// Benyttes for oppdatering/endring/avslutning av en eksisterende fastlegeavtale
-        /// 
-        /// Publiserer event "ContractUpdated" ved vellykket operasjon.
+        /// Service bus: Denne metoden sender event "ContractUpdated" med eventobjekt <see cref="GPContract"/>.
         /// </remarks>
         /// <param name="gpContract">En eksisterende legekontrakt, som skal oppdateres</param>
         /// <returns></returns>
@@ -153,7 +151,9 @@ namespace NHN.DtoContracts.Flr.Service
         /// <summary>
         /// Oppdatering av listetak på en fastlegeavtale uten at andre verdier skal endre seg.
         /// </summary>
-        /// <remarks>Publiserer event "ContractUpdated" ved vellykket operasjon.</remarks>
+        /// <remarks>
+        /// Service bus: Denne metoden sender event "ContractUpdated" med eventobjekt <see cref="GPContract"/>.
+        /// </remarks>
         /// <param name="gpContractId">Id på fastlegeavtalen</param>
         /// <param name="maxPatients">Listetak på en avtale</param>
         /// <returns></returns>
@@ -173,7 +173,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>
         /// Kun endring til statusene Åpne og Lukke.
         /// 
-        /// Publiserer event "ContractUpdated" ved vellykket operasjon.
+        /// Service bus: Denne metoden sender event "ContractUpdated" med eventobjekt <see cref="GPContract"/>.
         /// </remarks>
         /// <param name="gpContractId">Id på fastlegeavtalen</param>
         /// <param name="status">
@@ -197,6 +197,9 @@ namespace NHN.DtoContracts.Flr.Service
         /// samarbeidende kommuner på kontrakten.
         /// Kodeverk kommuner: <see href="/CodeAdmin/EditCodesInGroup/kommune">kommune</see> (OID 3402).
         /// </summary>
+        /// <remarks>
+        /// Service bus: Denne metoden sender event "ContractUpdated" med eventobjekt <see cref="GPContract"/>.
+        /// </remarks>
         /// <param name="gpContractId">Id på kontrakten</param>
         /// <param name="coopMunicipalities">Liste med samarbeidende kommuner.</param>
         /// <exception cref="ArgumentException">Kastes hvis listen med kommuner er null</exception>
@@ -215,7 +218,7 @@ namespace NHN.DtoContracts.Flr.Service
         [OperationContract]
         [FaultContract(typeof (GenericFault))]
         void UpdateGPContractCoopMunicipalities(long gpContractId, IList<Code> coopMunicipalities);
-        
+
 
 
         // --------------------------
@@ -228,7 +231,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>
         /// Hvis et fastlegekontor har dislokerte behandlingssteder (utekontorer) så skal det kunne registreres på overordnet fastlegepraksis/avtale.
         /// 
-        /// Publiserer event "OutOfOfficeLocationCreated" ved vellykket operasjon.
+        /// Service bus: Denne metoden sender event "OutOfOfficeLocationCreated" med eventobjekt <see cref="OutOfOfficeLocation"/>. 
         /// </remarks>
         /// <param name="office">Utekontordata</param>
         /// <returns></returns>
@@ -249,7 +252,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>
         /// Oppdatering av opplysninger om et utekontor.
         /// 
-        /// Publiserer event "OutOfOfficeLocationUpdated" ved vellykket operasjon.
+        /// Service bus: Denne metoden sender event "OutOfOfficeLocationUpdated" med eventobjekt <see cref="OutOfOfficeLocation"/>.
         /// </remarks>
         /// <param name="office">Eksisterende utekontordata</param>
         /// <returns></returns>
@@ -270,7 +273,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>
         /// Sletter et utekontor fra liste over utekontorer.
         /// 
-        /// Publiserer event "OutOfOfficeLocationDeleted" ved vellykket operasjon.
+        /// Service bus: Denne metoden sender event "OutOfOfficeLocationDeleted" med eventobjekt <see cref="OutOfOfficeLocation"/>.
         /// </remarks>
         /// <param name="outOfOfficeId">Id til utekontoret som skal slettes</param>
         /// <returns></returns>
@@ -295,8 +298,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>
         /// Lager en lenke mellom lege i bestemt rolle til en fastlegeavtale.
         /// 
-        /// Publiserer event "GPOnContractCreated" ved vellykket operasjon.
-        ///  </remarks>
+        /// Service bus: Denne metoden sender event "GPOnContractCreated" med eventobjekt <see cref="GPOnContractAssociation"/>.
+        /// </remarks>
         /// <param name="association">Koblingen for en periode legen er tilknyttet en fastlegeavtale</param>
         /// <returns></returns>
         /// <exception cref="ArgumentException">Kastes hvis perioden ikke er gyldig</exception>
@@ -321,7 +324,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <param name="creates"></param>
         /// <exception cref="ArgumentException">Kastes hvis perioden ikke er gyldig</exception>
         /// <exception cref="ArgumentException">Kastes hvis hpr nummeret er ugyldig</exception>
-        /// <exception cref="ArgumentException">Kastes hvis kontrakten ikke finnes</exception>
+        /// <exception cref="ArgumentException">Kastes hvis kontrakten ikke finnes </exception>
         /// <example>
         /// <code>
         /// flrWriteService.CreateGPOnContractAssociationBulk(ContractAssociationList);
@@ -337,7 +340,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>
         /// Oppdaterer informasjonen mellom lege i bestemt rolle til en fastlegeavtale.
         /// 
-        /// Publiserer event "GPOnContractUpdated" ved vellykket operasjon.
+        /// Service bus: Denne metoden sender event "GPOnContractUpdated" med eventobjekt <see cref="GPOnContractAssociation"/>.
         /// </remarks>
         /// <param name="association">Eksisterende koblingen for en periode legen er tilknyttet en fastlegeavtale</param>
         /// <returns></returns>
@@ -356,7 +359,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// Sletter en kontraktsperiode for en lege på en GPContract.
         /// </summary>
         /// <remarks>
-        /// Publiserer event "GPOnContractDeleted" ved vellykket operasjon.
+        /// Service bus: Denne metoden sender event "GPOnContractDeleted" med eventobjekt <see cref="GPOnContractAssociation"/>.
         /// </remarks>
         /// <param name="gpOnContractAssociationId"></param>
         [OperationContract]
@@ -400,7 +403,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>
         /// Opprette nyregistrert person i PREG til en eksisterende fastlegeavtale i FLR.
         /// 
-        /// Publiserer event "PatientOnContractCreated" ved vellykket operasjon.
+        /// Service bus: Denne metoden sender event "PatientOnContractCreated" med eventobjekt <see cref="PatientToGPContractAssociation"/>.
         /// </remarks>
         /// <param name="patientToGPContractAssociation">Kobling mellom innbygger og fastlegeavtale</param>
         /// <returns></returns>
@@ -446,7 +449,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>
         /// Flytte pasienter mellom to fastlegelister. Fødselsnummer valideres. Feiler en pasient så kastes exception på alt.
         /// 
-        /// Publiserer event "PatientOnContractCreated" for hver pasient som blir flyttet.
+        /// Service bus: Denne metoden sender event "PatientOnContractCreated" med eventobjekt <see cref="PatientToGPContractAssociation"/>
+        /// for hver pasient som blir flyttet.
         /// </remarks>
         /// <param name="fromGPContract">ID til fastlegeliste en innbygger skal flyttes FRA.</param>
         /// <param name="patientsToMove">Liste over innbyggere på eksisterende fastlegelister som skal flyttes</param>
@@ -470,8 +474,10 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>
         /// Flytte alle pasienter mellom listene og deretter avslutter listen hvor innbyggere ble flyttet fra.
         /// 
-        /// Publiserer event "ContractCanceled" samt "PatientOnContractCreated" for hver pasient som blir flyttet
-        /// ved vellykket operasjon.
+        /// Service bus: Denne metoden sender event "ContractCanceled" med eventobjekt <see cref="GPContract"/>, samt
+        /// "PatientOnContractCreated" med eventobjekt <see cref="PatientToGPContractAssociation"/>
+        /// for hver pasient som blir flyttet.
+        /// 
         /// </remarks>
         /// <param name="gpContractId">Referanse til fastlegeliste som skal avsluttes</param>
         /// <param name="endReason">
@@ -496,6 +502,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// </summary>
         /// <remarks>
         /// Publiserer event "PatientOnContractCanceled" ved vellykket operasjon.
+        /// 
+        /// Service bus: Denne metoden sender event "PatientOnContractCanceled" med eventobjekt <see cref="PatientToGPContractAssociation"/>.
         /// </remarks>
         /// <param name="gpContractId">Referanse til fastlegelisten</param>
         /// <param name="patientNin">Referanse til innbyggerens fødselsnummer (eller D-nummer)</param>
@@ -533,7 +541,9 @@ namespace NHN.DtoContracts.Flr.Service
         /// <param name="newNin">Nytt personnummer</param>
         /// <exception cref="ArgumentException">Hvis newNin/oldNin er ugyldige, eller det ikke finnes noen personer i FLR med personnummer oldNin</exception>
         /// <exception cref="ArgumentException">Hvis newNin ikke finnes i personregisteret</exception>
-        /// <remarks>Service bus: Denne metoden sender event PatientNinChanged med property NewNin og OldNin. Den sender også PatientOnContractUpdated per <see cref="PatientToGPContractAssociation"/> som oppdateres.
+        /// <remarks>
+        /// Service bus: Denne metoden sender event "PatientNinChanged" med property NewNin, OldNin.
+        /// Den sender også "PatientOnContractUpdated" med eventobjekt <see cref="PatientToGPContractAssociation"/>.
         /// </remarks>
         [OperationContract]
         [FaultContract(typeof (GenericFault))]
@@ -542,6 +552,10 @@ namespace NHN.DtoContracts.Flr.Service
         /// <summary>
         /// Oppdaterer GPOfficeOrganizationNumber på alle GpContracts.
         /// </summary>
+        /// <remarks>
+        /// Service bus: Denne metoden sender event "ContractUpdated" med eventobjekt <see cref="GPContract"/>
+        /// for hver kontrakt som berøres.
+        /// </remarks>
         /// <param name="oldOrganizationNumber">Orgnummeret til det gamle kontoret</param>
         /// <param name="newOrganizationNumber">Orgnummeret til det nye kontoret</param>
         [OperationContract]
@@ -639,5 +653,5 @@ namespace NHN.DtoContracts.Flr.Service
         [FaultContract(typeof(GenericFault))]
         void CleanupEverything();
         #endregion
-    }
+     }
 }
