@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using NHN.DtoContracts.Flr.Service;
+using NHN.DtoContracts.ServiceBus.Service;
 
 namespace NHN.WcfClientFactory
 {
@@ -167,6 +168,7 @@ namespace NHN.WcfClientFactory
                 ReceiveTimeout = TimeSpan.FromMinutes(70),
                 SendTimeout = TimeSpan.FromMinutes(70)
             });
+            AddKnownConfig<IServiceBusManager>(new ServiceContractConfig("/v1/servicebusmanager"));
         }
 
         /// <summary>
@@ -214,7 +216,7 @@ namespace NHN.WcfClientFactory
                 {
                     var config = GetServiceContractConfig(serviceContractType);
                     var binding = CreateBinding(config);
-                    var endpointAddress = GetEndpointAddress(config, pathOverride);
+                    var endpointAddress = GetEndpointAddress<T>(pathOverride);
 
                     channelFactory = new ChannelFactory<T>(binding, new EndpointAddress(endpointAddress));
                     _channelFactories[serviceContractType] = channelFactory;
@@ -249,6 +251,18 @@ namespace NHN.WcfClientFactory
         {
             if (_locked)
                 throw new InvalidOperationException("Kan ikke sette verdi. Bruk Clone()");
+        }
+
+        /// <summary>
+        /// Get effective endpoint address.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="pathOverride"></param>
+        /// <returns></returns>
+        public string GetEndpointAddress<T>(string pathOverride=null)
+        {
+            var config = GetServiceContractConfig(typeof(T));
+            return GetEndpointAddress(config, pathOverride);
         }
 
         private string GetEndpointAddress(ServiceContractConfig config, string pathOverride)
