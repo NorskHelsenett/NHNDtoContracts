@@ -233,6 +233,20 @@ namespace NHN.DtoContracts.Flr.Service
         Stream NavGetEncryptedPatientList(NavEncryptedPatientListParameters param);
 
         /// <summary>
+        /// Returnerer pasientlister på gammelt kith/nav format. Se <see cref="NavEncryptedPatientListParameters"/> for beskrivelse av de faktiske parameterene. MERK: Metoden returnerer IKKE KRYPTERTE data per dags dato.
+        /// </summary>
+        /// <param name="doctorNIN">Se <see cref="NavEncryptedPatientListParameters"/></param>
+        /// <param name="municipalityId">Se <see cref="NavEncryptedPatientListParameters"/></param>
+        /// <param name="encryptWithX509Certificate">Se <see cref="NavEncryptedPatientListParameters"/></param>
+        /// <param name="month">Se <see cref="NavEncryptedPatientListParameters"/></param>
+        /// <param name="doSubstituteSearch">Se <see cref="NavEncryptedPatientListParameters"/></param>
+        /// <param name="senderXml">Se <see cref="NavEncryptedPatientListParameters"/></param>
+        /// <param name="receiverXml">Se <see cref="NavEncryptedPatientListParameters"/></param>
+        /// <param name="listType">Se <see cref="NavEncryptedPatientListParameters"/></param>
+        /// <returns></returns>
+        Stream NavGetEncryptedPatientListAlternate(string doctorNIN, string municipalityId, byte[] encryptWithX509Certificate, DateTime month, bool doSubstituteSearch, string senderXml, string receiverXml, string listType);
+
+        /// <summary>
         /// Hent ut alle GPContractId's på kontrakter hvis legekontor har et postnummer som er lik eller begynner på postNr.
         /// </summary>
         /// <param name="postNr">Postnummer eller starten av postnummer. Dvs. at postNr.Lenght må være 2, 3 eller 4.</param>
