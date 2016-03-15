@@ -23,7 +23,7 @@ namespace NHN.DtoContracts.Flr.Data
         /// Kommunenummer legen opererer i. Påkrevd.
         /// </summary>
         [DataMember]
-        public int MunicipalityId { get; set; }
+        public string MunicipalityId { get; set; }
 
         /// <summary>
         /// Sertifikat som skal brukes for å kryptere innholdet. I betaversjon: Må være satt til null. I ikke-beta: Påkrevd.
