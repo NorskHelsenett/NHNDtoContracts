@@ -244,6 +244,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// <param name="receiverXml">Se <see cref="NavEncryptedPatientListParameters"/></param>
         /// <param name="listType">Se <see cref="NavEncryptedPatientListParameters"/></param>
         /// <returns></returns>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
         Stream NavGetEncryptedPatientListAlternate(string doctorNIN, string municipalityId, byte[] encryptWithX509Certificate, DateTime month, bool doSubstituteSearch, string senderXml, string receiverXml, string listType);
 
         /// <summary>
