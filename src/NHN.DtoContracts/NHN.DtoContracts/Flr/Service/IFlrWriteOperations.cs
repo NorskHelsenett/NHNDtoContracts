@@ -200,7 +200,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>
         /// Service bus: Denne metoden sender event "ContractUpdated" med eventobjekt <see cref="GPContract"/>.
         /// </remarks>
-        /// <param name="gpContractId">Id på kontrakten</param>
+        /// <param name="gpContractIds">Ider på kontraktene</param>
         /// <param name="coopMunicipalities">Liste med samarbeidende kommuner.</param>
         /// <exception cref="ArgumentException">Kastes hvis listen med kommuner er null</exception>
         /// <exception cref="ArgumentException">Kastes hvis kontrakten med angitt id ikke finnes</exception>
@@ -217,9 +217,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// </example>
         [OperationContract]
         [FaultContract(typeof (GenericFault))]
-        void UpdateGPContractCoopMunicipalities(long gpContractId, IList<Code> coopMunicipalities);
-
-
+        void UpdateGPContractCoopMunicipalities(IList<long> gpContractIds, IList<Code> coopMunicipalities);
 
         // --------------------------
         // Utekontor 
