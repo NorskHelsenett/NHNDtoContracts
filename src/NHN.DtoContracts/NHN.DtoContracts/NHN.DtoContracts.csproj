@@ -53,6 +53,7 @@
     <Compile Include="Flr\Data\PatientToGPContractAssociation.cs" />
     <Compile Include="Flr\Data\Person.cs" />
     <Compile Include="Flr\Data\GPSearchParameters.cs" />
+    <Compile Include="Flr\Data\ContractWithPeriod.cs" />
     <Compile Include="Flr\Service\IFlrExportOperations.cs" />
     <Compile Include="Flr\Service\IFlrReadOperations.cs" />
     <Compile Include="Flr\Service\IFlrWriteOperations.cs" />
