@@ -281,5 +281,15 @@ namespace NHN.DtoContracts.Flr.Service
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         PagedResult<GPDetails> SearchForGP(GPSearchParameters searchParameters);
+
+        /// <summary>
+        /// Henter pasientlister i gammelt NAV fil-format. 
+        /// Streamen er ZipArchive
+        /// </summary>
+        /// <param name="contracts">Kontrakter med perioden du vil ha pasientliste for</param>
+        /// <returns>ZipArchive Stream</returns>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        Stream GetPatientListDiscs(IEnumerable<ContractWithPeriod> contracts);
     }
 }
