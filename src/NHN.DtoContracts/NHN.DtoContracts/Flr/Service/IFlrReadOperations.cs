@@ -286,10 +286,10 @@ namespace NHN.DtoContracts.Flr.Service
         /// Henter pasientlister i gammelt NAV fil-format. 
         /// Streamen er ZipArchive
         /// </summary>
-        /// <param name="contracts">Kontrakter med perioden du vil ha pasientliste for</param>
+        /// <param name="parameters">Bestemmer hva som skal hentes, og i hviklket format</param>
         /// <returns>ZipArchive Stream</returns>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        Stream GetPatientListDiscs(IEnumerable<ContractWithPeriod> contracts);
+        Stream GetNavPatientLists(GetNavPatientListsParameters parameters);
     }
 }
