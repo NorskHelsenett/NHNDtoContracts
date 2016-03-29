@@ -1,13 +1,14 @@
+using System;
+using System.Collections;
 using System.Runtime.Serialization;
-using NHN.DtoContracts.Common.en;
 
-namespace NHN.DtoContracts.Flr.Service
+namespace NHN.DtoContracts.Flr.Data
 {
     /// <summary>
     /// Brukes for å hente PasientLister i NAV disc format.
     /// </summary>
     [DataContract]
-    public class ContractWithPeriod
+    public class ContractWithMonth
     {
         /// <summary>
         /// Kontrakt id man ønsker å hente
@@ -15,9 +16,11 @@ namespace NHN.DtoContracts.Flr.Service
         [DataMember]
         public long ContractId { get; set; }
         /// <summary>
-        /// Perioden man ønsker listen hentet for
+        /// Måneden man ønsker listen hentet for
         /// </summary>
         [DataMember]
-        public Period Period { get; set; }
+        public DateTime Month { get; set; }
+
+
     }
 }

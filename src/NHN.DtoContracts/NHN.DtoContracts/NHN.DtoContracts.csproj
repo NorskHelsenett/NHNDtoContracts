@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Common\en\GeographicalCoordinates.cs" />
     <Compile Include="Common\HelperInterfaces\IHasGeographicalCoordinates.cs" />
+    <Compile Include="Flr\Data\GetNavPatientListsParameters.cs" />
     <Compile Include="Flr\Data\GPContract.cs" />
     <Compile Include="Flr\Data\GPDetails.cs" />
     <Compile Include="Flr\Data\GPOnContractAssociation.cs" />
@@ -53,7 +54,7 @@
     <Compile Include="Flr\Data\PatientToGPContractAssociation.cs" />
     <Compile Include="Flr\Data\Person.cs" />
     <Compile Include="Flr\Data\GPSearchParameters.cs" />
-    <Compile Include="Flr\Data\ContractWithPeriod.cs" />
+    <Compile Include="Flr\Data\ContractWithMonth.cs" />
     <Compile Include="Flr\Service\IFlrExportOperations.cs" />
     <Compile Include="Flr\Service\IFlrReadOperations.cs" />
     <Compile Include="Flr\Service\IFlrWriteOperations.cs" />
