@@ -9,6 +9,7 @@ namespace NHN.DtoContracts.Flr.Data
     /// Representerer informasjon om et utekontor
     /// </summary>
     [DataContract(Namespace = FlrXmlNamespace.V1)]
+    [Serializable]
     public class OutOfOfficeLocation
     {
         /// <summary>

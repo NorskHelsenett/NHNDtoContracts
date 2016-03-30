@@ -9,6 +9,7 @@ namespace NHN.DtoContracts.Flr.Data
     /// Representerer koblingen mellom en pasient og til en fastlegeliste.
     /// </summary>
     [DataContract(Namespace = FlrXmlNamespace.V1)]
+    [Serializable]
     public class PatientToGPContractAssociation
     {
         /// <summary>

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 
@@ -8,6 +9,7 @@ namespace NHN.DtoContracts.Common.en
     /// Åpningstider.
     /// </summary>
     [DataContract(Namespace = CommonXmlNamespaces.XmlNsCommonEnglishOld)]
+    [Serializable]
     public class OpeningHours
     {
         /// <summary>

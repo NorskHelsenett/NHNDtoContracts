@@ -9,6 +9,7 @@ namespace NHN.DtoContracts.Flr.Data
     /// Beskriver en periode en lege er tilknyttet en GPContract.
     /// </summary>
     [DataContract(Namespace = FlrXmlNamespace.V1)]
+    [Serializable]
     public class GPOnContractAssociation
     {
         /// <summary>

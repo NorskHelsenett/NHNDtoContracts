@@ -9,6 +9,7 @@ namespace NHN.DtoContracts.Htk
     /// Virksomhet.
     /// </summary>
     [DataContract(Namespace =  CorporateXmlNamespace.XmlNsCorporate)]
+    [Serializable]
     public class Business
     {
         /// <summary>
