@@ -11,6 +11,9 @@ namespace NHN.DtoContracts.Flr.Service
     /// <summary>
     /// Leseoperasjoner for FLR (GP v2)
     /// </summary>
+    /// <permission>
+    /// Tillater ikke anonyme brukere
+    /// </permission>
     [ServiceContract(Namespace = FlrXmlNamespace.V1)]
     public interface IFlrReadOperations
     {
@@ -27,6 +30,9 @@ namespace NHN.DtoContracts.Flr.Service
         /// var patientGP = flrReadService.GetPatientGPDetails(patientNin);
         /// </code>
         /// </example>
+        /// <permission>
+        /// Krever en av rollene ADMINISTRATOR, FLR_READ eller FLR_LOOKUP
+        /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         PatientToGPContractAssociation GetPatientGPDetails(string patientNin);
@@ -43,6 +49,9 @@ namespace NHN.DtoContracts.Flr.Service
         /// var patientGPAssociationList = flrReadService.GetPatientsGPDetails(listOfPatientNins);
         /// </code>
         /// </example>
+        /// <permission>
+        /// Krever en av rollene ADMINISTRATOR, FLR_READ eller FLR_LOOKUP
+        /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         IList<PatientToGPContractAssociation> GetPatientsGPDetails(string[] patientNins);
@@ -71,6 +80,9 @@ namespace NHN.DtoContracts.Flr.Service
         /// }
         /// </code>
         /// </example>
+        /// <permission>
+        /// Krever en av rollene ADMINISTRATOR, FLR_READ eller FLR_LOOKUP
+        /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         IList<PatientToGPContractAssociation> GetPatientsGPDetailsAtTime(NinWithTimestamp[] patientNins);
@@ -91,7 +103,10 @@ namespace NHN.DtoContracts.Flr.Service
         /// <code>
         /// var patientGPHistoryList = flrReadService.GetPatientGPHistory(patientNin);
         /// </code>
-        /// </example>
+        /// </example>       
+        /// <permission>
+        /// Krever en av rollene ADMINISTRATOR eller FLR_READ
+        /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         IList<PatientToGPContractAssociation> GetPatientGPHistory(string patientNin, bool includePatientData);
@@ -107,7 +122,10 @@ namespace NHN.DtoContracts.Flr.Service
         /// <code>
         /// var gpContract = flrReadService.GetGPContract(gpContractId);
         /// </code>
-        /// </example>
+        /// </example>       
+        /// <permission>
+        /// Krever en av rollene ADMINISTRATOR eller FLR_READ
+        /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         GPContract GetGPContract(long gpContractId);
@@ -132,7 +150,10 @@ namespace NHN.DtoContracts.Flr.Service
         /// //Alle kontrakter også historiske
         /// var contractsOnOfficeList = flrReadService.GetGPContractsOnOffice(organizationNumber, null);
         /// </code>
-        /// </example>
+        /// </example>       
+        /// <permission>
+        /// Krever en av rollene ADMINISTRATOR eller FLR_READ
+        /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         IList<GPContract> GetGPContractsOnOffice(int organizationNumber, DateTime? atTime);
@@ -151,7 +172,10 @@ namespace NHN.DtoContracts.Flr.Service
         /// <code>
         /// var gpPatientList = flrReadService.GetGPPatientList(gpContractId);
         /// </code>
-        /// </example>
+        /// </example>       
+        /// <permission>
+        /// Krever en av rollene ADMINISTRATOR eller FLR_READ
+        /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         IList<PatientToGPContractAssociation> GetGPPatientList(long gpContractId);
@@ -175,7 +199,10 @@ namespace NHN.DtoContracts.Flr.Service
         /// var gpDetail = flrReadService.GetGPWithAssociatedGPContracts(hprNumber, null);
         /// var contractsList = gpDetail.Contracts;
         /// </code>
-        /// </example>
+        /// </example>       
+        /// <permission>
+        /// Krever en av rollene ADMINISTRATOR eller FLR_READ
+        /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         GPDetails GetGPWithAssociatedGPContracts(int hprNumber, DateTime? atTime);
@@ -198,7 +225,10 @@ namespace NHN.DtoContracts.Flr.Service
         /// //Alle kontrakter også historiske
         /// var isConfirmedGP = flrReadService.ConfirmGP(patientNin,hprNumber, null);
         /// </code>
-        /// </example>
+        /// </example>       
+        /// <permission>
+        /// Krever en av rollene ADMINISTRATOR eller FLR_READ
+        /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         bool ConfirmGP(string patientNin, int hprNumber, DateTime? atTime);
@@ -218,7 +248,10 @@ namespace NHN.DtoContracts.Flr.Service
         /// <code>
         /// var contract = flrReadService.GetGPContractForNav(doctorNin,municipalityNr, doSubstituteSearch);
         /// </code>
-        /// </example>
+        /// </example>       
+        /// <permission>
+        /// Krever en av rollene ADMINISTRATOR eller FLR_READ_EXTENDED
+        /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         GPContract GetGPContractForNav(string doctorNin, string municipalityNr, bool doSubstituteSearch);
@@ -227,7 +260,10 @@ namespace NHN.DtoContracts.Flr.Service
         /// Returnerer pasientlister på gammelt kith/nav format. Se <see cref="NavEncryptedPatientListParameters"/> for inputinfo. MERK: Metoden returnerer IKKE KRYPTERTE data per dags dato.
         /// </summary>
         /// <param name="param">Parametre for uttrek</param>
-        /// <returns>Kryptert stream.</returns>
+        /// <returns>Kryptert stream.</returns>       
+        /// <permission>
+        /// Krever en av rollene ADMINISTRATOR eller FLR_READ_EXTENDED
+        /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         Stream NavGetEncryptedPatientList(NavEncryptedPatientListParameters param);
@@ -243,7 +279,10 @@ namespace NHN.DtoContracts.Flr.Service
         /// <param name="senderXml">Se <see cref="NavEncryptedPatientListParameters"/></param>
         /// <param name="receiverXml">Se <see cref="NavEncryptedPatientListParameters"/></param>
         /// <param name="listType">Se <see cref="NavEncryptedPatientListParameters"/></param>
-        /// <returns></returns>
+        /// <returns></returns>       
+        /// <permission>
+        /// Krever en av rollene ADMINISTRATOR eller FLR_READ_EXTENDED
+        /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         Stream NavGetEncryptedPatientListAlternate(string doctorNIN, string municipalityId, byte[] encryptWithX509Certificate, DateTime month, bool doSubstituteSearch, string senderXml, string receiverXml, string listType);
@@ -259,7 +298,10 @@ namespace NHN.DtoContracts.Flr.Service
         /// <code>
         /// var contractIdList = flrReadService.GetGPContractIdsOperatingInPostalCode(postnr);
         /// </code>
-        /// </example>
+        /// </example>       
+        /// <permission>
+        /// Krever en av rollene ADMINISTRATOR eller FLR_READ
+        /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         IList<long> GetGPContractIdsOperatingInPostalCode(string postNr);
@@ -277,7 +319,10 @@ namespace NHN.DtoContracts.Flr.Service
         /// //For et gitt tidspunkt
         /// var searchResult = flrReadService.SearchForGP(searchCriteria);
         /// </code>
-        /// </example>
+        /// </example>       
+        /// <permission>
+        /// Krever en av rollene ADMINISTRATOR eller FLR_READ
+        /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         PagedResult<GPDetails> SearchForGP(GPSearchParameters searchParameters);
@@ -287,7 +332,11 @@ namespace NHN.DtoContracts.Flr.Service
         /// Streamen er ZipArchive
         /// </summary>
         /// <param name="parameters">Bestemmer hva som skal hentes, og i hviklket format</param>
-        /// <returns>ZipArchive Stream</returns>
+        /// <returns>ZipArchive Stream</returns>      
+        /// <permission>
+        /// Krever en av rollene ADMINISTRATOR, FLR_READ_ALL_PATIENTS eller ADRESSEREGISTER_ADMINISTRATOR
+        /// ADRESSEREGISTER_ADMINISTRATOR rollen må også være knyttet til Unit som kontrakten er knyttet til
+        /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         Stream GetNavPatientLists(GetNavPatientListsParameters parameters);
