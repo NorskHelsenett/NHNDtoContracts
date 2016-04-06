@@ -175,6 +175,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// </example>       
         /// <permission>
         /// Krever en av rollene ADMINISTRATOR eller FLR_READ
+        /// FLR_READ rollen må også være knyttet til Unit som kontrakten er knyttet til
         /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
