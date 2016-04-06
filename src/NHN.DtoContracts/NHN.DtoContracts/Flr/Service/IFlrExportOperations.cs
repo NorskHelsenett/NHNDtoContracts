@@ -27,6 +27,9 @@ namespace NHN.DtoContracts.Flr.Service
         /// var zip = flrExportService.EXportGPContracts(searchCriteria);
         /// </code>
         /// </example>
+        /// <permission>
+        /// Krever en av rollene ADMINISTRATOR eller FLR_READ_ALL_PATIENTS
+        /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         Stream ExportGPContracts(ContractsQueryParameters searchParameters);
