@@ -565,11 +565,9 @@ namespace NHN.DtoContracts.Flr.Service
         void CancelGPContractAndMovePatients(long gpContractId, Code endReason, Period period, ICollection<PatientToGPContractAssociation> capitaToMove);
 
         /// <summary>
-        /// Avslutte innbyggerens tilhørighet på en fastlegeliste/avtale. Denne metoden avslutter også alle fremtidige tilhørigheter for innbyggeren på denne kontrakten. Dvs, assiosasjoner hvor Valid.To > DateTime.Now.
+        /// Avslutte innbyggerens tilhørighet på en fastlegeliste/avtale. Denne metoden avslutter også alle fremtidige tilhørigheter for innbyggeren på denne kontrakten. Dvs, assosiasjoner hvor Valid.To > DateTime.Now.
         /// </summary>
         /// <remarks>
-        /// Publiserer event "PatientOnContractCanceled" ved vellykket operasjon.
-        /// 
         /// Service bus: Denne metoden sender event "PatientOnContractCanceled" med eventobjekt <see cref="PatientToGPContractAssociation"/>.
         /// </remarks>
         /// <param name="gpContractId">Referanse til fastlegelisten</param>
@@ -588,11 +586,9 @@ namespace NHN.DtoContracts.Flr.Service
         void CancelPatientOnGPContract(long gpContractId, string patientNin, Code endReason, DateTime endTime);
 
         /// <summary>
-        /// Avslutte innbyggerens tilhørighet på en fastlegeliste/avtale. Denne metoden avslutter også alle fremtidige tilhørigheter for innbyggeren på denne kontrakten. Dvs, assiosasjoner hvor Valid.To > DateTime.Now.
+        /// Avslutte innbyggernes tilhørighet på en fastlegeliste/avtale. Denne metoden avslutter også alle fremtidige tilhørigheter for innbyggerene på denne kontrakten. Dvs, assosiasjoner hvor Valid.To > DateTime.Now.
         /// </summary>
         /// <remarks>
-        /// Publiserer event "PatientOnContractCanceled" ved vellykket operasjon.
-        /// 
         /// Service bus: Denne metoden sender event "PatientOnContractCanceled" med eventobjekt <see cref="PatientToGPContractAssociation"/>
         /// for hver pasient som blir kansellert.
         /// </remarks>
