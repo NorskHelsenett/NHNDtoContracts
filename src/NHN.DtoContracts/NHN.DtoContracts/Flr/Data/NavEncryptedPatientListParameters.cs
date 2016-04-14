@@ -26,8 +26,9 @@ namespace NHN.DtoContracts.Flr.Data
         public string MunicipalityId { get; set; }
 
         /// <summary>
-        /// Sertifikat som skal brukes for å kryptere innholdet. I betaversjon: Må være satt til null. I ikke-beta: Påkrevd.
-        /// </summary>
+        /// Sertifikatet som skal brukes for å kryptere innholdet i form av en byte[].
+        /// Vi bruker X.509 sertifikater.
+        /// </summary> 
         [DataMember]
         public byte[] EncryptWithX509Certificate { get; set; }
 
@@ -71,7 +72,7 @@ namespace NHN.DtoContracts.Flr.Data
 
         /// <summary>
         /// XML av MsgHead.MsgInfo.Receiver objektet. Merk at xmlns:mh må være med. Påkrevd
-        /// Se Senderxml for prinsipp.
+        /// Se <see cref="SenderXml">SenderXml</see> for prinsipp.
         /// </summary>
         [DataMember]
         public string ReceiverXml { get; set; }

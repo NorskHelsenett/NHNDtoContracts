@@ -17,7 +17,7 @@ namespace NHN.DtoContracts.Flr.Data
 
         /// <summary>
         /// Formatet som blir returnert, kan være txt eller xml.
-        /// txt = Nav-Filformat med konstant lengde
+        /// disk = Nav-Filformat med konstant lengde
         /// xml = Navn-Xml format
         /// </summary>
         [DataMember]

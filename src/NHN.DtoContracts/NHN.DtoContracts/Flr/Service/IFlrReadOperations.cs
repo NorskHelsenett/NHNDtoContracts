@@ -143,7 +143,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <exception cref="ArgumentException">Kastes hvis et ugyldig organisasjonsnummer er gitt</exception>
         /// <exception cref="ArgumentException">Kastes hvis en virksomhet ikke har noen fastlegeavtaler</exception>
         /// <example>
-        /// <code>
+        /// <code language="C#">
         /// //For et gitt tidspunkt
         /// var atTime = DateTime.Now;
         /// var contractsOnOfficeList = flrReadService.GetGPContractsOnOffice(organizationNumber, atTime);
@@ -190,7 +190,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <returns>Fastlegeavtaler som er tilknyttet til samme en lege</returns>
         /// <exception cref="ArgumentException">Kastes hvis en leges hpr-nummer ikke er registrert som fastlege</exception>
         /// <example>
-        /// <code>
+        /// <code langluage="C#">
         /// //For et gitt tidspunkt
         /// var atTime = DateTime.Now;
         /// var gpDetail = flrReadService.GetGPWithAssociatedGPContracts(hprNumber, atTime);
@@ -218,7 +218,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <exception cref="ArgumentException">Kastes hvis en pasients referanse id er ugyldig</exception>
         /// <exception cref="ArgumentException">Kastes hvis hpr nummer er ugyldig</exception>
         /// <example>
-        /// <code>
+        /// <code language="C#">
         /// //For et gitt tidspunkt
         /// var atTime = DateTime.Now;
         /// var isConfirmedGP = flrReadService.ConfirmGP(patientNin,hprNumber, atTime);
@@ -258,10 +258,11 @@ namespace NHN.DtoContracts.Flr.Service
         GPContract GetGPContractForNav(string doctorNin, string municipalityNr, bool doSubstituteSearch);
 
         /// <summary>
-        /// Returnerer pasientlister på gammelt kith/nav format. Se <see cref="NavEncryptedPatientListParameters"/> for inputinfo. MERK: Metoden returnerer IKKE KRYPTERTE data per dags dato.
+        /// Returnerer pasientlister på gammelt kith/nav format. Se <see cref="NavEncryptedPatientListParameters"/> for inputinfo.
+        /// Stream som returneres er kryptert ved hjelp av CMS/PKCS#7. Xml er signert som beskrevet i schema.
         /// </summary>
         /// <param name="param">Parametre for uttrek</param>
-        /// <returns>Kryptert stream.</returns>       
+        /// <returns>CMS/PKCS#7 cryptert Stream</returns>
         /// <permission>
         /// Krever en av rollene ADMINISTRATOR eller FLR_READ_EXTENDED
         /// </permission>
@@ -270,17 +271,18 @@ namespace NHN.DtoContracts.Flr.Service
         Stream NavGetEncryptedPatientList(NavEncryptedPatientListParameters param);
 
         /// <summary>
-        /// Returnerer pasientlister på gammelt kith/nav format. Se <see cref="NavEncryptedPatientListParameters"/> for beskrivelse av de faktiske parameterene. MERK: Metoden returnerer IKKE KRYPTERTE data per dags dato.
+        /// Returnerer pasientlister på gammelt kith/nav format. Se <see cref="NavEncryptedPatientListParameters"/> for beskrivelse av de faktiske parameterene.
+        /// Stream som returneres er kryptert ved hjelp av CMS/PKCS#7. Xml er signert som beskrevet i schema.
         /// </summary>
-        /// <param name="doctorNIN">Se <see cref="NavEncryptedPatientListParameters"/></param>
-        /// <param name="municipalityId">Se <see cref="NavEncryptedPatientListParameters"/></param>
-        /// <param name="encryptWithX509Certificate">Se <see cref="NavEncryptedPatientListParameters"/></param>
-        /// <param name="month">Se <see cref="NavEncryptedPatientListParameters"/></param>
-        /// <param name="doSubstituteSearch">Se <see cref="NavEncryptedPatientListParameters"/></param>
-        /// <param name="senderXml">Se <see cref="NavEncryptedPatientListParameters"/></param>
-        /// <param name="receiverXml">Se <see cref="NavEncryptedPatientListParameters"/></param>
-        /// <param name="listType">Se <see cref="NavEncryptedPatientListParameters"/></param>
-        /// <returns></returns>       
+        /// <param name="doctorNIN">Se <see cref="NavEncryptedPatientListParameters.DoctorNIN"/></param>
+        /// <param name="municipalityId">Se <see cref="NavEncryptedPatientListParameters.MunicipalityId"/></param>
+        /// <param name="encryptWithX509Certificate">Se <see cref="NavEncryptedPatientListParameters.EncryptWithX509Certificate"/></param>
+        /// <param name="month">Se <see cref="NavEncryptedPatientListParameters.Month"/></param>
+        /// <param name="doSubstituteSearch">Se <see cref="NavEncryptedPatientListParameters.DoSubstituteSearch"/></param>
+        /// <param name="senderXml">Se <see cref="NavEncryptedPatientListParameters.SenderXml"/></param>
+        /// <param name="receiverXml">Se <see cref="NavEncryptedPatientListParameters.ReceiverXml"/></param>
+        /// <param name="listType">Se <see cref="NavEncryptedPatientListParameters.ListType"/></param>
+        /// <returns>CMS/PKCS#7 cryptert Stream</returns>    
         /// <permission>
         /// Krever en av rollene ADMINISTRATOR eller FLR_READ_EXTENDED
         /// </permission>
@@ -332,8 +334,25 @@ namespace NHN.DtoContracts.Flr.Service
         /// Henter pasientlister i gammelt NAV fil-format. 
         /// Streamen er ZipArchive
         /// </summary>
-        /// <param name="parameters">Bestemmer hva som skal hentes, og i hviklket format</param>
-        /// <returns>ZipArchive Stream</returns>      
+        /// <param name="parameters" cref="GetNavPatientListsParameters">Bestemmer hva som skal hentes, og i hviklket format</param>
+        /// <returns>ZipArchive Stream, der Entries er av typen spesifisert i parameters, se <see cref="GetNavPatientListsParameters.FormatType"/> </returns>      
+        /// <example>
+        /// <code language="C#">
+        /// <![CDATA[
+        /// using (var archive = new ZipArchive(FlrExportService.GetNavPatientLists(new GetNavPatientListsParameters
+        /// {
+        ///     FormatType = "xml",
+        ///     Contracts = new[] { new ContractWithMonth { ContractId = 31, Month = DateTime.Parse("2016-03-01") } }
+        /// })))
+        /// {
+        ///     foreach (var entry in archive.Entries)
+        ///     {
+        ///         var enstryStream = entry.Open();
+        ///     }
+        /// }
+        /// ]]>
+        /// </code>
+        /// </example>
         /// <permission>
         /// Krever en av rollene ADMINISTRATOR, FLR_READ_ALL_PATIENTS eller ADRESSEREGISTER_ADMINISTRATOR
         /// ADRESSEREGISTER_ADMINISTRATOR rollen må også være knyttet til Unit som kontrakten er knyttet til
