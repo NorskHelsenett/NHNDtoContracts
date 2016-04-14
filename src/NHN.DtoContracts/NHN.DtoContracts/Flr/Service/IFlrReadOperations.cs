@@ -263,45 +263,6 @@ namespace NHN.DtoContracts.Flr.Service
         /// </summary>
         /// <param name="param">Parametre for uttrek</param>
         /// <returns>CMS/PKCS#7 cryptert Stream</returns>
-        /// <example>
-        /// <code language="C#">
-        /// <![CDATA[
-        /// var queryParams = new NavEncryptedPatientListParameters
-        /// {
-        ///     DoctorNIN = TestData.Doctor1.SSN,
-        ///     DoSubstituteSearch = false,
-        ///     ListType = "xml",
-        ///     Month = thisMonth,
-        ///     MunicipalityId = "1601",
-        ///     SenderXml = SenderXml,
-        ///     ReceiverXml = ReceiverXml,
-        ///     EncryptWithX509Certificate = certForEncrypt.RawData
-        /// };
-        /// Func<byte[], X509Certificate2, byte[]> decrypt = (encodedEnv, decryptX509Cert) =>
-        /// {
-        ///     var envelopedCms = new EnvelopedCms();
-        ///     envelopedCms.Decode(encodedEnv);
-        ///     if (decryptX509Cert != null)
-        ///         envelopedCms.Decrypt(envelopedCms.RecipientInfos[0], new X509Certificate2Collection(decryptX509Cert));
-        ///     else
-        ///         envelopedCms.Decrypt(envelopedCms.RecipientInfos[0]);
-        ///     return envelopedCms.ContentInfo.Content;
-        /// };
-        /// using (var stream = FlrReadOperationsService.NavGetEncryptedPatientList(queryParams))
-        /// {
-        ///     var memStream = new MemoryStream();
-        ///     stream.CopyTo(memStream);
-        ///     var decryptData = decrypt(memStream.ToArray(), certForEncrypt);
-        ///     memStream = new MemoryStream(decryptData);
-        ///     var xmlDoc = new XmlDocument { PreserveWhitespace = true };
-        ///     xmlDoc.Load(memStream);
-        ///     var signedXml = new SignedXml(xmlDoc);
-        ///     signedXml.LoadXml(GetSignture(xmlDoc));
-        ///     Debug.Assert(signedXml.CheckSignature());
-        /// }
-        /// ]]>
-        /// </code>
-        /// </example>    
         /// <permission>
         /// Krever en av rollene ADMINISTRATOR eller FLR_READ_EXTENDED
         /// </permission>
@@ -321,42 +282,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <param name="senderXml">Se <see cref="NavEncryptedPatientListParameters.SenderXml"/></param>
         /// <param name="receiverXml">Se <see cref="NavEncryptedPatientListParameters.ReceiverXml"/></param>
         /// <param name="listType">Se <see cref="NavEncryptedPatientListParameters.ListType"/></param>
-        /// <returns>CMS/PKCS#7 cryptert Stream</returns>
-        /// <example>
-        /// <code language="C#">
-        ///  <![CDATA[
-        /// Func<byte[], X509Certificate2, byte[]> decrypt = (encodedEnv, decryptX509Cert) =>
-        /// {
-        ///     var envelopedCms = new System.Security.Cryptography.Pkcs.EnvelopedCms();
-        ///     envelopedCms.Decode(encodedEnv);
-        ///     if (decryptX509Cert != null)
-        ///         envelopedCms.Decrypt(envelopedCms.RecipientInfos[0], new X509Certificate2Collection(decryptX509Cert));
-        ///     else
-        ///         envelopedCms.Decrypt(envelopedCms.RecipientInfos[0]);
-        ///     return envelopedCms.ContentInfo.Content;
-        /// };
-        /// using (var stream = FlrReadOperationsService.NavGetEncryptedPatientListAlternate(doctorNIN: TestData.Doctor1.SSN,
-        ///     doSubstituteSearch: false,
-        ///     listType: "xml",
-        ///     month: thisMonth,
-        ///     municipalityId: "1601",
-        ///     senderXml: SenderXml,
-        ///     receiverXml: ReceiverXml,
-        ///     encryptWithX509Certificate: certForEncrypt.RawData))
-        /// {
-        ///     var memStream = new MemoryStream();
-        ///     stream.CopyTo(memStream);
-        ///     var decryptData = decrypt(memStream.ToArray(), certForEncrypt);
-        ///     memStream = new MemoryStream(decryptData);
-        ///     var xmlDoc = new XmlDocument { PreserveWhitespace = true };
-        ///     xmlDoc.Load(memStream);
-        ///     var signedXml = new SignedXml(xmlDoc);
-        ///     signedXml.LoadXml(GetSignture(xmlDoc));
-        ///     Debug.Assert(signedXml.CheckSignature());
-        /// }
-        /// ]]>
-        /// </code>
-        /// </example>        
+        /// <returns>CMS/PKCS#7 cryptert Stream</returns>    
         /// <permission>
         /// Krever en av rollene ADMINISTRATOR eller FLR_READ_EXTENDED
         /// </permission>
