@@ -565,11 +565,9 @@ namespace NHN.DtoContracts.Flr.Service
         void CancelGPContractAndMovePatients(long gpContractId, Code endReason, Period period, ICollection<PatientToGPContractAssociation> capitaToMove);
 
         /// <summary>
-        /// Avslutte innbyggerens tilhørighet på en fastlegeliste/avtale. Denne metoden avslutter også alle fremtidige tilhørigheter for innbyggeren på denne kontrakten. Dvs, assiosasjoner hvor Valid.To > DateTime.Now.
+        /// Avslutte innbyggerens tilhørighet på en fastlegeliste/avtale. Denne metoden avslutter også alle fremtidige tilhørigheter for innbyggeren på denne kontrakten. Dvs, assosiasjoner hvor Valid.To > DateTime.Now.
         /// </summary>
         /// <remarks>
-        /// Publiserer event "PatientOnContractCanceled" ved vellykket operasjon.
-        /// 
         /// Service bus: Denne metoden sender event "PatientOnContractCanceled" med eventobjekt <see cref="PatientToGPContractAssociation"/>.
         /// </remarks>
         /// <param name="gpContractId">Referanse til fastlegelisten</param>
@@ -586,6 +584,24 @@ namespace NHN.DtoContracts.Flr.Service
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         void CancelPatientOnGPContract(long gpContractId, string patientNin, Code endReason, DateTime endTime);
+
+        /// <summary>
+        /// Avslutte innbyggernes tilhørighet på en fastlegeliste/avtale. Denne metoden avslutter også alle fremtidige tilhørigheter for innbyggerene på denne kontrakten. Dvs, assosiasjoner hvor Valid.To > DateTime.Now.
+        /// </summary>
+        /// <remarks>
+        /// Service bus: Denne metoden sender event "PatientOnContractCanceled" med eventobjekt <see cref="PatientToGPContractAssociation"/>
+        /// for hver pasient som blir kansellert.
+        /// </remarks>
+        /// <param name="patientsWithEndReason">Dictionary som inneholder par med innbyggers fødselsnummer og referanse til kodeverk for avslutningskode, <see cref="CancelPatientOnGPContract"/>.</param>
+        /// <param name="gpContractId">Referanse til fastlegelisten</param>
+        /// <param name="endTime">På hvilket tidspunkt skal kontrakten avsluttes.</param>
+        /// <exception cref="ArgumentException">Kastes hvis en pasient ikke finnes på fastlegelisten i den gitte perioden</exception>
+        /// <permission>
+        /// Krever en av rollene ADMINISTRATOR eller FLR_WRITE
+        /// </permission>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        void CancelPatientsOnGPContract(Dictionary<string, Code> patientsWithEndReason, long gpContractId, DateTime endTime);
 
         /// <summary>
         /// Brukes for å sette visningsnavnet på et legekontor. Merk at legekontoret selv kan overskrive det som eventuelt settes her selv.
