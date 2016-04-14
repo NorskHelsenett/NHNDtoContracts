@@ -258,10 +258,51 @@ namespace NHN.DtoContracts.Flr.Service
         GPContract GetGPContractForNav(string doctorNin, string municipalityNr, bool doSubstituteSearch);
 
         /// <summary>
-        /// Returnerer pasientlister på gammelt kith/nav format. Se <see cref="NavEncryptedPatientListParameters"/> for inputinfo. MERK: Metoden returnerer IKKE KRYPTERTE data per dags dato.
+        /// Returnerer pasientlister på gammelt kith/nav format. Se <see cref="NavEncryptedPatientListParameters"/> for inputinfo.
+        /// Stream som returneres er kryptert ved hjelp av CMS/PKCS#7. Xml er signert som beskrevet i schema.
         /// </summary>
         /// <param name="param">Parametre for uttrek</param>
-        /// <returns>Kryptert stream.</returns>       
+        /// <returns>CMS/PKCS#7 cryptert Stream</returns>
+        /// <example>
+        /// <code>
+        /// C# eksempel:
+        /// <![CDATA[
+        /// var queryParams = new NavEncryptedPatientListParameters
+        /// {
+        ///     DoctorNIN = TestData.Doctor1.SSN,
+        ///     DoSubstituteSearch = false,
+        ///     ListType = "xml",
+        ///     Month = thisMonth,
+        ///     MunicipalityId = "1601",
+        ///     SenderXml = SenderXml,
+        ///     ReceiverXml = ReceiverXml,
+        ///     EncryptWithX509Certificate = certForEncrypt.RawData
+        /// };
+        /// Func<byte[], X509Certificate2, byte[]> decrypt = (encodedEnv, decryptX509Cert) =>
+        /// {
+        ///     var envelopedCms = new EnvelopedCms();
+        ///     envelopedCms.Decode(encodedEnv);
+        ///     if (decryptX509Cert != null)
+        ///         envelopedCms.Decrypt(envelopedCms.RecipientInfos[0], new X509Certificate2Collection(decryptX509Cert));
+        ///     else
+        ///         envelopedCms.Decrypt(envelopedCms.RecipientInfos[0]);
+        ///     return envelopedCms.ContentInfo.Content;
+        /// };
+        /// using (var stream = FlrReadOperationsService.NavGetEncryptedPatientList(queryParams))
+        /// {
+        ///     var memStream = new MemoryStream();
+        ///     stream.CopyTo(memStream);
+        ///     var decryptData = decrypt(memStream.ToArray(), certForEncrypt);
+        ///     memStream = new MemoryStream(decryptData);
+        ///     var xmlDoc = new XmlDocument { PreserveWhitespace = true };
+        ///     xmlDoc.Load(memStream);
+        ///     var signedXml = new SignedXml(xmlDoc);
+        ///     signedXml.LoadXml(GetSignture(xmlDoc));
+        ///     Debug.Assert(signedXml.CheckSignature());
+        /// }
+        /// ]]>
+        /// </code>
+        /// </example>    
         /// <permission>
         /// Krever en av rollene ADMINISTRATOR eller FLR_READ_EXTENDED
         /// </permission>
@@ -270,7 +311,8 @@ namespace NHN.DtoContracts.Flr.Service
         Stream NavGetEncryptedPatientList(NavEncryptedPatientListParameters param);
 
         /// <summary>
-        /// Returnerer pasientlister på gammelt kith/nav format. Se <see cref="NavEncryptedPatientListParameters"/> for beskrivelse av de faktiske parameterene. MERK: Metoden returnerer IKKE KRYPTERTE data per dags dato.
+        /// Returnerer pasientlister på gammelt kith/nav format. Se <see cref="NavEncryptedPatientListParameters"/> for beskrivelse av de faktiske parameterene.
+        /// Stream som returneres er kryptert ved hjelp av CMS/PKCS#7. Xml er signert som beskrevet i schema.
         /// </summary>
         /// <param name="doctorNIN">Se <see cref="NavEncryptedPatientListParameters"/></param>
         /// <param name="municipalityId">Se <see cref="NavEncryptedPatientListParameters"/></param>
@@ -280,7 +322,43 @@ namespace NHN.DtoContracts.Flr.Service
         /// <param name="senderXml">Se <see cref="NavEncryptedPatientListParameters"/></param>
         /// <param name="receiverXml">Se <see cref="NavEncryptedPatientListParameters"/></param>
         /// <param name="listType">Se <see cref="NavEncryptedPatientListParameters"/></param>
-        /// <returns></returns>       
+        /// <returns>CMS/PKCS#7 cryptert Stream</returns>
+        /// <example>
+        /// <code>
+        /// C# eksempel:
+        /// <![CDATA[
+        /// Func<byte[], X509Certificate2, byte[]> decrypt = (encodedEnv, decryptX509Cert) =>
+        /// {
+        ///     var envelopedCms = new System.Security.Cryptography.Pkcs.EnvelopedCms();
+        ///     envelopedCms.Decode(encodedEnv);
+        ///     if (decryptX509Cert != null)
+        ///         envelopedCms.Decrypt(envelopedCms.RecipientInfos[0], new X509Certificate2Collection(decryptX509Cert));
+        ///     else
+        ///         envelopedCms.Decrypt(envelopedCms.RecipientInfos[0]);
+        ///     return envelopedCms.ContentInfo.Content;
+        /// };
+        /// using (var stream = FlrReadOperationsService.NavGetEncryptedPatientListAlternate(doctorNIN: TestData.Doctor1.SSN,
+        ///     doSubstituteSearch: false,
+        ///     listType: "xml",
+        ///     month: thisMonth,
+        ///     municipalityId: "1601",
+        ///     senderXml: SenderXml,
+        ///     receiverXml: ReceiverXml,
+        ///     encryptWithX509Certificate: certForEncrypt.RawData))
+        /// {
+        ///     var memStream = new MemoryStream();
+        ///     stream.CopyTo(memStream);
+        ///     var decryptData = decrypt(memStream.ToArray(), certForEncrypt);
+        ///     memStream = new MemoryStream(decryptData);
+        ///     var xmlDoc = new XmlDocument { PreserveWhitespace = true };
+        ///     xmlDoc.Load(memStream);
+        ///     var signedXml = new SignedXml(xmlDoc);
+        ///     signedXml.LoadXml(GetSignture(xmlDoc));
+        ///     Debug.Assert(signedXml.CheckSignature());
+        /// }
+        /// ]]>
+        /// </code>
+        /// </example>        
         /// <permission>
         /// Krever en av rollene ADMINISTRATOR eller FLR_READ_EXTENDED
         /// </permission>
@@ -332,8 +410,25 @@ namespace NHN.DtoContracts.Flr.Service
         /// Henter pasientlister i gammelt NAV fil-format. 
         /// Streamen er ZipArchive
         /// </summary>
-        /// <param name="parameters">Bestemmer hva som skal hentes, og i hviklket format</param>
-        /// <returns>ZipArchive Stream</returns>      
+        /// <param name="parameters" cref="GetNavPatientListsParameters">Bestemmer hva som skal hentes, og i hviklket format</param>
+        /// <returns>ZipArchive Stream, der Entries er av typen spesifisert i parameters, se <see cref="GetNavPatientListsParameters.FormatType"/> </returns>      
+        /// <example>
+        /// <code>
+        /// <![CDATA[
+        /// using (var archive = new ZipArchive(FlrExportService.GetNavPatientLists(new GetNavPatientListsParameters
+        /// {
+        ///     FormatType = "xml",
+        ///     Contracts = new[] { new ContractWithMonth { ContractId = 31, Month = DateTime.Parse("2016-03-01") } }
+        /// })))
+        /// {
+        ///     foreach (var entry in archive.Entries)
+        ///     {
+        ///         var enstryStream = entry.Open();
+        ///     }
+        /// }
+        /// ]]>
+        /// </code>
+        /// </example>
         /// <permission>
         /// Krever en av rollene ADMINISTRATOR, FLR_READ_ALL_PATIENTS eller ADRESSEREGISTER_ADMINISTRATOR
         /// ADRESSEREGISTER_ADMINISTRATOR rollen må også være knyttet til Unit som kontrakten er knyttet til
