@@ -143,7 +143,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <exception cref="ArgumentException">Kastes hvis et ugyldig organisasjonsnummer er gitt</exception>
         /// <exception cref="ArgumentException">Kastes hvis en virksomhet ikke har noen fastlegeavtaler</exception>
         /// <example>
-        /// <code>
+        /// <code language="C#">
         /// //For et gitt tidspunkt
         /// var atTime = DateTime.Now;
         /// var contractsOnOfficeList = flrReadService.GetGPContractsOnOffice(organizationNumber, atTime);
@@ -190,7 +190,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <returns>Fastlegeavtaler som er tilknyttet til samme en lege</returns>
         /// <exception cref="ArgumentException">Kastes hvis en leges hpr-nummer ikke er registrert som fastlege</exception>
         /// <example>
-        /// <code>
+        /// <code langluage="C#">
         /// //For et gitt tidspunkt
         /// var atTime = DateTime.Now;
         /// var gpDetail = flrReadService.GetGPWithAssociatedGPContracts(hprNumber, atTime);
@@ -218,7 +218,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <exception cref="ArgumentException">Kastes hvis en pasients referanse id er ugyldig</exception>
         /// <exception cref="ArgumentException">Kastes hvis hpr nummer er ugyldig</exception>
         /// <example>
-        /// <code>
+        /// <code language="C#">
         /// //For et gitt tidspunkt
         /// var atTime = DateTime.Now;
         /// var isConfirmedGP = flrReadService.ConfirmGP(patientNin,hprNumber, atTime);
@@ -264,8 +264,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <param name="param">Parametre for uttrek</param>
         /// <returns>CMS/PKCS#7 cryptert Stream</returns>
         /// <example>
-        /// <code>
-        /// C# eksempel:
+        /// <code language="C#">
         /// <![CDATA[
         /// var queryParams = new NavEncryptedPatientListParameters
         /// {
@@ -314,19 +313,18 @@ namespace NHN.DtoContracts.Flr.Service
         /// Returnerer pasientlister på gammelt kith/nav format. Se <see cref="NavEncryptedPatientListParameters"/> for beskrivelse av de faktiske parameterene.
         /// Stream som returneres er kryptert ved hjelp av CMS/PKCS#7. Xml er signert som beskrevet i schema.
         /// </summary>
-        /// <param name="doctorNIN">Se <see cref="NavEncryptedPatientListParameters"/></param>
-        /// <param name="municipalityId">Se <see cref="NavEncryptedPatientListParameters"/></param>
-        /// <param name="encryptWithX509Certificate">Se <see cref="NavEncryptedPatientListParameters"/></param>
-        /// <param name="month">Se <see cref="NavEncryptedPatientListParameters"/></param>
-        /// <param name="doSubstituteSearch">Se <see cref="NavEncryptedPatientListParameters"/></param>
-        /// <param name="senderXml">Se <see cref="NavEncryptedPatientListParameters"/></param>
-        /// <param name="receiverXml">Se <see cref="NavEncryptedPatientListParameters"/></param>
-        /// <param name="listType">Se <see cref="NavEncryptedPatientListParameters"/></param>
+        /// <param name="doctorNIN">Se <see cref="NavEncryptedPatientListParameters.DoctorNIN"/></param>
+        /// <param name="municipalityId">Se <see cref="NavEncryptedPatientListParameters.MunicipalityId"/></param>
+        /// <param name="encryptWithX509Certificate">Se <see cref="NavEncryptedPatientListParameters.EncryptWithX509Certificate"/></param>
+        /// <param name="month">Se <see cref="NavEncryptedPatientListParameters.Month"/></param>
+        /// <param name="doSubstituteSearch">Se <see cref="NavEncryptedPatientListParameters.DoSubstituteSearch"/></param>
+        /// <param name="senderXml">Se <see cref="NavEncryptedPatientListParameters.SenderXml"/></param>
+        /// <param name="receiverXml">Se <see cref="NavEncryptedPatientListParameters.ReceiverXml"/></param>
+        /// <param name="listType">Se <see cref="NavEncryptedPatientListParameters.ListType"/></param>
         /// <returns>CMS/PKCS#7 cryptert Stream</returns>
         /// <example>
-        /// <code>
-        /// C# eksempel:
-        /// <![CDATA[
+        /// <code language="C#">
+        ///  <![CDATA[
         /// Func<byte[], X509Certificate2, byte[]> decrypt = (encodedEnv, decryptX509Cert) =>
         /// {
         ///     var envelopedCms = new System.Security.Cryptography.Pkcs.EnvelopedCms();
@@ -413,7 +411,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <param name="parameters" cref="GetNavPatientListsParameters">Bestemmer hva som skal hentes, og i hviklket format</param>
         /// <returns>ZipArchive Stream, der Entries er av typen spesifisert i parameters, se <see cref="GetNavPatientListsParameters.FormatType"/> </returns>      
         /// <example>
-        /// <code>
+        /// <code language="C#">
         /// <![CDATA[
         /// using (var archive = new ZipArchive(FlrExportService.GetNavPatientLists(new GetNavPatientListsParameters
         /// {

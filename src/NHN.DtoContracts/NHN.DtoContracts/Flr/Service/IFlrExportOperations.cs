@@ -23,7 +23,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// Alle GPContracts i en IList tilhører samme kontor</returns>
         /// <exception cref="ArgumentException">Kastes hvis feil søkeparameter er oppgitt</exception>
         /// <example>
-        /// <code>
+        /// <code language="C#">
         /// <![CDATA[
         /// using (var archive = new ZipArchive(FlrExportService.ExportGPContracts(searchCriteria)))
         /// {
