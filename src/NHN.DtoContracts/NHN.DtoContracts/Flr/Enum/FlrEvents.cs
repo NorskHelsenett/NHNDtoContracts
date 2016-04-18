@@ -45,7 +45,7 @@ namespace NHN.DtoContracts.Flr.Enum
         /// </summary>
         PatientOnContractCanceled,
         /// <summary>
-        /// Pasient sin SSN er forandret
+        /// Pasient sin NIN er forandret
         /// </summary>
         PatientNinChanged,
         /// <summary>
