@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using NHN.DtoContracts.Htk;
 
 namespace NHN.DtoContracts.Flr.Data
 {
@@ -26,12 +25,6 @@ namespace NHN.DtoContracts.Flr.Data
         public bool ParticipatesOnCommonList { get; set; }
 
         /// <summary>
-        /// Hvorvidt listen er en del av "gruppepraksis".
-        /// </summary>
-        [DataMember]
-        public bool GroupGPOffice { get; set; }
-
-        /// <summary>
         /// Hvorvidt dette er en fastlønnet avtale.
         /// </summary>
         [DataMember]
@@ -49,7 +42,7 @@ namespace NHN.DtoContracts.Flr.Data
         /// Orgnummeret vil en finne i Adresseregisteret og eventuelt RESH. Denne SKAL være NULL ved skriving, og vil være satt ved lesing når det er relevant.
         /// </summary>
         [DataMember]
-        public Business GPOffice { get; set; }
+        public GPOffice GPOffice { get; set; }
 
         /// <summary>
         /// Brukes ved skriving. Vil være satt ved lesing, og vil ha samme verdi som GPOffice.OrganizationNumber
@@ -117,12 +110,6 @@ namespace NHN.DtoContracts.Flr.Data
         /// </summary>
         [DataMember]
         public IList<Code> CoopMunicipalities { get; set; }
-
-        /// <summary>
-        /// Bydel. Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/bydel">bydel</see> (OID 3403).
-        /// </summary>
-        [DataMember]
-        public Code District { get; set; }
 
         /// <summary>
         /// Avslutningsårsak. 

@@ -171,6 +171,15 @@ namespace NHN.DtoContracts.Flr.Service
         [FaultContract(typeof(GenericFault))]
         void UpdateGPContract(GPContract gpContract);
 
+        /// <summary>
+        /// Oppdaterer bydel + hvorvidt et kontor er en del av en gruppepraksis.
+        /// </summary>
+        /// <param name="organizationNumber">Organisasjonsnummer for legekontoret</param>
+        /// <param name="district">Bydel. Null, ingen bydel.</param>
+        /// <param name="isGroupOffice">True hvis legekontor er en gruppepraksis</param>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        void SetDistrictAndIsGroupOffice(int organizationNumber, Code district, bool isGroupOffice);
 
         /// <summary>
         /// Oppdatering av listetak på en fastlegeavtale uten at andre verdier skal endre seg.

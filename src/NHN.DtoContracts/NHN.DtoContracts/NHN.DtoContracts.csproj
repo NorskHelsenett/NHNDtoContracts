@@ -46,6 +46,7 @@
     <Compile Include="Flr\Data\GetNavPatientListsParameters.cs" />
     <Compile Include="Flr\Data\GPContract.cs" />
     <Compile Include="Flr\Data\GPDetails.cs" />
+    <Compile Include="Flr\Data\GPOffice.cs" />
     <Compile Include="Flr\Data\GPOnContractAssociation.cs" />
     <Compile Include="Flr\Data\NavEncryptedPatientListParameters.cs" />
     <Compile Include="Flr\Data\NinWithTimestamp.cs" />
