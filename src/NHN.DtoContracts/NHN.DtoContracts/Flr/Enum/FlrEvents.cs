@@ -1,3 +1,4 @@
+using NHN.DtoContracts.Flr.Service;
 using NHN.DtoContracts.ServiceBus.Service;
 
 namespace NHN.DtoContracts.Flr.Enum
@@ -9,55 +10,100 @@ namespace NHN.DtoContracts.Flr.Enum
     public enum FlrEvents
     {
         /// <summary>
-        /// Ny kontrakt er lagt til
+        /// Publiseres når en ny fastlegeavtale blir opprettet.
+        /// 
+        /// Se <see cref="IFlrWriteOperations.CreateGPContract" />.
         /// </summary>
         ContractCreated,
+
         /// <summary>
-        /// En kontrakt er oppdatert
+        /// Publiseres når en fastlegeavtale blir oppdatert med ny informasjon.
+        /// 
+        /// Se <see cref="IFlrWriteOperations.UpdateGPContract" />,
+        /// <see cref="IFlrWriteOperations.UpdateGPContractMaxPatients" />,
+        /// <see cref="IFlrWriteOperations.UpdateGPContractStatus" />,
+        /// <see cref="IFlrWriteOperations.UpdateGPContractCoopMunicipalities" />,
+        /// <see cref="IFlrWriteOperations.UpdateGPOfficeOnGPContracts" />.
         /// </summary>
         ContractUpdated,
+
         /// <summary>
-        /// En kontrakt er kanselert
+        /// Publiseres når en fastlegeavtale blir avsluttet.
+        /// 
+        /// Se <see cref="IFlrWriteOperations.CancelGPContractAndMovePatients" />.
         /// </summary>
         ContractCanceled,
+
         /// <summary>
-        /// Lege er lagt til en kontrakt
+        /// Publiseres når en ny legeperiode blir koblet mot en fastlegeavtale.
+        /// 
+        /// Se <see cref="IFlrWriteOperations.CreateGPOnContractAssociation" />.
         /// </summary>
         GPOnContractCreated,
+
         /// <summary>
-        /// Lege koblet til kontrakt er oppdatert
+        /// Publiseres når en legeperiode blir oppdatert med ny informasjon.
+        /// 
+        /// Se <see cref="IFlrWriteOperations.UpdateGPOnContractAssociation" />.
         /// </summary>
         GPOnContractUpdated,
+
         /// <summary>
-        /// Lege er slettet fra kontrakt
+        /// Publiseres når en legeperiode blir slettet.
+        /// 
+        /// Se <see cref="IFlrWriteOperations.DeleteGPOnContractAssociation" />.
         /// </summary>
         GPOnContractDeleted,
+
         /// <summary>
-        /// Pasient er lagt til kontrakt
+        /// Publiseres når en pasient blir oppført på pasientlisten tilhørende en fastlegeavtale.
+        /// 
+        /// Se <see cref="IFlrWriteOperations.CreatePatientToGPContractAssociation" />,
+        /// <see cref="IFlrWriteOperations.MovePatients" />,
+        /// <see cref="IFlrWriteOperations.CancelGPContractAndMovePatients" />.
         /// </summary>
         PatientOnContractCreated,
+
         /// <summary>
-        /// Pasient på kontrakt er forandret
+        /// Publiseres når en pasient blir oppdatert med ny informasjon.
+        /// 
+        /// Se <see cref="IFlrWriteOperations.UpdatePatientNin"/>
         /// </summary>
         PatientOnContractUpdated,
+
         /// <summary>
-        /// Pasient er kanselert på kontrakt
+        /// Publiseres når en pasient blir avsluttet på fastlegeavtalen.
+        /// 
+        /// Se <see cref="IFlrWriteOperations.CancelPatientOnGPContract" />, 
+        /// <see cref="IFlrWriteOperations.CancelPatientsOnGPContract" />
         /// </summary>
         PatientOnContractCanceled,
+
         /// <summary>
-        /// Pasient sin NIN er forandret
+        /// Publiseres når en pasients fødselsnummer blir endret.
+        /// 
+        /// Se <see cref="IFlrWriteOperations.UpdatePatientNin" />.
         /// </summary>
         PatientNinChanged,
+
         /// <summary>
-        /// Utekontor er lagt til
+        /// Publiseres når et nytt utekontor blir opprettet på en fastlegeavtale.
+        /// 
+        /// Se <see cref="IFlrWriteOperations.CreateOutOfOfficeLocation" />.
         /// </summary>
         OutOfOfficeLocationCreated,
+
         /// <summary>
-        /// Utekontor er forandret
+        /// Publiseres når et utekontor blir oppdatert med ny informasjon.
+        /// 
+        /// Se <see cref="IFlrWriteOperations.UpdateOutOfOfficeLocation" />.
         /// </summary>
         OutOfOfficeLocationUpdated,
+
         /// <summary>
-        /// Utekontor er slettet
+        /// Publiseres når et utekontor blir slettet.
+        /// 
+        /// Se <see cref="IFlrWriteOperations.RemoveOutOfOfficeLocation" />.
         /// </summary>
         OutOfOfficeLocationDeleted
     }
