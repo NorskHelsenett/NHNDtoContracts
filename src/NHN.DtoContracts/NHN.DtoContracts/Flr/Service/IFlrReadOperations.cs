@@ -346,6 +346,15 @@ namespace NHN.DtoContracts.Flr.Service
         PagedResult<GPDetails> SearchForGP(GPSearchParameters searchParameters);
 
         /// <summary>
+        /// Hent ut kontrakter basert på visse kriterier.
+        /// </summary>
+        /// <param name="queryParameters"></param>
+        /// <returns></returns>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        PagedResult<GPContract> QueryGPContracts(GPContractQueryParameters queryParameters);
+
+        /// <summary>
         /// Henter pasientlister i gammelt NAV fil-format. 
         /// Streamen er ZipArchive.
         /// </summary>
