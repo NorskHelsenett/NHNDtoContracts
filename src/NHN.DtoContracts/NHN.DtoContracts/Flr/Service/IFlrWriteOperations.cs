@@ -135,7 +135,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>Publiserer ikke events.</remarks>
         /// <seealso cref="CreateGPContract"/>
         /// <param name="bulkGPContracts"></param>
-        /// /// <exception cref="ArgumentException">Kastes hvis legeperiode i kontrakten eksisterer men har en ugyldig id</exception>
+        /// <exception cref="ArgumentException">Kastes hvis legeperiode i kontrakten eksisterer men har en ugyldig id</exception>
         /// <example>
         /// <code>
         /// flrWriteService.CreateGPContract(listOfContracts);
@@ -175,8 +175,15 @@ namespace NHN.DtoContracts.Flr.Service
         /// Oppdaterer bydel + hvorvidt et kontor er en del av en gruppepraksis.
         /// </summary>
         /// <param name="organizationNumber">Organisasjonsnummer for legekontoret</param>
-        /// <param name="district">Bydel. Null, ingen bydel.</param>
+        /// <param name="district">Bydel. Null, ingen bydel. Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/bydel">bydel</see> (OID 3403).</param>
         /// <param name="isGroupOffice">True hvis legekontor er en gruppepraksis</param>
+        /// <exception cref="ArgumentException">Kastes hvis det ikke fins et legekontor med angitt organisasjonsnummer</exception>
+        /// <example>
+        /// <code>
+        /// var district = new Code { OID = 3403, CodeValue = "120104"};
+        /// flrWriteService.SetDistrictAndIsGroupOffice(orgNumber, district, true);
+        /// </code>
+        /// </example>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         void SetDistrictAndIsGroupOffice(int organizationNumber, Code district, bool isGroupOffice);
@@ -420,6 +427,12 @@ namespace NHN.DtoContracts.Flr.Service
         /// Service bus: Denne metoden sender event "GPOnContractDeleted" med eventobjekt <see cref="GPOnContractAssociation"/>.
         /// </remarks>
         /// <param name="gpOnContractAssociationId"></param>
+        /// <exception cref="ArgumentException">Kastes hvis assosiasjonen med angitt id ikke finnes</exception>
+        /// <example>
+        /// <code>
+        /// flrWriteService.DeleteGPOnContractAssociation(224324);
+        /// </code>
+        /// </example>
         /// <permission>
         /// Krever en av rollene ADMINISTRATOR eller FLR_WRITE
         /// </permission>
@@ -586,7 +599,14 @@ namespace NHN.DtoContracts.Flr.Service
         ///     Kodeverk: Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/flrv2_endreason">flrv2_endreason</see> (OID 7753).
         /// </param>
         /// <param name="endTime">På hvilket tidspunkt skal kontrakten avsluttes.</param>
+        /// <exception cref="ArgumentException">Kastes hvis endTime mangler</exception>
         /// <exception cref="ArgumentException">Kastes hvis en pasient ikke finnes på fastlegelisten i den gitte perioden</exception>
+        /// <example>
+        /// <code>
+        /// var endReason = new ws.Code { CodeValue = "OHID", OID = 7753 };
+        /// flrWriteService.CancelPatientOnGPContract(10403243, "12345678910", endReason, DateTime.Now);
+        /// </code>
+        /// </example>
         /// <permission>
         /// Krever en av rollene ADMINISTRATOR eller FLR_WRITE
         /// </permission>
@@ -604,7 +624,22 @@ namespace NHN.DtoContracts.Flr.Service
         /// <param name="patientsWithEndReason">Dictionary som inneholder par med innbyggers fødselsnummer og referanse til kodeverk for avslutningskode, <see cref="CancelPatientOnGPContract"/>.</param>
         /// <param name="gpContractId">Referanse til fastlegelisten</param>
         /// <param name="endTime">På hvilket tidspunkt skal kontrakten avsluttes.</param>
+        /// <exception cref="ArgumentException">Kastes hvis patientsWithEndReason er null eller tom</exception>
         /// <exception cref="ArgumentException">Kastes hvis en pasient ikke finnes på fastlegelisten i den gitte perioden</exception>
+        /// <example>
+        /// <code>
+        /// <![CDATA[
+        /// var endReason = new Code { CodeValue = "OHID", OID = 7753 };
+        /// var patients = new Dictionary<string, Code>
+        /// {
+        ///     {"12343523451", endReason},
+        ///     {"12345238591", endReason},
+        ///     {"14342234331", endReason}
+        /// };
+        /// flrWriteService.CancelPatientsOnGPContract(patients, 10403243, DateTime.Now);
+        /// ]]>
+        /// </code>
+        /// </example>
         /// <permission>
         /// Krever en av rollene ADMINISTRATOR eller FLR_WRITE
         /// </permission>
@@ -643,6 +678,9 @@ namespace NHN.DtoContracts.Flr.Service
         /// Service bus: Denne metoden sender event "PatientNinChanged" med property NewNin, OldNin.
         /// Den sender også "PatientOnContractUpdated" med eventobjekt <see cref="PatientToGPContractAssociation"/>.
         /// </remarks>
+        /// <example>
+        /// flrWriteService.UpdatePatientNin(oldNin, newNin);
+        /// </example>
         /// <permission>
         /// Krever en av rollene ADMINISTRATOR eller FLR_WRITE
         /// </permission>
@@ -659,6 +697,10 @@ namespace NHN.DtoContracts.Flr.Service
         /// </remarks>
         /// <param name="oldOrganizationNumber">Orgnummeret til det gamle kontoret</param>
         /// <param name="newOrganizationNumber">Orgnummeret til det nye kontoret</param>
+        /// <exception cref="ArgumentException">Kastes hvis det ikke fins noen kontrakter på oldOrganizationNumber</exception>
+        /// <example>
+        /// flrWriteService.UpdateGPOfficeOnGPContracts(oldOrgNumber, newOrgNumber);
+        /// </example>
         /// <permission>
         /// Krever en av rollene ADMINISTRATOR eller FLR_WRITE
         /// </permission>
@@ -668,9 +710,14 @@ namespace NHN.DtoContracts.Flr.Service
 
         /// <summary>
         /// Forsikre om at angitte personer finnes i Cache, legger til de som mangler.
-        /// Dette er en slags initialisering av PersonServiceCache, for å spare tid ved Export og andre metoder som trenger personopplysninger
+        /// Dette er en slags initialisering av PersonServiceCache, for å spare tid ved Export og andre metoder som trenger personopplysninger.
         /// </summary>
         /// <param name="nins">Alle Personnr til personer som skal hentes fra PersonService og inn i PersonServiceCache</param>
+        /// <example>
+        /// <code>
+        /// flrWriteService.EnsurePeopleInCache(new[] { "28438943659", "58438943859" });
+        /// </code>
+        /// </example>
         /// <permission>
         /// Krever rollen ADMINISTRATOR
         /// </permission>
