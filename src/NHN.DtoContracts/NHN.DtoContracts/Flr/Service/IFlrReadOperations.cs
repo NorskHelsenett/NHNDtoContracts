@@ -3,7 +3,6 @@ using System.ServiceModel;
 using NHN.DtoContracts.Common.en;
 using System;
 using NHN.DtoContracts.Flr.Data;
-using NHN.DtoContracts.Htk;
 using System.IO;
 
 namespace NHN.DtoContracts.Flr.Service
@@ -240,7 +239,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <param name="doctorNin">Legens personnummer</param>
         /// <param name="municipalityNr">Kommune fastlegelisten gjelder</param>
         /// <param name="doSubstituteSearch">Hvorvidt legen kan være en vikar. Hvis ikke søker vi utelukkende på legen.</param>
-        /// <returns>GPContract funnet. På kontrakten vil PatientList være fyllt ut.</returns>
+        /// <returns>GPContract funnet. På kontrakten vil PatientList være fylt ut.</returns>
         /// <exception cref="ArgumentException">Kastes hvis kommunenr er ugyldig</exception>
         /// <exception cref="ArgumentException">Kastes hvis personnummer er ugyldig</exception>
         /// <exception cref="ArgumentException">Kastes hvis aktive fastlegelister i gitt kommune er funnet</exception>
@@ -261,8 +260,16 @@ namespace NHN.DtoContracts.Flr.Service
         /// Returnerer pasientlister på gammelt kith/nav format. Se <see cref="NavEncryptedPatientListParameters"/> for inputinfo.
         /// Stream som returneres er kryptert ved hjelp av CMS/PKCS#7. Xml er signert som beskrevet i schema.
         /// </summary>
-        /// <param name="param">Parametre for uttrek</param>
+        /// <param name="param">Parametre for uttrekk</param>
         /// <returns>CMS/PKCS#7 cryptert Stream</returns>
+        /// <exception cref="ArgumentException">Kastes hvis legens NIN ikke er satt</exception>
+        /// <exception cref="ArgumentException">Kastes hvis kommunenummer ikke er satt eller er ugyldig</exception>
+        /// <exception cref="ArgumentException">Kastes hvis listetype har en ugyldig verdi</exception>
+        /// <exception cref="ArgumentException">Kastes hvis angitt måned ikke er satt til den første i måneden</exception>
+        /// <exception cref="ArgumentException">Kastes hvis angitt måned er fram i tid</exception>
+        /// <exception cref="ArgumentException">Kastes hvis X.509-sertifikat ikke er satt eller er ugyldig</exception>
+        /// <exception cref="ArgumentException">Kastes hvis receiverXml mangler eller er ugyldig</exception>
+        /// <exception cref="ArgumentException">Kastes hvis senderXml mangler eller er ugyldig</exception>
         /// <permission>
         /// Krever en av rollene ADMINISTRATOR eller FLR_READ_EXTENDED
         /// </permission>
@@ -283,6 +290,14 @@ namespace NHN.DtoContracts.Flr.Service
         /// <param name="receiverXml">Se <see cref="NavEncryptedPatientListParameters.ReceiverXml"/></param>
         /// <param name="listType">Se <see cref="NavEncryptedPatientListParameters.ListType"/></param>
         /// <returns>CMS/PKCS#7 cryptert Stream</returns>    
+        /// <exception cref="ArgumentException">Kastes hvis legens NIN ikke er satt</exception>
+        /// <exception cref="ArgumentException">Kastes hvis kommunenummer ikke er satt eller er ugyldig</exception>
+        /// <exception cref="ArgumentException">Kastes hvis listetype har en ugyldig verdi</exception>
+        /// <exception cref="ArgumentException">Kastes hvis angitt måned ikke er satt til den første i måneden</exception>
+        /// <exception cref="ArgumentException">Kastes hvis angitt måned er fram i tid</exception>
+        /// <exception cref="ArgumentException">Kastes hvis X.509-sertifikat ikke er satt eller er ugyldig</exception>
+        /// <exception cref="ArgumentException">Kastes hvis receiverXml mangler eller er ugyldig</exception>
+        /// <exception cref="ArgumentException">Kastes hvis senderXml mangler eller er ugyldig</exception>
         /// <permission>
         /// Krever en av rollene ADMINISTRATOR eller FLR_READ_EXTENDED
         /// </permission>
@@ -332,10 +347,15 @@ namespace NHN.DtoContracts.Flr.Service
 
         /// <summary>
         /// Henter pasientlister i gammelt NAV fil-format. 
-        /// Streamen er ZipArchive
+        /// Streamen er ZipArchive.
         /// </summary>
-        /// <param name="parameters" cref="GetNavPatientListsParameters">Bestemmer hva som skal hentes, og i hviklket format</param>
-        /// <returns>ZipArchive Stream, der Entries er av typen spesifisert i parameters, se <see cref="GetNavPatientListsParameters.FormatType"/> </returns>      
+        /// <param name="parameters" cref="GetNavPatientListsParameters">Bestemmer hva som skal hentes, og i hvilket format</param>
+        /// <returns>ZipArchive Stream, der Entries er av typen spesifisert i parameters, se <see cref="GetNavPatientListsParameters.FormatType"/> </returns>
+        /// <exception cref="ArgumentException">Kastes hvis format ikke er gyldig</exception>     
+        /// <exception cref="ArgumentException">Kastes hvis ingen angitte kontrakts-ider</exception>     
+        /// <exception cref="ArgumentException">Kastes hvis bruker ikke har tilgang til å laste ned pasientliste for en eller flere angitte kontrakter</exception>     
+        /// <exception cref="ArgumentException">Kastes hvis angitte kontrakter berører flere legekontor</exception>     
+        /// <exception cref="ArgumentException">Kastes hvis det ikke fins pasienter på listen for en eller flere angitte kontrakter i oppgitt måned</exception>     
         /// <example>
         /// <code language="C#">
         /// <![CDATA[
