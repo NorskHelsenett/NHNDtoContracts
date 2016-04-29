@@ -119,6 +119,13 @@ namespace NHN.DtoContracts.Flr.Data
         public Code EndReason { get; set; }
 
         /// <summary>
+        /// Antallet ledige plasser på listen på spørretidspunkt
+        /// Vil være 0 dersom Status.CodeValue != "FAAA". Satt til antallet ledige plasser ellers ved visse leseoperasjoner som støtter denne parameteren. Satt til null ellers. Må være null ved skriveoperasjoner.
+        /// </summary>
+        [DataMember]
+        public int? PlacesAvailable { get; set; }
+
+        /// <summary>
         /// Tidspunkt data ble sist oppdatert
         /// </summary>
         [DataMember]
