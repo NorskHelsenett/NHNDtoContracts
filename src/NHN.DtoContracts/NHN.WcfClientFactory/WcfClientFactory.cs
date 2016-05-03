@@ -141,7 +141,7 @@ namespace NHN.WcfClientFactory
         /// </summary>
         public bool FixDnsIdentityProblem { get; set; }
 
-        private static readonly Dictionary<string, ServiceContractConfig> ServiceContractConfigs = new Dictionary<string, ServiceContractConfig>();
+        private readonly Dictionary<string, ServiceContractConfig> _serviceContractConfigs = new Dictionary<string, ServiceContractConfig>();
         private readonly Dictionary<Type, ChannelFactory> _channelFactories = new Dictionary<Type, ChannelFactory>();
         private readonly object _syncRoot = new object();
 
@@ -188,7 +188,7 @@ namespace NHN.WcfClientFactory
         /// <param name="config">Config-objekt som inneholder WCF-instillinger som skal gjelde for servicekontrakten.</param>
         public void AddKnownConfig(string nameOfType, ServiceContractConfig config)
         {
-            ServiceContractConfigs.Add(nameOfType, config);
+            _serviceContractConfigs.Add(nameOfType, config);
         }
 
         /// <summary>
@@ -282,7 +282,7 @@ namespace NHN.WcfClientFactory
         {
             ServiceContractConfig config;
 
-            if (!ServiceContractConfigs.TryGetValue(serviceContractType.Name, out config))
+            if (!_serviceContractConfigs.TryGetValue(serviceContractType.Name, out config))
                 throw new ArgumentException($"{serviceContractType.Name} har ingen konfigurasjon knyttet til seg. Bruk .{nameof(AddKnownConfig)}() for å legge til nye konfigurasjoner.");
 
             return config;
