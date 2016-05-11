@@ -10,7 +10,8 @@ namespace NHN.DtoContracts.Flr.Data
     public class GPContractQueryParameters
     {
         /// <summary>
-        /// Fulltekst. Fornavn/Mellomnavn/Etternavn/Navn på legekontor/Adresse til legekontor
+        /// Fulltekst. Fornavn/Mellomnavn/Etternavn/Navn på legekontor/Adresse til legekontor.
+        /// Ikke ennå implementert.
         /// </summary>
         [DataMember]
         public string FullText { get; set; }
