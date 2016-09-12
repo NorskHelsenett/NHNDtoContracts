@@ -1,0 +1,356 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="NHN.DtoContracts.Common.CommonXmlNamespaces">
+    <Position X="14.25" Y="16" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\CommonXmlNamespaces.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NHN.DtoContracts.Common.en.Code">
+    <Position X="22" Y="7.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAgAAAAAAAEgAAAAAAAEAAAAIAgAAAAAQAAAiQ=</HashCode>
+      <FileName>Common\en\Code.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NHN.DtoContracts.Common.en.ElectronicAddress">
+    <Position X="3.75" Y="12.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAEAAQAAAYABAAAAAAAAAACAQAAAAAAAAA=</HashCode>
+      <FileName>Common\en\ElectronicAddress.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NHN.DtoContracts.Common.en.GenericFault">
+    <Position X="7" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAEAAAAAAIAAAAAA=</HashCode>
+      <FileName>Common\en\GenericFault.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NHN.DtoContracts.Common.en.OpeningHours">
+    <Position X="8.5" Y="13.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAgIAAAAEAAAAAAAA=</HashCode>
+      <FileName>Common\en\OpeningHours.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NHN.DtoContracts.Common.en.PagedResult&lt;T&gt;">
+    <Position X="20" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\en\PagedResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NHN.DtoContracts.Common.en.Period">
+    <Position X="17.75" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AgAAAJAAAAAAAAAEwAAAAAAAAAAIAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\en\Period.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NHN.DtoContracts.Common.en.PhysicalAddress">
+    <Position X="3" Y="7.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAgBAQIIAIAhAAAAAIAAAAAAQAAAAAAABA=</HashCode>
+      <FileName>Common\en\PhysicalAddress.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NHN.DtoContracts.Common.en.Status">
+    <Position X="23" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAABAAgAAAAAAAAAAQAAAAAAAAAAAI=</HashCode>
+      <FileName>Common\en\Status.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Period" />
+      <Property Name="Code" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="NHN.DtoContracts.Flr.Data.ContractsQueryParameters">
+    <Position X="21.75" Y="11.5" Width="2" />
+    <AssociationLine Name="Municipalities" Type="NHN.DtoContracts.Common.en.Code">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.188" Y="0.504" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAABAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Flr\Data\ContractsQueryParameters.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Municipalities" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="NHN.DtoContracts.Flr.Data.ContractWithMonth">
+    <Position X="24.5" Y="12.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIEAAAAAAAAAAA=</HashCode>
+      <FileName>Flr\Data\ContractWithMonth.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NHN.DtoContracts.Flr.Data.GetNavPatientListsParameters">
+    <Position X="24.5" Y="14.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAgAAAAA=</HashCode>
+      <FileName>Flr\Data\GetNavPatientListsParameters.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Contracts" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="NHN.DtoContracts.Flr.Data.GPContract">
+    <Position X="10.75" Y="7.25" Width="2.25" />
+    <AssociationLine Name="GPOffice" Type="NHN.DtoContracts.Flr.Data.GPOffice">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.743" Y="0.674" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="DoctorCycles" Type="NHN.DtoContracts.Flr.Data.GPOnContractAssociation">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.073" Y="1.286" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="OutOfOfficeOffices" Type="NHN.DtoContracts.Flr.Data.OutOfOfficeLocation">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.157" Y="0.152" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAgiAAAGQAABBAgAAEAAAAQBAAAAAAhAcAAABAABAAA=</HashCode>
+      <FileName>Flr\Data\GPContract.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="GPOffice" />
+      <Property Name="Status" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="DoctorCycles" />
+      <Property Name="OutOfOfficeOffices" />
+      <Property Name="PatientList" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="NHN.DtoContracts.Flr.Data.GPContractQueryParameters">
+    <Position X="25.5" Y="9.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQBAACAAAAAAAAAAACAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Flr\Data\GPContractQueryParameters.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Municipality" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="NHN.DtoContracts.Flr.Data.GPDetails">
+    <Position X="16.25" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAACAAAAAAAAAAAAAAIAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Flr\Data\GPDetails.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="GP" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Contracts" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="NHN.DtoContracts.Flr.Data.GPOffice">
+    <Position X="10.75" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Flr\Data\GPOffice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NHN.DtoContracts.Flr.Data.GPOnContractAssociation">
+    <Position X="12.75" Y="12.5" Width="2" />
+    <AssociationLine Name="GP" Type="NHN.DtoContracts.Flr.Data.Person">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.879" Y="0.043" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAKBAAAAAAABEAAAAAAAAAIAAAAAEAAIABBBAAAAAA=</HashCode>
+      <FileName>Flr\Data\GPOnContractAssociation.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="GP" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="NHN.DtoContracts.Flr.Data.GPSearchParameters">
+    <Position X="25.75" Y="7" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAACAAAAACAAAAACAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Flr\Data\GPSearchParameters.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="HasGPOfficeInMunicipality" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="NHN.DtoContracts.Flr.Data.NavEncryptedPatientListParameters">
+    <Position X="20" Y="15.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>ACAEAAAAAAAEAIAAAAAAAAAAAAAAAAAEAAAIAAEAAAg=</HashCode>
+      <FileName>Flr\Data\NavEncryptedPatientListParameters.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NHN.DtoContracts.Flr.Data.NinWithTimestamp">
+    <Position X="23.5" Y="16.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Flr\Data\NinWithTimestamp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NHN.DtoContracts.Flr.Data.OutOfOfficeLocation">
+    <Position X="10.75" Y="4.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAiAAAAAAAAAAAAAAAABAAAIABABAAAAAA=</HashCode>
+      <FileName>Flr\Data\OutOfOfficeLocation.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="PhysicalAddresses" />
+      <Property Name="ElectronicAddresses" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="NHN.DtoContracts.Flr.Data.PatientToGPContractAssociation">
+    <Position X="16.5" Y="7.25" Width="2.5" />
+    <AssociationLine Name="DoctorCycles" Type="NHN.DtoContracts.Flr.Data.GPOnContractAssociation">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.071" Y="0.22" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>ACAKAAACAgAAAAAAAAAAAAAAAAAAAAAAYABAAAAACAI=</HashCode>
+      <FileName>Flr\Data\PatientToGPContractAssociation.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Period" />
+      <Property Name="EndCode" />
+      <Property Name="BeginCode" />
+      <Property Name="Patient" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="DoctorCycles" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="NHN.DtoContracts.Flr.Data.Person">
+    <Position X="17.5" Y="10" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAEAAACBAAAAAAQAAAAAAAQQAAAAAAAAAAAAAo=</HashCode>
+      <FileName>Flr\Data\Person.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NHN.DtoContracts.Flr.FlrXmlNamespace">
+    <Position X="8.75" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Flr\FlrXmlNamespace.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NHN.DtoContracts.Htk.Business">
+    <Position X="7.75" Y="7.25" Width="2.25" />
+    <AssociationLine Name="PhysicalAddresses" Type="NHN.DtoContracts.Common.en.PhysicalAddress">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.689" Y="-0.389" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="ElectronicAddresses" Type="NHN.DtoContracts.Common.en.ElectronicAddress">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.241" Y="0.509" Height="0.182" Width="1.491" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="OpeningHours" Type="NHN.DtoContracts.Common.en.OpeningHours">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.02" Y="0.463" Height="0.182" Width="1.168" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAQAEAAAAAACBAAAEAAUBAQAAAAAJAAAIAIBBAACACA=</HashCode>
+      <FileName>Htk\Business.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="OpeningHours" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="PhysicalAddresses" />
+      <Property Name="ElectronicAddresses" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="NHN.DtoContracts.Htk.CorporateXmlNamespace">
+    <Position X="20" Y="18.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Htk\CorporateXmlNamespace.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NHN.DtoContracts.ServiceBus.Data.SubscriptionInfo">
+    <Position X="22" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CABAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>ServiceBus\Data\SubscriptionInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NHN.DtoContracts.ServiceBus.ServiceBusXmlNamespace">
+    <Position X="11.25" Y="16" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceBus\ServiceBusXmlNamespace.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="NHN.DtoContracts.Common.en.LatitudeLongitude">
+    <Position X="17.25" Y="16.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAACAAEAIgIAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Common\en\GeographicalCoordinates.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="NHN.DtoContracts.Common.en.TimePeriod" BaseTypeListCollapsed="true">
+    <Position X="18.25" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAABAAAgAAAAQAgAAAAABAAAAIAIAAAAAAAAAAAiA=</HashCode>
+      <FileName>Common\en\TimePeriod.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Struct>
+  <Interface Name="NHN.DtoContracts.Common.HelperInterfaces.IHasGeographicalCoordinates">
+    <Position X="14.25" Y="20" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\HelperInterfaces\IHasGeographicalCoordinates.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="NHN.DtoContracts.Flr.Service.IFlrExportOperations">
+    <Position X="7.25" Y="18.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Flr\Service\IFlrExportOperations.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="NHN.DtoContracts.Flr.Service.IFlrReadOperations">
+    <Position X="7" Y="20" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>ACAAIBhAEAAgAAACCAAAADAAAACAAAAAAokAAAAAAAA=</HashCode>
+      <FileName>Flr\Service\IFlrReadOperations.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="NHN.DtoContracts.Flr.Service.IFlrWriteOperations">
+    <Position X="10.75" Y="17.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAkABUECEAEQAinKUiIAgIAQIACAJIICQSAAQA=</HashCode>
+      <FileName>Flr\Service\IFlrWriteOperations.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="NHN.DtoContracts.ServiceBus.Service.IServiceBusManager">
+    <Position X="14.5" Y="18" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABBAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>ServiceBus\Service\IServiceBusManager.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="NHN.DtoContracts.Flr.Enum.FlrEvents">
+    <Position X="4.25" Y="16" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AwBEAAAAEAAAAQAgAAQAAAAIAAAAAAAAAAAIAAQCQAA=</HashCode>
+      <FileName>Flr\Enum\FlrEvents.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
