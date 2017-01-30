@@ -32,9 +32,28 @@ namespace NHN.DtoContracts.Ofr.Service
         HealthRegister AddHealthRegister(HealthRegister healthRegister);
 
         /// <summary>
+        /// Henter en helseregisteroppføring fra registeret.
+        /// </summary>
+        /// <param name="healthRegisterId">Unik identifikator for helseregisteroppføringen</param>
+        /// <value></value>
+        /// <returns>Objekt med oppføringen med spesifisert id fra registeret.</returns>
+        /// <exception cref="ArgumentException"></exception>
+        /// <example>
+        /// <code>
+        /// var healthRegister = oprService.GetHealhRegister(healthRegisterId);
+        /// </code>
+        /// </example>
+        /// <permission>
+        /// Krever en av rollene ADMINISTRATOR eller REGISTER_EIER for gjeldende register.
+        /// </permission>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        HealthRegister GetHealthRegister(Guid healthRegisterId);
+
+        /// <summary>
         /// Oppdaterer gitt helseregisteroppføring med ny oppgitt informasjon.
         /// </summary>
-        /// <param healthRegister="">Objekt som beskriver den oppdaterte informasjonen for et helseregister.</param>
+        /// <param name="healthRegister">Objekt som beskriver den oppdaterte informasjonen for et helseregister.</param>
         /// <value></value>
         /// <returns>Objektet for den oppdaterte helseregisteroppføringen.</returns>
         /// <exception cref="ArgumentException"></exception>
@@ -53,7 +72,7 @@ namespace NHN.DtoContracts.Ofr.Service
         /// <summary>
         /// Sletter en helseregisteroppføring fra registeret.
         /// </summary>
-        /// <param healthRegisterId="">Id til helseregisteroppføringen man ønsker å slette.</param>
+        /// <param name="healthRegisterId">Id til helseregisteroppføringen man ønsker å slette.</param>
         /// <value></value>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
@@ -67,12 +86,13 @@ namespace NHN.DtoContracts.Ofr.Service
         /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        void DeleteHealthRegister(int healthRegisterId);
+        void DeleteHealthRegister(Guid healthRegisterId);
 
         /// <summary>
         /// Henter alle helseregisteroppføringer personen for gitt nin er knyttet til.
         /// </summary>
-        /// <param nin="">Personnummer for person man skal ha informasjon om.</param>
+        /// <param name="nin">Personnummer for person man skal ha informasjon om.</param>
+        /// <param name="healthRegisterType">Type helseregistre man vil ha i retur</param>
         /// <value></value>
         /// <returns>Liste over helseregisterobjekter.</returns>
         /// <exception cref="ArgumentException"></exception>
@@ -86,12 +106,12 @@ namespace NHN.DtoContracts.Ofr.Service
         /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        ICollection<HealthRegister> GetHealthRegistersFor(string nin);
+        ICollection<HealthRegister> GetHealthRegistersFor(string nin, Code healthRegisterType = null);
 
         /// <summary>
         /// Utfører et søk på helseregisteroppføringer med gitte parametre.
         /// </summary>
-        /// <param query="">Objekt som beskriver et sett med parametre for å utføre søk.</param>
+        /// <param name="query">Objekt som beskriver et sett med parametre for å utføre søk.</param>
         /// <value></value>
         /// <returns>Et paginert resultat med helseregisteroppføringer.</returns>
         /// <exception cref="ArgumentException"></exception>
@@ -105,12 +125,14 @@ namespace NHN.DtoContracts.Ofr.Service
         /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        PagedResult<HealthRegister> QueryHealthRegisters(HealthRegisterQuery query);
+        ICollection<HealthRegister> QueryHealthRegisters(HealthRegisterQuery query);
 
         /// <summary>
         /// Henter ut alle personer som er assosiert med gitt helseregister.
         /// </summary>
-        /// <param healthRegisterId="">Id for helseregisteroppføring man ønsker informasjon om.</param>
+        /// <param name="page">Id for helseregisteroppføring man ønsker informasjon om.</param>
+        /// <param name="pageSize">Id for helseregisteroppføring man ønsker informasjon om.</param>
+        /// <param name="healthRegisterId">Id for helseregisteroppføring man ønsker informasjon om.</param>
         /// <value></value>
         /// <returns>Objekt som beskriver assosiasjonen mellom en oppføring og personer.</returns>
         /// <exception cref="ArgumentException"></exception>
@@ -124,14 +146,13 @@ namespace NHN.DtoContracts.Ofr.Service
         /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        PersonAssociations PeopleOnHealthRegister(int page, int pageSize, int healthRegisterId);
+        PersonAssociations PeopleOnHealthRegister(int page, int pageSize, Guid healthRegisterId);
 
         /// <summary>
         /// Legger til personer i en oppføring i Oppføringsregisteret.
         /// </summary>
-        /// <param healthRegisterId="">Id til helseregister</param>
-        /// <param people="">Liste over personer som skal legges til</param>
-        /// <param justviewresults="">Forteller om man ønsker å utelukkende få tilbake resulterende objekter av operasjonen, uten at disse blir lagt til i databasen.</param>
+        /// <param name="healthRegisterId">Id til helseregister</param>
+        /// <param name="people">Liste over personer som skal legges til</param>
         /// <value></value>
         /// <returns>Objekt som beskriver assosiasjonen mellom en oppføring og personer.</returns>
         /// <exception cref="ArgumentException"></exception>
@@ -146,14 +167,36 @@ namespace NHN.DtoContracts.Ofr.Service
         /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        PersonAssociations AddPeople(int healthRegisterId, ICollection<AddPersonData> people, bool justViewResults);
+        PersonAssociations AddPeople(Guid healthRegisterId, ICollection<AddPersonData> people);
+
+
+        /// <summary>
+        /// Simulerer å leegge til personer i en oppføring i Oppføringsregisteret. Lagrer ikke dataen i db, men returnerer resultatet som ville blitt lagt til. 
+        /// Returnerer i tillegg err
+        /// </summary>
+        /// <param name="healthRegisterId">Guid til helseregister</param>
+        /// <param name="people">Liste over personer som skal legges til</param>
+        /// <value></value>
+        /// <returns>Objekt som beskriver assosiasjonen mellom en oppføring og personer.</returns>
+        /// <exception cref="ArgumentException"></exception>
+        /// <example>
+        /// <code>
+        /// var person = new AddPersonData { Nin = "12345678901", StartPeriod = DateTime.Now };
+        /// var personAssociations = oprService.AddPeople(new [] { person }, false);
+        /// </code>
+        /// </example>
+        /// <permission>
+        /// Krever en av rollene ADMINISTRATOR eller REGISTER_EIER for gjeldende register.
+        /// </permission>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        PersonAssociationsWithErrors AddPeopleDryRun(Guid healthRegisterId, ICollection<AddPersonData> people);
 
         /// <summary>
         /// Legger til personer i en oppføring i Oppføringsregisteret.
         /// </summary>
-        /// <param nins="">Liste over personnummer som skal legges til</param>
-        /// <param healthRegister="">Helseregisteroppføringen gitte personer skal legges til.</param>
-        /// <param justviewresults="">Forteller om man ønsker å utelukkende få tilbake resulterende objekter av operasjonen, uten at disse blir lagt til i databasen.</param>
+        /// <param name="csv">Csv string som representerer personer som skal legges til.</param>
+        /// <param name="healthRegisterId">Guid for helseregisteroppføringen hvor personene skal legges til.</param>
         /// <value></value>
         /// <returns>Objekt som beskriver assosiasjonen mellom en oppføring og personer.</returns>
         /// <exception cref="ArgumentException"></exception>
@@ -167,7 +210,27 @@ namespace NHN.DtoContracts.Ofr.Service
         /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        PersonAssociations AddPeopleFromCsv(string csv, int healthRegisterId, bool justViewResults);
+        PersonAssociations AddPeopleFromCsv(string csv, Guid healthRegisterId);
+
+        /// <summary>
+        /// Legger til personer i en oppføring i Oppføringsregisteret.
+        /// </summary>
+        /// <param name="csv">Csv string som representerer personer som skal legges til.</param>
+        /// <param name="healthRegisterId">Guid for helseregisteroppføringen hvor personene skal legges til.</param>
+        /// <value></value>
+        /// <returns>Objekt som beskriver assosiasjonen mellom en oppføring og personer.</returns>
+        /// <exception cref="ArgumentException"></exception>
+        /// <example>
+        /// <code>
+        /// var personAssociations = oprService.AddPeople(nins, healthRegister, justViewResults)
+        /// </code>
+        /// </example>
+        /// <permission>
+        /// Krever en av rollene ADMINISTRATOR eller REGISTER_EIER for gjeldende register.
+        /// </permission>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        PersonAssociationsWithErrors AddPeopleFromCsvDryRun(string csv, Guid healthRegisterId);
 
         /// <summary>
         /// Fjerner gitte personer fra en helseregisteroppføring.
@@ -187,7 +250,7 @@ namespace NHN.DtoContracts.Ofr.Service
         /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        void RemovePeople(ICollection<string> nins, int healthRegisterId);
+        void RemovePeople(ICollection<string> nins, Guid healthRegisterId);
 
         /// <summary>
         /// Fjerner gitte personer fra helseregisteroppføring og historisk.
@@ -207,5 +270,24 @@ namespace NHN.DtoContracts.Ofr.Service
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         void RemovePeopleFromHistory(ICollection<string> nins);
+
+        /// <summary>
+        /// Sjekk om du er register eier for en helseregisteroppføring.
+        /// </summary>
+        /// <param name="healthRegisterId">Guid for helseregisteroppføringen hvor du ønsker å sjekke om brukeren din er eier av.</param>
+        /// <value></value>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        /// <example>
+        /// <code>
+        /// oprService.IsOwnerOfHealthRegister(healthRegisterId);
+        /// </code>
+        /// </example>
+        /// <permission>
+        /// Krever ingen roller.
+        /// </permission>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        bool IsOwnerOfHealthRegister(Guid healthRegisterId);
     }
 }

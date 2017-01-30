@@ -20,7 +20,7 @@ namespace NHN.DtoContracts.Ofr.Data
         /// X
         /// </summary>
         [DataMember]
-        public int BelongsToOrg { get; set; }
+        public int? BelongsToOrg { get; set; }
 
         /// <summary>
         /// Type kontrakt

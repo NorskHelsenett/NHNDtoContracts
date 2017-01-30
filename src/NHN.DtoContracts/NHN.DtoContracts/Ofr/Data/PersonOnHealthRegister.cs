@@ -1,4 +1,5 @@
-﻿using NHN.DtoContracts.Common.en;
+﻿using System;
+using NHN.DtoContracts.Common.en;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 
@@ -14,7 +15,7 @@ namespace NHN.DtoContracts.Ofr.Data
         /// X
         /// </summary>
         [DataMember, Required]
-        public long Id { get; set; }
+        public Guid Id { get; set; }
 
         /// <summary>
         /// X
@@ -44,7 +45,7 @@ namespace NHN.DtoContracts.Ofr.Data
         /// X
         /// </summary>
         [DataMember, Required]
-        public long HealthRegisterId { get; set; }
+        public Guid HealthRegisterId { get; set; }
 
         /// <summary>
         /// Denne skal aldri settes ved skriving til registeret, men vil være tilgjengelig på

@@ -1,4 +1,5 @@
-﻿using NHN.DtoContracts.Common.en;
+﻿using System;
+using NHN.DtoContracts.Common.en;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.ComponentModel.DataAnnotations;
@@ -14,8 +15,8 @@ namespace NHN.DtoContracts.Ofr.Data
         /// <summary>
         /// Unik id for denne helseregisteroppføringen
         /// </summary>
-        [DataMember, Required]
-        public int Id { get; set; }
+        [DataMember]
+        public Guid guid { get; set; }
 
         /// <summary>
         /// Navnet på helseregisteroppføringen
@@ -24,10 +25,22 @@ namespace NHN.DtoContracts.Ofr.Data
         public string Name { get; set; }
 
         /// <summary>
-        /// Kor beskrivelse, maks 200 karakterer
+        /// Kortnavn/visningsnavn på helseregisteret. Maks lengde 10 tegn
+        /// </summary>
+        [DataMember]
+        public string DisplayName { get; set; }
+
+        /// <summary>
+        /// Kort beskrivelse, maks 200 karakterer
         /// </summary>
         [DataMember]
         public string Description { get; set; }
+
+        /// <summary>
+        /// Tekstlig beskrvelse av hvorfor en person vil være ført opp i registeret
+        /// </summary>
+        [DataMember]
+        public string ReasonForListing { get; set; }
 
         /// <summary>
         /// Organisasjonsnummer til eieren av oppføringen
@@ -53,58 +66,65 @@ namespace NHN.DtoContracts.Ofr.Data
         [DataMember]
         public int? HerId { get; set; }
 
+        /// TODO: Legg hvilken OID som er kodeverket for denne koden + LEGG TIL LINK TIL KODEVERKE I BESKRIVELSEN, se electronic address
         /// <summary>
-        /// Årsak til at helseregisteret er oppført
-        /// </summary>
-        [DataMember]
-        public string ReasonForListing { get; set; }
-
-        /// <summary>
-        /// X
+        /// Rettslig grunnlag: Samtykkebasert, Reservasjonsbasert, Lovpålagt.
         /// </summary>
         [DataMember]
         public Code LegalJustification { get; set; }
 
         /// <summary>
-        /// X
+        /// Strenger som unikt representerer lovdata-type lenker.
         /// </summary>
         [DataMember]
         public string[] LegalParagraphs { get; set; }
 
+        /// TODO: Legg hvilken OID som er kodeverket for denne koden + LEGG TIL LINK TIL KODEVERKE I BESKRIVELSEN, se electronic address
         /// <summary>
-        /// X
+        /// Type helseregister, representert av en kode i kodeverk.
         /// </summary>
         [DataMember, Required]
         public Code Type { get; set; }
 
+        /// TODO: Legg hvilken OID som er kodeverket for denne koden + LEGG TIL LINK TIL KODEVERKE I BESKRIVELSEN, se electronic address
         /// <summary>
-        /// Fysiske adresser for oppføringen
+        /// E_URL type adresse som viser til hjemmesiden for registeret
+        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/type_adressekomponeneter">type_adressekomponeneter</see> (OID 9044).
+        /// </summary>
+        [DataMember]
+        public ElectronicAddress HomePageLink { get; set; }
+
+        /// <summary>
+        /// E_URL type adresse som viser til innsynsrett-informasjon.
+        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/type_adressekomponeneter">type_adressekomponeneter</see> (OID 9044).
+        /// </summary>
+        [DataMember]
+        public ElectronicAddress PrivacyTermsLink { get; set; }
+
+        /// <summary>
+        /// Fysiske adresser for eieren av registeret
+        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/type_adressekomponeneter">type_adressekomponeneter</see> (OID 9044).
         /// </summary>
         [DataMember]
         public IList<PhysicalAddress> PhysicalAddresses { get; set; }
 
         /// <summary>
-        /// Hjemmesiden til oppføringen
+        /// Elektoniske adresser til eieren av reigsteret
+        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/type_adressekomponeneter">type_adressekomponeneter</see> (OID 9044).
         /// </summary>
         [DataMember]
-        public ElectronicAddress RegisterHomepage { get; set; }
-
-        /// <summary>
-        /// Lenke innsynsrett
-        /// </summary>
-        [DataMember]
-        public ElectronicAddress RegisterPrivacyUrl { get; set; }
+        public IList<ElectronicAddress> ElectronicAddresses { get; set; }
 
         /// <summary>
         /// Perioden for når data i oppføringen skal eksistere
         /// </summary>
-        [DataMember]
+        [DataMember, Required]        
         public Period RegisterDataExists { get; set; }
 
         /// <summary>
         /// Perioden for når innsamlingen av informasjon foregikk
         /// </summary>
-        [DataMember, Required]
+        [DataMember]
         public Period DataCapturePeriod { get; set; }
 
         /// <summary>
@@ -114,7 +134,7 @@ namespace NHN.DtoContracts.Ofr.Data
         public bool IsSensitive { get; set; }
 
         /// <summary>
-        /// Hvorvidt alle innbyggere potensielt sett er på dette registeret
+        /// Hvorvidt alle innbyggere potensielt sett er på dette registeretz
         /// </summary>
         [DataMember]
         public bool RelevantForAllPeople { get; set; }
