@@ -67,7 +67,7 @@ namespace NHN.DtoContracts.Ofr.Service
         /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        void DeleteHealthRegister(int healthRegisterId);
+        void DeleteHealthRegister(Guid healthRegisterId);
 
         /// <summary>
         /// Henter alle helseregisteroppføringer personen for gitt nin er knyttet til.
@@ -124,7 +124,7 @@ namespace NHN.DtoContracts.Ofr.Service
         /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        PersonAssociations PeopleOnHealthRegister(int page, int pageSize, int healthRegisterId);
+        PersonAssociations PeopleOnHealthRegister(int page, int pageSize, Guid healthRegisterId);
 
         /// <summary>
         /// Legger til personer i en oppføring i Oppføringsregisteret.
@@ -146,7 +146,7 @@ namespace NHN.DtoContracts.Ofr.Service
         /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        PersonAssociations AddPeople(int healthRegisterId, ICollection<AddPersonData> people, bool justViewResults);
+        PersonAssociations AddPeople(Guid healthRegisterId, ICollection<AddPersonData> people, bool justViewResults);
 
         /// <summary>
         /// Legger til personer i en oppføring i Oppføringsregisteret.
@@ -167,7 +167,7 @@ namespace NHN.DtoContracts.Ofr.Service
         /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        PersonAssociations AddPeopleFromCsv(string csv, int healthRegisterId, bool justViewResults);
+        PersonAssociations AddPeopleFromCsv(string csv, Guid healthRegisterId, bool justViewResults);
 
         /// <summary>
         /// Fjerner gitte personer fra en helseregisteroppføring.
@@ -187,7 +187,7 @@ namespace NHN.DtoContracts.Ofr.Service
         /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        void RemovePeople(ICollection<string> nins, int healthRegisterId);
+        void RemovePeople(ICollection<string> nins, Guid healthRegisterId);
 
         /// <summary>
         /// Fjerner gitte personer fra helseregisteroppføring og historisk.

@@ -1,4 +1,5 @@
-﻿using NHN.DtoContracts.Common.en;
+﻿using System;
+using NHN.DtoContracts.Common.en;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.ComponentModel.DataAnnotations;
@@ -14,8 +15,8 @@ namespace NHN.DtoContracts.Ofr.Data
         /// <summary>
         /// Unik id for denne helseregisteroppføringen
         /// </summary>
-        [DataMember, Required]
-        public int Id { get; set; }
+        [DataMember]
+        public Guid guid { get; set; }
 
         /// <summary>
         /// Navnet på helseregisteroppføringen
@@ -87,13 +88,7 @@ namespace NHN.DtoContracts.Ofr.Data
         /// Hjemmesiden til oppføringen
         /// </summary>
         [DataMember]
-        public ElectronicAddress RegisterHomepage { get; set; }
-
-        /// <summary>
-        /// Lenke innsynsrett
-        /// </summary>
-        [DataMember]
-        public ElectronicAddress RegisterPrivacyUrl { get; set; }
+        public IList<ElectronicAddress> ElectronicAddresses { get; set; }
 
         /// <summary>
         /// Perioden for når data i oppføringen skal eksistere
