@@ -25,10 +25,22 @@ namespace NHN.DtoContracts.Ofr.Data
         public string Name { get; set; }
 
         /// <summary>
-        /// Kor beskrivelse, maks 200 karakterer
+        /// Kortnavn/visningsnavn på helseregisteret. Maks lengde 10 tegn
+        /// </summary>
+        [DataMember, Required]
+        public string DisplayName { get; set; }
+
+        /// <summary>
+        /// Kort beskrivelse, maks 200 karakterer
         /// </summary>
         [DataMember]
         public string Description { get; set; }
+
+        /// <summary>
+        /// Tekstlig beskrvelse av hvorfor en person vil være ført opp i registeret
+        /// </summary>
+        [DataMember]
+        public string ReasonForListing { get; set; }
 
         /// <summary>
         /// Organisasjonsnummer til eieren av oppføringen
@@ -55,19 +67,13 @@ namespace NHN.DtoContracts.Ofr.Data
         public int? HerId { get; set; }
 
         /// <summary>
-        /// Årsak til at helseregisteret er oppført
-        /// </summary>
-        [DataMember]
-        public string ReasonForListing { get; set; }
-
-        /// <summary>
-        /// X
+        /// Rettslig grunnlag: Samtykkebasert, Reservasjonsbasert, Lovpålagt.
         /// </summary>
         [DataMember]
         public Code LegalJustification { get; set; }
 
         /// <summary>
-        /// X
+        /// Strenger som unikt representerer lovdata-type lenker.
         /// </summary>
         [DataMember]
         public string[] LegalParagraphs { get; set; }
@@ -79,13 +85,25 @@ namespace NHN.DtoContracts.Ofr.Data
         public Code Type { get; set; }
 
         /// <summary>
-        /// Fysiske adresser for oppføringen
+        /// E_URL type adresse som viser til hjemmesiden for registeret
+        /// </summary>
+        [DataMember]
+        public ElectronicAddress HomePageLink { get; set; }
+
+        /// <summary>
+        /// E_URL type adresse som viser til innsynsrett-informasjon.
+        /// </summary>
+        [DataMember]
+        public ElectronicAddress PrivacyTermsLink { get; set; }
+
+        /// <summary>
+        /// Fysiske adresser for eieren av registeret
         /// </summary>
         [DataMember]
         public IList<PhysicalAddress> PhysicalAddresses { get; set; }
 
         /// <summary>
-        /// Hjemmesiden til oppføringen
+        /// Elektoniske adresser til eieren av reigsteret
         /// </summary>
         [DataMember]
         public IList<ElectronicAddress> ElectronicAddresses { get; set; }
