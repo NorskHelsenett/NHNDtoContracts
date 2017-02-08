@@ -93,7 +93,7 @@ namespace NHN.DtoContracts.Ofr.Data
         /// <summary>
         /// Perioden for når data i oppføringen skal eksistere
         /// </summary>
-        [DataMember]
+        [DataMember]        
         public Period RegisterDataExists { get; set; }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace NHN.DtoContracts.Ofr.Data
         public bool IsSensitive { get; set; }
 
         /// <summary>
-        /// Hvorvidt alle innbyggere potensielt sett er på dette registeret
+        /// Hvorvidt alle innbyggere potensielt sett er på dette registeretz
         /// </summary>
         [DataMember]
         public bool RelevantForAllPeople { get; set; }

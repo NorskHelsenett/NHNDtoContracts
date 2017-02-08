@@ -32,9 +32,28 @@ namespace NHN.DtoContracts.Ofr.Service
         HealthRegister AddHealthRegister(HealthRegister healthRegister);
 
         /// <summary>
+        /// Henter en helseregisteroppføring fra registeret.
+        /// </summary>
+        /// <param name="healthRegisterId">Unik identifikator for helseregisteroppføringen</param>
+        /// <value></value>
+        /// <returns>Objekt med oppføringen med spesifisert id fra registeret.</returns>
+        /// <exception cref="ArgumentException"></exception>
+        /// <example>
+        /// <code>
+        /// var healthRegister = oprService.GetHealhRegister(healthRegisterId);
+        /// </code>
+        /// </example>
+        /// <permission>
+        /// Krever en av rollene ADMINISTRATOR eller REGISTER_EIER for gjeldende register.
+        /// </permission>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        HealthRegister GetHealthRegister(Guid healthRegisterId);
+
+        /// <summary>
         /// Oppdaterer gitt helseregisteroppføring med ny oppgitt informasjon.
         /// </summary>
-        /// <param healthRegister="">Objekt som beskriver den oppdaterte informasjonen for et helseregister.</param>
+        /// <param name="healthRegister">Objekt som beskriver den oppdaterte informasjonen for et helseregister.</param>
         /// <value></value>
         /// <returns>Objektet for den oppdaterte helseregisteroppføringen.</returns>
         /// <exception cref="ArgumentException"></exception>
@@ -53,7 +72,7 @@ namespace NHN.DtoContracts.Ofr.Service
         /// <summary>
         /// Sletter en helseregisteroppføring fra registeret.
         /// </summary>
-        /// <param healthRegisterId="">Id til helseregisteroppføringen man ønsker å slette.</param>
+        /// <param name="healthRegisterId">Id til helseregisteroppføringen man ønsker å slette.</param>
         /// <value></value>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
@@ -72,7 +91,7 @@ namespace NHN.DtoContracts.Ofr.Service
         /// <summary>
         /// Henter alle helseregisteroppføringer personen for gitt nin er knyttet til.
         /// </summary>
-        /// <param nin="">Personnummer for person man skal ha informasjon om.</param>
+        /// <param name="nin">Personnummer for person man skal ha informasjon om.</param>
         /// <value></value>
         /// <returns>Liste over helseregisterobjekter.</returns>
         /// <exception cref="ArgumentException"></exception>
@@ -91,7 +110,7 @@ namespace NHN.DtoContracts.Ofr.Service
         /// <summary>
         /// Utfører et søk på helseregisteroppføringer med gitte parametre.
         /// </summary>
-        /// <param query="">Objekt som beskriver et sett med parametre for å utføre søk.</param>
+        /// <param name="query">Objekt som beskriver et sett med parametre for å utføre søk.</param>
         /// <value></value>
         /// <returns>Et paginert resultat med helseregisteroppføringer.</returns>
         /// <exception cref="ArgumentException"></exception>
@@ -110,7 +129,9 @@ namespace NHN.DtoContracts.Ofr.Service
         /// <summary>
         /// Henter ut alle personer som er assosiert med gitt helseregister.
         /// </summary>
-        /// <param healthRegisterId="">Id for helseregisteroppføring man ønsker informasjon om.</param>
+        /// <param name="page">Id for helseregisteroppføring man ønsker informasjon om.</param>
+        /// <param name="pageSize">Id for helseregisteroppføring man ønsker informasjon om.</param>
+        /// <param name="healthRegisterId">Id for helseregisteroppføring man ønsker informasjon om.</param>
         /// <value></value>
         /// <returns>Objekt som beskriver assosiasjonen mellom en oppføring og personer.</returns>
         /// <exception cref="ArgumentException"></exception>
