@@ -92,6 +92,7 @@ namespace NHN.DtoContracts.Ofr.Service
         /// Henter alle helseregisteroppføringer personen for gitt nin er knyttet til.
         /// </summary>
         /// <param name="nin">Personnummer for person man skal ha informasjon om.</param>
+        /// <param name="healthRegisterType">Type helseregistre man vil ha i retur</param>
         /// <value></value>
         /// <returns>Liste over helseregisterobjekter.</returns>
         /// <exception cref="ArgumentException"></exception>
@@ -105,7 +106,7 @@ namespace NHN.DtoContracts.Ofr.Service
         /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        ICollection<HealthRegister> GetHealthRegistersFor(string nin);
+        ICollection<HealthRegister> GetHealthRegistersFor(string nin, Code healthRegisterType = null);
 
         /// <summary>
         /// Utfører et søk på helseregisteroppføringer med gitte parametre.
@@ -168,27 +169,6 @@ namespace NHN.DtoContracts.Ofr.Service
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         PersonAssociations AddPeople(Guid healthRegisterId, ICollection<AddPersonData> people, bool justViewResults);
-
-        /// <summary>
-        /// Legger til personer i en oppføring i Oppføringsregisteret.
-        /// </summary>
-        /// <param nins="">Liste over personnummer som skal legges til</param>
-        /// <param healthRegister="">Helseregisteroppføringen gitte personer skal legges til.</param>
-        /// <param justviewresults="">Forteller om man ønsker å utelukkende få tilbake resulterende objekter av operasjonen, uten at disse blir lagt til i databasen.</param>
-        /// <value></value>
-        /// <returns>Objekt som beskriver assosiasjonen mellom en oppføring og personer.</returns>
-        /// <exception cref="ArgumentException"></exception>
-        /// <example>
-        /// <code>
-        /// var personAssociations = oprService.AddPeople(nins, healthRegister, justViewResults)
-        /// </code>
-        /// </example>
-        /// <permission>
-        /// Krever en av rollene ADMINISTRATOR eller REGISTER_EIER for gjeldende register.
-        /// </permission>
-        [OperationContract]
-        [FaultContract(typeof(GenericFault))]
-        PersonAssociations AddPeopleFromCsv(string csv, Guid healthRegisterId, bool justViewResults);
 
         /// <summary>
         /// Fjerner gitte personer fra en helseregisteroppføring.
