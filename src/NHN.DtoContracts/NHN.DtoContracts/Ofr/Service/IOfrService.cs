@@ -168,7 +168,7 @@ namespace NHN.DtoContracts.Ofr.Service
         /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        PersonAssociations AddPeople(Guid healthRegisterId, ICollection<AddPersonData> people, bool justViewResults);
+        PersonAssociations AddPeople(Guid healthRegisterId, ICollection<AddPersonData> people, bool justViewResults = false);
 
 
         /// <summary>
