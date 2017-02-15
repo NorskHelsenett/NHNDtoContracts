@@ -16,7 +16,7 @@ namespace NHN.DtoContracts.Ofr.Data
         /// Unik id for denne helseregisteroppføringen
         /// </summary>
         [DataMember]
-        public Guid guid { get; set; }
+        public Guid? guid { get; set; }
 
         /// <summary>
         /// Navnet på helseregisteroppføringen
@@ -66,6 +66,7 @@ namespace NHN.DtoContracts.Ofr.Data
         [DataMember]
         public int? HerId { get; set; }
 
+        /// TODO: Legg hvilken OID som er kodeverket for denne koden + LEGG TIL LINK TIL KODEVERKE I BESKRIVELSEN, se electronic address
         /// <summary>
         /// Rettslig grunnlag: Samtykkebasert, Reservasjonsbasert, Lovpålagt.
         /// </summary>
@@ -78,32 +79,38 @@ namespace NHN.DtoContracts.Ofr.Data
         [DataMember]
         public string[] LegalParagraphs { get; set; }
 
+        /// TODO: Legg hvilken OID som er kodeverket for denne koden + LEGG TIL LINK TIL KODEVERKE I BESKRIVELSEN, se electronic address
         /// <summary>
-        /// X
+        /// Type helseregister, representert av en kode i kodeverk.
         /// </summary>
         [DataMember, Required]
         public Code Type { get; set; }
 
+        /// TODO: Legg hvilken OID som er kodeverket for denne koden + LEGG TIL LINK TIL KODEVERKE I BESKRIVELSEN, se electronic address
         /// <summary>
         /// E_URL type adresse som viser til hjemmesiden for registeret
+        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/type_adressekomponeneter">type_adressekomponeneter</see> (OID 9044).
         /// </summary>
         [DataMember]
         public ElectronicAddress HomePageLink { get; set; }
 
         /// <summary>
         /// E_URL type adresse som viser til innsynsrett-informasjon.
+        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/type_adressekomponeneter">type_adressekomponeneter</see> (OID 9044).
         /// </summary>
         [DataMember]
         public ElectronicAddress PrivacyTermsLink { get; set; }
 
         /// <summary>
         /// Fysiske adresser for eieren av registeret
+        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/type_adressekomponeneter">type_adressekomponeneter</see> (OID 9044).
         /// </summary>
         [DataMember]
         public IList<PhysicalAddress> PhysicalAddresses { get; set; }
 
         /// <summary>
         /// Elektoniske adresser til eieren av reigsteret
+        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/type_adressekomponeneter">type_adressekomponeneter</see> (OID 9044).
         /// </summary>
         [DataMember]
         public IList<ElectronicAddress> ElectronicAddresses { get; set; }
