@@ -27,7 +27,7 @@ namespace NHN.DtoContracts.Ofr.Data
         /// <summary>
         /// Kortnavn/visningsnavn på helseregisteret. Maks lengde 10 tegn
         /// </summary>
-        [DataMember, Required]
+        [DataMember]
         public string DisplayName { get; set; }
 
         /// <summary>
