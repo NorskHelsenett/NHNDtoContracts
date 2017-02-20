@@ -118,13 +118,13 @@ namespace NHN.DtoContracts.Ofr.Data
         /// <summary>
         /// Perioden for når data i oppføringen skal eksistere
         /// </summary>
-        [DataMember]        
+        [DataMember, Required]        
         public Period RegisterDataExists { get; set; }
 
         /// <summary>
         /// Perioden for når innsamlingen av informasjon foregikk
         /// </summary>
-        [DataMember, Required]
+        [DataMember]
         public Period DataCapturePeriod { get; set; }
 
         /// <summary>
