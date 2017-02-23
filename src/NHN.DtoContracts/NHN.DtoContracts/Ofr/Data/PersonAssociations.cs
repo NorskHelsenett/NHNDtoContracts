@@ -32,5 +32,11 @@ namespace NHN.DtoContracts.Ofr.Data
         /// </summary>
         [DataMember]
         public int PageSize { get; set; }
+
+        /// <summary>
+        /// X
+        /// </summary>
+        [DataMember]
+        public ICollection<string> PersonNinsNotFound { get; set; }
     }
 }
