@@ -26,12 +26,12 @@ namespace NHN.DtoContracts.Ofr.Data
         /// Type kontrakt
         /// </summary>
         [DataMember]
-        public string TypeCodeValue { get; set; }
+        public Code TypeCode { get; set; }
 
         /// <summary>
         /// Hvis null, returnerer historiske. Hvis satt, returnerer kontrakter som var gyldige på gitt tidspunkt.
         /// </summary>
         [DataMember]
-        public string WasActiveAtTime { get; set; }
+        public DateTime? WasActiveAtTime { get; set; }
     }
 }

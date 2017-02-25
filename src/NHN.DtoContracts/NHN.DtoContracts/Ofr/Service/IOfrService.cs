@@ -106,7 +106,7 @@ namespace NHN.DtoContracts.Ofr.Service
         /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        ICollection<HealthRegister> GetHealthRegistersFor(string nin, string healthRegisterType = null);
+        ICollection<HealthRegister> GetHealthRegistersFor(string nin, Code healthRegisterType = null);
 
         /// <summary>
         /// Utfører et søk på helseregisteroppføringer med gitte parametre.
