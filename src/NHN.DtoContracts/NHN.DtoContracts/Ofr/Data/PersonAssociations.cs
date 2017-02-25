@@ -10,31 +10,31 @@ namespace NHN.DtoContracts.Ofr.Data
     public class PersonAssociations
     {
         /// <summary>
-        /// X
+        /// The paginated collection og people 
         /// </summary>
         [DataMember]
         public ICollection<PersonOnHealthRegister> Persons { get; set; }
 
         /// <summary>
-        /// X
+        /// The total number of entries of the paginated collection.
         /// </summary>
         [DataMember]
         public int TotalEntries { get; set; }
 
         /// <summary>
-        /// X
+        /// The page nr of the paginated collection.
         /// </summary>
         [DataMember]
         public int Page { get; set; }
 
         /// <summary>
-        /// X
+        /// Size of page in the paginated collection.
         /// </summary>
         [DataMember]
         public int PageSize { get; set; }
 
         /// <summary>
-        /// X
+        /// List of Nins that failed upon lookup.
         /// </summary>
         [DataMember]
         public ICollection<string> PersonNinsNotFound { get; set; }
