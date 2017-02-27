@@ -151,9 +151,8 @@ namespace NHN.DtoContracts.Ofr.Service
         /// <summary>
         /// Legger til personer i en oppføring i Oppføringsregisteret.
         /// </summary>
-        /// <param healthRegisterId="">Id til helseregister</param>
-        /// <param people="">Liste over personer som skal legges til</param>
-        /// <param justviewresults="">Forteller om man ønsker å utelukkende få tilbake resulterende objekter av operasjonen, uten at disse blir lagt til i databasen.</param>
+        /// <param name="healthRegisterId">Id til helseregister</param>
+        /// <param name="people">Liste over personer som skal legges til</param>
         /// <value></value>
         /// <returns>Objekt som beskriver assosiasjonen mellom en oppføring og personer.</returns>
         /// <exception cref="ArgumentException"></exception>
@@ -168,15 +167,36 @@ namespace NHN.DtoContracts.Ofr.Service
         /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        PersonAssociations AddPeople(Guid healthRegisterId, ICollection<AddPersonData> people, bool justViewResults = false);
+        PersonAssociations AddPeople(Guid healthRegisterId, ICollection<AddPersonData> people);
 
+
+        /// <summary>
+        /// Simulerer å leegge til personer i en oppføring i Oppføringsregisteret. Lagrer ikke dataen i db, men returnerer resultatet som ville blitt lagt til. 
+        /// Returnerer i tillegg err
+        /// </summary>
+        /// <param name="healthRegisterId">Guid til helseregister</param>
+        /// <param name="people">Liste over personer som skal legges til</param>
+        /// <value></value>
+        /// <returns>Objekt som beskriver assosiasjonen mellom en oppføring og personer.</returns>
+        /// <exception cref="ArgumentException"></exception>
+        /// <example>
+        /// <code>
+        /// var person = new AddPersonData { Nin = "12345678901", StartPeriod = DateTime.Now };
+        /// var personAssociations = oprService.AddPeople(new [] { person }, false);
+        /// </code>
+        /// </example>
+        /// <permission>
+        /// Krever en av rollene ADMINISTRATOR eller REGISTER_EIER for gjeldende register.
+        /// </permission>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        PersonAssociationsWithErrors AddPeopleDryRun(Guid healthRegisterId, ICollection<AddPersonData> people);
 
         /// <summary>
         /// Legger til personer i en oppføring i Oppføringsregisteret.
         /// </summary>
-        /// <param nins="">Liste over personnummer som skal legges til</param>
-        /// <param healthRegister="">Helseregisteroppføringen gitte personer skal legges til.</param>
-        /// <param justviewresults="">Forteller om man ønsker å utelukkende få tilbake resulterende objekter av operasjonen, uten at disse blir lagt til i databasen.</param>
+        /// <param name="csv">Csv string som representerer personer som skal legges til.</param>
+        /// <param name="healthRegisterId">Guid for helseregisteroppføringen hvor personene skal legges til.</param>
         /// <value></value>
         /// <returns>Objekt som beskriver assosiasjonen mellom en oppføring og personer.</returns>
         /// <exception cref="ArgumentException"></exception>
@@ -190,7 +210,27 @@ namespace NHN.DtoContracts.Ofr.Service
         /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        PersonAssociations AddPeopleFromCsv(string csv, Guid healthRegisterId, bool justViewResults);
+        PersonAssociations AddPeopleFromCsv(string csv, Guid healthRegisterId);
+
+        /// <summary>
+        /// Legger til personer i en oppføring i Oppføringsregisteret.
+        /// </summary>
+        /// <param name="csv">Csv string som representerer personer som skal legges til.</param>
+        /// <param name="healthRegisterId">Guid for helseregisteroppføringen hvor personene skal legges til.</param>
+        /// <value></value>
+        /// <returns>Objekt som beskriver assosiasjonen mellom en oppføring og personer.</returns>
+        /// <exception cref="ArgumentException"></exception>
+        /// <example>
+        /// <code>
+        /// var personAssociations = oprService.AddPeople(nins, healthRegister, justViewResults)
+        /// </code>
+        /// </example>
+        /// <permission>
+        /// Krever en av rollene ADMINISTRATOR eller REGISTER_EIER for gjeldende register.
+        /// </permission>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        PersonAssociationsWithErrors AddPeopleFromCsvDryRun(string csv, Guid healthRegisterId);
 
         /// <summary>
         /// Fjerner gitte personer fra en helseregisteroppføring.
