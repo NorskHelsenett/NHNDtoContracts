@@ -26,7 +26,7 @@ namespace NHN.DtoContracts.Ofr.Data
         /// Type kontrakt
         /// </summary>
         [DataMember]
-        public Code TypeCode { get; set; }
+        public Code Type { get; set; }
 
         /// <summary>
         /// Hvis null, returnerer historiske. Hvis satt, returnerer kontrakter som var gyldige på gitt tidspunkt.
