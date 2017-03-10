@@ -16,7 +16,7 @@ namespace NHN.DtoContracts.Ofr.Data
         /// Unik id for denne helseregisteroppføringen
         /// </summary>
         [DataMember]
-        public Guid? guid { get; set; }
+        public Guid guid { get; set; }
 
         /// <summary>
         /// Navnet på helseregisteroppføringen
