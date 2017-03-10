@@ -43,6 +43,7 @@ namespace NHN.DtoContracts.Ofr.Data
         /// <summary>
         /// Objektet som inneholder det paginerte resultatet av personer.
         /// </summary>
+        [DataMember]
         public PersonAssociations Persons { get; set; }
 
         /// <summary>
