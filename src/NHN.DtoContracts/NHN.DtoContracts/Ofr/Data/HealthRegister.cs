@@ -1,0 +1,142 @@
+﻿using System;
+using NHN.DtoContracts.Common.en;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
+using System.ComponentModel.DataAnnotations;
+
+namespace NHN.DtoContracts.Ofr.Data
+{
+    /// <summary>
+    /// X
+    /// </summary>
+    [DataContract(Namespace = OfrNamespace.Name)]
+    public class HealthRegister
+    {
+        /// <summary>
+        /// Unik id for denne helseregisteroppføringen
+        /// </summary>
+        [DataMember]
+        public Guid guid { get; set; }
+
+        /// <summary>
+        /// Navnet på helseregisteroppføringen
+        /// </summary>
+        [DataMember, Required]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Kortnavn/visningsnavn på helseregisteret. Maks lengde 10 tegn
+        /// </summary>
+        [DataMember]
+        public string DisplayName { get; set; }
+
+        /// <summary>
+        /// Kort beskrivelse, maks 200 karakterer
+        /// </summary>
+        [DataMember]
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Tekstlig beskrvelse av hvorfor en person vil være ført opp i registeret
+        /// </summary>
+        [DataMember]
+        public string ReasonForListing { get; set; }
+
+        /// <summary>
+        /// Organisasjonsnummer til eieren av oppføringen
+        /// </summary>
+        [DataMember, Required]
+        public int OwnerOrganizationNumber { get; set; }
+
+        /// <summary>
+        /// Navn på org som eier registeret. Utledet fra navnet på bedriften.
+        /// </summary>
+        [DataMember]
+        public string OwnerName { get; set; }
+
+        /// <summary>
+        /// Visningsnavnet til eieren av oppføringen
+        /// </summary>
+        [DataMember]
+        public string OwnerDisplayName { get; set; }
+
+        /// <summary>
+        /// HerID for direkte elektronisk kommunikasjon
+        /// </summary>
+        [DataMember]
+        public int? HerId { get; set; }
+
+        /// TODO: Legg hvilken OID som er kodeverket for denne koden + LEGG TIL LINK TIL KODEVERKE I BESKRIVELSEN, se electronic address
+        /// <summary>
+        /// Rettslig grunnlag: Samtykkebasert, Reservasjonsbasert, Lovpålagt.
+        /// </summary>
+        [DataMember]
+        public Code LegalJustification { get; set; }
+
+        /// <summary>
+        /// Strenger som unikt representerer lovdata-type lenker.
+        /// </summary>
+        [DataMember]
+        public string[] LegalParagraphs { get; set; }
+
+        /// TODO: Legg hvilken OID som er kodeverket for denne koden + LEGG TIL LINK TIL KODEVERKE I BESKRIVELSEN, se electronic address
+        /// <summary>
+        /// Type helseregister, representert av en kode i kodeverk.
+        /// </summary>
+        [DataMember, Required]
+        public Code Type { get; set; }
+
+        /// TODO: Legg hvilken OID som er kodeverket for denne koden + LEGG TIL LINK TIL KODEVERKE I BESKRIVELSEN, se electronic address
+        /// <summary>
+        /// E_URL type adresse som viser til hjemmesiden for registeret
+        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/type_adressekomponeneter">type_adressekomponeneter</see> (OID 9044).
+        /// </summary>
+        [DataMember]
+        public ElectronicAddress HomePageLink { get; set; }
+
+        /// <summary>
+        /// E_URL type adresse som viser til innsynsrett-informasjon.
+        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/type_adressekomponeneter">type_adressekomponeneter</see> (OID 9044).
+        /// </summary>
+        [DataMember]
+        public ElectronicAddress PrivacyTermsLink { get; set; }
+
+        /// <summary>
+        /// Fysiske adresser for eieren av registeret
+        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/type_adressekomponeneter">type_adressekomponeneter</see> (OID 9044).
+        /// </summary>
+        [DataMember]
+        public IList<PhysicalAddress> PhysicalAddresses { get; set; }
+
+        /// <summary>
+        /// Elektoniske adresser til eieren av reigsteret
+        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/type_adressekomponeneter">type_adressekomponeneter</see> (OID 9044).
+        /// </summary>
+        [DataMember]
+        public IList<ElectronicAddress> ElectronicAddresses { get; set; }
+
+        /// <summary>
+        /// Perioden for når data i oppføringen skal eksistere
+        /// </summary>
+        [DataMember, Required]        
+        public Period RegisterDataExists { get; set; }
+
+        /// <summary>
+        /// Perioden for når innsamlingen av informasjon foregikk
+        /// </summary>
+        [DataMember]
+        public Period DataCapturePeriod { get; set; }
+
+        /// <summary>
+        /// Hvorvidt informasjonen i denne oppføringen er av sensitiv natur
+        /// </summary>
+        [DataMember]
+        public bool IsSensitive { get; set; }
+
+        /// <summary>
+        /// Hvorvidt alle innbyggere potensielt sett er på dette registeretz
+        /// </summary>
+        [DataMember]
+        public bool RelevantForAllPeople { get; set; }
+    }
+}
