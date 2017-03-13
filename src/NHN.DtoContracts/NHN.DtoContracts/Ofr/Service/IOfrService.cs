@@ -270,5 +270,24 @@ namespace NHN.DtoContracts.Ofr.Service
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         void RemovePeopleFromHistory(ICollection<string> nins);
+
+        /// <summary>
+        /// Sjekk om du er register eier for en helseregisteroppføring.
+        /// </summary>
+        /// <param name="healthRegisterId">Guid for helseregisteroppføringen hvor du ønsker å sjekke om brukeren din er eier av.</param>
+        /// <value></value>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        /// <example>
+        /// <code>
+        /// oprService.IsOwnerOfHealthRegister(healthRegisterId);
+        /// </code>
+        /// </example>
+        /// <permission>
+        /// Krever ingen roller.
+        /// </permission>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        bool IsOwnerOfHealthRegister(Guid healthRegisterId);
     }
 }
