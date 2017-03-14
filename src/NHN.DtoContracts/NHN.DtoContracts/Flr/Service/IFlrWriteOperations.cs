@@ -200,7 +200,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <exception cref="ArgumentException">Kastes hvis listetaket på en avtale ikke er høyere enn 0</exception>
         /// <example>
         /// <code>
-        /// flrWriteService.GetPatientGPDetails(gpContractId, maxPatients);
+        /// flrWriteService.UpdateGPContractMaxPatients(gpContractId, maxPatients);
         /// </code>
         /// </example>
         /// <permission>
@@ -209,6 +209,28 @@ namespace NHN.DtoContracts.Flr.Service
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         void UpdateGPContractMaxPatients(long gpContractId, int maxPatients);
+
+        /// <summary>
+        /// Oppdatering av antall personer på venteliste hos fastlege.
+        /// </summary>
+        /// <remarks>
+        /// Service bus: Denne metoden sender event "ContractUpdated" med eventobjekt <see cref="GPContract"/>.
+        /// </remarks>
+        /// <param name="gpContractId">Id på fastlegeavtalen</param>
+        /// <param name="patientsOnWait">Antall pasienter på venteliste</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException">Kastes hvis antall pasienter på ventelisten sette til mindre en 0</exception>
+        /// <example>
+        /// <code>
+        /// flrWriteService.UpdateGPContractWaitingList(gpContractId, patientsOnWait);
+        /// </code>
+        /// </example>
+        /// <permission>
+        /// Krever en av rollene ADMINISTRATOR eller FLR_WRITE
+        /// </permission>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        void UpdateGPContractWaitingList(long gpContractId, int patientsOnWait);
 
         /// <summary>
         /// Oppdatering av listestatus uten endringer av andre verdier.
