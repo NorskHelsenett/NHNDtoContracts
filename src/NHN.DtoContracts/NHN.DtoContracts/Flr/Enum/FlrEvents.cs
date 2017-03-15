@@ -21,7 +21,7 @@ namespace NHN.DtoContracts.Flr.Enum
         /// 
         /// Se <see cref="IFlrWriteOperations.UpdateGPContract" />,
         /// <see cref="IFlrWriteOperations.UpdateGPContractMaxPatients" />,
-        /// <see cref="IFlrWriteOperations.UpdateGPContractWaitingList"/>, 
+        /// <see cref="IFlrWriteOperations.UpdateGPContractPatientsOnWaitingList"/>, 
         /// <see cref="IFlrWriteOperations.UpdateGPContractStatus" />,
         /// <see cref="IFlrWriteOperations.UpdateGPContractCoopMunicipalities" />,
         /// <see cref="IFlrWriteOperations.UpdateGPOfficeOnGPContracts" />.

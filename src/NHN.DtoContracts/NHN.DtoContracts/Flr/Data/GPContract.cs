@@ -129,7 +129,7 @@ namespace NHN.DtoContracts.Flr.Data
         /// Antall personer som er på venteliste. 
         /// </summary>
         [DataMember]
-        public int? PatientsOnWaitingList { get; set; }
+        public int PatientsOnWaitingList { get; set; }
 
         /// <summary>
         /// Tidspunkt data ble sist oppdatert

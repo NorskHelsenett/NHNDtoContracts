@@ -222,7 +222,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <exception cref="ArgumentException">Kastes hvis antall pasienter på ventelisten sette til mindre en 0</exception>
         /// <example>
         /// <code>
-        /// flrWriteService.UpdateGPContractWaitingList(gpContractId, patientsOnWait);
+        /// flrWriteService.UpdateGPContractPatientsOnWaitingList(gpContractId, patientsOnWait);
         /// </code>
         /// </example>
         /// <permission>
@@ -230,7 +230,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        void UpdateGPContractWaitingList(long gpContractId, int patientsOnWait);
+        void UpdateGPContractPatientsOnWaitingList(long gpContractId, int patientsOnWait);
 
         /// <summary>
         /// Oppdatering av listestatus uten endringer av andre verdier.
