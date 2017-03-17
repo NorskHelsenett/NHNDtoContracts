@@ -289,5 +289,25 @@ namespace NHN.DtoContracts.Ofr.Service
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         bool IsOwnerOfHealthRegister(Guid healthRegisterId);
+
+        /// <summary>
+        /// Henter ut en person med gitt fødseslsnummer oppført på helseregister med gidd guid.
+        /// </summary>
+        /// <param name="nin">Fødselsnummeret til personene.</param>
+        /// <param name="healthRegisterId">Guid for helseregisteroppføringen hvor personen er oppført.</param>
+        /// <value></value>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        /// <example>
+        /// <code>
+        /// oprService.GetParticipant(healthRegisterId);
+        /// </code>
+        /// </example>
+        /// <permission>
+        /// Krever ingen roller.
+        /// </permission>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        PersonOnHealthRegister GetParticipant(string nin, Guid healthRegisterId);
     }
 }

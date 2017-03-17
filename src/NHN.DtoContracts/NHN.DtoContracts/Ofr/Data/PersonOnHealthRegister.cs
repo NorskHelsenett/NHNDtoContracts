@@ -6,43 +6,43 @@ using System.Runtime.Serialization;
 namespace NHN.DtoContracts.Ofr.Data
 {
     /// <summary>
-    /// X
+    /// Inneholder en personoppføring for OFR, inbkluderer helseregisteret personen er oppført på
     /// </summary>
     [DataContract(Namespace = OfrNamespace.Name)]
     public class PersonOnHealthRegister
     {
         /// <summary>
-        /// X
+        /// Intern identifikator for oppføringen
         /// </summary>
         [DataMember, Required]
         public Guid Id { get; set; }
 
         /// <summary>
-        /// X
+        /// Fødelsnummeret til personen
         /// </summary>
         [DataMember, Required]
         public string Nin { get; set; }
 
         /// <summary>
-        /// X
+        /// Navnet på personen, fornavn + eventuelt mellomnavn + etternavn
         /// </summary>
         [DataMember]
         public string Name { get; set; }
 
         /// <summary>
-        /// X
+        /// Ekstern referanse som skal føres opp i OFR
         /// </summary>
         [DataMember]
         public string ExternalRef { get; set; }
 
         /// <summary>
-        /// X
+        /// Gyldighetsperiode for oppføringen
         /// </summary>
         [DataMember]
         public Period Period { get; set; }
 
         /// <summary>
-        /// X
+        /// Identifikator for helseregisteret personen står oppført på.
         /// </summary>
         [DataMember, Required]
         public Guid HealthRegisterId { get; set; }
