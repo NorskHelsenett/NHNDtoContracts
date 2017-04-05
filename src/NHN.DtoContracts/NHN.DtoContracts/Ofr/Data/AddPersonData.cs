@@ -5,25 +5,25 @@ using System.Runtime.Serialization;
 namespace NHN.DtoContracts.Ofr.Data
 {
     /// <summary>
-    /// Data required when you add person to a 
+    /// Data for å legge til en ny personoppføringe på en helseregisteroppføring
     /// </summary>
     [DataContract(Namespace = OfrNamespace.Name)]
     public class AddPersonData
     {
         /// <summary>
-        /// X
+        /// Fødselsnummeret til personen man ønsker å legge til
         /// </summary>
         [DataMember, Required]
         public string Nin { get; set; }
 
         /// <summary>
-        /// X
+        /// En ekstern referanse man kan legge til med personen
         /// </summary>
         [DataMember]
         public string ExternalRef { get; set; }
 
         /// <summary>
-        /// X
+        /// Når denne personoppføringen skal starte å være gyldig
         /// </summary>
         [DataMember, Required]
         public DateTime StartPeriod { get; set; }

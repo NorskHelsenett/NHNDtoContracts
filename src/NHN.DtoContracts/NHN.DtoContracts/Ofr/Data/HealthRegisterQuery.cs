@@ -5,25 +5,26 @@ using System.Runtime.Serialization;
 namespace NHN.DtoContracts.Ofr.Data
 {
     /// <summary>
-    /// X
+    /// Søkeparametre for å hente ut helseregisteroppføringer i OFR
     /// </summary>
     [DataContract(Namespace = OfrNamespace.Name)]
     public class HealthRegisterQuery
     {
         /// <summary>
-        /// X
+        /// Fritekstsøk felt for OFR, søker på Name og DisplayName for oppføringen, samt Name og DisplayName for enheten som eier oppføringen
         /// </summary>
         [DataMember]
         public string FullText { get; set; }
 
         /// <summary>
-        /// X
+        /// Søkefelt for å hente helseregisteroppføringer basert på orgnummer til enheten som eier oppføringene
         /// </summary>
         [DataMember]
         public int? BelongsToOrg { get; set; }
 
         /// <summary>
-        /// Type kontrakt
+        /// Felt for å hente ut helseregisteroppføringer basert på Type, representer av en kode i et kodeverk
+        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/ofr_helseregistertype">ofr_helseregistertype</see>.
         /// </summary>
         [DataMember]
         public Code Type { get; set; }

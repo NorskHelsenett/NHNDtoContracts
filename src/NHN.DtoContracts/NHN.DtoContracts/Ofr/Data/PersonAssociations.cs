@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace NHN.DtoContracts.Ofr.Data
 {
     /// <summary>
-    /// X
+    /// Objekt som representer et sett med personoppføringer i OFR, sammen med pagineringsinformasjon
     /// </summary>
     [DataContract(Namespace = OfrNamespace.Name)]
     public class PersonAssociations
@@ -35,7 +35,8 @@ namespace NHN.DtoContracts.Ofr.Data
     }
 
     /// <summary>
-    /// X
+    /// Objekt som representerer et sett med personoppføringer i OFR, sammen med pagineringsinformasjon, og error feedback
+    /// Brukes i hovedsak ved DryRun metoder i OFR service.
     /// </summary>
     [DataContract(Namespace = OfrNamespace.Name)]
     public class PersonAssociationsWithErrors

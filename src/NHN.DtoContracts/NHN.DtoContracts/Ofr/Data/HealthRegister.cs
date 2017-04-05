@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 namespace NHN.DtoContracts.Ofr.Data
 {
     /// <summary>
-    /// X
+    /// Helseregister objekt for å legge til/hente ut opplysninger om en helseregisteroppføring i OFR
     /// </summary>
     [DataContract(Namespace = OfrNamespace.Name)]
     public class HealthRegister
@@ -31,7 +31,7 @@ namespace NHN.DtoContracts.Ofr.Data
         public string DisplayName { get; set; }
 
         /// <summary>
-        /// Kort beskrivelse, maks 200 karakterer
+        /// Kort beskrivelse, maks 600 karakterer
         /// </summary>
         [DataMember]
         public string Description { get; set; }
@@ -66,9 +66,9 @@ namespace NHN.DtoContracts.Ofr.Data
         [DataMember]
         public int? HerId { get; set; }
 
-        /// TODO: Legg hvilken OID som er kodeverket for denne koden + LEGG TIL LINK TIL KODEVERKE I BESKRIVELSEN, se electronic address
         /// <summary>
-        /// Rettslig grunnlag: Samtykkebasert, Reservasjonsbasert, Lovpålagt.
+        /// Rettslig grunnlag for helseregisteroppføringen, representer av en kode i kodeverk.
+        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/ofr_hjemmel">ofr_hjemmel</see>.
         /// </summary>
         [DataMember]
         public Code LegalJustification { get; set; }
@@ -79,27 +79,12 @@ namespace NHN.DtoContracts.Ofr.Data
         [DataMember]
         public string[] LegalParagraphs { get; set; }
 
-        /// TODO: Legg hvilken OID som er kodeverket for denne koden + LEGG TIL LINK TIL KODEVERKE I BESKRIVELSEN, se electronic address
         /// <summary>
         /// Type helseregister, representert av en kode i kodeverk.
+        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/ofr_helseregistertype">ofr_helseregistertype</see>.
         /// </summary>
         [DataMember, Required]
         public Code Type { get; set; }
-
-        /// TODO: Legg hvilken OID som er kodeverket for denne koden + LEGG TIL LINK TIL KODEVERKE I BESKRIVELSEN, se electronic address
-        /// <summary>
-        /// E_URL type adresse som viser til hjemmesiden for registeret
-        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/type_adressekomponeneter">type_adressekomponeneter</see> (OID 9044).
-        /// </summary>
-        [DataMember]
-        public ElectronicAddress HomePageLink { get; set; }
-
-        /// <summary>
-        /// E_URL type adresse som viser til innsynsrett-informasjon.
-        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/type_adressekomponeneter">type_adressekomponeneter</see> (OID 9044).
-        /// </summary>
-        [DataMember]
-        public ElectronicAddress PrivacyTermsLink { get; set; }
 
         /// <summary>
         /// Fysiske adresser for eieren av registeret
@@ -109,7 +94,8 @@ namespace NHN.DtoContracts.Ofr.Data
         public IList<PhysicalAddress> PhysicalAddresses { get; set; }
 
         /// <summary>
-        /// Elektoniske adresser til eieren av reigsteret
+        /// Elektoniske adresser til eieren av registeret. I hovedsak er dette snakk om en Hjemmeside representert av kodeverdien E_URL, 
+        /// og en Adresselenke for innsynsrett representert av kodeverdien E_PTL 
         /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/type_adressekomponeneter">type_adressekomponeneter</see> (OID 9044).
         /// </summary>
         [DataMember]
@@ -134,7 +120,7 @@ namespace NHN.DtoContracts.Ofr.Data
         public bool IsSensitive { get; set; }
 
         /// <summary>
-        /// Hvorvidt alle innbyggere potensielt sett er på dette registeretz
+        /// Hvorvidt alle innbyggere potensielt sett er på dette registeret
         /// </summary>
         [DataMember]
         public bool RelevantForAllPeople { get; set; }
