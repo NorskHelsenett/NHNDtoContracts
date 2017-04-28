@@ -33,13 +33,13 @@ namespace NHN.DtoContracts.Ofr.Data
         /// <summary>
         /// Kort beskrivelse, maks 600 karakterer
         /// </summary>
-        [DataMember]
+        [DataMember, Required]
         public string Description { get; set; }
 
         /// <summary>
         /// Tekstlig beskrvelse av hvorfor en person vil være ført opp i registeret
         /// </summary>
-        [DataMember]
+        [DataMember, Required]
         public string ReasonForListing { get; set; }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace NHN.DtoContracts.Ofr.Data
         /// Rettslig grunnlag for helseregisteroppføringen, representer av en kode i kodeverk.
         /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/ofr_hjemmel">ofr_hjemmel</see>.
         /// </summary>
-        [DataMember]
+        [DataMember, Required]
         public Code LegalJustification { get; set; }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace NHN.DtoContracts.Ofr.Data
         /// Fysiske adresser for eieren av registeret
         /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/type_adressekomponeneter">type_adressekomponeneter</see> (OID 9044).
         /// </summary>
-        [DataMember]
+        [DataMember, Required]
         public IList<PhysicalAddress> PhysicalAddresses { get; set; }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace NHN.DtoContracts.Ofr.Data
         /// og en Adresselenke for innsynsrett representert av kodeverdien E_PTL 
         /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/type_adressekomponeneter">type_adressekomponeneter</see> (OID 9044).
         /// </summary>
-        [DataMember]
+        [DataMember, Required]
         public IList<ElectronicAddress> ElectronicAddresses { get; set; }
 
         /// <summary>
