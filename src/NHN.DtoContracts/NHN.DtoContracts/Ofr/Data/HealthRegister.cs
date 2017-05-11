@@ -88,7 +88,7 @@ namespace NHN.DtoContracts.Ofr.Data
 
         /// <summary>
         /// Fysiske adresser for eieren av registeret
-        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/type_adressekomponeneter">type_adressekomponeneter</see> (OID 9044).
+        /// Type-kode må være med CodeValue enten RES (Besøksadresse) eller PST (Postboks).
         /// </summary>
         [DataMember, Required]
         public IList<PhysicalAddress> PhysicalAddresses { get; set; }
