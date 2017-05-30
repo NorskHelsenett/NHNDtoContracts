@@ -353,7 +353,7 @@ namespace NHN.DtoContracts.Ofr.Service
         /// <exception cref="ArgumentException"></exception>
         /// <example>
         /// <code>
-        /// ofrService.GetNameForParticipant(nin);
+        /// ofrService.GetParticipantName(nin);
         /// </code>
         /// </example>
         /// <permission>
@@ -361,6 +361,6 @@ namespace NHN.DtoContracts.Ofr.Service
         /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        string GetNameForParticipant(string nin);
+        PersonName GetParticipantName(string nin);
     }
 }

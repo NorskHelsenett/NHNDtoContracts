@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\en\GeographicalCoordinates.cs" />
+    <Compile Include="Common\en\PersonName.cs" />
     <Compile Include="Common\HelperInterfaces\IHasGeographicalCoordinates.cs" />
     <Compile Include="Flr\Data\GetNavPatientListsParameters.cs" />
     <Compile Include="Flr\Data\GPContract.cs" />
