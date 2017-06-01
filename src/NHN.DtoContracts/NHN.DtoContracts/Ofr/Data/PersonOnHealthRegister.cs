@@ -27,7 +27,7 @@ namespace NHN.DtoContracts.Ofr.Data
         /// Navnet på personen, fornavn + eventuelt mellomnavn + etternavn
         /// </summary>
         [DataMember]
-        public string Name { get; set; }
+        public PersonName Name { get; set; }
 
         /// <summary>
         /// Ekstern referanse som skal føres opp i OFR

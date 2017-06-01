@@ -343,5 +343,24 @@ namespace NHN.DtoContracts.Ofr.Service
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         PersonOnHealthRegister GetParticipant(string nin, Guid healthRegisterId);
+
+        /// <summary>
+        /// Henter ut en navn på person med gitt fødseslsnummer.
+        /// </summary>
+        /// <param name="nin">Fødselsnummeret til personene.</param>
+        /// <value></value>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        /// <example>
+        /// <code>
+        /// ofrService.GetParticipantName(nin);
+        /// </code>
+        /// </example>
+        /// <permission>
+        /// Krever at deltager hører til en av registerene du har lov til å se. Vil ikke returnere navnet på deltagere som er i registre du ikke har tilgang til.
+        /// </permission>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        PersonName GetParticipantName(string nin);
     }
 }
