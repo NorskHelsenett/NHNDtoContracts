@@ -14,7 +14,7 @@ namespace NHN.DtoContracts.Common.en
         /// Fornavn
         /// </summary>
         [DataMember]
-        public string GivenName { get; set; }
+        public string FirstName { get; set; }
 
         /// <summary>
         /// Mellomnavn
@@ -26,6 +26,6 @@ namespace NHN.DtoContracts.Common.en
         /// Etternavn
         /// </summary>
         [DataMember]
-        public string Surname { get; set; }
+        public string LastName { get; set; }
     }
 }
