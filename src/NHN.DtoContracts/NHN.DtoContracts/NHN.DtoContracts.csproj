@@ -85,6 +85,9 @@
     <Compile Include="Ofr\Service\IOfrService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Common\en\TimePeriod.cs" />
+    <Compile Include="ServiceBusConnector\Enum\ServiceBusStatus.cs" />
+    <Compile Include="ServiceBusConnector\ServiceBusConnectorNamespace.cs" />
+    <Compile Include="ServiceBusConnector\Service\IServicebusService.cs" />
     <Compile Include="ServiceBus\Data\SubscriptionInfo.cs" />
     <Compile Include="ServiceBus\ServiceBusXmlNamespace.cs" />
     <Compile Include="ServiceBus\Service\IServiceBusManager.cs" />
