@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Common\en\GeographicalCoordinates.cs" />
     <Compile Include="Common\en\PersonName.cs" />
+    <Compile Include="Logging\Data\ResultWithPagination.cs" />
     <Compile Include="Common\HelperInterfaces\IHasGeographicalCoordinates.cs" />
     <Compile Include="Flr\Data\GetNavPatientListsParameters.cs" />
     <Compile Include="Flr\Data\GPContract.cs" />
@@ -76,6 +77,10 @@
     <Compile Include="Common\en\Period.cs" />
     <Compile Include="Common\en\PhysicalAddress.cs" />
     <Compile Include="Htk\CorporateXmlNamespace.cs" />
+    <Compile Include="Logging\Data\RequestTrackedLog.cs" />
+    <Compile Include="Logging\Data\RequestTrackedLogQueryParameters.cs" />
+    <Compile Include="Logging\LogFetchingNamespace.cs" />
+    <Compile Include="Logging\Service\ILogFetchingService.cs" />
     <Compile Include="Ofr\Data\AddPersonData.cs" />
     <Compile Include="Ofr\Data\HealthRegister.cs" />
     <Compile Include="Ofr\Data\HealthRegisterQuery.cs" />
