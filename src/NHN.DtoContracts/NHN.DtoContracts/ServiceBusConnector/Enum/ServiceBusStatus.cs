@@ -12,11 +12,6 @@ namespace NHN.DtoContracts.ServiceBusConnector.Enum
     public enum ServiceBusStatus
     {
         /// <summary>
-        /// Ukjent
-        /// </summary>
-        [EnumMember]
-        Unknown,
-        /// <summary>
         /// Meldingen er i kø
         /// </summary>
         [EnumMember]
