@@ -41,5 +41,14 @@ namespace NHN.DtoContracts.Flr.Data
         /// </summary>
         [DataMember]
         public int PageSize { get; set; }
+
+        /// <summary>
+        /// Primært for å hente innholdet i objektet ved logging
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return $"Municipality: {Municipality.CodeValue + " " + Municipality.CodeText}, Page: {Page}, PageSize: {PageSize}";
+        }
     }
 }
