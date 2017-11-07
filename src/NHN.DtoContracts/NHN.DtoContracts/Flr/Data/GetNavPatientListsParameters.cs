@@ -1,4 +1,5 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization;
 
 namespace NHN.DtoContracts.Flr.Data
@@ -10,17 +11,26 @@ namespace NHN.DtoContracts.Flr.Data
     public class GetNavPatientListsParameters
     {
         /// <summary>
-        /// Kontraktene man vil hente pasientlister til, for en bestemt m�ned
+        /// Kontraktene man vil hente pasientlister til, for en bestemt måned
         /// </summary>
         [DataMember]
         public IEnumerable<ContractWithMonth> Contracts { get; set; }
 
         /// <summary>
-        /// Formatet som blir returnert, kan v�re txt eller xml.
+        /// Formatet som blir returnert, kan være txt eller xml.
         /// disk = Nav-Filformat med konstant lengde
         /// xml = Navn-Xml format
         /// </summary>
         [DataMember]
         public string FormatType { get; set; }
+
+        /// <summary>
+        /// Primært for å hente innholdet i objektet ved logging
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return $"FormatType: {FormatType}, ContractIds: {string.Join(", ", Contracts.Select(c => c.ContractId.ToString() + " " + c.Month.ToString()))}";
+        }
     }
 }
