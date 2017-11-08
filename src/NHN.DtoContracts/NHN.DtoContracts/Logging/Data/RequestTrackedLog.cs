@@ -28,7 +28,7 @@ namespace NHN.DtoContracts.Logging.Data
         public DateTime RequestedOn { get; set; }
 
         /// <summary>
-        /// Hvor lang tid forespørselen tok å prosessere
+        /// Hvor lang tid forespørselen tok å prosessere i sekunder
         /// </summary>
         [DataMember]
         public double Duration { get; set; }
