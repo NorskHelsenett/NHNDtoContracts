@@ -31,7 +31,7 @@ namespace NHN.DtoContracts.Logging.Data
         /// Hvor lang tid forespørselen tok å prosessere
         /// </summary>
         [DataMember]
-        public decimal Duration { get; set; }
+        public double Duration { get; set; }
 
         /// <summary>
         /// Namespace forespølselen ble sendt til
