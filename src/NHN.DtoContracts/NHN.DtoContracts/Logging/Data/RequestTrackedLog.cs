@@ -28,10 +28,10 @@ namespace NHN.DtoContracts.Logging.Data
         public DateTime RequestedOn { get; set; }
 
         /// <summary>
-        /// Når forespørselen ble lagret
+        /// Hvor lang tid forespørselen tok å prosessere
         /// </summary>
         [DataMember]
-        public DateTime CreatedOn { get; set; }
+        public double Duration { get; set; }
 
         /// <summary>
         /// Namespace forespølselen ble sendt til
