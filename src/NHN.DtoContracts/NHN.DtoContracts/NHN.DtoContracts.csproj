@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Common\en\GeographicalCoordinates.cs" />
     <Compile Include="Common\en\PersonName.cs" />
+    <Compile Include="Logging\Data\RequestTrackedLogParameter.cs" />
     <Compile Include="Logging\Data\ResultWithPagination.cs" />
     <Compile Include="Common\HelperInterfaces\IHasGeographicalCoordinates.cs" />
     <Compile Include="Flr\Data\GetNavPatientListsParameters.cs" />
