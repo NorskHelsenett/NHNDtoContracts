@@ -51,5 +51,17 @@ namespace NHN.DtoContracts.Logging.Data
         [DataMember]
         public string RequestParameters { get; set; }
 
+        /// <summary>
+        /// Viser om forespørselen har feilet.
+        /// </summary>
+        [DataMember]
+        public bool Faulted { get; set; }
+
+        /// <summary>
+        /// Ekstra data som er tatt ut fra Parametere for å lettere hente frem relevent data. 
+        /// </summary>
+        [DataMember]
+        public IList<RequestTrackedLogParameter> RequestTrackedLogParameters { get; set; }
+
     }
 }

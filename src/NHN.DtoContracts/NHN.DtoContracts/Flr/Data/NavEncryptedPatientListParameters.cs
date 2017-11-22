@@ -82,5 +82,14 @@ namespace NHN.DtoContracts.Flr.Data
         /// </summary>
         [DataMember]
         public string ListType { get; set; }
+
+        /// <summary>
+        /// Primært for å hente innholdet i objektet ved logging
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return $"DoctorNIN: {DoctorNIN}; MunicipalityId: {MunicipalityId}; Month: {Month.ToString()}; DoSubstituteSearch: {DoSubstituteSearch.ToString()}; FormatType: {ListType}";
+        }
     }
 }

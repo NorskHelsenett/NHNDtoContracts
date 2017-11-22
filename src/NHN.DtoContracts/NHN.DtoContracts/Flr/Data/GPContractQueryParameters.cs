@@ -48,7 +48,7 @@ namespace NHN.DtoContracts.Flr.Data
         /// <returns></returns>
         public override string ToString()
         {
-            return $"Municipality: {Municipality.CodeValue} {Municipality.CodeText}, Page: {Page}, PageSize: {PageSize}";
+            return $"MunicipalityId: {Municipality.CodeValue}; Page: {Page}; PageSize: {PageSize}";
         }
     }
 }

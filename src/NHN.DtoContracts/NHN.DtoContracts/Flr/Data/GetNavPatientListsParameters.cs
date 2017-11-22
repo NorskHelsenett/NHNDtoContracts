@@ -30,7 +30,7 @@ namespace NHN.DtoContracts.Flr.Data
         /// <returns></returns>
         public override string ToString()
         {
-            return $"FormatType: {FormatType}, ContractIds: {string.Join(", ", Contracts.Select(c => c.ContractId.ToString() + " " + c.Month.ToString()))}";
+            return $"FormatType: {FormatType}; Contracts[ {string.Join(", ", Contracts.Select(c => "ContractId:" + c.ContractId.ToString() + "; Month:" + c.Month.ToString()))}]";
         }
     }
 }
