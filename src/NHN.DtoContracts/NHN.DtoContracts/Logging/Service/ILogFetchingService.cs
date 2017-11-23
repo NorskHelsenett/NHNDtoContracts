@@ -34,7 +34,7 @@ namespace NHN.DtoContracts.Logging.Service
         /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        ResultWithPagination<RequestTrackedLog> GetRequestTracedLogs(RequestTrackedLogQueryParameters parameter);
+        ResultWithPagination<RequestTrackedLog> GetRequestTrackedLogs(RequestTrackedLogQueryParameters parameter);
 
         /// <summary>
         /// Henter ut loggende forespørseler mot fastlegereigstret (Flr). 
@@ -63,7 +63,7 @@ namespace NHN.DtoContracts.Logging.Service
         /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        ResultWithPagination<RequestTrackedLog> GetFlrRequestTracedLogs(RequestTrackedLogQueryParameters parameter);
+        ResultWithPagination<RequestTrackedLog> GetFlrRequestTrackedLogs(RequestTrackedLogQueryParameters parameter);
 
         /// <summary>
         /// Henter ut loggende forespørseler mot fastlegereigstret (Flr) basert på predefinerte parametrer som er trekt ut av <see cref="RequestTrackedLog.RequestParameters"/>.
