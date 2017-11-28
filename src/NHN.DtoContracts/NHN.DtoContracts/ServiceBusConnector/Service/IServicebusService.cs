@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace NHN.DTOContracts.ServiceBusConnector.Service
 {
     /// <summary>
-    /// Tjeneste for interaksjon med Service Bus 
+    /// Tjeneste for interaksjon med Service Bus.
+    /// Mer informasjon om ServiceBus kan man finne her: <externalLink><linkUri>https://register-web.test.nhn.no/docs/api/?topic=html/4632b3c4-f83d-11e6-bc64-92361f002671.htm</linkUri><linkText>ServiceBus</linkText></externalLink>
     /// </summary>
     [ServiceContract(Namespace = ServiceBusConnectorNamespace.Name, Name = "IServicebusService")]
     public interface IServicebusService
@@ -17,14 +18,17 @@ namespace NHN.DTOContracts.ServiceBusConnector.Service
         /// </summary>
         /// <param name="herid">Virksomhetens herId</param>
         /// <param name="messageId">Meldings-id på meldingen det søkes på</param>
-        /// <returns>Status for meldingen</returns>
+        /// <returns>En enum med statusverdi for gitt melding.</returns>
         /// <example>
         /// <code>
-        /// serviceBusService.GetMessageStatus(98557, a0424e93-dfce-4497-9ae0-083aab52f86a);
+        /// var status = serviceBusService.GetMessageStatus(98557, a0424e93-dfce-4497-9ae0-083aab52f86a);
         /// </code>
         /// </example>
-        /// <exception cref="FaultException">Kastes om oppslag mot servicebus feiler for en av </exception>
-        /// <permission>Krever rollen ServiceBus-bruker</permission>
+        /// <exception cref="FaultException">Kastes med GenericFault hvis supplert herId er ugyldig.</exception>
+        /// <exception cref="FaultException">Kastes med melding "Error getting status for herId" dersom undertjenesten feiler</exception>
+        /// <permission>
+        /// Krever rollen ServiceBus-bruker
+        /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         Task<ServiceBusStatus> GetMessageStatus(int herid, string messageId);
