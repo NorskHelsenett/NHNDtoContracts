@@ -16,12 +16,12 @@ namespace NHN.DTOContracts.ServiceBusConnector.Service
         /// <summary>
         /// Henter informasjon om en meldings status på service bus. Hvor det søkes etter meldingen avhenger av køene som er koblet til virksomheten i Adresseregisteret.
         /// </summary>
-        /// <param name="herid">Virksomhetens herId</param>
+        /// <param name="herid">HerId'en til virksomheten som er mottaker for gitt melding</param>
         /// <param name="messageId">Meldings-id på meldingen det søkes på</param>
         /// <returns>En enum med statusverdi for gitt melding.</returns>
         /// <example>
         /// <code>
-        /// var status = serviceBusService.GetMessageStatus(98557, a0424e93-dfce-4497-9ae0-083aab52f86a);
+        /// var status = serviceBusService.GetMessageStatus(98557, "a0424e93-dfce-4497-9ae0-083aab52f86a");
         /// </code>
         /// </example>
         /// <exception cref="FaultException">Kastes med GenericFault hvis supplert herId er ugyldig.</exception>
