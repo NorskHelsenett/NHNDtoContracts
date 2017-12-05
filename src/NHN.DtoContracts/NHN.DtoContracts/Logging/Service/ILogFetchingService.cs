@@ -10,31 +10,31 @@ namespace NHN.DtoContracts.Logging.Service
     [ServiceContract(Namespace = LogFetchingNamespace.Name)]
     public interface ILogFetchingService
     {
-        /// <summary>
-        /// Hente ut loggende forespørsler
-        /// </summary>
-        /// <param name="parameter" cref="RequestTrackedLogQueryParameters">Parametre for å utføre søk på forespørsler</param>
-        /// <returns cref="RequestTrackedLog">Paginert liste over forespørsler. Se også <see cref="ResultWithPagination{T}"/></returns>
-        /// <exception cref="System.ArgumentException">Kastes hvis RequetedPeriod i RequestTrackedLogQueryParameters ikke er definert eller er ugyldig</exception>
-        /// <example>
-        /// <code language="C#">
-        /// 
-        /// var query = new RequestTrackedLogQueryParameters
-        ///        {
-        ///            RequestedBy = "userName",
-        ///            RequestedPeriod = new DtoContracts.Common.en.Period { From = DateTime.Now.AddDays(-2), To = DateTime.Now.AddDays(2) }
-        ///        };
-        ///        
-        /// var logs = _logFetchingService.GetRequestTracedLogs(query);
-        /// 
-        /// </code>
-        /// </example>
-        /// <permission>
-        /// Krever en av rollene ADMINISTRATOR for gjeldende register.
-        /// </permission>
-        [OperationContract]
-        [FaultContract(typeof(GenericFault))]
-        ResultWithPagination<RequestTrackedLog> GetRequestTrackedLogs(RequestTrackedLogQueryParameters parameter);
+        // <summary>
+        // Hente ut loggende forespørsler
+        // </summary>
+        // <param name="parameter" cref="RequestTrackedLogQueryParameters">Parametre for å utføre søk på forespørsler</param>
+        // <returns cref="RequestTrackedLog">Paginert liste over forespørsler. Se også <see cref="ResultWithPagination{T}"/></returns>
+        // <exception cref="System.ArgumentException">Kastes hvis RequetedPeriod i RequestTrackedLogQueryParameters ikke er definert eller er ugyldig</exception>
+        // <example>
+        // <code language="C#">
+        // 
+        // var query = new RequestTrackedLogQueryParameters
+        //        {
+        //            RequestedBy = "userName",
+        //            RequestedPeriod = new DtoContracts.Common.en.Period { From = DateTime.Now.AddDays(-2), To = DateTime.Now.AddDays(2) }
+        //        };
+        // 
+        // var logs = _logFetchingService.GetRequestTracedLogs(query);
+        // 
+        // </code>
+        // </example>
+        // <permission>
+        // Krever en av rollene ADMINISTRATOR for gjeldende register.
+        // </permission>
+        // [OperationContract]
+        // [FaultContract(typeof(GenericFault))]
+        // ResultWithPagination<RequestTrackedLog> GetRequestTrackedLogs(RequestTrackedLogQueryParameters parameter);
 
         /// <summary>
         /// Henter ut loggende forespørseler mot fastlegereigstret (Flr). 
@@ -53,7 +53,7 @@ namespace NHN.DtoContracts.Logging.Service
         ///            ServiceName = "FlrReadOperationsService",
         ///            MethodName = "GetGPContract"
         ///        };
-        ///        
+        /// 
         /// var logs = _logFetchingService.GetFlrRequestTracedLogs(query);
         /// 
         /// </code>
@@ -83,7 +83,7 @@ namespace NHN.DtoContracts.Logging.Service
         ///            RequestedPeriod = new DtoContracts.Common.en.Period { From = DateTime.Now.AddDays(-2), To = DateTime.Now.AddDays(2) },
         ///            ServiceName = "Flr"
         ///        };
-        ///        
+        /// 
         /// var requestsWithContractIdParameter     = _logFetchingService.GetFlrRequestTracedLogsByParameterTypeAndValue(query, "ContractId","1234");
         /// var requestsWithMonthParameter          = _logFetchingService.GetFlrRequestTracedLogsByParameterTypeAndValue(query, "Month","01.11.2017 00:00:00");
         /// var requestsWithOrganizationParameter   = _logFetchingService.GetFlrRequestTracedLogsByParameterTypeAndValue(query, "OrganizationNumber","11111");
