@@ -23,7 +23,7 @@ namespace NHN.DtoContracts.Logging.Data
 
         /// <summary>
         /// Ekstra verdi til parameteret. Dette kan f.eks være et tidspunkt definert i sammenheng med en verdi. F.eks GetNavPatientListsParameters 
-        /// der vi har liste med kontrakter som inneholder kontrakts id og måneden for uttrekk for den gitte kontrakten. (Type ="ContractId", Value ="123", ValueDetail="01.10.2017 00:00:00")
+        /// der vi har liste med kontrakter som inneholder kontrakts id og måneden for uttrekk for den gitte kontrakten. (Type ="ContractIdMonthPair", Value ="123", ValueDetail="2017-11")
         /// </summary>
         [DataMember]
         public string ValueDetail { get; set; }

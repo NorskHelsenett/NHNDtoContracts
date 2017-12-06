@@ -42,7 +42,7 @@ namespace NHN.DtoContracts.Flr.Data
         /// <returns></returns>
         public override string ToString()
         {
-            return $"FullPersonInfo: {GetFullPersonInfo}; HistoricalData: {GetHistoricalData}; Municipalities[ {string.Join(", ", "MunicipalityId: " + Municipalities.Select(c => c.CodeValue))}]";
+            return $"FullPersonInfo: {GetFullPersonInfo}; HistoricalData: {GetHistoricalData}; Municipalities[ {string.Join(", ", Municipalities.Select(c => "MunicipalityId: " + c.CodeValue))}]";
         }
     }
 }
