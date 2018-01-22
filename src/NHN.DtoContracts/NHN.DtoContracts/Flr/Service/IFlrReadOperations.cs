@@ -21,7 +21,6 @@ namespace NHN.DtoContracts.Flr.Service
         /// </summary>
         /// <remarks>Returnere nødvendige opplysninger om aktiv fastlegeforhold til en innbygger</remarks>
         /// <param name="patientNin">Referanse ID til innbygger-objektet (fødselsnummer/D-nummer)</param>
-        /// <value></value>
         /// <returns>Sammensatt liste med detaljer over innbyggerens aktiv fastlege med relevante objekter (fastlege-objekt/behandlingssted-objekt/Gyldighetsperiode)</returns>
         /// <exception cref="ArgumentException">Kastes hvis en pasients referanse id er ugyldig</exception>
         /// <example>
