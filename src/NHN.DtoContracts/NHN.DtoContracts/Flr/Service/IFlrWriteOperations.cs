@@ -245,7 +245,6 @@ namespace NHN.DtoContracts.Flr.Service
         /// Status på liste status med referanse til kodeverk.
         /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/flrv2_statuscode">flrv2_statuscode</see> (OID 7751).
         /// </param>
-        /// <value></value>
         /// <returns></returns>
         /// <exception cref="ArgumentException">Kastes hvis avtalen ikke finnes</exception>
         /// <example>
