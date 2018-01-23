@@ -26,9 +26,10 @@ namespace NHN.DTOContracts.ServiceBusConnector.Service
         /// </example>
         /// <exception cref="FaultException">Kastes med GenericFault hvis supplert herId er ugyldig.</exception>
         /// <exception cref="FaultException">Kastes med melding "Error getting status for herId" dersom undertjenesten feiler</exception>
-        /// <permission>
-        /// Krever rollen ServiceBus-bruker
-        /// </permission>
+        /// <remarks>
+        /// ##### Krever en av rollene
+        /// * ServiceBusUser
+        /// </remarks>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         Task<ServiceBusStatus> GetMessageStatus(int herid, string messageId);

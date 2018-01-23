@@ -23,9 +23,12 @@ namespace NHN.DtoContracts.Ofr.Service
         /// var healthRegister = ofrService.AddHealthRegister(healthRegister);
         /// </code>
         /// </example>
-        /// <permission>
-        /// Krever en av rollene ADMINISTRATOR/OFR_ADMINISTRATOR, eller OFR_SUPERUSER for gjeldende register.
-        /// </permission>
+        /// <remarks>
+        /// ##### Krever en av rollene
+        /// * Administrator
+        /// * OfrAdministrator
+        /// * OfrSuperUser for gjeldende register
+        /// </remarks>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         HealthRegister AddHealthRegister(HealthRegister healthRegister);
@@ -41,9 +44,14 @@ namespace NHN.DtoContracts.Ofr.Service
         /// var healthRegister = ofrService.GetHealhRegister(healthRegisterId);
         /// </code>
         /// </example>
-        /// <permission>
-        /// Krever en av rollene ADMINISTRATOR/OFR_ADMINISTRATOR, eller OFR_SUPERUSER/OFR_USER/OFR_APIUSER for gjeldende register.
-        /// </permission>
+        /// <remarks>
+        /// ##### Krever en av rollene
+        /// * Administrator
+        /// * OfrAdministrator
+        /// * OfrSuperUser for gjeldende register
+        /// * OfrUser for gjeldende register
+        /// * OfrApiUser for gjeldende register
+        /// </remarks>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         HealthRegister GetHealthRegister(Guid healthRegisterId);
@@ -59,9 +67,13 @@ namespace NHN.DtoContracts.Ofr.Service
         /// var healthRegister = ofrService.UpdateHealthRegister(healthRegister);
         /// </code>
         /// </example>
-        /// <permission>
-        /// Krever en av rollene ADMINISTRATOR/OFR_ADMINISTRATOR, eller OFR_SUPERUSER/OFR_USER for gjeldende register.
-        /// </permission>
+        /// <remarks>
+        /// ##### Krever en av rollene
+        /// * Administrator
+        /// * OfrAdministrator
+        /// * OfrSuperUser for gjeldende register
+        /// * OfrUser for gjeldende register
+        /// </remarks>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         HealthRegister UpdateHealthRegister(HealthRegister healthRegister);
@@ -77,9 +89,14 @@ namespace NHN.DtoContracts.Ofr.Service
         /// ofrService.DeleteHealthRegister(healthRegisterId);
         /// </code>
         /// </example>
-        /// <permission>
-        /// Krever en av rollene ADMINISTRATOR/OFR_ADMINISTRATOR, eller OFR_SUPERUSER/OFR_USER/OFR_APIUSER for gjeldende register.
-        /// </permission>
+        /// <remarks>
+        /// ##### Krever en av rollene
+        /// * Administrator
+        /// * OfrAdministrator
+        /// * OfrSuperUser for gjeldende register
+        /// * OfrUser for gjeldende register
+        /// * OfrApiUser for gjeldende register
+        /// </remarks>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         void DeleteHealthRegister(Guid healthRegisterId);
@@ -97,9 +114,14 @@ namespace NHN.DtoContracts.Ofr.Service
         /// var healthRegisters = ofrService.GetHealthRegistersForPerson(nin, type);
         /// </code>
         /// </example>
-        /// <permission>
-        /// Krever en av rollene ADMINISTRATOR/OFR_ADMINISTRATOR, eller OFR_SUPERUSER/OFR_USER/OFR_APIUSER for gjeldende register.
-        /// </permission>
+        /// <remarks>
+        /// ##### Krever en av rollene
+        /// * Administrator
+        /// * OfrAdministrator
+        /// * OfrSuperUser for gjeldende register
+        /// * OfrUser for gjeldende register
+        /// * OfrApiUser for gjeldende register
+        /// </remarks>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         ICollection<HealthRegister> GetHealthRegistersFor(string nin, Code healthRegisterType = null);
@@ -122,9 +144,14 @@ namespace NHN.DtoContracts.Ofr.Service
         /// var healtRegisters = ofrService.QueryHealthRegisters(query);
         /// </code>
         /// </example>
-        /// <permission>
-        /// Krever en av rollene ADMINISTRATOR/OFR_ADMINISTRATOR, eller OFR_SUPERUSER/OFR_USER/OFR_APIUSER for gjeldende register.
-        /// </permission>
+        /// <remarks>
+        /// ##### Krever en av rollene
+        /// * Administrator
+        /// * OfrAdministrator
+        /// * OfrSuperUser for gjeldende register
+        /// * OfrUser for gjeldende register
+        /// * OfrApiUser for gjeldende register
+        /// </remarks>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         ICollection<HealthRegister> QueryHealthRegisters(HealthRegisterQuery query);
@@ -144,9 +171,14 @@ namespace NHN.DtoContracts.Ofr.Service
         /// var personAssociationsPaginatedResult = ofrService.PeopleOnHealthRegister(page, pageSize, healthRegisterId);
         /// </code>
         /// </example>
-        /// <permission>
-        /// Krever en av rollene ADMINISTRATOR/OFR_ADMINISTRATOR, eller OFR_SUPERUSER/OFR_USER/OFR_APIUSER for gjeldende register.
-        /// </permission>
+        /// <remarks>
+        /// ##### Krever en av rollene
+        /// * Administrator
+        /// * OfrAdministrator
+        /// * OfrSuperUser for gjeldende register
+        /// * OfrUser for gjeldende register
+        /// * OfrApiUser for gjeldende register
+        /// </remarks>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         PersonAssociations PeopleOnHealthRegister(int page, int pageSize, Guid healthRegisterId);
@@ -159,7 +191,7 @@ namespace NHN.DtoContracts.Ofr.Service
         /// <returns>Objekt som beskriver assosiasjonen mellom en oppføring og personer.</returns>
         /// <exception cref="ArgumentException"></exception>
         /// <example>
-        /// <code language="C#">
+        /// <code language="cs">
         /// <![CDATA[
         /// var people = new List<AddPersonData>
         /// {
@@ -170,9 +202,14 @@ namespace NHN.DtoContracts.Ofr.Service
         /// ]]>
         /// </code>
         /// </example>
-        /// <permission>
-        /// Krever en av rollene ADMINISTRATOR/OFR_ADMINISTRATOR, eller OFR_SUPERUSER/OFR_USER/OFR_APIUSER for gjeldende register.
-        /// </permission>
+        /// <remarks>
+        /// ##### Krever en av rollene
+        /// * Administrator
+        /// * OfrAdministrator
+        /// * OfrSuperUser for gjeldende register
+        /// * OfrUser for gjeldende register
+        /// * OfrApiUser for gjeldende register
+        /// </remarks>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         PersonAssociations AddPeople(Guid healthRegisterId, ICollection<AddPersonData> people);
@@ -198,9 +235,14 @@ namespace NHN.DtoContracts.Ofr.Service
         /// ]]>
         /// </code>
         /// </example>
-        /// <permission>
-        /// Krever en av rollene ADMINISTRATOR/OFR_ADMINISTRATOR, eller OFR_SUPERUSER/OFR_USER/OFR_APIUSER for gjeldende register.
-        /// </permission>
+        /// <remarks>
+        /// ##### Krever en av rollene
+        /// * Administrator
+        /// * OfrAdministrator
+        /// * OfrSuperUser for gjeldende register
+        /// * OfrUser for gjeldende register
+        /// * OfrApiUser for gjeldende register
+        /// </remarks>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         PersonAssociationsWithErrors AddPeopleDryRun(Guid healthRegisterId, ICollection<AddPersonData> people);
@@ -223,9 +265,14 @@ namespace NHN.DtoContracts.Ofr.Service
         /// ]]>
         /// </code>
         /// </example>
-        /// <permission>
-        /// Krever en av rollene ADMINISTRATOR/OFR_ADMINISTRATOR, eller OFR_SUPERUSER/OFR_USER/OFR_APIUSER for gjeldende register.
-        /// </permission>
+        /// <remarks>
+        /// ##### Krever en av rollene
+        /// * Administrator
+        /// * OfrAdministrator
+        /// * OfrSuperUser for gjeldende register
+        /// * OfrUser for gjeldende register
+        /// * OfrApiUser for gjeldende register
+        /// </remarks>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         PersonAssociations AddPeopleFromCsv(string csv, Guid healthRegisterId);
@@ -248,9 +295,14 @@ namespace NHN.DtoContracts.Ofr.Service
         /// ]]>
         /// </code>
         /// </example>
-        /// <permission>
-        /// Krever en av rollene ADMINISTRATOR/OFR_ADMINISTRATOR, eller OFR_SUPERUSER/OFR_USER/OFR_APIUSER for gjeldende register.
-        /// </permission>
+        /// <remarks>
+        /// ##### Krever en av rollene
+        /// * Administrator
+        /// * OfrAdministrator
+        /// * OfrSuperUser for gjeldende register
+        /// * OfrUser for gjeldende register
+        /// * OfrApiUser for gjeldende register
+        /// </remarks>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         PersonAssociationsWithErrors AddPeopleFromCsvDryRun(string csv, Guid healthRegisterId);
@@ -267,9 +319,14 @@ namespace NHN.DtoContracts.Ofr.Service
         /// ofrService.RemovePeople(nins, healthRegisterId);
         /// </code>
         /// </example>
-        /// <permission>
-        /// Krever en av rollene ADMINISTRATOR/OFR_ADMINISTRATOR, eller OFR_SUPERUSER/OFR_USER/OFR_APIUSER for gjeldende register.
-        /// </permission>
+        /// <remarks>
+        /// ##### Krever en av rollene
+        /// * Administrator
+        /// * OfrAdministrator
+        /// * OfrSuperUser for gjeldende register
+        /// * OfrUser for gjeldende register
+        /// * OfrApiUser for gjeldende register
+        /// </remarks>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         void RemovePeople(ICollection<string> nins, Guid healthRegisterId);
@@ -285,9 +342,14 @@ namespace NHN.DtoContracts.Ofr.Service
         /// ofrService.RemovePeopleFromHistory(nins);
         /// </code>
         /// </example>
-        /// <permission>
-        /// Krever en av rollene ADMINISTRATOR/OFR_ADMINISTRATOR, eller OFR_SUPERUSER/OFR_USER/OFR_APIUSER for gjeldende register.
-        /// </permission>
+        /// <remarks>
+        /// ##### Krever en av rollene
+        /// * Administrator
+        /// * OfrAdministrator
+        /// * OfrSuperUser for gjeldende register
+        /// * OfrUser for gjeldende register
+        /// * OfrApiUser for gjeldende register
+        /// </remarks>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         void RemovePeopleFromHistory(ICollection<string> nins);
@@ -303,9 +365,10 @@ namespace NHN.DtoContracts.Ofr.Service
         /// ofrService.IsOwnerOfHealthRegister(healthRegisterId);
         /// </code>
         /// </example>
-        /// <permission>
+        /// <remarks>
+        /// ##### Krever en av rollene
         /// Krever ingen roller.
-        /// </permission>
+        /// </remarks>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         bool IsOwnerOfHealthRegister(Guid healthRegisterId);
@@ -322,9 +385,10 @@ namespace NHN.DtoContracts.Ofr.Service
         /// ofrService.GetParticipant(nin, healthRegisterId);
         /// </code>
         /// </example>
-        /// <permission>
+        /// <remarks>
+        /// ##### Krever en av rollene
         /// Krever ingen roller.
-        /// </permission>
+        /// </remarks>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         PersonOnHealthRegister GetParticipant(string nin, Guid healthRegisterId);
@@ -340,9 +404,11 @@ namespace NHN.DtoContracts.Ofr.Service
         /// ofrService.GetParticipantName(nin);
         /// </code>
         /// </example>
-        /// <permission>
-        /// Krever at deltager hører til en av registerene du har lov til å se. Vil ikke returnere navnet på deltagere som er i registre du ikke har tilgang til.
-        /// </permission>
+        /// <remarks>
+        /// ##### Krever en av rollene
+        /// Krever at deltager hører til en av registerene du har lov til å se.
+        /// Vil ikke returnere navnet på deltagere som er i registre du ikke har tilgang til.
+        /// </remarks>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         PersonName GetParticipantName(string nin);
