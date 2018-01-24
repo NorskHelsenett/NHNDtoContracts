@@ -29,9 +29,10 @@ namespace NHN.DtoContracts.Logging.Service
         // 
         // </code>
         // </example>
-        // <permission>
-        // Krever en av rollene ADMINISTRATOR for gjeldende register.
-        // </permission>
+        // <remarks>
+        // ##### Krever en av rollene
+        // * Administrator for gjeldende register.
+        // </remarks>
         // [OperationContract]
         // [FaultContract(typeof(GenericFault))]
         // ResultWithPagination<RequestTrackedLog> GetRequestTrackedLogs(RequestTrackedLogQueryParameters parameter);
@@ -45,22 +46,24 @@ namespace NHN.DtoContracts.Logging.Service
         /// <exception cref="System.ArgumentException">Kastes hvis RequetedPeriod i RequestTrackedLogQueryParameters ikke er definert eller er ugyldig</exception>
         /// <exception cref="System.ArgumentException">Kastes hvis ServiceName i RequestTrackedLogQueryParameters ikke minimum starter på Flr</exception>
         /// <example>
-        /// <code language="C#">
+        /// <code language="cs">
         /// 
         /// var query = new RequestTrackedLogQueryParameters
-        ///        {
-        ///            RequestedPeriod = new DtoContracts.Common.en.Period { From = DateTime.Now.AddDays(-2), To = DateTime.Now.AddDays(2) },
-        ///            ServiceName = "FlrReadOperationsService",
-        ///            MethodName = "GetGPContract"
-        ///        };
+        /// {
+        ///     RequestedPeriod = new DtoContracts.Common.en.Period { From = DateTime.Now.AddDays(-2), To = DateTime.Now.AddDays(2) },
+        ///     ServiceName = "FlrReadOperationsService",
+        ///     MethodName = "GetGPContract"
+        /// };
         /// 
         /// var logs = _logFetchingService.GetFlrRequestTracedLogs(query);
         /// 
         /// </code>
         /// </example>
-        /// <permission>
-        /// Krever en av rollene ADMINISTRATOR eller FLR_READ_REQUEST_TRACKED_LOG for gjeldende register.
-        /// </permission>
+        /// <remarks>
+        /// ##### Krever en av rollene
+        /// * Administrator
+        /// * FlrReadRequestTrackedLog for gjeldende register.
+        /// </remarks>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         ResultWithPagination<RequestTrackedLog> GetFlrRequestTrackedLogs(RequestTrackedLogQueryParameters parameter);
@@ -76,13 +79,13 @@ namespace NHN.DtoContracts.Logging.Service
         /// <exception cref="System.ArgumentException">Kastes hvis RequetedPeriod i RequestTrackedLogQueryParameters ikke er definert eller er ugyldig</exception>
         /// <exception cref="System.ArgumentException">Kastes hvis ServiceName i RequestTrackedLogQueryParameters ikke minimum starter på Flr</exception>
         /// <example>
-        /// <code language="C#">
+        /// <code language="cs">
         /// 
         /// var query = new RequestTrackedLogQueryParameters
-        ///        {
-        ///            RequestedPeriod = new DtoContracts.Common.en.Period { From = DateTime.Now.AddDays(-2), To = DateTime.Now.AddDays(2) },
-        ///            ServiceName = "Flr"
-        ///        };
+        /// {
+        ///     RequestedPeriod = new DtoContracts.Common.en.Period { From = DateTime.Now.AddDays(-2), To = DateTime.Now.AddDays(2) },
+        ///     ServiceName = "Flr"
+        /// };
         /// 
         /// var requestsWithContractIdParameter     = _logFetchingService.GetFlrRequestTracedLogsByParameterTypeAndValue(query, "ContractId","1234");
         /// var requestsWithMonthParameter          = _logFetchingService.GetFlrRequestTracedLogsByParameterTypeAndValue(query, "Month","01.11.2017 00:00:00");
@@ -92,12 +95,13 @@ namespace NHN.DtoContracts.Logging.Service
         /// 
         /// </code>
         /// </example>
-        /// <permission>
-        /// Krever en av rollene ADMINISTRATOR eller FLR_READ_REQUEST_TRACKED_LOG for gjeldende register.
-        /// </permission>
+        /// <remarks>
+        /// ##### Krever en av rollene
+        /// * Administrator
+        /// * FlrReadRequestTrackedLog for gjeldende register.
+        /// </remarks>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         ResultWithPagination<RequestTrackedLog> GetFlrRequestTrackedLogsByParameterTypeAndValue(RequestTrackedLogQueryParameters parameter, string parameterType, string parameterValue);
-
     }
 }

@@ -16,14 +16,20 @@ namespace NHN.DtoContracts.Flr.Service
         /// Henter alle GPContracts gruppert pr kontor i en zip-fil
         /// Bruk søkeparametere for å begrense hva som blir eksportert
         /// </summary>
-        /// <remarks>Søk etter leger</remarks>
+        /// <remarks>Søk etter leger
+        /// 
+        /// ##### Krever en av rollene
+        /// * Administrator
+        /// * FlrReadAllPatients
+        /// </remarks>
         /// <param name="searchParameters">Begrenser innholdet i eksporten. Se <see cref="ContractsQueryParameters"/></param>
-        /// <returns>>Zip file som stream.
+        /// <returns>Zip file som stream.
         /// Innholdet i zip filen er en eller flere IList av GPContracts serialisert som xml
-        /// Alle GPContracts i en IList tilhører samme kontor</returns>
+        /// Alle GPContracts i en IList tilhører samme kontor
+        /// </returns>
         /// <exception cref="ArgumentException">Kastes hvis feil søkeparameter er oppgitt</exception>
         /// <example>
-        /// <code language="C#">
+        /// <code language="cs">
         /// <![CDATA[
         /// using (var archive = new ZipArchive(FlrExportService.ExportGPContracts(searchCriteria)))
         /// {
@@ -35,9 +41,6 @@ namespace NHN.DtoContracts.Flr.Service
         /// ]]>
         /// </code>
         /// </example>
-        /// <permission>
-        /// Krever en av rollene ADMINISTRATOR eller FLR_READ_ALL_PATIENTS
-        /// </permission>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         Stream ExportGPContracts(ContractsQueryParameters searchParameters);
