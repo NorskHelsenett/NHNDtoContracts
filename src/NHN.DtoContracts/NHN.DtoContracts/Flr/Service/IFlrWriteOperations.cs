@@ -122,7 +122,9 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>
         /// Oppretter avtalen mellom en lege og kommune.
         /// Det forutsettes at lege finnes allerede fra før i HPR og at legen er tilknyttet et legekontor(TreatmentCenter) som finnes i Adresseregisteret/Bedriftsregisteret.
-        /// Service bus: Denne metoden sender event "ContractCreated" med eventobjekt <see cref="GPContract"/>.
+        /// 
+        /// ##### Sender Servicebus-event
+        /// * "ContractCreated" med eventobjekt <see cref="GPContract"/>.
         /// 
         /// ##### Krever en av rollene
         /// * Administrator
@@ -143,6 +145,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// Oppretter en ny fastlegeavtale - importversjon (se CreateGPContract)
         /// </summary>
         /// <remarks>
+        /// ##### Sender Servicebus-event
         /// Publiserer ikke events.
         /// 
         /// ##### Krever en av rollene
@@ -166,7 +169,9 @@ namespace NHN.DtoContracts.Flr.Service
         /// </summary>
         /// <remarks>
         /// Benyttes for oppdatering/endring/avslutning av en eksisterende fastlegeavtale
-        /// Service bus: Denne metoden sender event "ContractUpdated" med eventobjekt <see cref="GPContract"/>.
+        /// 
+        /// ##### Sender Servicebus-event
+        /// * "ContractUpdated" med eventobjekt <see cref="GPContract"/>.
         /// 
         /// ##### Krever en av rollene
         /// * Administrator
@@ -206,7 +211,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// Oppdatering av listetak på en fastlegeavtale uten at andre verdier skal endre seg.
         /// </summary>
         /// <remarks>
-        /// Service bus: Denne metoden sender event "ContractUpdated" med eventobjekt <see cref="GPContract"/>.
+        /// ##### Sender Servicebus-event
+        /// * "ContractUpdated" med eventobjekt <see cref="GPContract"/>.
         /// 
         /// ##### Krever en av rollene
         /// * Administrator
@@ -229,7 +235,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// Oppdatering av antall personer på venteliste hos fastlege.
         /// </summary>
         /// <remarks>
-        /// Service bus: Denne metoden sender event "ContractUpdated" med eventobjekt <see cref="GPContract"/>.
+        /// ##### Sender Servicebus-event
+        /// * "ContractUpdated" med eventobjekt <see cref="GPContract"/>.
         /// 
         /// ##### Krever en av rollene
         /// * Administrator
@@ -254,7 +261,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>
         /// Kun endring til statusene Åpne og Lukke.
         /// 
-        /// Service bus: Denne metoden sender event "ContractUpdated" med eventobjekt <see cref="GPContract"/>.
+        /// ##### Sender Servicebus-event
+        /// * "ContractUpdated" med eventobjekt <see cref="GPContract"/>.
         /// 
         /// ##### Krever en av rollene
         /// * Administrator
@@ -282,7 +290,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// Kodeverk kommuner: <see href="/CodeAdmin/EditCodesInGroup/kommune">kommune</see> (OID 3402).
         /// </summary>
         /// <remarks>
-        /// Service bus: Denne metoden sender event "ContractUpdated" med eventobjekt <see cref="GPContract"/>.
+        /// ##### Sender Servicebus-event
+        /// * "ContractUpdated" med eventobjekt <see cref="GPContract"/>.
         /// 
         /// ##### Krever en av rollene
         /// * Administrator
@@ -317,7 +326,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>
         /// Hvis et fastlegekontor har dislokerte behandlingssteder (utekontorer) så skal det kunne registreres på overordnet fastlegepraksis/avtale.
         /// 
-        /// Service bus: Denne metoden sender event "OutOfOfficeLocationCreated" med eventobjekt <see cref="OutOfOfficeLocation"/>. 
+        /// ##### Sender Servicebus-event
+        /// * "OutOfOfficeLocationCreated" med eventobjekt <see cref="OutOfOfficeLocation"/>. 
         /// 
         /// ##### Krever en av rollene
         /// * Administrator
@@ -342,7 +352,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>
         /// Oppdatering av opplysninger om et utekontor.
         /// 
-        /// Service bus: Denne metoden sender event "OutOfOfficeLocationUpdated" med eventobjekt <see cref="OutOfOfficeLocation"/>.
+        /// ##### Sender Servicebus-event
+        /// * "OutOfOfficeLocationUpdated" med eventobjekt <see cref="OutOfOfficeLocation"/>.
         /// 
         /// ##### Krever en av rollene
         /// * Administrator
@@ -367,7 +378,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>
         /// Sletter et utekontor fra liste over utekontorer.
         /// 
-        /// Service bus: Denne metoden sender event "OutOfOfficeLocationDeleted" med eventobjekt <see cref="OutOfOfficeLocation"/>.
+        /// ##### Sender Servicebus-event
+        /// * "OutOfOfficeLocationDeleted" med eventobjekt <see cref="OutOfOfficeLocation"/>.
         /// 
         /// ##### Krever en av rollene
         /// * Administrator
@@ -396,7 +408,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>
         /// Lager en lenke mellom lege i bestemt rolle til en fastlegeavtale.
         /// 
-        /// Service bus: Denne metoden sender event "GPOnContractCreated" med eventobjekt <see cref="GPOnContractAssociation"/>.
+        /// ##### Sender Servicebus-event
+        /// * "GPOnContractCreated" med eventobjekt <see cref="GPOnContractAssociation"/>.
         /// 
         /// ##### Krever en av rollene
         /// * Administrator
@@ -420,9 +433,11 @@ namespace NHN.DtoContracts.Flr.Service
         /// <summary>
         /// Oppretter en kontraktsperiode for en lege på en GPContract - importversjon.
         /// </summary>
-        /// <remarks>Publiserer ikke events.
-        /// 
+        /// <remarks>
         /// Se CreateGPOnContractAssociation(GPOnContractAssociation association. Tar i mot en liste av koblinger.
+        /// 
+        /// ##### Sender Servicebus-event
+        /// Publiserer ikke events.
         /// 
         /// ##### Krever en av rollene
         /// * Administrator
@@ -448,7 +463,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>
         /// Oppdaterer informasjonen mellom lege i bestemt rolle til en fastlegeavtale.
         /// 
-        /// Service bus: Denne metoden sender event "GPOnContractUpdated" med eventobjekt <see cref="GPOnContractAssociation"/>.
+        /// ##### Sender Servicebus-event
+        /// * "GPOnContractUpdated" med eventobjekt <see cref="GPOnContractAssociation"/>.
         /// 
         /// ##### Krever en av rollene
         /// * Administrator
@@ -471,7 +487,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// Sletter en kontraktsperiode for en lege på en GPContract.
         /// </summary>
         /// <remarks>
-        /// Service bus: Denne metoden sender event "GPOnContractDeleted" med eventobjekt <see cref="GPOnContractAssociation"/>.
+        /// ##### Sender Servicebus-event
+        /// * "GPOnContractDeleted" med eventobjekt <see cref="GPOnContractAssociation"/>.
         /// 
         /// ##### Krever en av rollene
         /// * Administrator
@@ -532,7 +549,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>
         /// Opprette nyregistrert person i PREG til en eksisterende fastlegeavtale i FLR.
         /// 
-        /// Service bus: Denne metoden sender event "PatientOnContractCreated" med eventobjekt <see cref="PatientToGPContractAssociation"/>.
+        /// ##### Sender Servicebus-event
+        /// * "PatientOnContractCreated" med eventobjekt <see cref="PatientToGPContractAssociation"/>.
         /// 
         /// ##### Krever en av rollene
         /// * Administrator
@@ -557,9 +575,11 @@ namespace NHN.DtoContracts.Flr.Service
         /// <summary>
         /// Kobler en pasient til en fastlegeliste - importversjon
         /// </summary>
-        /// <remarks>Publiserer ikke events.
-        /// 
+        /// <remarks>
         /// Se CreatePatientToGPContractAssociation. Tar i mot en liste med koblinger for bulk operasjoner
+        /// 
+        /// ##### Sender Servicebus-event
+        /// Publiserer ikke events.
         /// 
         /// ##### Krever en av rollene
         /// * Administrator
@@ -588,8 +608,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>
         /// Flytte pasienter mellom to fastlegelister. Fødselsnummer valideres. Feiler en pasient så kastes exception på alt.
         /// 
-        /// Service bus: Denne metoden sender event "PatientOnContractCreated" med eventobjekt <see cref="PatientToGPContractAssociation"/>
-        /// for hver pasient som blir flyttet.
+        /// ##### Sender Servicebus-event
+        /// * "PatientOnContractCreated" med eventobjekt <see cref="PatientToGPContractAssociation"/> for hver pasient som blir flyttet.
         /// 
         /// ##### Krever en av rollene
         /// * Administrator
@@ -617,9 +637,9 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>
         /// Flytte alle pasienter mellom listene og deretter avslutter listen hvor innbyggere ble flyttet fra.
         /// 
-        /// Service bus: Denne metoden sender event "ContractCanceled" med eventobjekt <see cref="GPContract"/>, samt
-        /// "PatientOnContractCreated" med eventobjekt <see cref="PatientToGPContractAssociation"/>
-        /// for hver pasient som blir flyttet.
+        /// ##### Sender Servicebus-event
+        /// * "ContractCanceled" med eventobjekt <see cref="GPContract"/> for hver pasient som blir flyttet.
+        /// * "PatientOnContractCreated" med eventobjekt <see cref="PatientToGPContractAssociation"/> for hver pasient som blir flyttet.
         /// 
         /// ##### Krever en av rollene
         /// * Administrator
@@ -647,7 +667,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// Avslutte innbyggerens tilhørighet på en fastlegeliste/avtale. Denne metoden avslutter også alle fremtidige tilhørigheter for innbyggeren på denne kontrakten. Dvs, assosiasjoner hvor Valid.To > DateTime.Now.
         /// </summary>
         /// <remarks>
-        /// Service bus: Denne metoden sender event "PatientOnContractCanceled" med eventobjekt <see cref="PatientToGPContractAssociation"/>.
+        /// ##### Sender Servicebus-event
+        /// * "PatientOnContractCanceled" med eventobjekt <see cref="PatientToGPContractAssociation"/>.
         /// 
         /// ##### Krever en av rollene
         /// * Administrator
@@ -676,8 +697,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// Avslutte innbyggernes tilhørighet på en fastlegeliste/avtale. Denne metoden avslutter også alle fremtidige tilhørigheter for innbyggerene på denne kontrakten. Dvs, assosiasjoner hvor Valid.To > DateTime.Now.
         /// </summary>
         /// <remarks>
-        /// Service bus: Denne metoden sender event "PatientOnContractCanceled" med eventobjekt <see cref="PatientToGPContractAssociation"/>
-        /// for hver pasient som blir kansellert.
+        /// ##### Sender Servicebus-event
+        /// * "PatientOnContractCanceled" med eventobjekt <see cref="PatientToGPContractAssociation"/> for hver pasient som blir kansellert.
         /// 
         /// ##### Krever en av rollene
         /// * Administrator
@@ -735,8 +756,9 @@ namespace NHN.DtoContracts.Flr.Service
         /// <exception cref="ArgumentException">Hvis newNin/oldNin er ugyldige, eller det ikke finnes noen personer i FLR med personnummer oldNin</exception>
         /// <exception cref="ArgumentException">Hvis newNin ikke finnes i personregisteret</exception>
         /// <remarks>
-        /// Service bus: Denne metoden sender event "PatientNinChanged" med property NewNin, OldNin.
-        /// Den sender også "PatientOnContractUpdated" med eventobjekt <see cref="PatientToGPContractAssociation"/>.
+        /// ##### Sender Servicebus-event
+        /// * "PatientNinChanged" med property NewNin, OldNin.
+        /// * "PatientOnContractUpdated" med eventobjekt <see cref="PatientToGPContractAssociation"/>.
         /// 
         /// ##### Krever en av rollene
         /// * Administrator
@@ -753,8 +775,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// Oppdaterer GPOfficeOrganizationNumber på alle GpContracts.
         /// </summary>
         /// <remarks>
-        /// Service bus: Denne metoden sender event "ContractUpdated" med eventobjekt <see cref="GPContract"/>
-        /// for hver kontrakt som berøres.
+        /// ##### Sender Servicebus-event
+        /// * "ContractUpdated" med eventobjekt <see cref="GPContract"/> for hver kontrakt som berøres.
         /// 
         /// ##### Krever en av rollene
         /// * Administrator

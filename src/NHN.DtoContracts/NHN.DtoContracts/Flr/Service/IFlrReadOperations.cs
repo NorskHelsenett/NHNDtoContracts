@@ -262,7 +262,6 @@ namespace NHN.DtoContracts.Flr.Service
         /// Denne operasjonen er kun tilgjengelig for NAV. For å hente fastlegeliste med pasienter basert på personnummer til legen og kommune.
         /// </summary>
         /// <remarks>
-        /// 
         /// ##### Krever en av rollene
         /// * Administrator
         /// * FlrRead
