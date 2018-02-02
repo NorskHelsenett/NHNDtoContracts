@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using NHN.DtoContracts.Flr.Service;
+using NHN.DtoContracts.Logging.Service;
+using NHN.DtoContracts.Ofr.Service;
 using NHN.DtoContracts.ServiceBus.Service;
+using NHN.DTOContracts.ServiceBusConnector.Service;
 
 namespace NHN.WcfClientFactory
 {
@@ -169,6 +172,9 @@ namespace NHN.WcfClientFactory
                 SendTimeout = TimeSpan.FromMinutes(70)
             });
             AddKnownConfig<IServiceBusManager>(new ServiceContractConfig("/v1/servicebusmanager"));
+            AddKnownConfig<IServicebusService>(new ServiceContractConfig("/v1/ServiceBusService"));
+            AddKnownConfig<ILogFetchingService>(new ServiceContractConfig("/v1/LogFetching"));
+            AddKnownConfig<IOfrService>(new ServiceContractConfig("/v1/ofr"));
         }
 
         /// <summary>
@@ -178,7 +184,7 @@ namespace NHN.WcfClientFactory
         /// <param name="config">Config-objekt som inneholder WCF-instillinger som skal gjelde for servicekontrakten.</param>
         public void AddKnownConfig<T>(ServiceContractConfig config)
         {
-            AddKnownConfig(typeof (T).Name, config);
+            AddKnownConfig(typeof(T).Name, config);
         }
 
         /// <summary>
