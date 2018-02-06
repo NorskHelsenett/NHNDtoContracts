@@ -7,7 +7,8 @@ namespace NHN.DtoContracts.Logging.Service
     /// <summary>
     /// Tjeneste for å hente ut log fra registerplatformen
     /// </summary>
-    [ServiceContract(Namespace = LogFetchingNamespace.Name)]
+    [ServiceContract(Namespace = LogFetchingNamespace.Name,
+        Name = "ILogFetchingService")]
     public interface ILogFetchingService
     {
         // <summary>
