@@ -9,7 +9,8 @@ namespace NHN.DtoContracts.Ofr.Service
     /// <summary>
     /// Tjeneste for å hente ut og legge til informasjon i Oppføringsregisteret (OFR)
     /// </summary>
-    [ServiceContract(Namespace = OfrNamespace.Name)]
+    [ServiceContract(Namespace = OfrNamespace.Name,
+        Name = "IOfrService")]
     public interface IOfrService
     {
         /// <summary>

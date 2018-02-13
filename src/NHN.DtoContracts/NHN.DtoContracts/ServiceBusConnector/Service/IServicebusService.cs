@@ -10,7 +10,8 @@ namespace NHN.DTOContracts.ServiceBusConnector.Service
     /// Tjeneste for interaksjon med Service Bus.
     /// Mer informasjon om ServiceBus kan man finne her: <externalLink><linkUri>https://register-web.test.nhn.no/docs/api/?topic=html/4632b3c4-f83d-11e6-bc64-92361f002671.htm</linkUri><linkText>ServiceBus</linkText></externalLink>
     /// </summary>
-    [ServiceContract(Namespace = ServiceBusConnectorNamespace.Name, Name = "IServicebusService")]
+    [ServiceContract(Namespace = ServiceBusConnectorNamespace.Name,
+        Name = "IServicebusService")]
     public interface IServicebusService
     {
         /// <summary>
