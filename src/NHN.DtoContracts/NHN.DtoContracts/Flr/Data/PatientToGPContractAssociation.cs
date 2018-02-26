@@ -6,14 +6,14 @@ using NHN.DtoContracts.Common.en;
 namespace NHN.DtoContracts.Flr.Data
 {
     /// <summary>
-    /// Representerer koblingen mellom en pasient og til en fastlegeliste.
+    /// Representerer koblingen mellom en pasient og en fastlegeliste.
     /// </summary>
     [DataContract(Namespace = FlrXmlNamespace.V1)]
     [Serializable]
     public class PatientToGPContractAssociation
     {
         /// <summary>
-        /// Id til denne assiosasjonen. TilhørighetsId
+        /// Id til denne assosiasjonen. TilhørighetsId
         /// </summary>
         [DataMember]
         public long Id { get; set; }
@@ -25,7 +25,7 @@ namespace NHN.DtoContracts.Flr.Data
         public long GPContractId { get; set; }
 
         /// <summary>
-        ///  Kontakten denne assoisasjonen peker til. Satt ved lesing, skal være null ved skriving.
+        /// Kontakten denne assosiasjonen peker til. Satt ved lesing, skal være null ved skriving.
         /// </summary>
         [DataMember]
         public GPContract GPContract { get; set; }
@@ -37,8 +37,8 @@ namespace NHN.DtoContracts.Flr.Data
         public string PatientNIN { get; set; }
 
         /// <summary>
-        /// For hvilken periode er denne assiosasjonen gyldig?
-        /// For Move metoden så er FraDato -> fradatoen til nye tilhørigheten, TilDato -> tildatoen til den gamle.
+        /// Hvilken periode denne assosiasjonen er gyldig for.
+        /// For Move metoden er dette perioden på den nye assosiasjonen. Den gamle assosiasjonen får TilDato satt til ny FraDato.
         /// </summary>
         [DataMember]
         public Period Period { get; set; } //FraDato ?TilDato;
