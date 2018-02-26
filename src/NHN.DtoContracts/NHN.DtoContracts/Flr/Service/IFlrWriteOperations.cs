@@ -604,10 +604,10 @@ namespace NHN.DtoContracts.Flr.Service
         void CreatePatientToGPContractAssociationBulk(List<PatientToGPContractAssociation> patientToGPContractAssociation);
 
         /// <summary>
-        ///  Flytter en innbyger fra en liste til en annen.
+        ///  Flytter innbygere fra en liste til en annen.
         /// </summary>
         /// <remarks>
-        /// Flytte pasienter mellom to fastlegelister. Fødselsnummer valideres. Feiler en pasient så kastes exception på alt.
+        /// Flytte pasienter mellom to fastlegelister. Fødselsnummer valideres. Feiler flyttingen av én pasient så kastes det exception og ingen pasienter blir flyttet.
         /// 
         /// ##### Sender Servicebus-event
         /// * "PatientOnContractCreated" med eventobjekt <see cref="PatientToGPContractAssociation"/> for hver pasient som blir flyttet.
@@ -616,7 +616,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// * Administrator
         /// * FlrWrite
         /// </remarks>
-        /// <param name="fromGPContract">ID til fastlegeliste en innbygger skal flyttes FRA.</param>
+        /// <param name="fromGPContract">ID til fastlegeliste innbyggere skal flyttes FRA.</param>
         /// <param name="patientsToMove">Liste over innbyggere på eksisterende fastlegelister som skal flyttes</param>
         /// <returns></returns>
         /// <exception cref="ArgumentException">Kastes hvis kontraktid er ugyldig</exception>
