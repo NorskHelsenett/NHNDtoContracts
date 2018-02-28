@@ -31,6 +31,15 @@ namespace NHN.DtoContracts.Flr.Data
         public GPContract GPContract { get; set; }
 
         /// <summary>
+        /// HerId for adressering til fastlegetjenesten.
+        /// Dette er HerId til fastlegen som er aktiv på listen på dagens dato, dersom en slik finnes.
+        /// Hvis ikke returneres det HerId for fastlegelistens tjenestebaserte kommunikasjonspart av typen "Fastlege, liste uten fast lege", dersom en slik finnes definert på virksomhetsnivå.
+        /// Returnerer NULL dersom passende HerId ikke finnes. 
+        /// Feltet vil kun være satt for leseoperasjoner som spør på dagens dato, ikke på historiske data. Brukes ikke på skriveoperasjoner.
+        /// </summary>
+        public int? GPHerId { get; set; }
+
+        /// <summary>
         /// Personnummer til innbygger
         /// </summary>
         [DataMember]
