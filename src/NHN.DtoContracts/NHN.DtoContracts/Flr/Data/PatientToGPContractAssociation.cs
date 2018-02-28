@@ -37,6 +37,7 @@ namespace NHN.DtoContracts.Flr.Data
         /// Returnerer NULL dersom passende HerId ikke finnes. 
         /// Feltet vil kun være satt for leseoperasjoner som spør på dagens dato, ikke på historiske data. Brukes ikke på skriveoperasjoner.
         /// </summary>
+        [DataMember]
         public int? GPHerId { get; set; }
 
         /// <summary>
