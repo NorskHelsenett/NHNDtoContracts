@@ -11,7 +11,7 @@ namespace NHN.DtoContracts.ServiceBusConnector.Enum
     /// Denne er definert med [Flags], men dette er misvisende.
     /// Enumen er ikke ment å brukes med `HasFlag(...)`
     /// </remarks>
-    [DataContract(Namespace = "http://register.nhn.no/ServiceBusConnector")]
+    [DataContract(Namespace = ServiceBusConnectorNamespace.EnumNameV1)]
     [Flags] // Misvisende, men kan ikke fjernes
     [Serializable]
     public enum ServiceBusStatus

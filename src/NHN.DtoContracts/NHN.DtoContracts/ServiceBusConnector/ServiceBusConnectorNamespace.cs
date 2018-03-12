@@ -9,5 +9,7 @@
         /// 
         /// </summary>
         public const string Name = "http://schemas.nhn.no/reg/ServiceBusConnector";
+
+        public const string EnumNameV1 = "http://register.nhn.no/ServiceBusConnector";
     }
 }

@@ -8,7 +8,7 @@ namespace NHN.DtoContracts.Logging.Data
     /// Søkeparametre for å hente ut logging av forspørsler sendt til registerplatformen
     /// For øyeblikket er det bare FlrReadOperationService og FlrExportOperationService som registrerer logging av forspørsler sendt ifm henting av faslegelister.
     /// </summary>
-    [DataContract(Namespace = Logging.LogFetchingNamespace.Name)]
+    [DataContract(Namespace = LogFetchingNamespace.Name)]
     [Serializable]
     public class RequestTrackedLogQueryParameters
     {
@@ -52,6 +52,5 @@ namespace NHN.DtoContracts.Logging.Data
         /// </summary>
         [DataMember]
         public int Page { get; set; }
-
     }
 }

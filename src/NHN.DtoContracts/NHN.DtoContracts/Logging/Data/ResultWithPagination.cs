@@ -7,7 +7,7 @@ namespace NHN.DtoContracts.Logging.Data
     /// Generisk paginert resultat. 
     /// Retunerer paginert retulatet inkl sidenummer og antall elementer i svaret (antall per side). Utvidet varsjon av PagedResult
     /// </summary>
-    [DataContract(Namespace = Logging.LogFetchingNamespace.Name)]
+    [DataContract(Namespace = LogFetchingNamespace.Name)]
     public class ResultWithPagination<T>
     {
         /// <summary>
