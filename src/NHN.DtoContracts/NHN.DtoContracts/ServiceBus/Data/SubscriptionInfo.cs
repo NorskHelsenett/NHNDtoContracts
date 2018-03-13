@@ -10,7 +10,7 @@ namespace NHN.DtoContracts.ServiceBus.Data
     /// <summary>
     /// Beskrivelse av et abonnement
     /// </summary>
-    [DataContract(Namespace = ServiceBusXmlNamespace.V1)]
+    [DataContract(Namespace = Namespaces.ServiceBusManagerV1)]
     public class SubscriptionInfo
     {
         /// <summary>

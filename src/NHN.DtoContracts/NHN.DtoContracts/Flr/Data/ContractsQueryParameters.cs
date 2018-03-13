@@ -8,7 +8,7 @@ namespace NHN.DtoContracts.Flr.Data
     /// <summary>
     /// Parametere for export
     /// </summary>
-    [DataContract(Namespace = FlrXmlNamespace.V1)]
+    [DataContract(Namespace = Namespaces.FlrV1)]
     public class ContractsQueryParameters   
     {
         /// <summary>

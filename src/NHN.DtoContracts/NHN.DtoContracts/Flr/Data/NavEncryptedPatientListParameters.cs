@@ -10,7 +10,7 @@ namespace NHN.DtoContracts.Flr.Data
     /// <summary>
     /// Brukes kun av NAV.
     /// </summary>
-    [DataContract(Namespace = FlrXmlNamespace.V1)]
+    [DataContract(Namespace = Namespaces.FlrV1)]
     public class NavEncryptedPatientListParameters
     {
         /// <summary>

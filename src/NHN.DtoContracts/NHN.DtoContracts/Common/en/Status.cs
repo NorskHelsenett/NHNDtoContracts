@@ -6,7 +6,7 @@ namespace NHN.DtoContracts.Common.en
     /// <summary>
     /// Status basert på en periode og kodeverk
     /// </summary>
-    [DataContract(Namespace = CommonXmlNamespaces.XmlNsCommonEnglishOld)]
+    [DataContract(Namespace = Namespaces.CommonOldV1)]
     [Serializable]
     public class Status
     {

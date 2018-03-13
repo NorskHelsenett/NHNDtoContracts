@@ -6,7 +6,7 @@ namespace NHN.DtoContracts.Common.en
     /// <summary>
     /// Fysisk adresse, f.eks. besøks-, post- eller fakturaadresse.
     /// </summary>
-    [DataContract(Namespace = CommonXmlNamespaces.XmlNsCommonEnglishOld)]
+    [DataContract(Namespace = Namespaces.CommonOldV1)]
     [Serializable]
     public class PhysicalAddress
     {

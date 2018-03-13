@@ -6,7 +6,7 @@ namespace NHN.DtoContracts.Ofr.Data
     /// <summary>
     /// Objekt som representer et sett med personoppføringer i OFR, sammen med pagineringsinformasjon
     /// </summary>
-    [DataContract(Namespace = OfrNamespace.Name)]
+    [DataContract(Namespace = Namespaces.OfrV1)]
     public class PersonAssociations
     {
         /// <summary>
@@ -38,7 +38,7 @@ namespace NHN.DtoContracts.Ofr.Data
     /// Objekt som representerer et sett med personoppføringer i OFR, sammen med pagineringsinformasjon, og error feedback
     /// Brukes i hovedsak ved DryRun metoder i OFR service.
     /// </summary>
-    [DataContract(Namespace = OfrNamespace.Name)]
+    [DataContract(Namespace = Namespaces.OfrV1)]
     public class PersonAssociationsWithErrors
     {
         /// <summary>

@@ -7,7 +7,7 @@ namespace NHN.DtoContracts.Ofr.Data
     /// <summary>
     /// Søkeparametre for å hente ut helseregisteroppføringer i OFR
     /// </summary>
-    [DataContract(Namespace = OfrNamespace.Name)]
+    [DataContract(Namespace = Namespaces.OfrV1)]
     public class HealthRegisterQuery
     {
         /// <summary>

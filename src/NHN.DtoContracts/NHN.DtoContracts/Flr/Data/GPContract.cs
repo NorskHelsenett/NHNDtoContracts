@@ -8,7 +8,7 @@ namespace NHN.DtoContracts.Flr.Data
     /// <summary>
     /// Dette representerer en fastlegeavtale og implisitt en fastlegeliste.
     /// </summary>
-    [DataContract(Namespace = FlrXmlNamespace.V1)]
+    [DataContract(Namespace = Namespaces.FlrV1)]
     [Serializable]
     public class GPContract
     {

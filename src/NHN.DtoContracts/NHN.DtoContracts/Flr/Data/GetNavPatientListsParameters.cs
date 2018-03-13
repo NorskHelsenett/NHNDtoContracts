@@ -7,7 +7,7 @@ namespace NHN.DtoContracts.Flr.Data
     /// <summary>
     /// Bestemmer hva som skal hentes og i hvilken form
     /// </summary>
-    [DataContract(Namespace = FlrXmlNamespace.FlrDataV1)]
+    [DataContract(Namespace = Namespaces.FlrLegacyV1)]
     public class GetNavPatientListsParameters
     {
         /// <summary>

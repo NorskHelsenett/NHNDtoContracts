@@ -7,7 +7,7 @@ namespace NHN.DtoContracts.Ofr.Data
     /// <summary>
     /// Data for å legge til en ny personoppføringe på en helseregisteroppføring
     /// </summary>
-    [DataContract(Namespace = OfrNamespace.Name)]
+    [DataContract(Namespace = Namespaces.OfrV1)]
     public class AddPersonData
     {
         /// <summary>

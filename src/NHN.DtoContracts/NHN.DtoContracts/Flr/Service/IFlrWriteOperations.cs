@@ -13,7 +13,7 @@ namespace NHN.DtoContracts.Flr.Service
     /// <remarks>
     /// Tillater ikke anonyme brukere
     /// </remarks>
-    [ServiceContract(Namespace = FlrXmlNamespace.V1,
+    [ServiceContract(Namespace = Namespaces.FlrV1,
         Name = "IFlrWriteOperations")]
     public interface IFlrWriteOperations
     {

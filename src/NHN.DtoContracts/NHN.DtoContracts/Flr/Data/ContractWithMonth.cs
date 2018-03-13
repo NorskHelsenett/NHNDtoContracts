@@ -7,7 +7,7 @@ namespace NHN.DtoContracts.Flr.Data
     /// <summary>
     /// Brukes for å hente PasientLister i NAV disc format.
     /// </summary>
-    [DataContract(Namespace = FlrXmlNamespace.FlrDataV1)]
+    [DataContract(Namespace = Namespaces.FlrLegacyV1)]
     public class ContractWithMonth
     {
         /// <summary>
