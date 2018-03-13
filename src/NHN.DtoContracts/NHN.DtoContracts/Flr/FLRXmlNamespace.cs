@@ -14,6 +14,8 @@ namespace NHN.DtoContracts.Flr
         /// <summary>
         /// V1
         /// </summary>
-        public const string V1= "http://schemas.nhn.no/reg/flr";
+        public const string V1 = "http://schemas.nhn.no/reg/flr";
+
+        public const string FlrDataV1 = "http://schemas.datacontract.org/2004/07/NHN.DtoContracts.Flr.Data";
     }
 }

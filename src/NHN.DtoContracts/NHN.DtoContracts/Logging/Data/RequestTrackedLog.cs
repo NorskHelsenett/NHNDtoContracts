@@ -1,17 +1,13 @@
-﻿using NHN.DtoContracts.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NHN.DtoContracts.Logging.Data
 {
     /// <summary>
     /// Log av forspørsel sendt til registerplatformen
     /// </summary>
-    [DataContract(Namespace = Logging.LogFetchingNamespace.Name)]
+    [DataContract(Namespace = LogFetchingNamespace.Name)]
     [Serializable]
     public class RequestTrackedLog
     {
@@ -62,6 +58,5 @@ namespace NHN.DtoContracts.Logging.Data
         /// </summary>
         [DataMember]
         public IList<RequestTrackedLogParameter> RequestTrackedLogParameters { get; set; }
-
     }
 }
