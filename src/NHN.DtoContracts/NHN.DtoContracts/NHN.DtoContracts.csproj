@@ -90,7 +90,6 @@
     <Compile Include="ServiceBus\Data\SubscriptionInfo.cs" />
     <Compile Include="ServiceBus\Service\IServiceBusManager.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="Diagrams\Ofr.cd" />
     <None Include="Diagrams\FLR.cd" />
