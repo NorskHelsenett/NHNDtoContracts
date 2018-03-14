@@ -83,7 +83,10 @@ namespace NHN.DtoContracts.Common.en
         public string Description { get; set; }
 
         /// <summary>
-        /// Hvorvidt adressen er arvet.
+        /// Indikerer om adressen er arvet fra overliggende enhet(er).
+        /// Dersom Inherited settes til true vil adressen foreldreenheten har, hvor kodeverdien for adressen er den samme, benyttes.
+        /// Eventuelt innhold som sendes inn i Address blir ignorert.
+        /// Hvis foreldreenheten ikke har en adresse med den angitte kodetypen vil elementet bli nullet ut/ikke satt for denne enheten (uavhengig av om en verdi blir sendt inn i Address).
         /// </summary>
         [DataMember]
         public bool Inherited { get; set; }
