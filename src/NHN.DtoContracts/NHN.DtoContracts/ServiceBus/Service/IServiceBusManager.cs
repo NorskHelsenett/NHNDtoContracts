@@ -14,7 +14,7 @@ namespace NHN.DtoContracts.ServiceBus.Service
     /// <summary>
     /// MERK: Dette grensesnittet er i alfa-tilstand og ikke-bakoverkompatible endringer kan skje.
     /// </summary>
-    [ServiceContract(Namespace = ServiceBusXmlNamespace.V1,
+    [ServiceContract(Namespace = Namespaces.ServiceBusManagerV1,
         Name = "IServiceBusManager")]
     public interface IServiceBusManager
     {

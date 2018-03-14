@@ -7,7 +7,7 @@ namespace NHN.DtoContracts.Flr.Data
     /// <summary>
     /// Dette representerer en fastlege. Brukes når fokuset er på selve fastlegen, og ikke f.eks kontrakt eller pasient.
     /// </summary>
-    [DataContract(Namespace = FlrXmlNamespace.V1)]
+    [DataContract(Namespace = Namespaces.FlrV1)]
     public class GPDetails
     {
         /// <summary>

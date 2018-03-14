@@ -8,7 +8,7 @@ namespace NHN.DtoContracts.Ofr.Data
     /// <summary>
     /// Inneholder en personoppføring for OFR, inbkluderer helseregisteret personen er oppført på
     /// </summary>
-    [DataContract(Namespace = OfrNamespace.Name)]
+    [DataContract(Namespace = Namespaces.OfrV1)]
     public class PersonOnHealthRegister
     {
         /// <summary>

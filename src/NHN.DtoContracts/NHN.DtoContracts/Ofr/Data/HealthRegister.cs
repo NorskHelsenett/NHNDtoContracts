@@ -9,7 +9,7 @@ namespace NHN.DtoContracts.Ofr.Data
     /// <summary>
     /// Helseregister objekt for å legge til/hente ut opplysninger om en helseregisteroppføring i OFR
     /// </summary>
-    [DataContract(Namespace = OfrNamespace.Name)]
+    [DataContract(Namespace = Namespaces.OfrV1)]
     public class HealthRegister
     {
         /// <summary>

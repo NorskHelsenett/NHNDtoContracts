@@ -6,7 +6,7 @@ namespace NHN.DtoContracts.Common.en
     /// <summary>
     /// En tidsperiode.
     /// </summary>
-    [DataContract(Namespace = CommonXmlNamespaces.XmlNsCommonEnglish)]
+    [DataContract(Namespace = Namespaces.CommonV1)]
     [Serializable]
     public class Period
     {

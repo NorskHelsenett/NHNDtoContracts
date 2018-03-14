@@ -9,7 +9,7 @@ namespace NHN.DtoContracts.Flr.Data
     /// <summary>
     /// Beskriver et legekontor.
     /// </summary>
-    [DataContract(Namespace = FlrXmlNamespace.V1)]
+    [DataContract(Namespace = Namespaces.FlrV1)]
     [Serializable]
     public class GPOffice : Business
     {

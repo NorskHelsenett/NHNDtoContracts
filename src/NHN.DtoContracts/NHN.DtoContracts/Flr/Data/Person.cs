@@ -8,7 +8,7 @@ namespace NHN.DtoContracts.Flr.Data
     /// <summary>
     /// Basisdata for en person.
     /// </summary>
-    [DataContract(Namespace = FlrXmlNamespace.V1)]
+    [DataContract(Namespace = Namespaces.FlrV1)]
     [Serializable]
     public class Person
     {

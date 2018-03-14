@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Common\en\GeographicalCoordinates.cs" />
     <Compile Include="Common\en\PersonName.cs" />
+    <Compile Include="Namespaces.cs" />
     <Compile Include="Logging\Data\RequestTrackedLogParameter.cs" />
     <Compile Include="Logging\Data\ResultWithPagination.cs" />
     <Compile Include="Common\HelperInterfaces\IHasGeographicalCoordinates.cs" />
@@ -67,37 +68,27 @@
     <Compile Include="Flr\Data\ContractsQueryParameters.cs" />
     <Compile Include="Htk\Business.cs" />
     <Compile Include="Common\en\Code.cs" />
-    <Compile Include="Common\CommonXmlNamespaces.cs" />
     <Compile Include="Common\en\ElectronicAddress.cs" />
     <Compile Include="Common\en\GenericFault.cs" />
     <Compile Include="Common\en\Status.cs" />
-    <Compile Include="Flr\FlrXmlNamespace.cs" />
     <Compile Include="Common\en\OpeningHours.cs" />
     <Compile Include="Common\en\Period.cs" />
     <Compile Include="Common\en\PhysicalAddress.cs" />
-    <Compile Include="Htk\CorporateXmlNamespace.cs" />
     <Compile Include="Logging\Data\RequestTrackedLog.cs" />
     <Compile Include="Logging\Data\RequestTrackedLogQueryParameters.cs" />
-    <Compile Include="Logging\LogFetchingNamespace.cs" />
     <Compile Include="Logging\Service\ILogFetchingService.cs" />
     <Compile Include="Ofr\Data\AddPersonData.cs" />
     <Compile Include="Ofr\Data\HealthRegister.cs" />
     <Compile Include="Ofr\Data\HealthRegisterQuery.cs" />
     <Compile Include="Ofr\Data\PersonAssociations.cs" />
     <Compile Include="Ofr\Data\PersonOnHealthRegister.cs" />
-    <Compile Include="Ofr\OfrNamespace.cs" />
     <Compile Include="Ofr\Service\IOfrService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Common\en\TimePeriod.cs" />
     <Compile Include="ServiceBusConnector\Enum\ServiceBusStatus.cs" />
-    <Compile Include="ServiceBusConnector\ServiceBusConnectorNamespace.cs" />
     <Compile Include="ServiceBusConnector\Service\IServicebusService.cs" />
     <Compile Include="ServiceBus\Data\SubscriptionInfo.cs" />
-    <Compile Include="ServiceBus\ServiceBusXmlNamespace.cs" />
     <Compile Include="ServiceBus\Service\IServiceBusManager.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Common\no\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Diagrams\Ofr.cd" />

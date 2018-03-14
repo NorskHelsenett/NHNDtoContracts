@@ -6,7 +6,7 @@ namespace NHN.DtoContracts.Common.en
     /// <summary>
     /// Elektronisk adresse, f.eks. EDI, sertifikatpeker, telefonnummer, faxnummer, epost adresse.
     /// </summary>
-    [DataContract(Namespace = CommonXmlNamespaces.XmlNsCommonEnglishOld)]
+    [DataContract(Namespace = Namespaces.CommonOldV1)]
     [Serializable]
     public class ElectronicAddress
     {

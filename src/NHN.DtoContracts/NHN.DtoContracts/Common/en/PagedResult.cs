@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
-using NHN.DtoContracts.Flr;
 
 namespace NHN.DtoContracts.Common.en
 {
     /// <summary>
     /// Generisk paginert resultat.
     /// </summary>
-    [DataContract(Namespace = FlrXmlNamespace.V1)]
+    [DataContract(Namespace = Namespaces.FlrV1)]
     public class PagedResult<T>
     {
         /// <summary>

@@ -10,7 +10,7 @@ namespace NHN.DtoContracts.Flr.Data
     /// <summary>
     /// Representerer et fødselsnummer og et tidspunkt, brukes i spørringer mot FLR.
     /// </summary>
-    [DataContract(Namespace = FlrXmlNamespace.V1)]
+    [DataContract(Namespace = Namespaces.FlrV1)]
     public class NinWithTimestamp
     {
         /// <summary>

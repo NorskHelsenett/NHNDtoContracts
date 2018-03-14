@@ -11,7 +11,7 @@ namespace NHN.DtoContracts.Common.en
     /// <summary>
     /// En kode hentet fra et kodeverk.
     /// </summary>
-    [DataContract(Namespace = CommonXmlNamespaces.XmlNsCommonEnglishOld)]
+    [DataContract(Namespace = Namespaces.CommonOldV1)]
     [Serializable]
     public class Code
     {

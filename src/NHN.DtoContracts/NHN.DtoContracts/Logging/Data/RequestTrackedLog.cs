@@ -7,7 +7,7 @@ namespace NHN.DtoContracts.Logging.Data
     /// <summary>
     /// Log av forspørsel sendt til registerplatformen
     /// </summary>
-    [DataContract(Namespace = LogFetchingNamespace.Name)]
+    [DataContract(Namespace = Namespaces.LogFetchingV1)]
     [Serializable]
     public class RequestTrackedLog
     {

@@ -7,7 +7,7 @@ namespace NHN.DtoContracts.Common.en
     /// En tidsperiode uten informasjon om dato.
     /// Implementerer IComparable for sortering, hvor det sorteres på Fra og så Til.
     /// </summary>
-    [DataContract(Namespace = CommonXmlNamespaces.XmlNsCommonEnglishOld)]
+    [DataContract(Namespace = Namespaces.CommonOldV1)]
     [Serializable]
     public struct TimePeriod : IComparable<TimePeriod>
     {

@@ -7,7 +7,7 @@ namespace NHN.DtoContracts.Common.en
     /// <summary>
     /// Geografiske koordinater
     /// </summary>
-    [DataContract(Namespace = CommonXmlNamespaces.XmlNsCommonEnglishOld)]
+    [DataContract(Namespace = Namespaces.CommonOldV1)]
     [Serializable]
     public struct LatitudeLongitude
     {

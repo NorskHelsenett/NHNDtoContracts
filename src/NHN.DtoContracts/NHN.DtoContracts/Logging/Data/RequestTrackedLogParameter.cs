@@ -5,7 +5,7 @@ namespace NHN.DtoContracts.Logging.Data
     /// <summary>
     /// Ekstra data som er trukket ut av RequestTrackedLog.Parameter for å gjøre det lettere å finne relevant forespørsel
     /// </summary>
-    [DataContract(Namespace = LogFetchingNamespace.DataV1)]
+    [DataContract(Namespace = Namespaces.LogFetchingLegacyV1)]
     public class RequestTrackedLogParameter
     {
         /// <summary>

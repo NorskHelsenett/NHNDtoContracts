@@ -9,7 +9,7 @@ namespace NHN.DtoContracts.Flr.Service
     /// <summary>
     /// Eksport av FLR.
     /// </summary>
-    [ServiceContract(Namespace = FlrXmlNamespace.V1,
+    [ServiceContract(Namespace = Namespaces.FlrV1,
         Name = "IFlrExportOperations")]
     public interface IFlrExportOperations
     {

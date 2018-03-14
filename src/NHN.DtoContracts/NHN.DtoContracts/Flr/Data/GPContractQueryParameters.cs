@@ -6,7 +6,7 @@ namespace NHN.DtoContracts.Flr.Data
     /// <summary>
     /// Query parameters for GP Contracts
     /// </summary>
-    [DataContract(Namespace = FlrXmlNamespace.V1)]
+    [DataContract(Namespace = Namespaces.FlrV1)]
     public class GPContractQueryParameters
     {
         /// <summary>
