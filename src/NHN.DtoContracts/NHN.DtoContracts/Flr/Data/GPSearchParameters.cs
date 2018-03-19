@@ -28,15 +28,15 @@ namespace NHN.DtoContracts.Flr.Data
         /// </summary>
         [DataMember]
         public LatitudeLongitude SortResultsByDistanceTo { get; set; }
-        
+
         /// <summary>
-        /// Sidenummer
+        /// Hvilken side av søkeresultatet ønskes. Brukes sammen ResultaterPerSide, og må være mellom 1 og 100000, inklusivt.
         /// </summary>
         [DataMember]
         public int Page { get; set; }
-        
+
         /// <summary>
-        /// Antall resultater per side
+        /// Hvor mange resultater ønskes per side. Brukes sammen Side, og må være mellom 1 og 1000, inklusivt.
         /// </summary>
         [DataMember]
         public int PageSize { get; set; }
