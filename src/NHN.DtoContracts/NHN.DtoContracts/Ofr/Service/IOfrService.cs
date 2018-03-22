@@ -16,7 +16,7 @@ namespace NHN.DtoContracts.Ofr.Service
         /// <summary>
         /// Legger til en ny oppføring om et helseregister i Oppføringsregisteret.
         /// </summary>
-        /// <param name="healthRegister">Objekt som inneholder opplysninger om en oppførin. </param>
+        /// <param name="healthRegister">Objekt som inneholder opplysninger om en oppføring.</param>
         /// <returns>Objekt med den nye oppføringen som er blitt lagt til i registeret.</returns>
         /// <exception cref="ArgumentException"></exception>
         /// <example>
@@ -37,7 +37,7 @@ namespace NHN.DtoContracts.Ofr.Service
         /// <summary>
         /// Henter en helseregisteroppføring fra registeret.
         /// </summary>
-        /// <param name="healthRegisterId">Unik identifikator for helseregisteroppføringen</param>
+        /// <param name="healthRegisterId">Unik identifikator for helseregisteroppføringen.</param>
         /// <returns>Objekt med oppføringen med spesifisert id fra registeret.</returns>
         /// <exception cref="ArgumentException"></exception>
         /// <example>
@@ -103,7 +103,8 @@ namespace NHN.DtoContracts.Ofr.Service
         void DeleteHealthRegister(Guid healthRegisterId);
 
         /// <summary>
-        /// Henter alle helseregisteroppføringer personen for gitt nin er knyttet til. Kan også ta inn argument for å filtrer på type.
+        /// Henter alle helseregisteroppføringer personen for gitt nin er knyttet til.
+        /// Kan også ta inn argument for å filtre på type.
         /// </summary>
         /// <param name="nin">Personnummer for person man skal ha informasjon om.</param>
         /// <param name="healthRegisterType">Type helseregistre man vil ha i retur, representert av en kode i et kodeverk</param>
@@ -111,7 +112,12 @@ namespace NHN.DtoContracts.Ofr.Service
         /// <exception cref="ArgumentException"></exception>
         /// <example>
         /// <code>
-        /// var type = new Code{ CodeValue = "ofr_forskningsprosjekt", SimpleType = "ofr_helseregistertype" }; 
+        /// var type = new Code
+        /// {
+        ///     CodeValue = "ofr_forskningsprosjekt",
+        ///     SimpleType = "ofr_helseregistertype"
+        /// };
+        /// 
         /// var healthRegisters = ofrService.GetHealthRegistersForPerson(nin, type);
         /// </code>
         /// </example>
@@ -139,7 +145,11 @@ namespace NHN.DtoContracts.Ofr.Service
         /// {
         ///     BelongsToOrg = 12345678,
         ///     FullText = "HUNT",
-        ///     Type = new ws.Code {CodeValue = "ofr_forskningsprosjekt", SimpleType = "ofr_helseregistertype"},
+        ///     Type = new Code
+        ///     {
+        ///         CodeValue = "ofr_forskningsprosjekt",
+        ///         SimpleType = "ofr_helseregistertype"
+        ///     },
         ///     WasActiveAtTime = DateTime.ParseExact("02.02.2016", "dd.MM.yyyy", CultureInfo.InvariantCulture)
         /// };
         /// var healtRegisters = ofrService.QueryHealthRegisters(query);
@@ -158,7 +168,8 @@ namespace NHN.DtoContracts.Ofr.Service
         ICollection<HealthRegister> QueryHealthRegisters(HealthRegisterQuery query);
 
         /// <summary>
-        /// Henter ut alle personer som er assosiert med gitt helseregister, returnerer som paginert resultat.
+        /// Henter ut alle personer som er assosiert med gitt helseregister.
+        /// Returnerer et paginert resultat.
         /// </summary>
         /// <param name="page">Id for helseregisteroppføring man ønsker informasjon om.</param>
         /// <param name="pageSize">Id for helseregisteroppføring man ønsker informasjon om.</param>
@@ -197,7 +208,7 @@ namespace NHN.DtoContracts.Ofr.Service
         /// var people = new List<AddPersonData>
         /// {
         ///     new AddPersonData { Nin = "12345678901", StartPeriod = DateTime.Now },
-        ///     new AddPersonData { Nin = "12345679231", StartPerido = DateTime.Now }
+        ///     new AddPersonData { Nin = "12345679231", StartPeriod = DateTime.Now }
         /// }
         /// var personAssociations = ofrService.AddPeople(healthregisterId, people);
         /// ]]>
@@ -217,8 +228,9 @@ namespace NHN.DtoContracts.Ofr.Service
 
 
         /// <summary>
-        /// Simulerer å leegge til personer i en oppføring i Oppføringsregisteret. Lagrer ikke dataen i db, men returnerer resultatet som ville blitt lagt til. 
-        /// Returnerer i tillegg err
+        /// Simulerer å legge til personer i en oppføring i Oppføringsregisteret.
+        /// Lagrer ikke informasjonen i databasen, men returnerer resultatet som ville blitt lagt til.
+        /// Returnerer i tillegg errors.
         /// </summary>
         /// <param name="healthRegisterId">Guid til helseregister</param>
         /// <param name="people">Liste over personer som skal legges til</param>
@@ -230,7 +242,7 @@ namespace NHN.DtoContracts.Ofr.Service
         /// var people = new List<AddPersonData>
         /// {
         ///     new AddPersonData { Nin = "12345678901", StartPeriod = DateTime.Now },
-        ///     new AddPersonData { Nin = "12345679231", StartPerido = DateTime.Now }
+        ///     new AddPersonData { Nin = "12345679231", StartPeriod = DateTime.Now }
         /// }
         /// var personAssociationsWithErrors = ofrService.AddPeople(healthregisterId, people);
         /// ]]>
@@ -249,9 +261,10 @@ namespace NHN.DtoContracts.Ofr.Service
         PersonAssociationsWithErrors AddPeopleDryRun(Guid healthRegisterId, ICollection<AddPersonData> people);
 
         /// <summary>
-        /// Legger til personer i en oppføring i Oppføringsregisteret. Tar inn personer representert som csv string.
-        /// Csv string input kan være av typen "[nin];[StartDate];[ExternalRef];" per linje, hvor StartDate og ExternalRef er valgfritt. 
-        /// Startdato input takles kun på format "yyyy-MM-dd HH:mm:ss".
+        /// Legger til personer i en oppføring i Oppføringsregisteret.
+        /// Tar inn personer representert som csv string.
+        /// Csv string input kan være av typen `[nin];[StartDate];[ExternalRef];` per linje, hvor StartDate og ExternalRef er valgfritt.
+        /// Startdato må være på formatet `yyyy-MM-dd HH:mm:ss`.
         /// </summary>
         /// <param name="csv">Csv string som representerer personer som skal legges til.</param>
         /// <param name="healthRegisterId">Guid for helseregisteroppføringen hvor personene skal legges til.</param>
@@ -279,9 +292,10 @@ namespace NHN.DtoContracts.Ofr.Service
         PersonAssociations AddPeopleFromCsv(string csv, Guid healthRegisterId);
 
         /// <summary>
-        /// Legger til personer i en oppføring i Oppføringsregisteret. Tar inn personer representert som csv string.
-        /// Csv string input kan være av typen "[nin];[StartDate];[ExternalRef];" per linje, hvor StartDate og ExternalRef er valgfritt. 
-        /// Startdato input takles kun på format "yyyy-MM-dd HH:mm:ss".
+        /// Legger til personer i en oppføring i Oppføringsregisteret.
+        /// Tar inn personer representert som csv string.
+        /// Csv string input kan være av typen `[nin];[StartDate];[ExternalRef];` per linje, hvor StartDate og ExternalRef er valgfritt.
+        /// Startdato må være på formatet `yyyy-MM-dd HH:mm:ss`.
         /// </summary>
         /// <param name="csv">Csv string som representerer personer som skal legges til.</param>
         /// <param name="healthRegisterId">Guid for helseregisteroppføringen hvor personene skal legges til.</param>
@@ -309,7 +323,8 @@ namespace NHN.DtoContracts.Ofr.Service
         PersonAssociationsWithErrors AddPeopleFromCsvDryRun(string csv, Guid healthRegisterId);
 
         /// <summary>
-        /// Fjerner gitte personer fra en helseregisteroppføring, i praksis invalideres her personene og vil fortsatt kunne vises historisk.
+        /// Fjerner gitte personer fra en helseregisteroppføring.
+        /// I praksis invalideres kun personene og vil fortsatt kunne vises historisk.
         /// </summary>
         /// <param name="nins">En liste med personnummer for personer man ønsker å fjerne.</param>
         /// <param name="healthRegisterId">Id for helseregisteroppføring man ønsker å fjerne personer fra.</param>

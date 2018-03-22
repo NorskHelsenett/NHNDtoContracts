@@ -14,10 +14,11 @@ namespace NHN.DtoContracts.Flr.Service
     public interface IFlrExportOperations
     {
         /// <summary>
-        /// Henter alle GPContracts gruppert pr kontor i en zip-fil
-        /// Bruk søkeparametere for å begrense hva som blir eksportert
+        /// Henter alle GPContracts gruppert pr kontor i en zip-fil.
+        /// Bruk søkeparametere for å begrense hva som blir eksportert.
         /// </summary>
-        /// <remarks>Søk etter leger
+        /// <remarks>
+        /// Søk etter leger
         /// 
         /// ##### Krever en av rollene
         /// * Administrator
