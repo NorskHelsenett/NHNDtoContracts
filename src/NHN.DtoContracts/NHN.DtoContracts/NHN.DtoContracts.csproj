@@ -43,6 +43,12 @@
   <ItemGroup>
     <Compile Include="Common\en\GeographicalCoordinates.cs" />
     <Compile Include="Common\en\PersonName.cs" />
+    <Compile Include="Flr\Data\PrimaryHealthCareContract.cs" />
+    <Compile Include="Flr\Data\PrimaryHealthCareContractEdit.cs" />
+    <Compile Include="Flr\Data\PrimaryHealthCarePerson.cs" />
+    <Compile Include="Flr\Data\PrimaryHealthCarePersonEdit.cs" />
+    <Compile Include="Flr\Data\PrimaryHealthCareTeam.cs" />
+    <Compile Include="Flr\Data\PrimaryHealthCareTeamEdit.cs" />
     <Compile Include="Namespaces.cs" />
     <Compile Include="Logging\Data\RequestTrackedLogParameter.cs" />
     <Compile Include="Logging\Data\ResultWithPagination.cs" />
