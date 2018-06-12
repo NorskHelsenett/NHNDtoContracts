@@ -429,5 +429,23 @@ namespace NHN.DtoContracts.Flr.Service
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         Stream GetNavPatientLists(GetNavPatientListsParameters parameters);
+
+        /// <summary>
+        /// Henter informasjon om et primærhelseteam.
+        /// </summary>
+        /// <remarks>
+        /// ##### Krever en av rollene
+        /// * Administrator
+        /// * FlrRead
+        /// </remarks>
+        /// <param name="id">Identifikator for primærhelseteamet som skal returneres</param>
+        /// <example>
+        /// <code>
+        /// flrWriteService.GetPrimaryHealthCareTeam(1234);
+        /// </code>
+        /// </example>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        PrimaryHealthCareTeam GetPrimaryHealthCareTeam(long id);
     }
 }

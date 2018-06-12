@@ -811,6 +811,70 @@ namespace NHN.DtoContracts.Flr.Service
         [FaultContract(typeof (GenericFault))]
         void EnsurePeopleInCache(IList<string> nins);
 
+        /// <summary>
+        /// Oppretter og oppdaterer informasjon om et Primærhelseteam i FLR.
+        /// </summary>
+        /// <remarks>
+        /// ##### Krever en av rollene
+        /// * Administrator
+        /// * FlrPrimaryHealthCareTeamWrite 
+        /// </remarks>
+        /// <param name="primaryHealthCareTeam">Objekt som beskriver et primærhelseteam</param>
+        /// <example>
+        /// <code>
+        /// var primaryHealthCarePeople = new List&lt;PrimaryHealthCarePersonEdit&gt;();
+        /// var primaryHealthCareContracts = new List&lt;PrimaryHealthCareContractEdit&gt;();
+        /// 
+        /// var primaryHealthCarePersonEdit = new PrimaryHealthCarePersonEdit() {
+        ///     Id = 123413,
+        ///     HprNumber = 1234123,
+        ///     Role = new Code() { OID=9060, CodeValue="PE" },
+        ///     IsSubstitute = False,
+        ///     WorkingPercentage = 100,
+        ///     MembershipPeriod = new Period() { From = DateTime.Today, To = DateTime.MaxValue },
+        /// }
+        /// primaryHealthCarePeople.Add(primaryHealthCarePersonEdit);
+        /// 
+        /// var primaryHealthCareContractEdit = new PrimaryHealthCareContractEdit() {
+        ///     Id = 123,
+        ///     FlrId = 542341234,
+        ///     MembershipPeriod = new Period() { From = DateTime.Today, To = DateTime.MaxValue }
+        /// }
+        /// primaryHealthCareContracts.Add(primaryHealthCareContractEdit);
+        /// 
+        /// var primaryHealthCareTeamEdit = new PrimaryHealthCareTeamEdit() {
+        ///     Id = 1234,
+        ///     OrganizationNumber = 3216785467,
+        ///     PrimaryHealthCarePeople = primaryHealthCarePeople,
+        ///     PrimaryHealthCareContracts = primaryHealthCareContracts,
+        ///     PrimaryHealthCareLeaderHprNumber = 423342,
+        ///     Version = 3
+        /// }
+        /// flrWriteService.SyncPrimaryHealthCareTeam(primaryHealthCareTeamEdit);
+        /// </code>
+        /// </example>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        PrimaryHealthCareTeam SyncPrimaryHealthCareTeam(PrimaryHealthCareTeamEdit primaryHealthCareTeam);
+
+        /// <summary>
+        /// Sletter informasjon om et Primærhelseteam i FLR.
+        /// </summary>
+        /// <remarks>
+        /// ##### Krever en av rollene
+        /// * Administrator
+        /// * FlrPrimaryHealthCareTeamWrite
+        /// </remarks>
+        /// <param name="id">Identifikatoren til primærhelseteamet som skal slettes</param>
+        /// <example>
+        /// <code>
+        /// flrWriteService.DeletePrimaryHealthCareTeam(1234);
+        /// </code>
+        /// </example>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        void DeletePrimaryHealthCareTeam(long id);
+
         #region Cleanup methods
         /// <summary>
         /// Sletter avtale, med ALLE relaterte relasjoner (Legeperioder, Tilhørigheter, Utekontor).
