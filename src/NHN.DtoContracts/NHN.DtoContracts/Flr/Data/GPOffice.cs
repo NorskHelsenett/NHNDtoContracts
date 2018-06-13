@@ -24,5 +24,11 @@ namespace NHN.DtoContracts.Flr.Data
         /// </summary>
         [DataMember]
         public Code District { get; set; }
+
+        /// <summary>
+        /// Identifikator for primærhelseteam, kun satt dersom kontoret faktisk er tilkoblet et primærhelseteam.
+        /// </summary>
+        [DataMember]
+        public long? PrimaryHealthCareTeamId { get; set; }
     }
 }

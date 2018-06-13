@@ -5,7 +5,7 @@ using NHN.DtoContracts.Common.en;
 namespace NHN.DtoContracts.Flr.Data
 {
     /// <summary>
-    /// Basisdata for en person.
+    /// Basis data for en person tilknyttet et primærhelseteam.
     /// </summary>
     [DataContract(Namespace = Namespaces.FlrV1)]
     [Serializable]
@@ -13,7 +13,7 @@ namespace NHN.DtoContracts.Flr.Data
     public class PrimaryHealthCarePerson
     {
         /// <summary>
-        /// Identifikator for primærhelseteamperson.
+        /// Identifikator for en person som er medlem av et primærhelseteam.
         /// </summary>
         [DataMember]
         public long Id { get; set; }
