@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 namespace NHN.DtoContracts.Flr.Data
 {
     /// <summary>
-    /// Basisdata for en person.
+    /// Basisdata for et primærhelseteam
     /// </summary>
     [DataContract(Namespace = Namespaces.FlrV1)]
     [Serializable]
@@ -24,13 +24,13 @@ namespace NHN.DtoContracts.Flr.Data
         public int OrganizationNumber { get; set; }
 
         /// <summary>
-        /// Liste over all helsepersonell knyttet til primærhelseteamet.
+        /// Liste over helsepersonell knyttet til primærhelseteamet.
         /// </summary>
         [DataMember]
         public List<PrimaryHealthCarePerson> PrimaryHealthCarePeople { get; set; }
 
         /// <summary>
-        /// Liste over kontraktene til primærhelseteamet.
+        /// Liste over faslegekontrakter tilknyttet primærhelseteamet.
         /// </summary>
         [DataMember]
         public List<PrimaryHealthCareContract> PrimaryHealthCareContracts { get; set; }

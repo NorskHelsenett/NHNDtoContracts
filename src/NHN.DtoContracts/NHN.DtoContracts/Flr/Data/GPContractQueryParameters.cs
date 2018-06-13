@@ -24,6 +24,12 @@ namespace NHN.DtoContracts.Flr.Data
         public Code Municipality { get; set; }
 
         /// <summary>
+        /// Hvis satt til true, returnerer kun kontrakter som er tilknyttet primærhelseteam.
+        /// </summary>
+        [DataMember]
+        public bool? HasPrimaryHealthCareTeam { get; set; }
+
+        /// <summary>
         /// IKKE ENNÅ IMPLEMENTERT, kommer i fremtidig release:
         /// Hvis satt, sorter resultatsettet etter distansen til dette koordinatet.
         /// </summary>

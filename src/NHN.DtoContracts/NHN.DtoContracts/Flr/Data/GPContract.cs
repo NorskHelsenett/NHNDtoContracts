@@ -132,6 +132,12 @@ namespace NHN.DtoContracts.Flr.Data
         public int PatientsOnWaitingList { get; set; }
 
         /// <summary>
+        /// Identifikator for primærhelseteam, kun satt dersom kontoret faktisk er tilkoblet et primærhelseteam.
+        /// </summary>
+        [DataMember]
+        public long? PrimaryHealthCareTeamId { get; set; }
+
+        /// <summary>
         /// Tidspunkt data ble sist oppdatert
         /// </summary>
         [DataMember]

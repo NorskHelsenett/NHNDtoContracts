@@ -5,7 +5,7 @@ using NHN.DtoContracts.Common.en;
 namespace NHN.DtoContracts.Flr.Data
 {
     /// <summary>
-    /// Basisdata for en person.
+    /// Basis data for en fastlegekontrakt i FLR som er tilknyttet et primærhelseteam
     /// </summary>
     [DataContract(Namespace = Namespaces.FlrV1)]
     [Serializable]
