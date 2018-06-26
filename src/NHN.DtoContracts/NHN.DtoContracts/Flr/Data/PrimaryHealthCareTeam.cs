@@ -42,12 +42,6 @@ namespace NHN.DtoContracts.Flr.Data
         public int PrimaryHealthCareLeaderHprNumber { get; set; }
 
         /// <summary>
-        /// Opprettelsesdato for objektet.
-        /// </summary>
-        [DataMember]
-        public DateTime CreatedOn { get; set; }
-
-        /// <summary>
         /// Dato for sist oppdatering av objektet.
         /// </summary>
         [DataMember]
