@@ -29,17 +29,5 @@ namespace NHN.DtoContracts.Flr.Data
         /// </summary>
         [DataMember]
         public Period MembershipPeriod { get; set; }
-
-        /// <summary>
-        /// Opprettelsesdato for objektet.
-        /// </summary>
-        [DataMember]
-        public DateTime CreatedOn { get; set; }
-
-        /// <summary>
-        /// Dato for sist oppdatering av objektet.
-        /// </summary>
-        [DataMember]
-        public DateTime UpdatedOn { get; set; }
     }
 }
