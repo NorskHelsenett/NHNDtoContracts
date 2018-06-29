@@ -26,6 +26,7 @@
 
         // Corporate (Business)
         public const string CorporateV1 = "http://register.nhn.no/Corporate";
+        public const string CorporateV2 = "http://register.nhn.no/CorporateV2";
 
         // Cppa
         public const string CppaV1 = "http://schemas.nhn.no/reg/CollaborationProtocolProfile";
