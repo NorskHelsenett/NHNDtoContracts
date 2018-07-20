@@ -19,6 +19,12 @@ namespace NHN.DtoContracts.Ofr.Data
         public Guid guid { get; set; }
 
         /// <summary>
+        /// Unik, brukerdefinert id
+        /// </summary>
+        [DataMember]
+        public string RegisterId { get; set; }
+
+        /// <summary>
         /// Navnet på helseregisteroppføringen
         /// </summary>
         [DataMember, Required]
