@@ -78,8 +78,10 @@ namespace NHN.DtoContracts.Ofr.Service
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         HealthRegister UpdateHealthRegister(HealthRegister healthRegister);
-        ///Test
-        
+        ///
+        /// 
+
+
         /// <summary>
         /// Sletter en helseregisteroppføring fra registeret.
         /// </summary>
