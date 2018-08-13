@@ -104,6 +104,7 @@ namespace NHN.DtoContracts.Ofr.Service
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         void DeleteHealthRegister(Guid healthRegisterId);
+        //Test
 
         /// <summary>
         /// Henter alle helseregisteroppføringer personen for gitt nin er knyttet til. Kan også ta inn argument for å filtrer på type.
