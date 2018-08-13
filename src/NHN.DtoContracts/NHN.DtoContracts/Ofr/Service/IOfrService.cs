@@ -57,6 +57,29 @@ namespace NHN.DtoContracts.Ofr.Service
         [FaultContract(typeof(GenericFault))]
         HealthRegister GetHealthRegister(Guid healthRegisterId);
 
+        ///// <summary>
+        ///// Henter en liste med helseregisteroppføringer fra OFR registeret basert på registerid'er
+        ///// </summary>
+        ///// <param name="registerIds">Liste med unik identifikator (string) for helseregisteroppføringen. Alternativ unik identifikator for guid</param>
+        ///// <returns>Liste med helseregisteroppføringer basert på registerid'er</returns>
+        ///// <exception cref="ArgumentException"></exception>
+        ///// <example>
+        ///// <code>
+        /////     var healthRegisters = _ofrServiceImplementation.GetHealthRegisters(registerIds);
+        ///// </code>
+        ///// </example>
+        ///// <remarks>
+        ///// ##### Krever en av rollene
+        ///// * Administrator
+        ///// * OfrAdministrator
+        ///// * OfrSuperUser for gjeldende register
+        ///// * OfrUser for gjeldende register
+        ///// * OfrApiUser for gjeldende register
+        ///// </remarks>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        ICollection<HealthRegister> GetHealthRegisters(ICollection<string> registerIds);
+
         /// <summary>
         /// Oppdaterer gitt helseregisteroppføring med ny oppgitt informasjon.
         /// </summary>
