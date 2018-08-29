@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.Serialization;
 using NHN.DtoContracts.Common.en;
 
@@ -40,7 +40,7 @@ namespace NHN.DtoContracts.Flr.Data
         /// Andel stilling til personen i prosent.
         /// </summary>
         [DataMember]
-        public int WorkingPercentage { get; set; }
+        public int? WorkingPercentage { get; set; }
 
         /// <summary>
         /// Perioden personen er medlem i primærhelseteam.
