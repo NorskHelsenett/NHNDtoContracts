@@ -18,11 +18,11 @@ namespace NHN.DtoContracts.Flr.Service
     public interface IFlrWriteOperations
     {
         /// <summary>
-        /// Lag en mengde historiske bedrifter. Historiske bedrifter er Business-objekter med et negativt organisasjonsnummer 
-        /// for å skille dem fra bedrifter med gyldige, faktiske organisasjonsnummer.
+        /// Lag en mengde historiske bedrifter.
+        /// Historiske bedrifter er Business-objekter med et negativt organisasjonsnummer for å skille dem fra bedrifter med gyldige, faktiske organisasjonsnummer.
         /// De eneste feltene i det innkommende Business objektet som skal være satt er:
-        /// OrganizationName, PhysicalAddreses, ElectronicAddresses, Name, DisplayName, Valid
-        /// Alle andre datafelter må være null/0. 
+        /// OrganizationName, PhysicalAddreses, ElectronicAddresses, Name, DisplayName, og Valid.
+        /// Alle andre datafelter må være null/0.
         /// </summary>
         /// <remarks>
         /// ##### Krever en av rollene
@@ -48,7 +48,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// Sette en alternativ besøksadresse fra FLO enn den som er registrert i andre autorative registre
         /// </summary>
         /// <remarks>
-        /// Registrere egen type av besøksadresse som er unik for FLO. Benyttes for opprettelse og oppdatering av denne type adresse.
+        /// Registrere egen type av besøksadresse som er unik for FLO.
+        /// Benyttes for opprettelse og oppdatering av denne type adresse.
         /// 
         /// ##### Krever en av rollene
         /// * Administrator
@@ -69,10 +70,11 @@ namespace NHN.DtoContracts.Flr.Service
         void SetCustomFloAddress(int organizationNumber, PhysicalAddress resFlo);
 
         /// <summary>
-        /// Registrere/oppdatere elektroniske adresse av type adressekomponenter. Kan også benyttes til sletting av adresser.
+        /// Registrere/oppdatere elektroniske adresse av type adressekomponenter.
+        /// Kan også benyttes til sletting av adresser.
         /// </summary>
         /// <remarks>
-        /// For å slette en adresse, sett alle elementer i ElektroniskeAdresser bortsett fra .Type til NULL/0.
+        /// For å slette en adresse, sett alle elementer i ElektroniskeAdresser bortsett fra `Type` til NULL/0.
         /// 
         /// ##### Krever en av rollene
         /// * Administrator
@@ -122,7 +124,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// </summary>
         /// <remarks>
         /// Oppretter avtalen mellom en lege og kommune.
-        /// Det forutsettes at lege finnes allerede fra før i HPR og at legen er tilknyttet et legekontor(TreatmentCenter) som finnes i Adresseregisteret/Bedriftsregisteret.
+        /// Det forutsettes at lege allerede finnes i HPR og at legen er tilknyttet et legekontor (TreatmentCenter) som finnes i Adresseregisteret/Bedriftsregisteret.
         /// 
         /// ##### Sender Servicebus-event
         /// * "ContractCreated" med eventobjekt <see cref="GPContract"/>.
@@ -143,7 +145,7 @@ namespace NHN.DtoContracts.Flr.Service
         void CreateGPContract(GPContract newGPContract);
 
         /// <summary>
-        /// Oppretter en ny fastlegeavtale - importversjon (se CreateGPContract)
+        /// Oppretter en ny fastlegeavtale - importversjon (se <see cref="CreateGPContract"/>)
         /// </summary>
         /// <remarks>
         /// ##### Sender Servicebus-event
@@ -222,7 +224,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <param name="gpContractId">Id på fastlegeavtalen</param>
         /// <param name="maxPatients">Listetak på en avtale</param>
         /// <returns></returns>
-        /// <exception cref="ArgumentException">Kastes hvis listetaket på en avtale ikke er høyere enn 0</exception>
+        /// <exception cref="ArgumentException">Kastes dersom listetaket (maxPatients) er lavere enn 0</exception>
         /// <example>
         /// <code>
         /// flrWriteService.UpdateGPContractMaxPatients(gpContractId, maxPatients);
@@ -246,7 +248,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <param name="gpContractId">Id på fastlegeavtalen</param>
         /// <param name="patientsOnWait">Antall pasienter på venteliste</param>
         /// <returns></returns>
-        /// <exception cref="ArgumentException">Kastes hvis antall pasienter på ventelisten sette til mindre en 0</exception>
+        /// <exception cref="ArgumentException">Kastes dersom antall pasienter på venteliste (patientsOnWait) er lavere enn 0</exception>
         /// <example>
         /// <code>
         /// flrWriteService.UpdateGPContractPatientsOnWaitingList(gpContractId, patientsOnWait);
@@ -286,8 +288,8 @@ namespace NHN.DtoContracts.Flr.Service
         void UpdateGPContractStatus(long gpContractId, Code status); //Kun tillate Åpne, Lukke 
 
         /// <summary>
-        /// Oppdaterer samarbeidende kommuner på kontrakt. En tom liste sletter alle
-        /// samarbeidende kommuner på kontrakten.
+        /// Oppdaterer samarbeidende kommuner på kontrakt.
+        /// En tom liste sletter alle samarbeidende kommuner på kontrakten.
         /// Kodeverk kommuner: <see href="/CodeAdmin/EditCodesInGroup/kommune">kommune</see> (OID 3402).
         /// </summary>
         /// <remarks>
@@ -435,7 +437,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// Oppretter en kontraktsperiode for en lege på en GPContract - importversjon.
         /// </summary>
         /// <remarks>
-        /// Se CreateGPOnContractAssociation(GPOnContractAssociation association. Tar i mot en liste av koblinger.
+        /// Se <see cref="CreateGPOnContractAssociation"/>.
+        /// Tar i mot en liste av koblinger.
         /// 
         /// ##### Sender Servicebus-event
         /// Publiserer ikke events.
@@ -514,7 +517,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// Oppdaterer listen over språk en gitt lege kan snakke.
         /// </summary>
         /// <remarks>
-        /// Registrerer språk på helsepersonell. En tom liste sletter alle språk på angitt helsepersonell.
+        /// Registrerer språk på helsepersonell.
+        /// En tom liste sletter alle språk på angitt helsepersonell.
         /// 
         /// ##### Krever en av rollene
         /// * Administrator
@@ -577,7 +581,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// Kobler en pasient til en fastlegeliste - importversjon
         /// </summary>
         /// <remarks>
-        /// Se CreatePatientToGPContractAssociation. Tar i mot en liste med koblinger for bulk operasjoner
+        /// Se CreatePatientToGPContractAssociation.
+        /// Tar i mot en liste med koblinger for bulk operasjoner
         /// 
         /// ##### Sender Servicebus-event
         /// Publiserer ikke events.
@@ -604,10 +609,12 @@ namespace NHN.DtoContracts.Flr.Service
         void CreatePatientToGPContractAssociationBulk(List<PatientToGPContractAssociation> patientToGPContractAssociation);
 
         /// <summary>
-        ///  Flytter innbygere fra en liste til en annen.
+        ///  Flytter innbyggere fra en liste til en annen.
         /// </summary>
         /// <remarks>
-        /// Flytte pasienter mellom to fastlegelister. Fødselsnummer valideres. Feiler flyttingen av én pasient så kastes det exception og ingen pasienter blir flyttet.
+        /// Flytte pasienter mellom to fastlegelister.
+        /// Fødselsnummer valideres.
+        /// Dersom flytting av én pasient feiler kastes det exception og ingen pasienter blir flyttet.
         /// 
         /// ##### Sender Servicebus-event
         /// * "PatientOnContractCreated" med eventobjekt <see cref="PatientToGPContractAssociation"/> for hver pasient som blir flyttet.
@@ -665,7 +672,9 @@ namespace NHN.DtoContracts.Flr.Service
         void CancelGPContractAndMovePatients(long gpContractId, Code endReason, Period period, ICollection<PatientToGPContractAssociation> capitaToMove);
 
         /// <summary>
-        /// Avslutte innbyggerens tilhørighet på en fastlegeliste/avtale. Denne metoden avslutter også alle fremtidige tilhørigheter for innbyggeren på denne kontrakten. Dvs, assosiasjoner hvor Valid.To > DateTime.Now.
+        /// Avslutte innbyggerens tilhørighet på en fastlegeliste/avtale.
+        /// Denne metoden avslutter også alle fremtidige tilhørigheter for innbyggeren på denne kontrakten.
+        /// Dvs, assosiasjoner hvor Valid.To > DateTime.Now.
         /// </summary>
         /// <remarks>
         /// ##### Sender Servicebus-event
@@ -686,7 +695,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <exception cref="ArgumentException">Kastes hvis en pasient ikke finnes på fastlegelisten i den gitte perioden</exception>
         /// <example>
         /// <code>
-        /// var endReason = new ws.Code { CodeValue = "OHID", OID = 7753 };
+        /// var endReason = new Code { CodeValue = "OHID", OID = 7753 };
         /// flrWriteService.CancelPatientOnGPContract(10403243, "12345678910", endReason, DateTime.Now);
         /// </code>
         /// </example>
@@ -695,7 +704,9 @@ namespace NHN.DtoContracts.Flr.Service
         void CancelPatientOnGPContract(long gpContractId, string patientNin, Code endReason, DateTime endTime);
 
         /// <summary>
-        /// Avslutte innbyggernes tilhørighet på en fastlegeliste/avtale. Denne metoden avslutter også alle fremtidige tilhørigheter for innbyggerene på denne kontrakten. Dvs, assosiasjoner hvor Valid.To > DateTime.Now.
+        /// Avslutte innbyggernes tilhørighet på en fastlegeliste/avtale.
+        /// Denne metoden avslutter også alle fremtidige tilhørigheter for innbyggerene på denne kontrakten.
+        /// Dvs, assosiasjoner hvor Valid.To > DateTime.Now.
         /// </summary>
         /// <remarks>
         /// ##### Sender Servicebus-event
@@ -729,7 +740,8 @@ namespace NHN.DtoContracts.Flr.Service
         void CancelPatientsOnGPContract(Dictionary<string, Code> patientsWithEndReason, long gpContractId, DateTime endTime);
 
         /// <summary>
-        /// Brukes for å sette visningsnavnet på et legekontor. Merk at legekontoret selv kan overskrive det som eventuelt settes her selv.
+        /// Brukes for å sette visningsnavnet på et legekontor.
+        /// Merk at legekontoret selv kan overskrive det som eventuelt settes her selv.
         /// </summary>
         /// <remarks>
         /// ##### Krever en av rollene
@@ -750,7 +762,8 @@ namespace NHN.DtoContracts.Flr.Service
         void SetDisplayNameOnGPOffice(int organizationNumber, string displayName);
 
         /// <summary>
-        /// Oppdaterer alle referanser til en pasient som har byttet personnummer. (I praksis, alle <see cref="PatientToGPContractAssociation"/> objekter).
+        /// Oppdaterer alle referanser til en pasient som har byttet personnummer.
+        /// (I praksis, alle <see cref="PatientToGPContractAssociation"/> objekter).
         /// </summary>
         /// <param name="oldNin">Gammelt personnummer</param>
         /// <param name="newNin">Nytt personnummer</param>

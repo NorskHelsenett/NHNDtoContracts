@@ -21,7 +21,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// Henter fastlege for en gitt person.
         /// </summary>
         /// <remarks>
-        /// Returnere nødvendige opplysninger om aktiv fastlegeforhold til en innbygger
+        /// Returnere nødvendige opplysninger om aktiv fastlegeforhold til en innbygger.
         /// 
         /// ##### Krever en av rollene
         /// * Administrator
@@ -41,7 +41,7 @@ namespace NHN.DtoContracts.Flr.Service
         PatientToGPContractAssociation GetPatientGPDetails(string patientNin);
 
         /// <summary>
-        /// Henter fastleger for en liste med personer
+        /// Henter fastleger for en liste med personer.
         /// </summary>
         /// <remarks>
         /// ##### Krever en av rollene
@@ -75,10 +75,14 @@ namespace NHN.DtoContracts.Flr.Service
         /// * FlrLookup
         /// </remarks>
         /// <returns>Usortert liste over pasienter-til-kontrakt assiosasjoner.</returns>
-        /// <exception cref="ArgumentException">Kastes hvis en pasients referanse id er ugyldig</exception>
+        /// <exception cref="ArgumentException">Kastes hvis en pasients referanse id er ugyldig.</exception>
         /// <example>
         /// <code language="cs">
-        /// var patients = GetPatientsGPDetailsAtTime(new [] { new NinWithTimestamp("10109012345", new DateTime(1999,2,3)) });
+        /// var patientNins = new []
+        /// {
+        ///     new NinWithTimestamp("10109012345", new DateTime(1999, 2, 3))
+        /// };
+        /// var patients = GetPatientsGPDetailsAtTime(patientNins);
         /// if (patients.Length > 0) 
         /// {
         ///     foreach (var patientAssoc in patients)
@@ -98,7 +102,7 @@ namespace NHN.DtoContracts.Flr.Service
         IList<PatientToGPContractAssociation> GetPatientsGPDetailsAtTime(NinWithTimestamp[] patientNins);
 
         /// <summary>
-        /// Henter fastlegebytte historikken
+        /// Henter historikk for fastlegebytter.
         /// </summary>
         /// <remarks>
         /// Henter pasientens fastlege og all historikk som er knyttet til fastlegebytter i fortiden.
@@ -109,8 +113,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// </remarks>
         /// <param name="patientNin">Referanse ID til innbygger-objektet (fødselsnummer/D-nummer)</param>
         /// <param name="includePatientData">
-        /// Hvorvidt personopplysinger om pasient skal hentes opp. Dette vil føre til redusert ytelse, 
-        /// så ikke bruk hvis du allerede har opplysningene.
+        /// Hvorvidt personopplysinger om pasient skal hentes opp.
+        /// Dette vil føre til redusert ytelse, så ikke bruk hvis du allerede har opplysningene.
         /// </param>
         /// <returns>Liste over alle innbyggerens fastlegeavtaler</returns>
         /// <exception cref="ArgumentException">Kastes hvis en pasients referanse id er ugyldig</exception>
@@ -125,11 +129,9 @@ namespace NHN.DtoContracts.Flr.Service
         IList<PatientToGPContractAssociation> GetPatientGPHistory(string patientNin, bool includePatientData);
 
         /// <summary>
-        /// Henter en enkelt fastlegeavtale
+        /// Henter en enkelt fastlegeavtale.
         /// </summary>
         /// <remarks>
-        /// Metode for å hente ut en enkel fastlegeavtale
-        /// 
         /// ##### Krever en av rollene
         /// * Administrator
         /// * FlrRead
@@ -151,8 +153,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// Henter fastlegeavtaler tilknyttet virksomheten.
         /// </summary>
         /// <remarks>
-        /// Metoden som henter alle aktive fastlegelister som er knyttet til et behandlingssted på et gitt tidspunkt. 
-        /// Hvis tidspunktet er NULL, så returneres alle kontrakter inklusive historiske.
+        /// Metoden henter alle aktive fastlegelister som er knyttet til et behandlingssted på et gitt tidspunkt.
+        /// Hvis tidspunktet er NULL returneres alle kontrakter inklusive historiske.
         /// 
         /// ##### Krever en av rollene
         /// * Administrator
@@ -165,10 +167,11 @@ namespace NHN.DtoContracts.Flr.Service
         /// <exception cref="ArgumentException">Kastes hvis en virksomhet ikke har noen fastlegeavtaler</exception>
         /// <example>
         /// <code language="cs">
-        /// //For et gitt tidspunkt
+        /// // For et gitt tidspunkt
         /// var atTime = DateTime.Now;
         /// var contractsOnOfficeList = flrReadService.GetGPContractsOnOffice(organizationNumber, atTime);
-        /// //Alle kontrakter også historiske
+        /// 
+        /// // Alle kontrakter, inkludert historiske
         /// var contractsOnOfficeList = flrReadService.GetGPContractsOnOffice(organizationNumber, null);
         /// </code>
         /// </example>
@@ -177,11 +180,9 @@ namespace NHN.DtoContracts.Flr.Service
         IList<GPContract> GetGPContractsOnOffice(int organizationNumber, DateTime? atTime);
 
         /// <summary>
-        /// Henter fastlegeliste.
+        /// Henter fastlegeliste (alle innbyggere på fastlegens liste) over pasienter på hentetidspunktet.
         /// </summary>
         /// <remarks>
-        /// Henter alle innbyggere på fastlegens liste over pasienter på hentetidspunktet.
-        /// 
         /// ##### Krever en av rollene
         /// * Administrator
         /// * FlrRead på Unit kontrakten er tilknyttet
@@ -202,11 +203,9 @@ namespace NHN.DtoContracts.Flr.Service
         IList<PatientToGPContractAssociation> GetGPPatientList(long gpContractId);
 
         /// <summary>
-        /// Henter fastlege og tilhørende praksis(er)
+        /// Henter informasjon om fastlege og tilhørende fastlegepraksis(er)
         /// </summary>
         /// <remarks>
-        /// Informasjon om fastlege og tilhørende fastlegepraksis
-        /// 
         /// ##### Krever en av rollene
         /// * Administrator
         /// * FlrRead
@@ -260,7 +259,8 @@ namespace NHN.DtoContracts.Flr.Service
         bool ConfirmGP(string patientNin, int hprNumber, DateTime? atTime);
 
         /// <summary>
-        /// Denne operasjonen er kun tilgjengelig for NAV. For å hente fastlegeliste med pasienter basert på personnummer til legen og kommune.
+        /// Denne operasjonen er kun tilgjengelig for NAV.
+        /// For å hente fastlegeliste med pasienter basert på personnummer til legen og kommune.
         /// </summary>
         /// <remarks>
         /// ##### Krever en av rollene
@@ -286,8 +286,10 @@ namespace NHN.DtoContracts.Flr.Service
         GPContract GetGPContractForNav(string doctorNin, string municipalityNr, bool doSubstituteSearch);
 
         /// <summary>
-        /// Returnerer pasientlister på gammelt kith/nav format. Se <see cref="NavEncryptedPatientListParameters"/> for inputinfo.
-        /// Stream som returneres er kryptert ved hjelp av CMS/PKCS#7. Xml er signert som beskrevet i schema.
+        /// Returnerer pasientlister på gammelt kith/nav format.
+        /// Se <see cref="NavEncryptedPatientListParameters"/> for inputinfo.
+        /// Stream som returneres er kryptert ved hjelp av CMS/PKCS#7.
+        /// Xml er signert som beskrevet i schema.
         /// </summary>
         /// <remarks>
         /// ##### Krever en av rollene
@@ -309,8 +311,10 @@ namespace NHN.DtoContracts.Flr.Service
         Stream NavGetEncryptedPatientList(NavEncryptedPatientListParameters param);
 
         /// <summary>
-        /// Returnerer pasientlister på gammelt kith/nav format. Se <see cref="NavEncryptedPatientListParameters"/> for beskrivelse av de faktiske parameterene.
-        /// Stream som returneres er kryptert ved hjelp av CMS/PKCS#7. Xml er signert som beskrevet i schema.
+        /// Returnerer pasientlister på gammelt kith/nav format.
+        /// Se <see cref="NavEncryptedPatientListParameters"/> for beskrivelse av de faktiske parameterene.
+        /// Stream som returneres er kryptert ved hjelp av CMS/PKCS#7.
+        /// Xml er signert som beskrevet i schema.
         /// </summary>
         /// <remarks>
         /// ##### Krever en av rollene:
@@ -349,7 +353,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <param name="postNr">Postnummer eller starten av postnummer. Dvs. at postNr.Lenght må være 2, 3 eller 4.</param>
         /// <returns>Liste over alle aktive GPContracts.Id hvis legekontor har en besøksadresse (RES/FLO_RES) som begynner med </returns>
         /// <exception cref="ArgumentException">Kastes hvis postnr er feil</exception>
-        /// <exception cref="ArgumentException">Kastes hvis postnr ikke er på 2 eller 4 tegn</exception>
+        /// <exception cref="ArgumentException">Kastes hvis postnr ikke er på 2, 3, eller 4 tegn</exception>
         /// <example>
         /// <code>
         /// var contractIdList = flrReadService.GetGPContractIdsOperatingInPostalCode(postnr);
@@ -360,12 +364,10 @@ namespace NHN.DtoContracts.Flr.Service
         IList<long> GetGPContractIdsOperatingInPostalCode(string postNr);
 
         /// <summary>
-        /// Search for GP.
-        /// Dersom du ønsker å søke etter legekontor, gå på HTK tjenesten.
+        /// Søk etter leger.
+        /// Dersom du ønsker å søke etter legekontor, bruk HTK tjenesten.
         /// </summary>
         /// <remarks>
-        /// Søk etter leger
-        /// 
         /// ##### Krever en av rollene
         /// * Administrator
         /// * FlrRead
@@ -384,7 +386,7 @@ namespace NHN.DtoContracts.Flr.Service
         PagedResult<GPDetails> SearchForGP(GPSearchParameters searchParameters);
 
         /// <summary>
-        /// Hent ut kontrakter basert på visse kriterier.
+        /// Hent ut kontrakter basert på gitte kriterier.
         /// </summary>
         /// <param name="queryParameters"></param>
         /// <returns></returns>
@@ -412,11 +414,20 @@ namespace NHN.DtoContracts.Flr.Service
         /// <example>
         /// <code language="cs">
         /// <![CDATA[
-        /// using (var archive = new ZipArchive(FlrExportService.GetNavPatientLists(new GetNavPatientListsParameters
+        /// var parameters = new GetNavPatientListsParameters
         /// {
         ///     FormatType = "xml",
-        ///     Contracts = new[] { new ContractWithMonth { ContractId = 31, Month = DateTime.Parse("2016-03-01") } }
-        /// })))
+        ///     Contracts = new[]
+        ///     {
+        ///         new ContractWithMonth
+        ///         {
+        ///             ContractId = 31,
+        ///             Month = DateTime.Parse("2016-03-01")
+        ///         }
+        ///     }
+        /// };
+        ///
+        /// using (var archive = new ZipArchive(flrReadService.GetNavPatientLists(parameters)))
         /// {
         ///     foreach (var entry in archive.Entries)
         ///     {

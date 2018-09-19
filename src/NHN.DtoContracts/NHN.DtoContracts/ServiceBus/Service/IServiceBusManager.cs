@@ -33,7 +33,8 @@ namespace NHN.DtoContracts.ServiceBus.Service
         IList<SubscriptionInfo> GetSubscriptions(string eventSource);
 
         /// <summary>
-        /// Sletter et eksisterende abonnement. Må brukes dersom rettighetene til nåværende bruker har endret seg og man ønsker at dette skal reflekteres i rettigheten på abonnementet.
+        /// Sletter et eksisterende abonnement.
+        /// Må brukes dersom rettighetene til nåværende bruker har endret seg og man ønsker at dette skal reflekteres i rettigheten på abonnementet.
         /// </summary>
         /// <param name="subscriptionInfo"></param>
         [OperationContract]

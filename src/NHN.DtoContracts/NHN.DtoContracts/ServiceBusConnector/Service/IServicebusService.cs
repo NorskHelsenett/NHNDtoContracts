@@ -15,7 +15,8 @@ namespace NHN.DTOContracts.ServiceBusConnector.Service
     public interface IServicebusService
     {
         /// <summary>
-        /// Henter informasjon om en meldings status på service bus. Hvor det søkes etter meldingen avhenger av køene som er koblet til virksomheten i Adresseregisteret.
+        /// Henter informasjon om en meldings status på service bus.
+        /// Hvor det søkes etter meldingen avhenger av køene som er koblet til virksomheten i Adresseregisteret.
         /// </summary>
         /// <param name="herid">HerId'en til virksomheten som er mottaker for gitt melding</param>
         /// <param name="messageId">Meldings-id på meldingen det søkes på</param>
