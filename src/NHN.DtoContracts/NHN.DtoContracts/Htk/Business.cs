@@ -13,19 +13,19 @@ namespace NHN.DtoContracts.Htk
     public class Business
     {
         /// <summary>
-        /// Organisajonsnummer på enheten
+        /// Organisajonsnummer pÃ¥ enheten
         /// </summary>
         [DataMember]
         public int OrganizationNumber { get; set; }
 
         /// <summary>
-        /// Det registrerte juridiske navnet på enheten.
+        /// Det registrerte juridiske navnet pÃ¥ enheten.
         /// </summary>
         [DataMember]
         public string Name { get; set; }
 
         /// <summary>
-        /// Visningsnavn på enheten.
+        /// Visningsnavn pÃ¥ enheten.
         /// </summary>
         [DataMember]
         public string DisplayName { get; set; }
@@ -37,13 +37,13 @@ namespace NHN.DtoContracts.Htk
         public Period Valid { get; set; }
 
         /// <summary>
-        /// Organisajonsnummer på eventuell overliggende enhet.
+        /// Organisajonsnummer pÃ¥ eventuell overliggende enhet.
         /// </summary>
         [DataMember]
         public int? ParentOrganizationNumber { get; set; }
 
         /// <summary>
-        /// Organisajonsnavn på eventuell overliggende enhet.
+        /// Organisajonsnavn pÃ¥ eventuell overliggende enhet.
         /// </summary>
         [DataMember]
         public string ParentOrganizationName { get; set; }
@@ -68,7 +68,7 @@ namespace NHN.DtoContracts.Htk
         public IList<Code> Properties { get; set; }
 
         /// <summary>
-        /// Fysiske addresser (f.eks. besøks-, post- og fakturaadresse).
+        /// Fysiske addresser (f.eks. besÃ¸ks-, post- og fakturaadresse).
         /// Gyldige verdier: OID 3401
         /// </summary>
         [DataMember]
@@ -95,7 +95,7 @@ namespace NHN.DtoContracts.Htk
         public Code Municipality { get; set; }
 
         /// <summary>
-        /// Næringskoder.
+        /// NÃ¦ringskoder.
         /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/naringskode">naringskode</see> (SN2007).
         /// </summary>
         [DataMember]
@@ -110,25 +110,25 @@ namespace NHN.DtoContracts.Htk
 
         /// <summary>
         /// Hvorvidt det er en statlig/kommunal eller privateid bedrift. Utledet av SectorCode.
-        /// Er null når det er ukjent.
+        /// Er null nÃ¥r det er ukjent.
         /// </summary>
         [DataMember]
         public bool? IsGovernmentCompany { get; set; }
 
         /// <summary>
-        /// Åpningstider for bedriften. Hvis feltet er null så arves data fra overliggende enhet.
+        /// Ã…pningstider for bedriften. Hvis feltet er null sÃ¥ arves data fra overliggende enhet.
         /// </summary>
         [DataMember]
         public OpeningHours OpeningHours { get; set; }
 
         /// <summary>
-        /// Koordinator for besøksadresse. Angitt i breddegrad/lengdegrad.
+        /// Koordinator for besÃ¸ksadresse. Angitt i breddegrad/lengdegrad.
         /// </summary>
         [DataMember]
         public LatitudeLongitude? GeographicalCoordinates { get; set; }
 
         /// <summary>
-        /// Når bedriften er sist oppdatert
+        /// NÃ¥r bedriften er sist oppdatert
         /// </summary>
         [DataMember]
         public DateTime UpdatedOn { get; set; }

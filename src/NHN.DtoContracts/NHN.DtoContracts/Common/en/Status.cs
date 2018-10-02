@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace NHN.DtoContracts.Common.en
 {
     /// <summary>
-    /// Status basert på en periode og kodeverk
+    /// Status basert pÃ¥ en periode og kodeverk
     /// </summary>
     [DataContract(Namespace = Namespaces.CommonOldV1)]
     [Serializable]

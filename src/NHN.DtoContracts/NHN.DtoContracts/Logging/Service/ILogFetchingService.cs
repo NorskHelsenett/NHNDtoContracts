@@ -1,4 +1,4 @@
-﻿using System.ServiceModel;
+using System.ServiceModel;
 using NHN.DtoContracts.Common.en;
 using NHN.DtoContracts.Logging.Data;
 

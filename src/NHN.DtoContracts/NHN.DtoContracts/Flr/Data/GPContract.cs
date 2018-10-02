@@ -1,4 +1,4 @@
-﻿using NHN.DtoContracts.Common.en;
+using NHN.DtoContracts.Common.en;
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;

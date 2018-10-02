@@ -1,4 +1,4 @@
-﻿using System.ServiceModel;
+using System.ServiceModel;
 using System.Threading.Tasks;
 using NHN.DtoContracts;
 using NHN.DtoContracts.Common.en;
