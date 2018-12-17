@@ -71,11 +71,7 @@
         public const string OrchestrationV2 = "http://schemas.nhn.no/reg/OrchestrationV2";
 
         // Preg
-        public const string PregV1 = "http://register.nhn.no/PR";
         public const string PregInternalV1 = "http://register.nhn.no/PRInternal";
-        public const string PregLegacyV1 = "http://schemas.datacontract.org/2004/07/NHN.Contracts.Data";
-        public const string PregHl7V1 = "http://tempuri.org/IPersonRegistry/";
-        public const string PregHl7InternalV1 = "http://register.nhn.no/HL7Internal";
 
         // Proxy
         public const string ProxyV1 = "http://register.nhn.no/Proxy";
