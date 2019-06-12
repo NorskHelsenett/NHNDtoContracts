@@ -1,4 +1,4 @@
-﻿using System.Runtime.Serialization;
+using System.Runtime.Serialization;
 using NHN.DtoContracts.Common.en;
 
 namespace NHN.DtoContracts.Flr.Data
@@ -54,7 +54,7 @@ namespace NHN.DtoContracts.Flr.Data
         /// <returns></returns>
         public override string ToString()
         {
-            return $"MunicipalityId: {Municipality.CodeValue}; Page: {Page}; PageSize: {PageSize}";
+            return $"MunicipalityId: {Municipality?.CodeValue}; HasPrimaryHealthCareTeam: {HasPrimaryHealthCareTeam} Page: {Page}; PageSize: {PageSize}";
         }
     }
 }
