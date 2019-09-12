@@ -2,18 +2,9 @@
   <Import Project="$(SolutionDir)Common.props" />
   <PropertyGroup>
     <TargetFramework>net462</TargetFramework>
-    <AssemblyTitle>NHN.Contracts.FLR</AssemblyTitle>
-    <Product>NHN.Contracts.FLR</Product>
-    <Copyright>Copyright ©  2015</Copyright>
-    <OutputPath>bin\$(Configuration)\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugType>full</DebugType>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <RunCodeAnalysis>true</RunCodeAnalysis>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Build.Framework" />

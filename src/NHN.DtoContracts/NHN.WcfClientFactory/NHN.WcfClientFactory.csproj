@@ -2,18 +2,9 @@
   <Import Project="$(SolutionDir)Common.props" />
   <PropertyGroup>
     <TargetFramework>net462</TargetFramework>
-    <AssemblyTitle>NHN.ClientCreator</AssemblyTitle>
-    <Product>NHN.ClientCreator</Product>
-    <Copyright>Copyright ©  2016</Copyright>
-    <OutputPath>bin\$(Configuration)\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugType>full</DebugType>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <DocumentationFile>bin\$(Configuration)\NHN.WcfClientFactory.xml</DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System.IdentityModel" />
