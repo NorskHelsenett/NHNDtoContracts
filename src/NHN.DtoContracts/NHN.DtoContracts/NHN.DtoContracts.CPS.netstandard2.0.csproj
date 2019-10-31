@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>NHN.DtoContracts</RootNamespace>
+    <AssemblyName>NHN.DtoContracts</AssemblyName>
+
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.6.0" />
+    <PackageReference Include="System.ServiceModel.Primitives" Version="4.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Diagrams\Ofr.cd" />
+    <None Include="Diagrams\FLR.cd" />
+  </ItemGroup>
+
+</Project>
