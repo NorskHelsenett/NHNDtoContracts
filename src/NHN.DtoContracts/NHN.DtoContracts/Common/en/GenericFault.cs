@@ -1,4 +1,4 @@
-﻿using System.Runtime.Serialization;
+using System.Runtime.Serialization;
 using System.ServiceModel;
 
 namespace NHN.DtoContracts.Common.en
@@ -36,7 +36,11 @@ namespace NHN.DtoContracts.Common.en
         public static FaultException<GenericFault> Create(string errorCode, string message)
         {
             var fault = new GenericFault(errorCode, message);
+#if NETSTANDARD2_0
+            return new FaultException<GenericFault>(fault, new FaultReason(fault.Message), new FaultCode(errorCode), fault.Message);
+#else
             return new FaultException<GenericFault>(fault, fault.Message);
+#endif
         }
     }
 }
