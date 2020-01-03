@@ -36,7 +36,7 @@ namespace NHN.DtoContracts.Common.en
         /// </summary>
         /// <param name="from"></param>
         /// <param name="to"></param>
-        public Period(DateTime from, DateTime? to = null)
+        public Period(DateTimeOffset from, DateTimeOffset? to = null)
         {
             From = from;
             To = to;
@@ -89,7 +89,7 @@ namespace NHN.DtoContracts.Common.en
         /// </summary>
         /// <param name="pointInTime"></param>
         /// <returns></returns>
-        public bool Overlaps(DateTime pointInTime)
+        public bool Overlaps(DateTimeOffset pointInTime)
         {
             if (this.From > pointInTime)
                 return false;
@@ -124,7 +124,7 @@ namespace NHN.DtoContracts.Common.en
         /// <returns></returns>
         public override string ToString()
         {
-            return $"Period: {From.ToShortDateString()}, To: {To?.ToShortDateString() ?? " (null)"}";
+            return $"Period: {From.LocalDateTime.ToShortDateString()}, To: {To?.LocalDateTime.ToShortDateString() ?? " (null)"}";
         }
     }
 }

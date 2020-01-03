@@ -22,7 +22,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// </summary>
         /// <remarks>
         /// Returnere nødvendige opplysninger om aktiv fastlegeforhold til en innbygger.
-        /// 
+        ///
         /// ##### Krever en av rollene
         /// * Administrator
         /// * FlrRead
@@ -68,7 +68,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <param name="patientNins">Liste over pasienter og tidspunktet en ønsker informasjon om pasienten på.</param>
         /// <remarks>
         /// Hvis noen av personene ikke eksisterer i FLR/ikke har noen lege på tidspunktet vil de ikke finnes i resultatsettet.
-        /// 
+        ///
         /// ##### Krever en av rollene
         /// * Administrator
         /// * FlrRead
@@ -83,7 +83,7 @@ namespace NHN.DtoContracts.Flr.Service
         ///     new NinWithTimestamp("10109012345", new DateTime(1999, 2, 3))
         /// };
         /// var patients = GetPatientsGPDetailsAtTime(patientNins);
-        /// if (patients.Length > 0) 
+        /// if (patients.Length > 0)
         /// {
         ///     foreach (var patientAssoc in patients)
         ///     {
@@ -91,7 +91,7 @@ namespace NHN.DtoContracts.Flr.Service
         ///         Console.WriteLine($"{patientAssoc.PatientNIN}: ContractID: {patientAssoc.GPContractId} GP(s): {gps}");
         ///     }
         /// }
-        /// else 
+        /// else
         /// {
         ///    Console.WriteLine("Pasienten har ingen fastlege på tidspunktet");
         /// }
@@ -106,7 +106,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// </summary>
         /// <remarks>
         /// Henter pasientens fastlege og all historikk som er knyttet til fastlegebytter i fortiden.
-        /// 
+        ///
         /// ##### Krever en av rollene
         /// * Administrator
         /// * FlrRead
@@ -155,7 +155,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>
         /// Metoden henter alle aktive fastlegelister som er knyttet til et behandlingssted på et gitt tidspunkt.
         /// Hvis tidspunktet er NULL returneres alle kontrakter inklusive historiske.
-        /// 
+        ///
         /// ##### Krever en av rollene
         /// * Administrator
         /// * FlrRead
@@ -168,16 +168,16 @@ namespace NHN.DtoContracts.Flr.Service
         /// <example>
         /// <code language="cs">
         /// // For et gitt tidspunkt
-        /// var atTime = DateTime.Now;
+        /// var atTime = DateTimeOffset.Now;
         /// var contractsOnOfficeList = flrReadService.GetGPContractsOnOffice(organizationNumber, atTime);
-        /// 
+        ///
         /// // Alle kontrakter, inkludert historiske
         /// var contractsOnOfficeList = flrReadService.GetGPContractsOnOffice(organizationNumber, null);
         /// </code>
         /// </example>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        IList<GPContract> GetGPContractsOnOffice(int organizationNumber, DateTime? atTime);
+        IList<GPContract> GetGPContractsOnOffice(int organizationNumber, DateTimeOffset? atTime);
 
         /// <summary>
         /// Henter fastlegeliste (alle innbyggere på fastlegens liste) over pasienter på hentetidspunktet.
@@ -217,10 +217,10 @@ namespace NHN.DtoContracts.Flr.Service
         /// <example>
         /// <code langluage="C#">
         /// //For et gitt tidspunkt
-        /// var atTime = DateTime.Now;
+        /// var atTime = DateTimeOffset.Now;
         /// var gpDetail = flrReadService.GetGPWithAssociatedGPContracts(hprNumber, atTime);
         /// var contractsList = gpDetail.Contracts;
-        /// 
+        ///
         /// //Alle kontrakter også historiske
         /// var gpDetail = flrReadService.GetGPWithAssociatedGPContracts(hprNumber, null);
         /// var contractsList = gpDetail.Contracts;
@@ -228,7 +228,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// </example>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        GPDetails GetGPWithAssociatedGPContracts(int hprNumber, DateTime? atTime);
+        GPDetails GetGPWithAssociatedGPContracts(int hprNumber, DateTimeOffset? atTime);
 
         /// <summary>
         /// Sjekker om en lege er pasientens fastlege på et gitt tidspunkt
@@ -247,16 +247,16 @@ namespace NHN.DtoContracts.Flr.Service
         /// <example>
         /// <code language="cs">
         /// //For et gitt tidspunkt
-        /// var atTime = DateTime.Now;
+        /// var atTime = DateTimeOffset.Now;
         /// var isConfirmedGP = flrReadService.ConfirmGP(patientNin,hprNumber, atTime);
-        /// 
+        ///
         /// //Alle kontrakter også historiske
         /// var isConfirmedGP = flrReadService.ConfirmGP(patientNin,hprNumber, null);
         /// </code>
         /// </example>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        bool ConfirmGP(string patientNin, int hprNumber, DateTime? atTime);
+        bool ConfirmGP(string patientNin, int hprNumber, DateTimeOffset? atTime);
 
         /// <summary>
         /// Denne operasjonen er kun tilgjengelig for NAV.
@@ -329,7 +329,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <param name="senderXml">Se <see cref="NavEncryptedPatientListParameters.SenderXml"/></param>
         /// <param name="receiverXml">Se <see cref="NavEncryptedPatientListParameters.ReceiverXml"/></param>
         /// <param name="listType">Se <see cref="NavEncryptedPatientListParameters.ListType"/></param>
-        /// <returns>CMS/PKCS#7 cryptert Stream</returns>    
+        /// <returns>CMS/PKCS#7 cryptert Stream</returns>
         /// <exception cref="ArgumentException">Kastes hvis legens NIN ikke er satt</exception>
         /// <exception cref="ArgumentException">Kastes hvis kommunenummer ikke er satt eller er ugyldig</exception>
         /// <exception cref="ArgumentException">Kastes hvis listetype har en ugyldig verdi</exception>
@@ -340,7 +340,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <exception cref="ArgumentException">Kastes hvis senderXml mangler eller er ugyldig</exception>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        Stream NavGetEncryptedPatientListAlternate(string doctorNIN, string municipalityId, byte[] encryptWithX509Certificate, DateTime month, bool doSubstituteSearch, string senderXml, string receiverXml, string listType);
+        Stream NavGetEncryptedPatientListAlternate(string doctorNIN, string municipalityId, byte[] encryptWithX509Certificate, DateTimeOffset month, bool doSubstituteSearch, string senderXml, string receiverXml, string listType);
 
         /// <summary>
         /// Hent ut alle GPContractId's på kontrakter hvis legekontor har et postnummer som er lik eller begynner på postNr.
@@ -395,7 +395,7 @@ namespace NHN.DtoContracts.Flr.Service
         PagedResult<GPContract> QueryGPContracts(GPContractQueryParameters queryParameters);
 
         /// <summary>
-        /// Henter pasientlister i gammelt NAV fil-format. 
+        /// Henter pasientlister i gammelt NAV fil-format.
         /// Streamen er ZipArchive.
         /// </summary>
         /// <remarks>
@@ -406,11 +406,11 @@ namespace NHN.DtoContracts.Flr.Service
         /// </remarks>
         /// <param name="parameters" cref="GetNavPatientListsParameters">Bestemmer hva som skal hentes, og i hvilket format</param>
         /// <returns>ZipArchive Stream, der Entries er av typen spesifisert i parameters, se <see cref="GetNavPatientListsParameters.FormatType"/> </returns>
-        /// <exception cref="ArgumentException">Kastes hvis format ikke er gyldig</exception>     
-        /// <exception cref="ArgumentException">Kastes hvis ingen angitte kontrakts-ider</exception>     
-        /// <exception cref="ArgumentException">Kastes hvis bruker ikke har tilgang til å laste ned pasientliste for en eller flere angitte kontrakter</exception>     
-        /// <exception cref="ArgumentException">Kastes hvis angitte kontrakter berører flere legekontor</exception>     
-        /// <exception cref="ArgumentException">Kastes hvis det ikke fins pasienter på listen for en eller flere angitte kontrakter i oppgitt måned</exception>     
+        /// <exception cref="ArgumentException">Kastes hvis format ikke er gyldig</exception>
+        /// <exception cref="ArgumentException">Kastes hvis ingen angitte kontrakts-ider</exception>
+        /// <exception cref="ArgumentException">Kastes hvis bruker ikke har tilgang til å laste ned pasientliste for en eller flere angitte kontrakter</exception>
+        /// <exception cref="ArgumentException">Kastes hvis angitte kontrakter berører flere legekontor</exception>
+        /// <exception cref="ArgumentException">Kastes hvis det ikke fins pasienter på listen for en eller flere angitte kontrakter i oppgitt måned</exception>
         /// <example>
         /// <code language="cs">
         /// <![CDATA[
@@ -422,7 +422,7 @@ namespace NHN.DtoContracts.Flr.Service
         ///         new ContractWithMonth
         ///         {
         ///             ContractId = 31,
-        ///             Month = DateTime.Parse("2016-03-01")
+        ///             Month = DateTimeOffset.Parse("2016-03-01")
         ///         }
         ///     }
         /// };
