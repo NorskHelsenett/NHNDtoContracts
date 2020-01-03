@@ -65,7 +65,7 @@ namespace NHN.DtoContracts.Flr.Data
         /// Tidspunkt data ble sist oppdatert
         /// </summary>
         [DataMember]
-        public DateTime UpdatedOn { get; set; }
+        public DateTimeOffset UpdatedOn { get; set; }
         /// <summary>
         /// Stillingsprosenten til legen.
         /// Når ulik null, må den være større enn 0 og mindre eller lik 100

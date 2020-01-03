@@ -19,6 +19,6 @@ namespace NHN.DtoContracts.Flr.Data
         /// Måneden man ønsker listen hentet for
         /// </summary>
         [DataMember]
-        public DateTime Month { get; set; }
+        public DateTimeOffset Month { get; set; }
     }
 }

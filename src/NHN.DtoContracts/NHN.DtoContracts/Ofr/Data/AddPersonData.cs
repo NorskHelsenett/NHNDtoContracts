@@ -26,6 +26,6 @@ namespace NHN.DtoContracts.Ofr.Data
         /// Når denne personoppføringen skal starte å være gyldig
         /// </summary>
         [DataMember, Required]
-        public DateTime StartPeriod { get; set; }
+        public DateTimeOffset StartPeriod { get; set; }
     }
 }

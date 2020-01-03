@@ -33,6 +33,6 @@ namespace NHN.DtoContracts.Ofr.Data
         /// Hvis null, returnerer historiske. Hvis satt, returnerer kontrakter som var gyldige på gitt tidspunkt.
         /// </summary>
         [DataMember]
-        public DateTime? WasActiveAtTime { get; set; }
+        public DateTimeOffset? WasActiveAtTime { get; set; }
     }
 }

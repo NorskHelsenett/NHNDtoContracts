@@ -31,7 +31,7 @@ namespace NHN.DtoContracts.Flr.Data
         public bool IsFixedSalary { get; set; }
 
         /// <summary>
-        /// Hvis det kreves medlemskap for være på en liste, så er innholdet av RequiresMembership satt til ID'en for dette medlemskapet. 
+        /// Hvis det kreves medlemskap for være på en liste, så er innholdet av RequiresMembership satt til ID'en for dette medlemskapet.
         /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/flrv2_membership">flrv2_membership</see> (OID 7755).
         /// </summary>
         [DataMember]
@@ -72,7 +72,7 @@ namespace NHN.DtoContracts.Flr.Data
         /// Når avtalen ble opprettet.
         /// </summary>
         [DataMember]
-        public DateTime AgreementDate { get; set; }
+        public DateTimeOffset AgreementDate { get; set; }
 
         /// <summary>
         /// Gyldighetsperiode for avtalen.
@@ -112,7 +112,7 @@ namespace NHN.DtoContracts.Flr.Data
         public IList<Code> CoopMunicipalities { get; set; }
 
         /// <summary>
-        /// Avslutningsårsak. 
+        /// Avslutningsårsak.
         /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/flrv2_contract_endreason">flrv2_contract_endreason</see> (OID 7753).
         /// </summary>
         [DataMember]
@@ -126,7 +126,7 @@ namespace NHN.DtoContracts.Flr.Data
         public int? PlacesAvailable { get; set; }
 
         /// <summary>
-        /// Antall personer som er på venteliste. 
+        /// Antall personer som er på venteliste.
         /// </summary>
         [DataMember]
         public int PatientsOnWaitingList { get; set; }
@@ -141,6 +141,6 @@ namespace NHN.DtoContracts.Flr.Data
         /// Tidspunkt data ble sist oppdatert
         /// </summary>
         [DataMember]
-        public DateTime UpdatedOn { get; set; }
+        public DateTimeOffset UpdatedOn { get; set; }
     }
 }

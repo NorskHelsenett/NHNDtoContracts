@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace NHN.DtoContracts.Common.en
 {
     /// <summary>
-    /// Fysisk adresse, f.eks. besøks-, post- eller fakturaadresse.
+    /// Fysisk adresse, f.eks. besï¿½ks-, post- eller fakturaadresse.
     /// </summary>
     [DataContract(Namespace = Namespaces.CommonOldV1)]
     [Serializable]
@@ -38,7 +38,7 @@ namespace NHN.DtoContracts.Common.en
         /// Dato og tid for siste endring til objektet
         /// </summary>
         [DataMember]
-        public DateTime LastChanged { get; set; }
+        public DateTimeOffset LastChanged { get; set; }
 
         private Code _type;
         /// <summary>
@@ -77,7 +77,7 @@ namespace NHN.DtoContracts.Common.en
         public string City { get; set; }
 
         /// <summary>
-        /// Fritekst felt for ekstra beskrivelse. For eksempel ”Samme inngang som ICA, ta innerste dør til venstre”
+        /// Fritekst felt for ekstra beskrivelse. For eksempel ï¿½Samme inngang som ICA, ta innerste dï¿½r til venstreï¿½
         /// </summary>
         [DataMember]
         public string Description { get; set; }
@@ -105,7 +105,7 @@ namespace NHN.DtoContracts.Common.en
         public Code Municipality { get; set; }
 
         /// <summary>
-        /// Opprette Code for en fysisk adresse basert på adresssens kodeveri..
+        /// Opprette Code for en fysisk adresse basert pï¿½ adresssens kodeveri..
         /// </summary>
         /// <param name="codeValue"></param>
         /// <returns></returns>

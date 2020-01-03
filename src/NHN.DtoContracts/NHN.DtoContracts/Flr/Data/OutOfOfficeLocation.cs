@@ -23,12 +23,12 @@ namespace NHN.DtoContracts.Flr.Data
         /// </summary>
         [DataMember]
         public long GPContractId { get; set; }
-        
+
         /// <summary>
         /// Beskrivelse av utekontoret
         /// </summary>
         [DataMember]
-        public string Description { get; set; } 
+        public string Description { get; set; }
 
         /// <summary>
         /// Adressen til utekontoret. Kan være både besøksadresse (RES)  og/eller Postadresse (PST)
@@ -52,6 +52,6 @@ namespace NHN.DtoContracts.Flr.Data
         /// Tidspunkt data ble sist oppdatert
         /// </summary>
         [DataMember]
-        public DateTime UpdatedOn { get; set; }
+        public DateTimeOffset UpdatedOn { get; set; }
     }
 }

@@ -37,6 +37,6 @@ namespace NHN.DtoContracts.Flr.Data
         /// Tidspunktet for gitt fødselsnummer en ønsker informasjon om.
         /// </summary>
         [DataMember]
-        public DateTime AtTime { get; set; }
+        public DateTimeOffset AtTime { get; set; }
     }
 }

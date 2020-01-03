@@ -13,7 +13,7 @@ namespace NHN.DtoContracts.Flr.Data
     public class Person
     {
         /// <summary>
-        /// Fødselsnummer, D-nummer eller H-nummer.
+        /// Fï¿½dselsnummer, D-nummer eller H-nummer.
         /// </summary>
         [DataMember]
         public string NIN { get; set; }
@@ -37,19 +37,19 @@ namespace NHN.DtoContracts.Flr.Data
         public string LastName { get; set; }
 
         /// <summary>
-        /// Fødselsdato.
+        /// Fï¿½dselsdato.
         /// </summary>
         [DataMember]
-        public DateTime? DateOfBirth { get; set; }
+        public DateTimeOffset? DateOfBirth { get; set; }
 
         /// <summary>
-        /// Tidspunkt personen døde på.
+        /// Tidspunkt personen dï¿½de pï¿½.
         /// </summary>
         [DataMember]
-        public DateTime? DateOfDeath { get; set; }
+        public DateTimeOffset? DateOfDeath { get; set; }
 
         /// <summary>
-        /// Kjønn.
+        /// Kjï¿½nn.
         /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/kjonn">kjonn</see> (OID 3101).
         /// </summary>
         [DataMember]
@@ -63,7 +63,7 @@ namespace NHN.DtoContracts.Flr.Data
         public IList<Status> Status { get; set; }
 
         /// <summary>
-        /// Adresser tilhørende personen.
+        /// Adresser tilhï¿½rende personen.
         /// </summary>
         [DataMember]
         public IList<PhysicalAddress> PhysicalAddresses { get; set; }

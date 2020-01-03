@@ -24,7 +24,7 @@ namespace NHN.DtoContracts.Flr.Data
         /// <summary>
         /// Sertifikatet som skal brukes for å kryptere innholdet i form av en byte[].
         /// Vi bruker X.509 sertifikater.
-        /// </summary> 
+        /// </summary>
         [DataMember]
         public byte[] EncryptWithX509Certificate { get; set; }
 
@@ -33,7 +33,7 @@ namespace NHN.DtoContracts.Flr.Data
         /// Med andre ord: Month kan f.eks være 2016-03-01 00:00:00 men IKKE 2016-03-02 00:00:01.
         /// </summary>
         [DataMember]
-        public DateTime Month { get; set; }
+        public DateTimeOffset Month { get; set; }
 
         /// <summary>
         /// Boolsk verdi som indikerer hvorvidt legen angitt i <see cref="DoctorNIN">DoctorNIN</see> kan være en vikar.

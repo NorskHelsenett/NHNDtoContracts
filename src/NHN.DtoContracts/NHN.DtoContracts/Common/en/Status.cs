@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace NHN.DtoContracts.Common.en
 {
     /// <summary>
-    /// Status basert på en periode og kodeverk
+    /// Status basert pï¿½ en periode og kodeverk
     /// </summary>
     [DataContract(Namespace = Namespaces.CommonOldV1)]
     [Serializable]
@@ -20,13 +20,13 @@ namespace NHN.DtoContracts.Common.en
         /// Endret dato
         /// </summary>
         [DataMember]
-        public DateTime Changed { get; set; }
+        public DateTimeOffset Changed { get; set; }
 
         /// <summary>
         /// Opprettet dato
         /// </summary>
         [DataMember]
-        public DateTime Created { get; set; }
+        public DateTimeOffset Created { get; set; }
 
         /// <summary>
         /// Gyldighetsperiode

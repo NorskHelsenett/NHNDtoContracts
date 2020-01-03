@@ -21,7 +21,7 @@ namespace NHN.DtoContracts.Logging.Data
         /// Når forespørselen ble mottat
         /// </summary>
         [DataMember]
-        public DateTime RequestedOn { get; set; }
+        public DateTimeOffset RequestedOn { get; set; }
 
         /// <summary>
         /// Hvor lang tid forespørselen tok å prosessere i sekunder
@@ -54,7 +54,7 @@ namespace NHN.DtoContracts.Logging.Data
         public bool Faulted { get; set; }
 
         /// <summary>
-        /// Ekstra data som er tatt ut fra Parametere for å lettere hente frem relevent data. 
+        /// Ekstra data som er tatt ut fra Parametere for å lettere hente frem relevent data.
         /// </summary>
         [DataMember]
         public IList<RequestTrackedLogParameter> RequestTrackedLogParameters { get; set; }

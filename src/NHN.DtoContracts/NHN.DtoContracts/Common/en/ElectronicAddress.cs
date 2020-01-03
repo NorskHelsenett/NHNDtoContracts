@@ -30,7 +30,7 @@ namespace NHN.DtoContracts.Common.en
         /// Dato og tid for siste endring til objektet.
         /// </summary>
         [DataMember]
-        public DateTime LastChanged { get; set; }
+        public DateTimeOffset LastChanged { get; set; }
 
         /// <summary>
         /// OBSOLETE: Bruk <see cref="Type">Type</see> istedet.

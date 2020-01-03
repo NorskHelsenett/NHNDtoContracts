@@ -14,13 +14,13 @@ namespace NHN.DtoContracts.Common.en
         /// From
         /// </summary>
         [DataMember]
-        public DateTime From { get; set; }
+        public DateTimeOffset From { get; set; }
 
         /// <summary>
         /// To. Can be null if no expire time
         /// </summary>
         [DataMember]
-        public DateTime? To { get; set; }
+        public DateTimeOffset? To { get; set; }
 
         /// <summary>
         /// Oppretter et ny Period objekt
