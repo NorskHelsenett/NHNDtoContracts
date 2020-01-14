@@ -10,12 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.ServiceModel.NetTcp" Version="4.6.0" />
-    <PackageReference Include="System.ServiceModel.Http" Version="4.6.0" />
+    <PackageReference Include="System.ServiceModel.NetTcp" Version="4.7.0" />
+    <PackageReference Include="System.ServiceModel.Http" Version="4.7.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NHN.DtoContracts\NHN.DtoContracts.CPS.csproj" />
+    <ProjectReference Include="..\NHN.DtoContracts\NHN.DtoContracts.netstandard2.0.csproj" />
   </ItemGroup>
 
 </Project>
