@@ -9,8 +9,9 @@ namespace NHN.DtoContracts.Flr.Data
     /// Parametere for export
     /// </summary>
     [DataContract(Namespace = Namespaces.FlrV1)]
-    public class ContractsQueryParameters   
+    public class ContractsQueryParameters
     {
+        public const string DUMMY_CHANGE = "for testing TFS robot";
         /// <summary>
         /// Kun pasientlister som tilhører i disse kommunene blir returnert.
         /// Er denne listen tom, returneres alle pasientlister.
@@ -27,9 +28,9 @@ namespace NHN.DtoContracts.Flr.Data
         public bool GetFullPersonInfo { get; set; }
 
         /// <summary>
-        /// Er denne false, vil kun <see cref="GPContract"/>s som var aktive på eksporttidspunktet bli returnert. 
+        /// Er denne false, vil kun <see cref="GPContract"/>s som var aktive på eksporttidspunktet bli returnert.
         /// <see cref="GPContract.PatientList"/> vil da også kun inneholde pasienter som var aktive på listen på eksporttidspunktet.
-        /// 
+        ///
         /// Er denne true, vil alle <see cref="GPContract"/>s, inkludert de som er kansellert/utgått/etc bli returnert.
         /// <see cref="GPContract.PatientList"/> vil da også inneholde full pasienthistorikk.
         /// </summary>
