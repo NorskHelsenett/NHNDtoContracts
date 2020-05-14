@@ -262,7 +262,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// Oppdatering av listestatus uten endringer av andre verdier.
         /// </summary>
         /// <remarks>
-        /// Kun endring til statusene Åpne og Lukke.
+        /// Kun endring til statusene Åpne, Lukke og Låst.
         /// 
         /// ##### Sender Servicebus-event
         /// * "ContractUpdated" med eventobjekt <see cref="GPContract"/>.
@@ -285,7 +285,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// </example>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        void UpdateGPContractStatus(long gpContractId, Code status); //Kun tillate Åpne, Lukke 
+        void UpdateGPContractStatus(long gpContractId, Code status);
 
         /// <summary>
         /// Oppdaterer samarbeidende kommuner på kontrakt.
