@@ -1,4 +1,4 @@
-﻿namespace NHN.DtoContracts
+namespace NHN.DtoContracts
 {
     /// <summary>
     /// These strings are the namespaces used in the exposed Service- and DataContracts.
@@ -64,6 +64,9 @@
 
         // Ofr
         public const string OfrV1 = "http://schemas.nhn.no/reg/ofr";
+
+        // Krk
+        public const string KrkV1 = "http://schemas.nhn.no/reg/krk";
 
         // Orchestration
         public const string OrchestrationV1 = "http://register.nhn.no/Orchestration";
