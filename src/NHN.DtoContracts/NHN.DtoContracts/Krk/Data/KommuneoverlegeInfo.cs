@@ -19,10 +19,16 @@ namespace NHN.DtoContracts.Krk.Data
         public int OwnerReshId { get; set; }
 
         /// <summary>
-        /// Bydel/kommunen kommuneoverlegen tilhører
+        /// Kommunenr for kommunen kommuneoverlegen tilhører
         /// </summary>
         [DataMember]
-        public Code District { get; set; }
+        public string KommuneNr { get; set; }
+
+        /// <summary>
+        /// Bydelsnr for bydelen kommuneoverlegen tilhører, evt. tom
+        /// </summary>
+        [DataMember]
+        public string BydelsNr { get; set; }
 
         /// <summary>
         /// Liste over tilknyttede helsepersonells HPR nummer
