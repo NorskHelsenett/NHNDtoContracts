@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ServiceModel;
 using NHN.DtoContracts.Common.en;
@@ -10,7 +10,7 @@ namespace NHN.DtoContracts.Ofr.Service
     /// Tjeneste for å hente ut og legge til informasjon i Oppføringsregisteret (OFR)
     /// </summary>
     [ServiceContract(Namespace = Namespaces.OfrV1,
-        Name = "IKrkService")]
+        Name = "IOfrService")]
     public interface IOfrService
     {
         /// <summary>
