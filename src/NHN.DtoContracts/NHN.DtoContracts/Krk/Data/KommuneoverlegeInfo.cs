@@ -16,7 +16,7 @@ namespace NHN.DtoContracts.Krk.Data
         /// </summary>
         //TODO: Trenger vi denne? Kun ved skriving?
         [DataMember]
-        public string OrganizationNumber { get; set; }
+        public int? OrganizationNumber { get; set; }
 
         /// <summary>
         /// Områdene som dekkes av denne kommuneoverlegeinformasjonen.
@@ -29,7 +29,7 @@ namespace NHN.DtoContracts.Krk.Data
         /// Liste over tilknyttede helsepersonells HPR nummer
         /// </summary>
         [DataMember, Required]
-        public ICollection<string> RegisteredHprIds { get; set; }
+        public ICollection<int> RegisteredHprIds { get; set; }
 
         /// <summary>
         /// Telefonnummer for kommuneoverlegen

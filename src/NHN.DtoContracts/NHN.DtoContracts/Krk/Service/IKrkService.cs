@@ -18,7 +18,7 @@ namespace NHN.DtoContracts.Krk.Service
         /// <summary>
         /// Henter ut alle kommuner og bydeler der denne personen er registrert som deltaker i kommuneoverlegetjenesten
         /// </summary>
-        /// <param name="HprId">Helsepersonellnummeret til den aktuelle personen</param>
+        /// <param name="hprId">Helsepersonellnummeret til den aktuelle personen</param>
         /// <returns>Liste over kommuner og bydeler</returns>
         /// <exception cref="ArgumentException"></exception>
         /// <example>
@@ -32,7 +32,7 @@ namespace NHN.DtoContracts.Krk.Service
         /// </remarks>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        ICollection<string> GetKommunerAndBydelForHPR(string hprId);
+        ICollection<string> GetKommunerAndBydelForHPR(int hprId);
 
         /// <summary>
         /// Henter ut alle helsepersonell som er registrert som deltaker i kommuneoverlegetjenesten for denne kommunen eller bydelen
