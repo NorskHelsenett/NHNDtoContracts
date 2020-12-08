@@ -28,7 +28,8 @@ namespace NHN.DtoContracts.Krk.Service
         /// </example>
         /// <remarks>
         /// ##### Krever en av rollene
-        /// *
+        /// * Administrator
+        /// * BusinessKommuneoverlegeApiRead
         /// </remarks>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
@@ -47,7 +48,8 @@ namespace NHN.DtoContracts.Krk.Service
         /// </example>
         /// <remarks>
         /// ##### Krever en av rollene
-        /// *
+        /// * Administrator
+        /// * BusinessKommuneoverlegeApiRead
         /// </remarks>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
@@ -71,10 +73,6 @@ namespace NHN.DtoContracts.Krk.Service
         /// var infoObjects = krkService.GetKommuneOverlegeInfos(districtID);
         /// </code>
         /// </example>
-        /// <remarks>
-        /// ##### Krever en av rollene
-        /// *
-        /// </remarks>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         ICollection<KommuneoverlegeInfo> GetKommuneOverlegeInfos(string districtID);
@@ -90,10 +88,6 @@ namespace NHN.DtoContracts.Krk.Service
         /// var searchResult = krkService.SearchKommuneOverlegeInfo(searchTerm);
         /// </code>
         /// </example>
-        /// <remarks>
-        /// ##### Krever en av rollene
-        /// *
-        /// </remarks>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         ICollection<KommuneoverlegeInfo> SearchKommuneOverlegeInfo(string searchTerm);
