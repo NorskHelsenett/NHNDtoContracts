@@ -55,29 +55,6 @@ namespace NHN.DtoContracts.Krk.Service
         [FaultContract(typeof(GenericFault))]
         ICollection<string> GetHPRForKommuneOrBydel(string districtID);
 
-
-        //TODO: Hva skjer dersom man gir inn IDen til oslo, skal alle bydeler komme med? Dokumenterer som om det stemmer
-        /// <summary>
-        /// Henter ut informasjon om kommuneoverlegetjenesten for denne kommunen eller bydelen.
-        ///
-        /// For kommuner uten egen kommuneoverlegetjeneste på bydelsnivå vil denne listen inneholde ett innslag.
-        ///
-        /// For kommuneoverlegetjenester som leveres av en kommune i et interkommunalt samarbeid,
-        /// vil denne metoden gi samme resultat om du gir inn et kommunenummer i dekningsområdet til tjenesten.
-        /// </summary>
-        /// <param name="districtID">IDen til en kommune eller bydel (f.eks. 030112) </param>
-        /// <returns>Liste med informasjon om kommuneoverlegetjenesten</returns>
-        /// <exception cref="ArgumentException"></exception>
-        /// <example>
-        /// <code>
-        /// var infoObjects = krkService.GetKommuneOverlegeInfos(districtID);
-        /// </code>
-        /// </example>
-        [OperationContract]
-        [FaultContract(typeof(GenericFault))]
-        ICollection<KommuneoverlegeInfo> GetKommuneOverlegeInfos(string districtID);
-
-
         /// <summary>
         /// Utfører et søk på kommuneoverlegetjenester med gitte parametre.
         /// </summary>
