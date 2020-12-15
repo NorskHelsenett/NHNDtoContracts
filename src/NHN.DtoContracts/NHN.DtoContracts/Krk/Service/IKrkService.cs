@@ -13,8 +13,6 @@ namespace NHN.DtoContracts.Krk.Service
         Name = "IKrkService")]
     public interface IKrkService
     {
-        //TODO. Dokumenter hvilke roller som kreves
-
         /// <summary>
         /// Henter ut alle kommuner og bydeler der denne personen er registrert som deltaker i kommuneoverlegetjenesten
         /// </summary>
@@ -59,7 +57,7 @@ namespace NHN.DtoContracts.Krk.Service
         /// Utfører et søk på kommuneoverlegetjenester med gitte parametre.
         /// </summary>
         /// <param name="searchTerm">Tekst for å utføre søk.</param>
-        /// <returns>Resultat med liste over kommuneoverlegeinfo.</returns>
+        /// <returns>Resultat med liste over søkeresultat.</returns>
         /// <example>
         /// <code>
         /// var searchResult = krkService.SearchKommuneOverlegeInfo(searchTerm);
@@ -67,6 +65,6 @@ namespace NHN.DtoContracts.Krk.Service
         /// </example>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        ICollection<KommuneoverlegeInfo> SearchKommuneOverlegeInfo(string searchTerm);
+        ICollection<SearchResult> SearchKommuneOverlegeInfo(string searchTerm);
     }
 }

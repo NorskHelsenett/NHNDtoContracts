@@ -10,26 +10,18 @@ namespace NHN.DtoContracts.Krk.Data
     [DataContract(Namespace = Namespaces.KrkV1)]
     public class KommuneoverlegeInfo
     {
-
         /// <summary>
-        /// Organisasjonen kommuneoverlegetjenesten er registrert på
-        /// </summary>
-        //TODO: Trenger vi denne? Kun ved skriving?
-        [DataMember]
-        public int? OrganizationNumber { get; set; }
-
-        /// <summary>
-        /// Områdene som dekkes av denne kommuneoverlegeinformasjonen.
-        /// Kan være kommuner og bydeler
+        /// Bydelen som dekkes av denne kommuneoverlegen. Vil i de fleste tilfeller være null som indikerer at det
+        /// er den primære kommuneoverlegen for kommunen tjenesten er registrert på.
         /// </summary>
         [DataMember]
-        public ICollection<string> DistrictIds { get; set; }
+        public District District { get; set; }
 
         /// <summary>
-        /// Liste over tilknyttede helsepersonells HPR nummer
+        /// Liste over tilknyttede helsepersonell
         /// </summary>
         [DataMember, Required]
-        public ICollection<int> RegisteredHprIds { get; set; }
+        public ICollection<HprPerson> RegisteredHprPeople { get; set; }
 
         /// <summary>
         /// Telefonnummer for kommuneoverlegen
