@@ -21,7 +21,7 @@ namespace NHN.DtoContracts.Krk.Data
         /// Liste over tilknyttede helsepersonell
         /// </summary>
         [DataMember, Required]
-        public ICollection<HprPerson> RegisteredHprPeople { get; set; }
+        public ICollection<KrkPerson> RegisteredHprPeople { get; set; }
 
         /// <summary>
         /// Telefonnummer for kommuneoverlegen

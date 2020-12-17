@@ -2,7 +2,7 @@
 
 namespace NHN.DtoContracts.Krk.Data
 {
-    public class HprPerson
+    public class KrkPerson
     {
         /// <summary>
         /// Helsepersonellnummer
