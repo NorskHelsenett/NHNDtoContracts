@@ -6,7 +6,6 @@ namespace NHN.DtoContracts.Krk.Data
 {
     /// <summary>
     /// Helseregister objekt for å hente ut opplysninger om en helseregisteroppføring i kontaktregister for kommuneoverleger (KRK)
-    /// Helseregister objekt for å hente ut opplysninger om en helseregisteroppføring i kontaktregister for kommuneoverleger (KRK)
     /// </summary>
     [DataContract(Namespace = Namespaces.KrkV1)]
     public class KommuneoverlegeInfo
