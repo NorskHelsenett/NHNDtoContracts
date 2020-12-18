@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 namespace NHN.DtoContracts.Krk.Data
 {
     /// <summary>
-    /// Helseregister objekt for å legge til/hente ut opplysninger om en helseregisteroppføring i kontaktregister for kommuneoverleger (KRK)
+    /// Helseregister objekt for å legge hente ut opplysninger om en helseregisteroppføring i kontaktregister for kommuneoverleger (KRK)
     /// </summary>
     [DataContract(Namespace = Namespaces.KrkV1)]
     public class KommuneoverlegeInfo
