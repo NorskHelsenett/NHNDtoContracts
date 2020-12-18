@@ -9,18 +9,6 @@ namespace NHN.DtoContracts.Krk.Data
     public class SearchResult
     {
         /// <summary>
-        /// Organisasjonsnummeret til enheten som tjenesten KA03 er registrerte på
-        /// </summary>
-        [DataMember]
-        public int OrgNumber { get; set; }
-
-        /// <summary>
-        /// Navnet til enheten som tjenesten KA03 er registrerte på
-        /// </summary>
-        [DataMember]
-        public string UnitName { get; set; }
-
-        /// <summary>
         /// Navnet på kommunen som resulterte i dette treffet
         /// </summary>
         [DataMember]
