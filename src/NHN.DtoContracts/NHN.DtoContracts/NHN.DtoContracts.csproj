@@ -49,6 +49,11 @@
     <Compile Include="Flr\Data\PrimaryHealthCarePersonEdit.cs" />
     <Compile Include="Flr\Data\PrimaryHealthCareTeam.cs" />
     <Compile Include="Flr\Data\PrimaryHealthCareTeamEdit.cs" />
+    <Compile Include="Krk\Data\District.cs" />
+    <Compile Include="Krk\Data\KrkPerson.cs" />
+    <Compile Include="Krk\Data\KommuneoverlegeInfo.cs" />
+    <Compile Include="Krk\Data\SearchResult.cs" />
+    <Compile Include="Krk\Service\IKrkService.cs" />
     <Compile Include="Namespaces.cs" />
     <Compile Include="Logging\Data\RequestTrackedLogParameter.cs" />
     <Compile Include="Logging\Data\ResultWithPagination.cs" />
@@ -101,7 +106,7 @@
     <None Include="Diagrams\FLR.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

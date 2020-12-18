@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
@@ -175,6 +175,7 @@ namespace NHN.WcfClientFactory
             AddKnownConfig<IServicebusService>(new ServiceContractConfig("/v1/ServiceBusService"));
             AddKnownConfig<ILogFetchingService>(new ServiceContractConfig("/v1/LogFetching"));
             AddKnownConfig<IOfrService>(new ServiceContractConfig("/v1/ofr"));
+            AddKnownConfig<IOfrService>(new ServiceContractConfig("/v1/krk"));
         }
 
         /// <summary>
