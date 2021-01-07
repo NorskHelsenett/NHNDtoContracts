@@ -21,7 +21,7 @@ namespace NHN.DtoContracts.Krk.Service
         /// <exception cref="ArgumentException"></exception>
         /// <example>
         /// <code>
-        /// var districts = krkService.GetKommunerAndBydelForHPR(hprId);
+        /// var districts = krkService.GetDistrictsForHPR(hprId);
         /// </code>
         /// </example>
         /// <remarks>
@@ -31,7 +31,7 @@ namespace NHN.DtoContracts.Krk.Service
         /// </remarks>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        ICollection<string> GetKommunerAndBydelForHPR(int hprId);
+        ICollection<string> GetDistrictsForHPR(int hprId);
 
         /// <summary>
         /// Henter ut alle helsepersonell som er registrert som deltaker i kommuneoverlegetjenesten for denne kommunen eller bydelen
@@ -41,7 +41,7 @@ namespace NHN.DtoContracts.Krk.Service
         /// <exception cref="ArgumentException"></exception>
         /// <example>
         /// <code>
-        /// var hprNumbers = krkService.GetHPRForKommuneOrBydel(districtID);
+        /// var hprNumbers = krkService.GetHPRsForDistrict(districtID);
         /// </code>
         /// </example>
         /// <remarks>
@@ -51,7 +51,7 @@ namespace NHN.DtoContracts.Krk.Service
         /// </remarks>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        ICollection<string> GetHPRForKommuneOrBydel(string districtID);
+        ICollection<string> GetHPRsForDistrict(string districtID);
 
         /// <summary>
         /// Utfører et søk på kommuneoverlegetjenester med gitte parametre.
