@@ -39,6 +39,6 @@ namespace NHN.DtoContracts.Krk.Data
         /// Nødnettnummer for kommuneoverlegen
         /// </summary>
         [DataMember]
-        public string PublicSafetyNetId { get; set; }
+        public string PublicSafetyNetworkNumber { get; set; }
     }
 }
