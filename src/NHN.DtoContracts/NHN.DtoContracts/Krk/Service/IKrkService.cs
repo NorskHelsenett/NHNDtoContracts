@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ServiceModel;
 using NHN.DtoContracts.Common.en;
 using NHN.DtoContracts.Krk.Data;
-
+​
 namespace NHN.DtoContracts.Krk.Service
 {
     /// <summary>
@@ -16,7 +16,7 @@ namespace NHN.DtoContracts.Krk.Service
         /// <summary>
         /// Henter ut alle kommuner og bydeler der denne personen er registrert som deltaker i kommuneoverlegetjenesten
         /// </summary>
-        /// <param name="hprId">Helsepersonellnummeret til den aktuelle personen</param>
+        /// <param name="hprNumber">Helsepersonellnummeret til den aktuelle personen</param>
         /// <returns>Liste over kommuner og bydeler</returns>
         /// <exception cref="ArgumentException"></exception>
         /// <example>
@@ -31,12 +31,12 @@ namespace NHN.DtoContracts.Krk.Service
         /// </remarks>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        ICollection<string> GetDistrictsForHPR(int hprId);
-
+        ICollection<string> GetDistrictsForHPRNumber(int hprNumber);
+​
         /// <summary>
         /// Henter ut alle helsepersonell som er registrert som deltaker i kommuneoverlegetjenesten for denne kommunen eller bydelen
         /// </summary>
-        /// <param name="districtID">IDen til en kommune eller bydel (f.eks. 030112) </param>
+        /// <param name="districtNumber">Nummer til en kommune eller bydel (f.eks. 030112) </param>
         /// <returns>Liste over helsepersonellnumre</returns>
         /// <exception cref="ArgumentException"></exception>
         /// <example>
@@ -51,8 +51,8 @@ namespace NHN.DtoContracts.Krk.Service
         /// </remarks>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        ICollection<string> GetHPRsForDistrict(string districtID);
-
+        ICollection<string> GetHPRNumbersForDistrict(string districtNumber);
+​
         /// <summary>
         /// Utfører et søk på kommuneoverlegetjenester med gitte parametre.
         /// </summary>
