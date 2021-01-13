@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ServiceModel;
 using NHN.DtoContracts.Common.en;
 using NHN.DtoContracts.Krk.Data;
-​
+
 namespace NHN.DtoContracts.Krk.Service
 {
     /// <summary>
@@ -32,7 +32,7 @@ namespace NHN.DtoContracts.Krk.Service
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         ICollection<string> GetDistrictsForHPRNumber(int hprNumber);
-​
+
         /// <summary>
         /// Henter ut alle helsepersonell som er registrert som deltaker i kommuneoverlegetjenesten for denne kommunen eller bydelen
         /// </summary>
@@ -52,7 +52,7 @@ namespace NHN.DtoContracts.Krk.Service
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         ICollection<string> GetHPRNumbersForDistrict(string districtNumber);
-​
+
         /// <summary>
         /// Utfører et søk på kommuneoverlegetjenester med gitte parametre.
         /// </summary>
