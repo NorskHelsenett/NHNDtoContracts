@@ -21,6 +21,7 @@ namespace NHN.DtoContracts.Krk.Data
         public string CountyName { get; set; }
 
         /// <summary>
+        /// På et SearchResult-objekt brukes District kun som Kommune.
         /// Liste over alle kommuner som deler på denne kommmuneoverlegetjenesten (interkommunalt sammarbeid)
         /// </summary>
         [DataMember]
