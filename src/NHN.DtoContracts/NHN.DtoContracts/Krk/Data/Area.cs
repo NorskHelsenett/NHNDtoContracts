@@ -3,13 +3,13 @@
 namespace NHN.DtoContracts.Krk.Data
 {
     /// <summary>
-    /// Et distrikt kan være et fylke, en kommune eller en bydel. Dette objektet brukes for å samle informasjon om
+    /// Et area kan være et fylke, en kommune eller en bydel. Dette objektet brukes for å samle informasjon om
     /// navn og identifikator
     /// </summary>
-    public class District
+    public class Area
     {
         /// <summary>
-        /// Identifikatoren til distriktet. Typisk kommune- eller bydelsnummer
+        /// Identifikatoren til området. Typisk kommune- eller bydelsnummer
         /// </summary>
         [DataMember]
         public string Id { get; set; }

@@ -21,11 +21,11 @@ namespace NHN.DtoContracts.Krk.Data
         public string CountyName { get; set; }
 
         /// <summary>
-        /// På et SearchResult-objekt brukes District kun som Kommune.
+        /// På et SearchResult-objekt brukes Area kun som Kommune.
         /// Liste over alle kommuner som deler på denne kommmuneoverlegetjenesten (interkommunalt sammarbeid)
         /// </summary>
         [DataMember]
-        public ICollection<District> CoveredMunicipalities { get; set; }
+        public ICollection<Area> CoveredMunicipalities { get; set; }
 
         /// <summary>
         /// Liste over ekstrainformasjon om kommuneoverleger. Normalt vil det være et element i listen, men noen

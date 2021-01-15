@@ -21,7 +21,7 @@ namespace NHN.DtoContracts.Krk.Service
         /// <exception cref="ArgumentException"></exception>
         /// <example>
         /// <code>
-        /// var districts = krkService.GetDistrictsForHPR(hprId);
+        /// var areas = krkService.GetAreasForHPRNumber(hprId);
         /// </code>
         /// </example>
         /// <remarks>
@@ -31,17 +31,17 @@ namespace NHN.DtoContracts.Krk.Service
         /// </remarks>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        ICollection<string> GetDistrictsForHPRNumber(int hprNumber);
+        ICollection<string> GetAreasForHPRNumber(int hprNumber);
 
         /// <summary>
         /// Henter ut alle helsepersonell som er registrert som deltaker i kommuneoverlegetjenesten for denne kommunen eller bydelen
         /// </summary>
-        /// <param name="districtNumber">Nummer til en kommune eller bydel (f.eks. 030112) </param>
+        /// <param name="areaNumber">Nummer til en kommune eller bydel (f.eks. 030112) </param>
         /// <returns>Liste over helsepersonellnumre</returns>
         /// <exception cref="ArgumentException"></exception>
         /// <example>
         /// <code>
-        /// var hprNumbers = krkService.GetHPRsForDistrict(districtID);
+        /// var hprNumbers = krkService.GetHPRNumbersForArea(areaNumber);
         /// </code>
         /// </example>
         /// <remarks>
@@ -51,7 +51,7 @@ namespace NHN.DtoContracts.Krk.Service
         /// </remarks>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        ICollection<string> GetHPRNumbersForDistrict(string districtNumber);
+        ICollection<string> GetHPRNumbersForArea(string areaNumber);
 
         /// <summary>
         /// Utfører et søk på kommuneoverlegetjenester med gitte parametre.

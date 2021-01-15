@@ -11,12 +11,11 @@ namespace NHN.DtoContracts.Krk.Data
     public class KommuneoverlegeInfo
     {
         /// <summary>
-        /// På et KommuneoverlegeInfo-objekt brukes District kun som bydel.
         /// Bydelen som dekkes av denne kommuneoverlegen. Vil i de fleste tilfeller være null som indikerer at det
         /// er den primære kommuneoverlegen for kommunen tjenesten er registrert på.
         /// </summary>
         [DataMember]
-        public District District { get; set; }
+        public Area District { get; set; }
 
         /// <summary>
         /// Liste over tilknyttede helsepersonell
