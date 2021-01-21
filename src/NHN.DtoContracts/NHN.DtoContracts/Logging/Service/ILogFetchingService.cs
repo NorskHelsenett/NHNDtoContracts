@@ -36,7 +36,7 @@ namespace NHN.DtoContracts.Logging.Service
         // </example>
         // <remarks>
         // ##### Krever en av rollene
-        // * LogRead
+        // * ReadAllLogs
         // </remarks>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
@@ -67,7 +67,7 @@ namespace NHN.DtoContracts.Logging.Service
         // </example>
         // <remarks>
         // ##### Krever en av rollene
-        // * LogRead
+        // * ReadAllLogs
         // </remarks>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]

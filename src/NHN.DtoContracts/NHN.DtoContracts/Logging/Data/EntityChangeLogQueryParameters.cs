@@ -9,10 +9,10 @@ namespace NHN.DtoContracts.Logging.Data
     public class EntityChangeLogQueryParameters
     {
         /// <summary>
-        /// Fritekstsøk for infofeltet som blir logget ved endringen i DB.
+        /// Hvilken metode som ble kalt for endringen.
         /// </summary>
         [DataMember]
-        public string FreetextInfoSearch { get; set; }
+        public string Method { get; set; }
 
         /// <summary>
         /// Tidsperiode for når forespøslene ble gjort. Påkrevd.
