@@ -1,4 +1,4 @@
-﻿using System.ServiceModel;
+using System.ServiceModel;
 using NHN.DtoContracts.Common.en;
 using NHN.DtoContracts.Logging.Data;
 
@@ -16,7 +16,7 @@ namespace NHN.DtoContracts.Logging.Service
         // </summary>
         // <param name="parameter" cref="RequestTrackedLogQueryParameters">Parametre for å utføre søk på forespørsler</param>
         // <returns cref="RequestTrackedLog">Paginert liste over forespørsler. Se også <see cref="ResultWithPagination{T}"/></returns>
-        // <exception cref="System.ArgumentException">Kastes hvis RequetedPeriod i RequestTrackedLogQueryParameters ikke er definert eller er ugyldig</exception>
+        // <exception cref="System.ArgumentException">Kastes hvis RequestedPeriod i RequestTrackedLogQueryParameters ikke er definert eller er ugyldig</exception>
         // <example>
         // <code language="C#">
         // 
@@ -36,11 +36,42 @@ namespace NHN.DtoContracts.Logging.Service
         // </example>
         // <remarks>
         // ##### Krever en av rollene
-        // * Administrator for gjeldende register.
+        // * ReadAllLogs
         // </remarks>
-        // [OperationContract]
-        // [FaultContract(typeof(GenericFault))]
-        // ResultWithPagination<RequestTrackedLog> GetRequestTrackedLogs(RequestTrackedLogQueryParameters parameter);
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        ResultWithPagination<RequestTrackedLog> GetRequestTrackedLogs(RequestTrackedLogQueryParameters parameter);
+
+        // <summary>
+        // Hente ut entitets endringsloggen
+        // </summary>
+        // <param name="parameter" cref="EntityChangeLogQueryParameters">Parametre for å utføre søk på endring</param>
+        // <returns cref="EntityChangeLog">Paginert liste over endringer. Se også <see cref="ResultWithPagination{T}"/></returns>
+        // <exception cref="System.ArgumentException">Kastes hvis RequestedPeriod ikke er definert eller er ugyldig</exception>
+        // <example>
+        // <code language="C#">
+        // 
+        // var query = new EntityChangeLogQueryParameters
+        // {
+        //     RequestedBy = "userName",
+        //     RequestedPeriod = new DtoContracts.Common.en.Period
+        //     {
+        //         From = DateTime.Now.AddDays(-2),
+        //         To = DateTime.Now.AddDays(2)
+        //     }
+        // };
+        // 
+        // var logs = _logFetchingService.GetEntityChangeLogs(query);
+        // 
+        // </code>
+        // </example>
+        // <remarks>
+        // ##### Krever en av rollene
+        // * ReadAllLogs
+        // </remarks>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        ResultWithPagination<EntityChangeLog> GetEntityChangeLogs(EntityChangeLogQueryParameters parameter);
 
         /// <summary>
         /// Henter ut loggende forespørseler mot fastlegereigstret (Flr). 

@@ -54,6 +54,9 @@
     <Compile Include="Krk\Data\KommuneoverlegeInfo.cs" />
     <Compile Include="Krk\Data\SearchResult.cs" />
     <Compile Include="Krk\Service\IKrkService.cs" />
+    <Compile Include="Logging\Data\EntityChangeLog.cs" />
+    <Compile Include="Logging\Data\EntityChangeLogEntryData.cs" />
+    <Compile Include="Logging\Data\EntityChangeLogQueryParameters.cs" />
     <Compile Include="Namespaces.cs" />
     <Compile Include="Logging\Data\RequestTrackedLogParameter.cs" />
     <Compile Include="Logging\Data\ResultWithPagination.cs" />
