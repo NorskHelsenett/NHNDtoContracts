@@ -18,12 +18,6 @@ namespace NHN.DtoContracts.Krk.Data
         public Area District { get; set; }
 
         /// <summary>
-        /// Liste over tilknyttede helsepersonell
-        /// </summary>
-        [DataMember, Required]
-        public ICollection<KrkPerson> RegisteredHprPeople { get; set; }
-
-        /// <summary>
         /// Telefonnummer for kommuneoverlegen
         /// </summary>
         [DataMember]
