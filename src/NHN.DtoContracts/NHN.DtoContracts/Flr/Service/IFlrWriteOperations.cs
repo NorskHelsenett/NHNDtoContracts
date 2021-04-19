@@ -31,7 +31,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// </remarks>
         /// <param name="businesses">Listen over bedrifter man ønsker lage.</param>
         /// <returns>
-        /// ID'er til opprettede business'es. Den returnerte arrayen mapper 1-1 til business parameteren. 
+        /// ID'er til opprettede business'es. Den returnerte arrayen mapper 1-1 til business parameteren.
         /// Dvs business[i]'s ID vil komme i ret[i]. Dette vil være _negative_ nummer.
         /// </returns>
         /// <exception cref="ArgumentException">Kastes hvis bedriften har en ugyldig id</exception>
@@ -50,7 +50,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>
         /// Registrere egen type av besøksadresse som er unik for FLO.
         /// Benyttes for opprettelse og oppdatering av denne type adresse.
-        /// 
+        ///
         /// ##### Krever en av rollene
         /// * Administrator
         /// * FlrWrite
@@ -75,7 +75,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// </summary>
         /// <remarks>
         /// For å slette en adresse, sett alle elementer i ElektroniskeAdresser bortsett fra `Type` til NULL/0.
-        /// 
+        ///
         /// ##### Krever en av rollene
         /// * Administrator
         /// * FlrWrite
@@ -88,7 +88,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <code>
         /// //For å legge til eller endre en elektroniskadresse
         /// flrWriteService.SetElectronicAddresses(organizationNumber, electronicAddresses);
-        /// 
+        ///
         /// //For å slette tilhørende elektroniskeadresse. Sett kun type og alt annet til null på den som skal slettes
         /// // electronicAddresses.Type.CodeValue = ElectronicAddressType.Telephone
         /// // electronicAddresses.Address = null
@@ -125,10 +125,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>
         /// Oppretter avtalen mellom en lege og kommune.
         /// Det forutsettes at lege allerede finnes i HPR og at legen er tilknyttet et legekontor (TreatmentCenter) som finnes i Adresseregisteret/Bedriftsregisteret.
-        /// 
-        /// ##### Sender Servicebus-event
-        /// * "ContractCreated" med eventobjekt <see cref="GPContract"/>.
-        /// 
+        ///
         /// ##### Krever en av rollene
         /// * Administrator
         /// * FlrWrite
@@ -148,9 +145,6 @@ namespace NHN.DtoContracts.Flr.Service
         /// Oppretter en ny fastlegeavtale - importversjon (se <see cref="CreateGPContract"/>)
         /// </summary>
         /// <remarks>
-        /// ##### Sender Servicebus-event
-        /// Publiserer ikke events.
-        /// 
         /// ##### Krever en av rollene
         /// * Administrator
         /// * FlrWrite
@@ -172,10 +166,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// </summary>
         /// <remarks>
         /// Benyttes for oppdatering/endring/avslutning av en eksisterende fastlegeavtale
-        /// 
-        /// ##### Sender Servicebus-event
-        /// * "ContractUpdated" med eventobjekt <see cref="GPContract"/>.
-        /// 
+        ///
         /// ##### Krever en av rollene
         /// * Administrator
         /// * FlrWrite
@@ -214,9 +205,6 @@ namespace NHN.DtoContracts.Flr.Service
         /// Oppdatering av listetak på en fastlegeavtale uten at andre verdier skal endre seg.
         /// </summary>
         /// <remarks>
-        /// ##### Sender Servicebus-event
-        /// * "ContractUpdated" med eventobjekt <see cref="GPContract"/>.
-        /// 
         /// ##### Krever en av rollene
         /// * Administrator
         /// * FlrWrite
@@ -238,9 +226,6 @@ namespace NHN.DtoContracts.Flr.Service
         /// Oppdatering av antall personer på venteliste hos fastlege.
         /// </summary>
         /// <remarks>
-        /// ##### Sender Servicebus-event
-        /// * "ContractUpdated" med eventobjekt <see cref="GPContract"/>.
-        /// 
         /// ##### Krever en av rollene
         /// * Administrator
         /// * FlrWrite
@@ -263,10 +248,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// </summary>
         /// <remarks>
         /// Kun endring til statusene Åpne, Lukke og Låst.
-        /// 
-        /// ##### Sender Servicebus-event
-        /// * "ContractUpdated" med eventobjekt <see cref="GPContract"/>.
-        /// 
+        ///
         /// ##### Krever en av rollene
         /// * Administrator
         /// * FlrWrite
@@ -293,9 +275,6 @@ namespace NHN.DtoContracts.Flr.Service
         /// Kodeverk kommuner: <see href="/CodeAdmin/EditCodesInGroup/kommune">kommune</see> (OID 3402).
         /// </summary>
         /// <remarks>
-        /// ##### Sender Servicebus-event
-        /// * "ContractUpdated" med eventobjekt <see cref="GPContract"/>.
-        /// 
         /// ##### Krever en av rollene
         /// * Administrator
         /// * FlrWrite
@@ -310,7 +289,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <code>
         /// //For å sette kommuner
         /// flrWriteService.UpdateGPContractCoopMunicipalities(contractId, coopMunicipalities);
-        /// 
+        ///
         /// //For å slette alle registrerte kommuner
         /// flrWriteService.UpdateGPContractCoopMunicipalities(contractId, new Code[0]);
         /// </code>
@@ -320,7 +299,7 @@ namespace NHN.DtoContracts.Flr.Service
         void UpdateGPContractCoopMunicipalities(IList<long> gpContractIds, IList<Code> coopMunicipalities);
 
         // --------------------------
-        // Utekontor 
+        // Utekontor
         // --------------------------
 
         /// <summary>
@@ -328,10 +307,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// </summary>
         /// <remarks>
         /// Hvis et fastlegekontor har dislokerte behandlingssteder (utekontorer) så skal det kunne registreres på overordnet fastlegepraksis/avtale.
-        /// 
-        /// ##### Sender Servicebus-event
-        /// * "OutOfOfficeLocationCreated" med eventobjekt <see cref="OutOfOfficeLocation"/>. 
-        /// 
+        ///
         /// ##### Krever en av rollene
         /// * Administrator
         /// * FlrWrite
@@ -354,10 +330,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// </summary>
         /// <remarks>
         /// Oppdatering av opplysninger om et utekontor.
-        /// 
-        /// ##### Sender Servicebus-event
-        /// * "OutOfOfficeLocationUpdated" med eventobjekt <see cref="OutOfOfficeLocation"/>.
-        /// 
+        ///
         /// ##### Krever en av rollene
         /// * Administrator
         /// * FlrWrite
@@ -380,10 +353,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// </summary>
         /// <remarks>
         /// Sletter et utekontor fra liste over utekontorer.
-        /// 
-        /// ##### Sender Servicebus-event
-        /// * "OutOfOfficeLocationDeleted" med eventobjekt <see cref="OutOfOfficeLocation"/>.
-        /// 
+        ///
         /// ##### Krever en av rollene
         /// * Administrator
         /// * FlrWrite
@@ -402,7 +372,7 @@ namespace NHN.DtoContracts.Flr.Service
 
 
         // --------------------------
-        // Listetilhørighet 
+        // Listetilhørighet
         // --------------------------
 
         /// <summary>
@@ -410,10 +380,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// </summary>
         /// <remarks>
         /// Lager en lenke mellom lege i bestemt rolle til en fastlegeavtale.
-        /// 
-        /// ##### Sender Servicebus-event
-        /// * "GPOnContractCreated" med eventobjekt <see cref="GPOnContractAssociation"/>.
-        /// 
+        ///
         /// ##### Krever en av rollene
         /// * Administrator
         /// * FlrWrite
@@ -439,10 +406,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>
         /// Se <see cref="CreateGPOnContractAssociation"/>.
         /// Tar i mot en liste av koblinger.
-        /// 
-        /// ##### Sender Servicebus-event
-        /// Publiserer ikke events.
-        /// 
+        ///
         /// ##### Krever en av rollene
         /// * Administrator
         /// * FlrWrite
@@ -466,10 +430,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// </summary>
         /// <remarks>
         /// Oppdaterer informasjonen mellom lege i bestemt rolle til en fastlegeavtale.
-        /// 
-        /// ##### Sender Servicebus-event
-        /// * "GPOnContractUpdated" med eventobjekt <see cref="GPOnContractAssociation"/>.
-        /// 
+        ///
         /// ##### Krever en av rollene
         /// * Administrator
         /// * FlrWrite
@@ -491,9 +452,6 @@ namespace NHN.DtoContracts.Flr.Service
         /// Sletter en kontraktsperiode for en lege på en GPContract.
         /// </summary>
         /// <remarks>
-        /// ##### Sender Servicebus-event
-        /// * "GPOnContractDeleted" med eventobjekt <see cref="GPOnContractAssociation"/>.
-        /// 
         /// ##### Krever en av rollene
         /// * Administrator
         /// * FlrWrite
@@ -510,7 +468,7 @@ namespace NHN.DtoContracts.Flr.Service
         void DeleteGPOnContractAssociation(long gpOnContractAssociationId);
 
         // --------------------------
-        // LegeSprak 
+        // LegeSprak
         // --------------------------
 
         /// <summary>
@@ -519,7 +477,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>
         /// Registrerer språk på helsepersonell.
         /// En tom liste sletter alle språk på angitt helsepersonell.
-        /// 
+        ///
         /// ##### Krever en av rollene
         /// * Administrator
         /// * FlrWrite
@@ -534,7 +492,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <code>
         /// //For å sette språk
         /// flrWriteService.GetPatientGPDetails(UpdateGPLanguages, languages);
-        /// 
+        ///
         /// //For å slette alle registrerte språk
         /// flrWriteService.UpdateGPLanguages(hprNumber, emptyLanguagesList);
         /// </code>
@@ -553,10 +511,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// </summary>
         /// <remarks>
         /// Opprette nyregistrert person i PREG til en eksisterende fastlegeavtale i FLR.
-        /// 
-        /// ##### Sender Servicebus-event
-        /// * "PatientOnContractCreated" med eventobjekt <see cref="PatientToGPContractAssociation"/>.
-        /// 
+        ///
         /// ##### Krever en av rollene
         /// * Administrator
         /// * FlrWrite
@@ -583,10 +538,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>
         /// Se CreatePatientToGPContractAssociation.
         /// Tar i mot en liste med koblinger for bulk operasjoner
-        /// 
-        /// ##### Sender Servicebus-event
-        /// Publiserer ikke events.
-        /// 
+        ///
         /// ##### Krever en av rollene
         /// * Administrator
         /// * FlrWrite
@@ -615,10 +567,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// Flytte pasienter mellom to fastlegelister.
         /// Fødselsnummer valideres.
         /// Dersom flytting av én pasient feiler kastes det exception og ingen pasienter blir flyttet.
-        /// 
-        /// ##### Sender Servicebus-event
-        /// * "PatientOnContractCreated" med eventobjekt <see cref="PatientToGPContractAssociation"/> for hver pasient som blir flyttet.
-        /// 
+        ///
         /// ##### Krever en av rollene
         /// * Administrator
         /// * FlrWrite
@@ -627,9 +576,9 @@ namespace NHN.DtoContracts.Flr.Service
         /// <param name="patientsToMove">Liste over innbyggere på eksisterende fastlegelister som skal flyttes</param>
         /// <returns></returns>
         /// <exception cref="ArgumentException">Kastes hvis kontraktid er ugyldig</exception>
-        /// <exception cref="ArgumentException">Kastes hvis listen er tom</exception> 
-        /// <exception cref="ArgumentException">Kastes hvis en pasient ikke finnes på fastlegelisten i den gitte perioden</exception> 
-        /// <exception cref="ArgumentException">Kastes hvis en pasient allerede finnes på destinasjonskontrakten</exception> 
+        /// <exception cref="ArgumentException">Kastes hvis listen er tom</exception>
+        /// <exception cref="ArgumentException">Kastes hvis en pasient ikke finnes på fastlegelisten i den gitte perioden</exception>
+        /// <exception cref="ArgumentException">Kastes hvis en pasient allerede finnes på destinasjonskontrakten</exception>
         /// <example>
         /// <code>
         /// flrWriteService.MovePatients(fromGPContract, patientsToMove);
@@ -644,11 +593,7 @@ namespace NHN.DtoContracts.Flr.Service
         /// </summary>
         /// <remarks>
         /// Flytte alle pasienter mellom listene og deretter avslutter listen hvor innbyggere ble flyttet fra.
-        /// 
-        /// ##### Sender Servicebus-event
-        /// * "ContractCanceled" med eventobjekt <see cref="GPContract"/> for hver pasient som blir flyttet.
-        /// * "PatientOnContractCreated" med eventobjekt <see cref="PatientToGPContractAssociation"/> for hver pasient som blir flyttet.
-        /// 
+        ///
         /// ##### Krever en av rollene
         /// * Administrator
         /// * FlrWrite
@@ -677,9 +622,6 @@ namespace NHN.DtoContracts.Flr.Service
         /// Dvs, assosiasjoner hvor Valid.To > DateTime.Now.
         /// </summary>
         /// <remarks>
-        /// ##### Sender Servicebus-event
-        /// * "PatientOnContractCanceled" med eventobjekt <see cref="PatientToGPContractAssociation"/>.
-        /// 
         /// ##### Krever en av rollene
         /// * Administrator
         /// * FlrWrite
@@ -709,9 +651,6 @@ namespace NHN.DtoContracts.Flr.Service
         /// Dvs, assosiasjoner hvor Valid.To > DateTime.Now.
         /// </summary>
         /// <remarks>
-        /// ##### Sender Servicebus-event
-        /// * "PatientOnContractCanceled" med eventobjekt <see cref="PatientToGPContractAssociation"/> for hver pasient som blir kansellert.
-        /// 
         /// ##### Krever en av rollene
         /// * Administrator
         /// * FlrWrite
@@ -770,10 +709,6 @@ namespace NHN.DtoContracts.Flr.Service
         /// <exception cref="ArgumentException">Hvis newNin/oldNin er ugyldige, eller det ikke finnes noen personer i FLR med personnummer oldNin</exception>
         /// <exception cref="ArgumentException">Hvis newNin ikke finnes i personregisteret</exception>
         /// <remarks>
-        /// ##### Sender Servicebus-event
-        /// * "PatientNinChanged" med property NewNin, OldNin.
-        /// * "PatientOnContractUpdated" med eventobjekt <see cref="PatientToGPContractAssociation"/>.
-        /// 
         /// ##### Krever en av rollene
         /// * Administrator
         /// * FlrWrite
@@ -789,9 +724,6 @@ namespace NHN.DtoContracts.Flr.Service
         /// Oppdaterer GPOfficeOrganizationNumber på alle GpContracts.
         /// </summary>
         /// <remarks>
-        /// ##### Sender Servicebus-event
-        /// * "ContractUpdated" med eventobjekt <see cref="GPContract"/> for hver kontrakt som berøres.
-        /// 
         /// ##### Krever en av rollene
         /// * Administrator
         /// * FlrWrite
@@ -830,14 +762,14 @@ namespace NHN.DtoContracts.Flr.Service
         /// <remarks>
         /// ##### Krever en av rollene
         /// * Administrator
-        /// * FlrPrimaryHealthCareTeamWrite 
+        /// * FlrPrimaryHealthCareTeamWrite
         /// </remarks>
         /// <param name="primaryHealthCareTeam">Objekt som beskriver et primærhelseteam</param>
         /// <example>
         /// <code>
         /// var primaryHealthCarePeople = new List&lt;PrimaryHealthCarePersonEdit&gt;();
         /// var primaryHealthCareContracts = new List&lt;PrimaryHealthCareContractEdit&gt;();
-        /// 
+        ///
         /// var primaryHealthCarePersonEdit = new PrimaryHealthCarePersonEdit() {
         ///     Id = 123413,
         ///     HprNumber = 1234123,
@@ -847,14 +779,14 @@ namespace NHN.DtoContracts.Flr.Service
         ///     MembershipPeriod = new Period() { From = DateTime.Today, To = DateTime.MaxValue },
         /// }
         /// primaryHealthCarePeople.Add(primaryHealthCarePersonEdit);
-        /// 
+        ///
         /// var primaryHealthCareContractEdit = new PrimaryHealthCareContractEdit() {
         ///     Id = 123,
         ///     FlrId = 542341234,
         ///     MembershipPeriod = new Period() { From = DateTime.Today, To = DateTime.MaxValue }
         /// }
         /// primaryHealthCareContracts.Add(primaryHealthCareContractEdit);
-        /// 
+        ///
         /// var primaryHealthCareTeamEdit = new PrimaryHealthCareTeamEdit() {
         ///     Id = 1234,
         ///     OrganizationNumber = 3216785467,
@@ -918,7 +850,7 @@ namespace NHN.DtoContracts.Flr.Service
         void CleanupGPContractByOrgNr(int orgNr);
 
         /// <summary>
-        /// Sletter legeperiode. 
+        /// Sletter legeperiode.
         /// Kun tilgjengelig i testmiljø.
         /// </summary>
         /// <remarks>

@@ -73,7 +73,6 @@
     <Compile Include="Flr\Data\Person.cs" />
     <Compile Include="Flr\Data\GPSearchParameters.cs" />
     <Compile Include="Flr\Data\ContractWithMonth.cs" />
-    <Compile Include="Flr\Enum\FlrEvents.cs" />
     <Compile Include="Flr\Data\GPContractQueryParameters.cs" />
     <Compile Include="Flr\Service\IFlrExportOperations.cs" />
     <Compile Include="Flr\Service\IFlrReadOperations.cs" />
