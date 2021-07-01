@@ -1,118 +1,27 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{91DF12D2-BFBC-4D81-B794-00FA6B64BC39}</ProjectGuid>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NHN.DtoContracts</RootNamespace>
-    <AssemblyName>NHN.DtoContracts</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Build.Framework" />
-    <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.ServiceModel" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\en\GeographicalCoordinates.cs" />
-    <Compile Include="Common\en\PersonName.cs" />
-    <Compile Include="Flr\Data\PrimaryHealthCareContract.cs" />
-    <Compile Include="Flr\Data\PrimaryHealthCareContractEdit.cs" />
-    <Compile Include="Flr\Data\PrimaryHealthCarePerson.cs" />
-    <Compile Include="Flr\Data\PrimaryHealthCarePersonEdit.cs" />
-    <Compile Include="Flr\Data\PrimaryHealthCareTeam.cs" />
-    <Compile Include="Flr\Data\PrimaryHealthCareTeamEdit.cs" />
-    <Compile Include="Krk\Data\Area.cs" />
-    <Compile Include="Krk\Data\KommuneoverlegeInfo.cs" />
-    <Compile Include="Krk\Data\SearchResult.cs" />
-    <Compile Include="Krk\Service\IKrkService.cs" />
-    <Compile Include="Logging\Data\EntityChangeLog.cs" />
-    <Compile Include="Logging\Data\EntityChangeLogEntryData.cs" />
-    <Compile Include="Logging\Data\EntityChangeLogQueryParameters.cs" />
-    <Compile Include="Namespaces.cs" />
-    <Compile Include="Logging\Data\RequestTrackedLogParameter.cs" />
-    <Compile Include="Logging\Data\ResultWithPagination.cs" />
-    <Compile Include="Common\HelperInterfaces\IHasGeographicalCoordinates.cs" />
-    <Compile Include="Flr\Data\GetNavPatientListsParameters.cs" />
-    <Compile Include="Flr\Data\GPContract.cs" />
-    <Compile Include="Flr\Data\GPDetails.cs" />
-    <Compile Include="Flr\Data\GPOffice.cs" />
-    <Compile Include="Flr\Data\GPOnContractAssociation.cs" />
-    <Compile Include="Flr\Data\NavEncryptedPatientListParameters.cs" />
-    <Compile Include="Flr\Data\NinWithTimestamp.cs" />
-    <Compile Include="Flr\Data\OutOfOfficeLocation.cs" />
-    <Compile Include="Common\en\PagedResult.cs" />
-    <Compile Include="Flr\Data\PatientToGPContractAssociation.cs" />
-    <Compile Include="Flr\Data\Person.cs" />
-    <Compile Include="Flr\Data\GPSearchParameters.cs" />
-    <Compile Include="Flr\Data\ContractWithMonth.cs" />
-    <Compile Include="Flr\Enum\FlrEvents.cs" />
-    <Compile Include="Flr\Data\GPContractQueryParameters.cs" />
-    <Compile Include="Flr\Service\IFlrExportOperations.cs" />
-    <Compile Include="Flr\Service\IFlrReadOperations.cs" />
-    <Compile Include="Flr\Service\IFlrWriteOperations.cs" />
-    <Compile Include="Flr\Data\ContractsQueryParameters.cs" />
-    <Compile Include="Htk\Business.cs" />
-    <Compile Include="Common\en\Code.cs" />
-    <Compile Include="Common\en\ElectronicAddress.cs" />
-    <Compile Include="Common\en\GenericFault.cs" />
-    <Compile Include="Common\en\Status.cs" />
-    <Compile Include="Common\en\OpeningHours.cs" />
-    <Compile Include="Common\en\Period.cs" />
-    <Compile Include="Common\en\PhysicalAddress.cs" />
-    <Compile Include="Logging\Data\RequestTrackedLog.cs" />
-    <Compile Include="Logging\Data\RequestTrackedLogQueryParameters.cs" />
-    <Compile Include="Logging\Service\ILogFetchingService.cs" />
-    <Compile Include="Ofr\Data\AddPersonData.cs" />
-    <Compile Include="Ofr\Data\HealthRegister.cs" />
-    <Compile Include="Ofr\Data\HealthRegisterQuery.cs" />
-    <Compile Include="Ofr\Data\PersonAssociations.cs" />
-    <Compile Include="Ofr\Data\PersonOnHealthRegister.cs" />
-    <Compile Include="Ofr\Service\IOfrService.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Common\en\TimePeriod.cs" />
-    <Compile Include="ServiceBusConnector\Enum\ServiceBusStatus.cs" />
-    <Compile Include="ServiceBusConnector\Service\IServicebusService.cs" />
-    <Compile Include="ServiceBus\Data\SubscriptionInfo.cs" />
-    <Compile Include="ServiceBus\Service\IServiceBusManager.cs" />
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="5.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+    <PackageReference Include="System.ServiceModel.Duplex" Version="4.8.1" />
+    <PackageReference Include="System.ServiceModel.NetTcp" Version="4.8.1" />
+    <PackageReference Include="System.ServiceModel.Federation" Version="4.8.1" />
+    <PackageReference Include="Microsoft.Build.Framework" Version="16.10.0" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Diagrams\Ofr.cd" />
-    <None Include="Diagrams\FLR.cd" />
+    <Compile Remove="Flr\FLRXmlNamespace.cs" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>
