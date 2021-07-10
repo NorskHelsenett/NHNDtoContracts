@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using NHN.DtoContracts.Common.en;
 using System.Collections.Generic;
 using System.ServiceModel;

@@ -13,29 +13,29 @@ namespace NHN.DtoContracts.Flr.Data
     public class PatientToGPContractAssociation
     {
         /// <summary>
-        /// Id til denne assosiasjonen. TilhørighetsId
+        /// Id til denne assosiasjonen. TilhÃ¸righetsId
         /// </summary>
         [DataMember]
         public long Id { get; set; }
 
         /// <summary>
-        /// ID til GPContract. Må være satt ved skriving, vil være satt ved lesing og vil være identisk med GPContract.Id.
+        /// ID til GPContract. MÃ¥ vÃ¦re satt ved skriving, vil vÃ¦re satt ved lesing og vil vÃ¦re identisk med GPContract.Id.
         /// </summary>
         [DataMember]
         public long GPContractId { get; set; }
 
         /// <summary>
-        /// Kontakten denne assosiasjonen peker til. Satt ved lesing, skal være null ved skriving.
+        /// Kontakten denne assosiasjonen peker til. Satt ved lesing, skal vÃ¦re null ved skriving.
         /// </summary>
         [DataMember]
         public GPContract GPContract { get; set; }
 
         /// <summary>
         /// HerId for adressering til fastlegetjenesten.
-        /// Dette er HerId til fastlegen som er aktiv på listen på dagens dato, dersom en slik finnes.
-        /// Hvis ikke returneres det HerId for fastlegelistens tjenestebaserte kommunikasjonspart av typen "Fastlege, liste uten fast lege", dersom en slik finnes definert på virksomhetsnivå.
+        /// Dette er HerId til fastlegen som er aktiv pÃ¥ listen pÃ¥ dagens dato, dersom en slik finnes.
+        /// Hvis ikke returneres det HerId for fastlegelistens tjenestebaserte kommunikasjonspart av typen "Fastlege, liste uten fast lege", dersom en slik finnes definert pÃ¥ virksomhetsnivÃ¥.
         /// Returnerer NULL dersom passende HerId ikke finnes. 
-        /// Feltet vil kun være satt for leseoperasjoner som spør på dagens dato, ikke på historiske data. Brukes ikke på skriveoperasjoner.
+        /// Feltet vil kun vÃ¦re satt for leseoperasjoner som spÃ¸r pÃ¥ dagens dato, ikke pÃ¥ historiske data. Brukes ikke pÃ¥ skriveoperasjoner.
         /// </summary>
         [DataMember]
         public int? GPHerId { get; set; }
@@ -48,34 +48,34 @@ namespace NHN.DtoContracts.Flr.Data
 
         /// <summary>
         /// Hvilken periode denne assosiasjonen er gyldig for.
-        /// For Move metoden er dette perioden på den nye assosiasjonen. Den gamle assosiasjonen får TilDato satt til ny FraDato.
+        /// For Move metoden er dette perioden pÃ¥ den nye assosiasjonen. Den gamle assosiasjonen fÃ¥r TilDato satt til ny FraDato.
         /// </summary>
         [DataMember]
         public Period Period { get; set; } //FraDato ?TilDato;
 
         /// <summary>
-        /// Kode på hvorfor perioden er endret (avsluttet). Er NULL normalt sett med mindre personen har forlatt ordningen.
+        /// Kode pÃ¥ hvorfor perioden er endret (avsluttet). Er NULL normalt sett med mindre personen har forlatt ordningen.
         /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/flrv2_endreason">flrv2_endreason</see> (OID 7753).
         /// </summary>
         [DataMember]
         public Code EndCode { get; set; }
 
         /// <summary>
-        /// Kode på hvorfor perioden er startet.
+        /// Kode pÃ¥ hvorfor perioden er startet.
         /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/flrv2_beginreason">flrv2_beginreason</see> (OID 7754).
         /// </summary>
         [DataMember]
         public Code BeginCode { get; set; }
 
         /// <summary>
-        /// Detaljer om pasienten. Dette vil være satt på leseoperasjoner når det er relevant, men må være NULL på skriveoperasjoner.
+        /// Detaljer om pasienten. Dette vil vÃ¦re satt pÃ¥ leseoperasjoner nÃ¥r det er relevant, men mÃ¥ vÃ¦re NULL pÃ¥ skriveoperasjoner.
         /// </summary>
         [DataMember]
         public Person Patient { get; set; }
 
         /// <summary>
-        /// Legeperioder som overlapper med denne pasientperioden på listen. Dette vil være satt på leseoperasjoner når det er relevant, 
-        /// men må være NULL på skriveoperasjoner.
+        /// Legeperioder som overlapper med denne pasientperioden pÃ¥ listen. Dette vil vÃ¦re satt pÃ¥ leseoperasjoner nÃ¥r det er relevant, 
+        /// men mÃ¥ vÃ¦re NULL pÃ¥ skriveoperasjoner.
         /// </summary>
         [DataMember]
         public IList<GPOnContractAssociation> DoctorCycles { get; set; }

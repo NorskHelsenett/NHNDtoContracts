@@ -1,4 +1,4 @@
-﻿namespace NHN.WcfClientFactory
+namespace NHN.WcfClientFactory
 {
     /// <summary>
     /// Inneholder konstanter for hostname til ulike miljø for Registerplatformen.
