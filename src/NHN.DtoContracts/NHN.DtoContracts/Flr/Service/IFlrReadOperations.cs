@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.ServiceModel;
 using NHN.DtoContracts.Common.en;
 using System;
@@ -458,5 +458,42 @@ namespace NHN.DtoContracts.Flr.Service
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         PrimaryHealthCareTeam GetPrimaryHealthCareTeam(long id);
+
+        /// <summary>
+        ///     <para>
+        ///         Henter gjesteinnbyggerne i kommunen identifisert ved <paramref name="municipalityCode"/>. Altså: Personer som har <i>fastlegen</i>
+        ///         sin i denne kommunen, men er bosatt i en annen kommune.
+        ///     </para>
+        ///     <para>
+        ///     Eksempel: Jens er bosatt i Trondheim, men har sin fastlege i Verdal. Jens vil dermed stå på listen over gjesteinnbyggere i Verdal.
+        ///     </para>
+        ///     <para>
+        ///         For den "motsatte" operasjonen, se <see cref="GetResidentsThatAreGuestResidentsElsewhere(string)"></see>  
+        ///     </para>
+        /// </summary>
+        /// <param name="municipalityCode">Kode som unikt identifiserer en kommune.</param>
+        /// <returns></returns>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        IList<GuestResident> GetGuestResidents(string municipalityCode);
+
+        /// <summary>
+        ///     <para>
+        ///         Henter innbyggerne i kommunen identifisert ved <paramref name="municipalityCode"/> som er gjesteinnbyggere i en <i>annen</i>
+        ///         kommune. Altså: Personer som er <i>bosatt</i> i denne kommunen, men har fastlegen sin i en annen kommune.
+        ///     </para>
+        ///     <para>
+        ///         Eksempel: Jens er bosatt i Trondheim, men har sin fastlege i Verdal. Jens vil dermed stå på listen over innbyggere i Trondheim
+        ///         som er gjesteinnbyggere et annet sted.
+        ///     </para>
+        ///     <para>
+        ///         For den "motsatte" operasjonen, se <see cref="GetGuestResidents(string)"></see>  
+        ///     </para>
+        /// </summary>
+        /// <param name="municipalityCode"></param>
+        /// <returns></returns>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        IList<GuestResident> GetResidentsThatAreGuestResidentsElsewhere(string municipalityCode);
     }
 }
