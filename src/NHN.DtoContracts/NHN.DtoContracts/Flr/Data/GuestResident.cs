@@ -67,7 +67,7 @@ namespace NHN.DtoContracts.Flr.Data
         /// Fastlegekontorets organisasjonsnummer.
         /// </summary>
         [DataMember]
-        public string OrganizationNumberOfTreatmentCenter { get; set; }
+        public int? OrganizationNumberOfTreatmentCenter { get; set; }
 
         /// <summary>
         /// Personens fastlege sitt fornavn.
@@ -86,6 +86,6 @@ namespace NHN.DtoContracts.Flr.Data
         /// </summary>
         /// 
         [DataMember]
-        public int HPRNumberOfGeneralPractitioner { get; set; }
+        public int? HPRNumberOfGeneralPractitioner { get; set; }
     }
 }
