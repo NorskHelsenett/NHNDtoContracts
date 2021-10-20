@@ -461,37 +461,38 @@ namespace NHN.DtoContracts.Flr.Service
 
         /// <summary>
         ///     <para>
-        ///         Henter gjesteinnbyggerne i kommunen identifisert ved <paramref name="municipalityCode"/>. Altså: Personer som har <i>fastlegen</i>
+        ///         Henter gjesteinnbyggerne i kommunen med kommunenummer lik <paramref name="municipalityCode"/>. Altså: Personer som har <i>fastlegen</i>
         ///         sin i denne kommunen, men er bosatt i en annen kommune.
         ///     </para>
         ///     <para>
-        ///     Eksempel: Jens er bosatt i Trondheim, men har sin fastlege i Verdal. Jens vil dermed stå på listen over gjesteinnbyggere i Verdal.
+        ///     Eksempel: Jens er bosatt i Trondheim, men har sin fastlege i Verdal. Anta at kommunenummeret til Verdal er 5038. Listen som
+        ///     returneres ved et kall til GetGuestResidents("5038") vil dermed inneholde Jens.
         ///     </para>
         ///     <para>
         ///         For den "motsatte" operasjonen, se <see cref="GetResidentsThatAreGuestResidentsElsewhere(string)"></see>  
         ///     </para>
         /// </summary>
         /// <param name="municipalityCode">Kode som unikt identifiserer en kommune.</param>
-        /// <returns></returns>
+        /// <returns>Gjesteinnbyggerne i kommunen med kommunenummer lik <paramref name="municipalityCode"/>. </returns>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         IList<GuestResident> GetGuestResidents(string municipalityCode);
 
         /// <summary>
         ///     <para>
-        ///         Henter innbyggerne i kommunen identifisert ved <paramref name="municipalityCode"/> som er gjesteinnbyggere i en <i>annen</i>
+        ///         Henter innbyggerne i kommunen med kommunenummer lik <paramref name="municipalityCode"/> som er gjesteinnbyggere i en <i>annen</i>
         ///         kommune. Altså: Personer som er <i>bosatt</i> i denne kommunen, men har fastlegen sin i en annen kommune.
         ///     </para>
         ///     <para>
-        ///         Eksempel: Jens er bosatt i Trondheim, men har sin fastlege i Verdal. Jens vil dermed stå på listen over innbyggere i Trondheim
-        ///         som er gjesteinnbyggere et annet sted.
+        ///         Eksempel: Jens er bosatt i Trondheim, men har sin fastlege i Verdal. Anta at kommunenummeret til Trondheim er 5001. Listen som
+        ///         returneres ved et kall til GetResidentsThatAreGuestResidentsElsewhere("5001") vil dermed inneholde Jens.
         ///     </para>
         ///     <para>
         ///         For den "motsatte" operasjonen, se <see cref="GetGuestResidents(string)"></see>  
         ///     </para>
         /// </summary>
         /// <param name="municipalityCode"></param>
-        /// <returns></returns>
+        /// <returns>Innbyggerne i kommunen med kommunenummer lik <paramref name="municipalityCode"/> som er gjesteinnbyggere i en <i>annen</i> kommune.</returns>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         IList<GuestResident> GetResidentsThatAreGuestResidentsElsewhere(string municipalityCode);
