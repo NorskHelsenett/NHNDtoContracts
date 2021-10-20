@@ -473,10 +473,10 @@ namespace NHN.DtoContracts.Flr.Service
         ///     </para>
         /// </summary>
         /// <param name="municipalityCode">Kode som unikt identifiserer en kommune.</param>
-        /// <returns>Gjesteinnbyggerne i kommunen med kommunenummer lik <paramref name="municipalityCode"/>. </returns>
+        /// <returns>En CSV-fil med de aktuelle gjesteinnbyggerne. </returns>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        IList<GuestResident> GetGuestResidents(string municipalityCode);
+        byte[] GetGuestResidents(string municipalityCode);
 
         /// <summary>
         ///     <para>
@@ -492,9 +492,9 @@ namespace NHN.DtoContracts.Flr.Service
         ///     </para>
         /// </summary>
         /// <param name="municipalityCode"></param>
-        /// <returns>Innbyggerne i kommunen med kommunenummer lik <paramref name="municipalityCode"/> som er gjesteinnbyggere i en <i>annen</i> kommune.</returns>
+        /// <returns>En CSV-fil med de aktuelle innbyggerne.</returns>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        IList<GuestResident> GetResidentsThatAreGuestResidentsElsewhere(string municipalityCode);
+        byte[] GetResidentsThatAreGuestResidentsElsewhere(string municipalityCode);
     }
 }
