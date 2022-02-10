@@ -29,6 +29,7 @@ namespace NHN.DtoContracts.ServiceBus.Data
         /// <summary>
         /// Navn på selve hendelsetypen.
         /// </summary>
+        [DataMember]
         public string EventName { get; set; }
     }
 }
