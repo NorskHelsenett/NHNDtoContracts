@@ -15,7 +15,7 @@ namespace NHN.DtoContracts.ServiceBus.Data
         public string QueueName { get; set; }
 
         /// <summary>
-        /// This property is used by the calling system to identify different subscriptions on the same topic.
+        /// Identifiserende navn på systemet eller eier av systemet som oppretter abonnementet.
         /// </summary>
         [DataMember]
         public string UserSystemIdent { get; set;  }
