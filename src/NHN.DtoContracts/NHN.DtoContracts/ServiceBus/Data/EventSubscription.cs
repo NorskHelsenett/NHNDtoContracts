@@ -9,13 +9,13 @@ namespace NHN.DtoContracts.ServiceBus.Data
     public class EventSubscription
     {
         /// <summary>
-        /// Navn på køen abonnementet er koblet til.
+        /// Navn på køen og en unik identifikator til abonnementet.
         /// </summary>
         [DataMember]
         public string QueueName { get; set; }
 
         /// <summary>
-        /// Identifiserende navn på systemet eller eier av systemet som oppretter abonnementet.
+        /// Identifiserende navn på systemet eller eier av systemet som oppretter abonnementet. Gyldige tegn er tall, bokstaver og underscore
         /// </summary>
         [DataMember]
         public string UserSystemIdent { get; set;  }

@@ -22,7 +22,7 @@ namespace NHN.DtoContracts.ServiceBus.Service
         /// │ Resh               │   SubscriptionEventName.ReshBusEvents.*                              │
         /// └────────────────────┴──────────────────────────────────────────────────────────────────────┘
         /// </param>
-        /// <param name="userSystemIdent">Navn på systemet som oppretter og skal bruke abonnementet</param>
+        /// <param name="userSystemIdent">Navn på systemet som oppretter og skal bruke abonnementet. Gyldige tegn er tall, bokstaver og underscore</param>
         /// <returns></returns>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
@@ -31,10 +31,10 @@ namespace NHN.DtoContracts.ServiceBus.Service
         /// <summary>
         /// Avslutter og sletter et abonnement
         /// </summary>
-        /// <param name="eventSubscription"></param>
+        /// <param name="queueName">Navn og identifikator til køen abonnementet er koblet til.</param>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
-        void Unsubscribe(EventSubscription eventSubscription);
+        void Unsubscribe(string queueName);
 
         /// <summary>
         /// Henter abonnementer registrert på brukeren som utfører kallet
