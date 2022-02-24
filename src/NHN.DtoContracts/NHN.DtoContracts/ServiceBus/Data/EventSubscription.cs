@@ -24,7 +24,7 @@ namespace NHN.DtoContracts.ServiceBus.Data
         /// Navn på kilden til hendelsen.
         /// </summary>
         [DataMember]
-        public string EventSource { get; set; }
+        public SubscriptionEventSource EventSource { get; set; }
 
         /// <summary>
         /// Navn på selve hendelsetypen.

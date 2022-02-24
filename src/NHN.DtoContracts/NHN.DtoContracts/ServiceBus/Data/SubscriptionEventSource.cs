@@ -8,9 +8,16 @@ namespace NHN.DtoContracts.ServiceBus.Data
     [DataContract(Namespace = Namespaces.ServiceBusManagerV2)]
     public enum SubscriptionEventSource
     {
+        [EnumMember]
         AddressRegister,
+
+        [EnumMember]
         Resh,
+
+        [EnumMember]
         Hpr,
+
+        [EnumMember]
         Lsr
     }
 }
