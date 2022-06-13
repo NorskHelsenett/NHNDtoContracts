@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.Serialization;
 
 namespace NHN.DtoContracts.Flr.Data
@@ -26,7 +26,9 @@ namespace NHN.DtoContracts.Flr.Data
         /// Vi bruker X.509 sertifikater.
         /// </summary> 
         [DataMember]
+#pragma warning disable CA1819 // Properties should not return arrays
         public byte[] EncryptWithX509Certificate { get; set; }
+#pragma warning restore CA1819 // Properties should not return arrays
 
         /// <summary>
         /// Måneden uttrekket skal gjelde for. Dette feltet må være den første i måneden man ønsker, med tidsstempesl satt til 0. Påkrevd
@@ -85,7 +87,7 @@ namespace NHN.DtoContracts.Flr.Data
         /// <returns></returns>
         public override string ToString()
         {
-            return $"DoctorNIN: {DoctorNIN}; MunicipalityId: {MunicipalityId}; Month: {Month.ToString()}; DoSubstituteSearch: {DoSubstituteSearch.ToString()}; FormatType: {ListType}";
+            return $"DoctorNIN: {DoctorNIN}; MunicipalityId: {MunicipalityId}; Month: {Month}; DoSubstituteSearch: {DoSubstituteSearch}; FormatType: {ListType}";
         }
     }
 }

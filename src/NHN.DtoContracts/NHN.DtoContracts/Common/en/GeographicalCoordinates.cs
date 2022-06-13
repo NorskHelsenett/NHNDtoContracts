@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Globalization;
 using System.Runtime.Serialization;
 
@@ -7,8 +7,9 @@ namespace NHN.DtoContracts.Common.en
     /// <summary>
     /// Geografiske koordinater
     /// </summary>
-    [DataContract(Namespace = Namespaces.CommonOldV1)]
     [Serializable]
+    [DataContract(Namespace = Namespaces.CommonOldV1)]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1815:Override equals and operator equals on value types")]
     public struct LatitudeLongitude
     {
         /// <summary>

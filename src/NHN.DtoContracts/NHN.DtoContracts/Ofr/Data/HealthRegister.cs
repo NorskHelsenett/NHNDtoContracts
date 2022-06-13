@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using NHN.DtoContracts.Common.en;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
@@ -16,7 +16,9 @@ namespace NHN.DtoContracts.Ofr.Data
         /// Unik id for denne helseregisteroppføringen
         /// </summary>
         [DataMember]
+#pragma warning disable CA1720 // Identifier contains type name
         public Guid guid { get; set; }
+#pragma warning restore CA1720 // Identifier contains type name
 
         /// <summary>
         /// Unik, brukerdefinert id
@@ -83,7 +85,7 @@ namespace NHN.DtoContracts.Ofr.Data
         /// Strenger som unikt representerer lovdata-type lenker.
         /// </summary>
         [DataMember]
-        public string[] LegalParagraphs { get; set; }
+        public IList<string> LegalParagraphs { get; set; }
 
         /// <summary>
         /// Type helseregister, representert av en kode i kodeverk.

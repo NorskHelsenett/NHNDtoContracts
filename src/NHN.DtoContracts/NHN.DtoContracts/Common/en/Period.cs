@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.Serialization;
 
 namespace NHN.DtoContracts.Common.en
@@ -49,7 +49,9 @@ namespace NHN.DtoContracts.Common.en
         {
             From = new DateTime(fromYear, fromMonth, fromDay);
             if (toYear > 0)
+            {
                 To = new DateTime(toYear, toMonth, toDay);
+            }
         }
 
         /// <summary>
@@ -65,9 +67,15 @@ namespace NHN.DtoContracts.Common.en
             get
             {
                 if (From > new DateTime(9000, 1, 1))
+                {
                     return false;
+                }
+
                 if (To != null)
+                {
                     return To.Value > From;
+                }
+
                 return true;
             }
         }
@@ -79,8 +87,13 @@ namespace NHN.DtoContracts.Common.en
         /// <returns>true hvis periodene overlapper, false ellers.</returns>
         public bool Overlaps(Period other)
         {
-            if (object.ReferenceEquals(this, other))
+            if (other == null) return false;
+
+            if (ReferenceEquals(this, other))
+            {
                 throw new InvalidOperationException("Period overlaps self, should not be tested..");
+            }
+
             return (other.To == null || this.From < other.To) && (this.To == null || this.To.Value > other.From);
         }
 
@@ -91,9 +104,12 @@ namespace NHN.DtoContracts.Common.en
         /// <returns></returns>
         public bool Overlaps(DateTime pointInTime)
         {
-            if (this.From > pointInTime)
+            if (From > pointInTime)
+            {
                 return false;
-            return (this.To == null || this.To.Value > pointInTime);
+            }
+
+            return (To == null || To.Value > pointInTime);
         }
 
         /// <summary>
@@ -105,7 +121,10 @@ namespace NHN.DtoContracts.Common.en
         {
             var po = obj as Period;
             if (po == null)
+            {
                 return false;
+            }
+
             return To == po.To && From == po.From;
         }
 

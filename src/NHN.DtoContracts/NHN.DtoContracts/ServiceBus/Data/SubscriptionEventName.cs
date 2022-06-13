@@ -1,4 +1,4 @@
-﻿using System.Runtime.Serialization;
+using System.Runtime.Serialization;
 
 namespace NHN.DtoContracts.ServiceBus.Data
 {
@@ -6,6 +6,7 @@ namespace NHN.DtoContracts.ServiceBus.Data
     /// EventNames som det kan abonneres på gjennom topic eksternt
     /// </summary>
     [DataContract(Namespace = Namespaces.ServiceBusManagerV2)]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1034:Nested types should not be visible", Justification = "<Pending>")]
     public static class SubscriptionEventName
     {
         public static class ArBusEvents
@@ -29,7 +30,7 @@ namespace NHN.DtoContracts.ServiceBus.Data
             public const string UtdanningsinstitusjonDeleted = nameof(UtdanningsinstitusjonDeleted);
         }
 
-        public class LsrBusEvents
+        public static class LsrBusEvents
         {
             public const string ApprovalCreated = nameof(ApprovalCreated);
             public const string ApprovalUpdated = nameof(ApprovalUpdated);
@@ -42,7 +43,7 @@ namespace NHN.DtoContracts.ServiceBus.Data
             public const string PositionUpdated = nameof(PositionUpdated);
         }
 
-        public class ReshBusEvents
+        public static class ReshBusEvents
         {
             public const string DepartmentCreated = nameof(DepartmentCreated);
             public const string DepartmentUpdated = nameof(DepartmentUpdated);

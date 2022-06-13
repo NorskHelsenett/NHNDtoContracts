@@ -3,7 +3,7 @@ namespace NHN.DtoContracts
     /// <summary>
     /// These strings are the namespaces used in the exposed Service- and DataContracts.
     /// </summary>
-    public class Namespaces
+    public static class Namespaces
     {
         // Ar
         public const string CommunicationPartyV1 = "http://register.nhn.no/CommunicationParty";

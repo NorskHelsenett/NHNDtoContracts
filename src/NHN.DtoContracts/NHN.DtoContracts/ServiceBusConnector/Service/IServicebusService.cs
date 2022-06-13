@@ -1,10 +1,9 @@
-﻿using System.ServiceModel;
-using System.Threading.Tasks;
-using NHN.DtoContracts;
 using NHN.DtoContracts.Common.en;
 using NHN.DtoContracts.ServiceBusConnector.Enum;
+using System.ServiceModel;
+using System.Threading.Tasks;
 
-namespace NHN.DTOContracts.ServiceBusConnector.Service
+namespace NHN.DtoContracts.ServiceBusConnector.Service
 {
     /// <summary>
     /// Tjeneste for interaksjon med Service Bus.
