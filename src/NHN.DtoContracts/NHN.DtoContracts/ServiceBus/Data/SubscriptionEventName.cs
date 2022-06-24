@@ -1,5 +1,4 @@
 ﻿using System.Runtime.Serialization;
-using System.Security.Cryptography.X509Certificates;
 
 namespace NHN.DtoContracts.ServiceBus.Data
 {
