@@ -1,4 +1,5 @@
 ﻿using System.Runtime.Serialization;
+using System.Security.Cryptography.X509Certificates;
 
 namespace NHN.DtoContracts.ServiceBus.Data
 {
@@ -51,6 +52,13 @@ namespace NHN.DtoContracts.ServiceBus.Data
             public const string ReshUnitUpdated = nameof(ReshUnitUpdated);
             public const string ServiceCreated = nameof(ServiceCreated);
             public const string ServiceUpdated = nameof(ServiceUpdated);
+        }
+
+        public class CppaBusEvents
+        {
+            public const string CpaCreated = nameof(CpaCreated);
+            public const string CpaUpdated = nameof(CpaUpdated);
+            public const string CppCreated = nameof(CppCreated);
         }
     }
 }

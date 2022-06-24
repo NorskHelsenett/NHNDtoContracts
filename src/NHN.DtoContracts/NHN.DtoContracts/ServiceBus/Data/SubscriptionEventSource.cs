@@ -18,6 +18,9 @@ namespace NHN.DtoContracts.ServiceBus.Data
         Hpr,
 
         [EnumMember]
-        Lsr
+        Lsr,
+
+        [EnumMember]
+        Cppa,
     }
 }
