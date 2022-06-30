@@ -55,7 +55,8 @@ namespace NHN.DtoContracts.ServiceBus.Data
 
         public class CppaBusEvents
         {
-            public const string CpaUpdated = nameof(CpaUpdated);
+            public const string CpaCreated = nameof(CpaCreated);
+            public const string CpaTerminated = nameof(CpaTerminated);
             public const string CppUpdated = nameof(CppUpdated);
         }
     }
