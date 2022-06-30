@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -32,9 +32,7 @@ namespace NHN.DtoContracts.Common.en
         public override bool Equals(object obj)
         {
             var oh = obj as OpeningHours;
-            if (null == oh)
-                return false;
-            return Equals(oh);
+            return null == oh ? false : Equals(oh);
         }
 
 
@@ -46,7 +44,9 @@ namespace NHN.DtoContracts.Common.en
         {
             var e1 = FreeText.GetHashCode();
             if (OpenAt != null && OpenAt.Count > 0)
+            {
                 e1 += OpenAt.Aggregate(e1, (hash, tp) => hash + tp.From.GetHashCode() + tp.To.GetHashCode());
+            }
 
             return e1;
         }
@@ -58,13 +58,28 @@ namespace NHN.DtoContracts.Common.en
         /// <returns></returns>
         public bool Equals(OpeningHours oh)
         {
+            if (oh == null)
+            {
+                return false;
+            }
+
             if (FreeText != oh.FreeText)
+            {
                 return false;
+            }
+
             if (OpenAt.Count != oh.OpenAt.Count)
+            {
                 return false;
+            }
+
             for (var i = 0; i < OpenAt.Count; i++)
+            {
                 if (OpenAt[i] != oh.OpenAt[i])
+                {
                     return false;
+                }
+            }
 
             return true;
         }

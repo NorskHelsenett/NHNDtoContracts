@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 
@@ -30,7 +30,7 @@ namespace NHN.DtoContracts.Flr.Data
         /// <returns></returns>
         public override string ToString()
         {
-            return $"FormatType: {FormatType}; Contracts[ {string.Join(", ", Contracts.Select(c => "ContractId:" + c.ContractId.ToString() + "; Month:" + c.Month.ToString()))}]";
+            return $"FormatType: {FormatType}; Contracts[ {string.Join(", ", Contracts.Select(c => $"ContractId:{c.ContractId}; Month:{c.Month}"))}]";
         }
     }
 }

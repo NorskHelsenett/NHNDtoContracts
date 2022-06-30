@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.Serialization;
 
 namespace NHN.DtoContracts.Common.en
@@ -7,8 +7,10 @@ namespace NHN.DtoContracts.Common.en
     /// En tidsperiode uten informasjon om dato.
     /// Implementerer IComparable for sortering, hvor det sorteres på Fra og så Til.
     /// </summary>
-    [DataContract(Namespace = Namespaces.CommonOldV1)]
     [Serializable]
+    [DataContract(Namespace = Namespaces.CommonOldV1)]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1036:Override methods on comparable types")]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1066:Implement IEquatable when overriding Object.Equals")]
     public struct TimePeriod : IComparable<TimePeriod>
     {
         /// <summary>
@@ -36,7 +38,9 @@ namespace NHN.DtoContracts.Common.en
         public TimePeriod(TimeSpan from, TimeSpan to)
         {
             if (to < from)
+            {
                 throw new ArgumentException($"To ({to}) can not be less than From ({from})");
+            }
 
             From = from;
             To = to;
@@ -77,9 +81,7 @@ namespace NHN.DtoContracts.Common.en
         /// <returns></returns>
         public override bool Equals(object obj)
         {
-            if (null == obj)
-                return false;
-            return ((TimePeriod)obj) == this;
+            return null == obj ? false : ((TimePeriod)obj) == this;
         }
 
         /// <summary>
@@ -90,7 +92,6 @@ namespace NHN.DtoContracts.Common.en
         {
             return From.GetHashCode() + To.GetHashCode();
         }
-
 
         /// <summary>
         /// Likhetsjekk

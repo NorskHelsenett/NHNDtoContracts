@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.Serialization;
 
 namespace NHN.DtoContracts.ServiceBusConnector.Enum
@@ -20,7 +20,9 @@ namespace NHN.DtoContracts.ServiceBusConnector.Enum
         /// Meldingen er i kø
         /// </summary>
         [EnumMember]
+#pragma warning disable CA1008 // Enums should have zero value
         InQueue,
+#pragma warning restore CA1008 // Enums should have zero value
 
         /// <summary>
         /// Meldingen er ikke på kø

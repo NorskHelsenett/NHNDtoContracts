@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.ServiceModel;
 using NHN.DtoContracts.Common.en;
 using NHN.DtoContracts.ServiceBus.Data;
@@ -42,6 +42,8 @@ namespace NHN.DtoContracts.ServiceBus.Service
         /// <returns>Liste over abonnementer</returns>
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
+#pragma warning disable CA1024 // Use properties where appropriate
         IList<EventSubscription> GetSubscriptions();
+#pragma warning restore CA1024 // Use properties where appropriate
     }
 }
