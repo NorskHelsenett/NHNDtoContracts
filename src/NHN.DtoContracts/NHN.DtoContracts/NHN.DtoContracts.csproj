@@ -8,9 +8,11 @@
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     <WarningLevel>4</WarningLevel>
     <NoWarn>CA1002;CA5362;CA1716</NoWarn>
+    <DocumentationFile>bin\Debug\NHN.DtoContracts.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <NoWarn>CA1002;CA5362;CA1716</NoWarn>
+    <DocumentationFile>bin\Release\NHN.DtoContracts.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Build.Framework" />
