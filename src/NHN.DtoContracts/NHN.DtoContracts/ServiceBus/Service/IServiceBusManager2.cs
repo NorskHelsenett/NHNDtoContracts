@@ -9,18 +9,33 @@ namespace NHN.DtoContracts.ServiceBus.Service
     public interface IServiceBusManagerV2
     {
         /// <summary>
-        /// Oppretter abonnement for brukeren som utfører kallet
+        /// Oppretter et abonnement for brukeren som utfører kallet.
+        /// Returnerer eksisterende abonnement dersom det allerede er opprettet for angitte parametre.
         /// </summary>
         /// <param name="eventSource">Navn på kilden til hendelsen.</param>
         /// <param name="eventName">(Valgfritt) Navn på selve hendelsetypen. Kan være tom string hvis alle hendelsetyper til en gitt kilde ønskes.
-        /// ┌───────────────────────────────────────────────────────────────────────────────────────────┐
-        /// │ EventSource        │   EventName                                                          │
-        /// ├───────────────────────────────────────────────────────────────────────────────────────────┤
-        /// │ AddressRegister    │   SubscriptionEventName.ArBusEvents.*                                │
-        /// │ Hpr                │   SubscriptionEventName.HprBusEvents.*                               │
-        /// │ Lsr                │   SubscriptionEventName.LsrBusEvents.*                               │
-        /// │ Resh               │   SubscriptionEventName.ReshBusEvents.*                              │
-        /// └────────────────────┴──────────────────────────────────────────────────────────────────────┘
+        /// <list type="table">
+        ///     <listheader>
+        ///         <term> EventSource </term>
+        ///         <description> EventName </description>
+        ///     </listheader>
+        ///     <item>
+        ///         <term> AddressRegister </term>
+        ///         <description> En av verdiene i <see cref="SubscriptionEventName.ArBusEvents">SubscriptionEventName.ArBusEvents</see> </description>
+        ///     </item>
+        ///     <item>
+        ///         <term> Hpr </term>
+        ///         <description> En av verdiene i <see cref="SubscriptionEventName.HprBusEvents">SubscriptionEventName.HprBusEvents</see> </description>
+        ///     </item>
+        ///     <item>
+        ///         <term> Lsr </term>
+        ///         <description> En av verdiene i <see cref="SubscriptionEventName.LsrBusEvents">SubscriptionEventName.LsrBusEvents</see> </description>
+        ///     </item>
+        ///     <item>
+        ///         <term> Resh </term>
+        ///         <description> En av verdiene i <see cref="SubscriptionEventName.ReshBusEvents">SubscriptionEventName.ReshBusEvents</see> </description>
+        ///     </item>
+        /// </list>
         /// </param>
         /// <param name="userSystemIdent">Navn på systemet som oppretter og skal bruke abonnementet. Gyldige tegn er tall, bokstaver og underscore</param>
         /// <returns></returns>
