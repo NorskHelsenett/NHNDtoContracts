@@ -4,24 +4,24 @@ using NHN.DtoContracts.ServiceBus.Service;
 namespace NHN.DtoContracts.Flr.Enum
 {
     /// <summary>
-    /// Alle eventName typene som blir brukt av <see cref="IServiceBusManager"/>
+    /// Alle eventName typene som blir brukt av <see cref="IServiceBusManagerV2"/>
     /// der eventSource er "flr"
     /// </summary>
     public enum FlrEvents
     {
         /// <summary>
-        /// Publiseres når en ny fastlegeavtale blir opprettet.
-        /// 
+        /// Publiseres nï¿½r en ny fastlegeavtale blir opprettet.
+        ///
         /// Se <see cref="IFlrWriteOperations.CreateGPContract" />.
         /// </summary>
         ContractCreated,
 
         /// <summary>
-        /// Publiseres når en fastlegeavtale blir oppdatert med ny informasjon.
-        /// 
+        /// Publiseres nï¿½r en fastlegeavtale blir oppdatert med ny informasjon.
+        ///
         /// Se <see cref="IFlrWriteOperations.UpdateGPContract" />,
         /// <see cref="IFlrWriteOperations.UpdateGPContractMaxPatients" />,
-        /// <see cref="IFlrWriteOperations.UpdateGPContractPatientsOnWaitingList"/>, 
+        /// <see cref="IFlrWriteOperations.UpdateGPContractPatientsOnWaitingList"/>,
         /// <see cref="IFlrWriteOperations.UpdateGPContractStatus" />,
         /// <see cref="IFlrWriteOperations.UpdateGPContractCoopMunicipalities" />,
         /// <see cref="IFlrWriteOperations.UpdateGPOfficeOnGPContracts" />.
@@ -29,36 +29,36 @@ namespace NHN.DtoContracts.Flr.Enum
         ContractUpdated,
 
         /// <summary>
-        /// Publiseres når en fastlegeavtale blir avsluttet.
-        /// 
+        /// Publiseres nï¿½r en fastlegeavtale blir avsluttet.
+        ///
         /// Se <see cref="IFlrWriteOperations.CancelGPContractAndMovePatients" />.
         /// </summary>
         ContractCanceled,
 
         /// <summary>
-        /// Publiseres når en ny legeperiode blir koblet mot en fastlegeavtale.
-        /// 
+        /// Publiseres nï¿½r en ny legeperiode blir koblet mot en fastlegeavtale.
+        ///
         /// Se <see cref="IFlrWriteOperations.CreateGPOnContractAssociation" />.
         /// </summary>
         GPOnContractCreated,
 
         /// <summary>
-        /// Publiseres når en legeperiode blir oppdatert med ny informasjon.
-        /// 
+        /// Publiseres nï¿½r en legeperiode blir oppdatert med ny informasjon.
+        ///
         /// Se <see cref="IFlrWriteOperations.UpdateGPOnContractAssociation" />.
         /// </summary>
         GPOnContractUpdated,
 
         /// <summary>
-        /// Publiseres når en legeperiode blir slettet.
-        /// 
+        /// Publiseres nï¿½r en legeperiode blir slettet.
+        ///
         /// Se <see cref="IFlrWriteOperations.DeleteGPOnContractAssociation" />.
         /// </summary>
         GPOnContractDeleted,
 
         /// <summary>
-        /// Publiseres når en pasient blir oppført på pasientlisten tilhørende en fastlegeavtale.
-        /// 
+        /// Publiseres nï¿½r en pasient blir oppfï¿½rt pï¿½ pasientlisten tilhï¿½rende en fastlegeavtale.
+        ///
         /// Se <see cref="IFlrWriteOperations.CreatePatientToGPContractAssociation" />,
         /// <see cref="IFlrWriteOperations.MovePatients" />,
         /// <see cref="IFlrWriteOperations.CancelGPContractAndMovePatients" />.
@@ -66,44 +66,44 @@ namespace NHN.DtoContracts.Flr.Enum
         PatientOnContractCreated,
 
         /// <summary>
-        /// Publiseres når en pasient blir oppdatert med ny informasjon.
-        /// 
+        /// Publiseres nï¿½r en pasient blir oppdatert med ny informasjon.
+        ///
         /// Se <see cref="IFlrWriteOperations.UpdatePatientNin"/>
         /// </summary>
         PatientOnContractUpdated,
 
         /// <summary>
-        /// Publiseres når en pasient blir avsluttet på fastlegeavtalen.
-        /// 
-        /// Se <see cref="IFlrWriteOperations.CancelPatientOnGPContract" />, 
+        /// Publiseres nï¿½r en pasient blir avsluttet pï¿½ fastlegeavtalen.
+        ///
+        /// Se <see cref="IFlrWriteOperations.CancelPatientOnGPContract" />,
         /// <see cref="IFlrWriteOperations.CancelPatientsOnGPContract" />
         /// </summary>
         PatientOnContractCanceled,
 
         /// <summary>
-        /// Publiseres når en pasients fødselsnummer blir endret.
-        /// 
+        /// Publiseres nï¿½r en pasients fï¿½dselsnummer blir endret.
+        ///
         /// Se <see cref="IFlrWriteOperations.UpdatePatientNin" />.
         /// </summary>
         PatientNinChanged,
 
         /// <summary>
-        /// Publiseres når et nytt utekontor blir opprettet på en fastlegeavtale.
-        /// 
+        /// Publiseres nï¿½r et nytt utekontor blir opprettet pï¿½ en fastlegeavtale.
+        ///
         /// Se <see cref="IFlrWriteOperations.CreateOutOfOfficeLocation" />.
         /// </summary>
         OutOfOfficeLocationCreated,
 
         /// <summary>
-        /// Publiseres når et utekontor blir oppdatert med ny informasjon.
-        /// 
+        /// Publiseres nï¿½r et utekontor blir oppdatert med ny informasjon.
+        ///
         /// Se <see cref="IFlrWriteOperations.UpdateOutOfOfficeLocation" />.
         /// </summary>
         OutOfOfficeLocationUpdated,
 
         /// <summary>
-        /// Publiseres når et utekontor blir slettet.
-        /// 
+        /// Publiseres nï¿½r et utekontor blir slettet.
+        ///
         /// Se <see cref="IFlrWriteOperations.RemoveOutOfOfficeLocation" />.
         /// </summary>
         OutOfOfficeLocationDeleted

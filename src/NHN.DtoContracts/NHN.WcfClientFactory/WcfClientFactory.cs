@@ -6,7 +6,7 @@ using NHN.DtoContracts.Flr.Service;
 using NHN.DtoContracts.Logging.Service;
 using NHN.DtoContracts.Ofr.Service;
 using NHN.DtoContracts.ServiceBus.Service;
-using NHN.DTOContracts.ServiceBusConnector.Service;
+using NHN.DtoContracts.ServiceBusConnector.Service;
 
 namespace NHN.WcfClientFactory
 {
@@ -93,7 +93,7 @@ namespace NHN.WcfClientFactory
         /// Proxyadresse (kun for https transport).
         /// </summary>
         /// <remarks>
-        /// Verdien satt her vil gjelde foran systemets proxyinstillinger. 
+        /// Verdien satt her vil gjelde foran systemets proxyinstillinger.
         /// Settes null eksplisitt, vil systemets proxyinstillinger ikke brukes.
         /// </remarks>
         public string ProxyAddress
@@ -125,7 +125,7 @@ namespace NHN.WcfClientFactory
         /// <summary>
         /// Hvorvidt bruke systemets proxyinstillinger. Hvis <see cref="ProxyAddress"/> er satt, blir denne
         /// verdien ignorert.
-        /// 
+        ///
         /// Default: true.
         /// </summary>
         public bool UseDefaultWebProxy
@@ -171,7 +171,7 @@ namespace NHN.WcfClientFactory
                 ReceiveTimeout = TimeSpan.FromMinutes(70),
                 SendTimeout = TimeSpan.FromMinutes(70)
             });
-            AddKnownConfig<IServiceBusManager>(new ServiceContractConfig("/v1/servicebusmanager"));
+            AddKnownConfig<IServiceBusManagerV2>(new ServiceContractConfig("/v2/servicebusmanager"));
             AddKnownConfig<IServicebusService>(new ServiceContractConfig("/v1/ServiceBusService"));
             AddKnownConfig<ILogFetchingService>(new ServiceContractConfig("/v1/LogFetching"));
             AddKnownConfig<IOfrService>(new ServiceContractConfig("/v1/ofr"));
@@ -338,7 +338,7 @@ namespace NHN.WcfClientFactory
         private NetTcpBinding ConfigureNetTcpBinding(ServiceContractConfig config)
         {
             var binding = new NetTcpBinding(SecurityMode.TransportWithMessageCredential);
-            binding.MaxReceivedMessageSize = config.MaxReceivedMessageSize; 
+            binding.MaxReceivedMessageSize = config.MaxReceivedMessageSize;
             binding.MaxBufferPoolSize = config.MaxBufferPoolSize;
             binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.None;
             binding.Security.Message.ClientCredentialType = MessageCredentialType.UserName;

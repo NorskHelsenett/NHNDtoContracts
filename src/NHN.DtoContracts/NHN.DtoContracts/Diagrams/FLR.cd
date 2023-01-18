@@ -281,13 +281,6 @@
       <FileName>Htk\CorporateXmlNamespace.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="NHN.DtoContracts.ServiceBus.Data.SubscriptionInfo">
-    <Position X="22" Y="13.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>CABAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAI=</HashCode>
-      <FileName>ServiceBus\Data\SubscriptionInfo.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="NHN.DtoContracts.ServiceBus.ServiceBusXmlNamespace">
     <Position X="11.25" Y="16" Width="2" />
     <TypeIdentifier>
@@ -336,13 +329,6 @@
     <TypeIdentifier>
       <HashCode>AAAAABAkABUECEAEQAinKUiIAgIAQIACAJIICQSAAQA=</HashCode>
       <FileName>Flr\Service\IFlrWriteOperations.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="NHN.DtoContracts.ServiceBus.Service.IServiceBusManager">
-    <Position X="14.5" Y="18" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAABBAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
-      <FileName>ServiceBus\Service\IServiceBusManager.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Enum Name="NHN.DtoContracts.Flr.Enum.FlrEvents">
