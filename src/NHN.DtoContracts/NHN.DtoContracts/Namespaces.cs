@@ -95,12 +95,11 @@ namespace NHN.DtoContracts
         public const string ReshWsV1 = "http://ws.nhn.no/Resh";
         public const string ReshCapitalizedV1 = "http://register.nhn.no/RESH";
         public const string ReshLegacyV1 = "http://schemas.datacontract.org/2004/07/NHN.Palantir.WebServices.Contracts.RESH.Data";
-        
+
         // Rabbit MQ Migration
         public const string RabbitMqMigration = "http://register.nhn.no/RabbitMqMigration";
-        
+
         // ServiceBusManager
-        public const string ServiceBusManagerV1 = "http://schemas.nhn.no/reg/serviceBusManager";
         public const string ServiceBusManagerV2 = "http://schemas.nhn.no/reg/serviceBusManagerV2";
 
         // ServiceBusConnector
