@@ -101,9 +101,5 @@ namespace NHN.DtoContracts
 
         // ServiceBusManager
         public const string ServiceBusManagerV2 = "http://schemas.nhn.no/reg/serviceBusManagerV2";
-
-        // ServiceBusConnector
-        public const string ServiceBusConnectorV1 = "http://schemas.nhn.no/reg/ServiceBusConnector";
-        public const string ServiceBusConnectorOldV1 = "http://register.nhn.no/ServiceBusConnector";
     }
 }
