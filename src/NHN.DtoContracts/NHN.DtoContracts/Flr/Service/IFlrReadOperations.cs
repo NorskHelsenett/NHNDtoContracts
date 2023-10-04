@@ -459,43 +459,5 @@ namespace NHN.DtoContracts.Flr.Service
         [OperationContract]
         [FaultContract(typeof(GenericFault))]
         PrimaryHealthCareTeam GetPrimaryHealthCareTeam(long id);
-
-        /// <summary>
-        ///     <para>
-        ///         Henter gjesteinnbyggerne i kommunen med kommunenummer lik <paramref name="municipalityCode"/>. Altså: Personer som har <i>fastlegen</i>
-        ///         sin i denne kommunen, men er bosatt i en annen kommune.
-        ///     </para>
-        ///     <para>
-        ///     Eksempel: Jens er bosatt i Trondheim, men har sin fastlege i Verdal. Anta at kommunenummeret til Verdal er 5038. Listen som
-        ///     returneres ved et kall til GetGuestResidents("5038") vil dermed inneholde Jens.
-        ///     </para>
-        ///     <para>
-        ///         For den "motsatte" operasjonen, se <see cref="GetGuestResidentsFromMunicipality(string)"></see>  
-        ///     </para>
-        /// </summary>
-        /// <param name="municipalityCode">Kode som unikt identifiserer en kommune.</param>
-        /// <returns>En CSV-fil med de aktuelle gjesteinnbyggerne. </returns>
-        [OperationContract]
-        [FaultContract(typeof(GenericFault))]
-        FileResponse GetGuestResidentsInMunicipality(string municipalityCode, int year, int month);
-
-        /// <summary>
-        ///     <para>
-        ///         Henter innbyggerne i kommunen med kommunenummer lik <paramref name="municipalityCode"/> som er gjesteinnbyggere i en <i>annen</i>
-        ///         kommune. Altså: Personer som er <i>bosatt</i> i denne kommunen, men har fastlegen sin i en annen kommune.
-        ///     </para>
-        ///     <para>
-        ///         Eksempel: Jens er bosatt i Trondheim, men har sin fastlege i Verdal. Anta at kommunenummeret til Trondheim er 5001. Listen som
-        ///         returneres ved et kall til GetResidentsThatAreGuestResidentsElsewhere("5001") vil dermed inneholde Jens.
-        ///     </para>
-        ///     <para>
-        ///         For den "motsatte" operasjonen, se <see cref="GetGuestResidentsInMunicipality(string)"></see>  
-        ///     </para>
-        /// </summary>
-        /// <param name="municipalityCode"></param>
-        /// <returns>En CSV-fil med de aktuelle innbyggerne.</returns>
-        [OperationContract]
-        [FaultContract(typeof(GenericFault))]
-        FileResponse GetGuestResidentsFromMunicipality(string municipalityCode, int year, int month);
     }
 }
