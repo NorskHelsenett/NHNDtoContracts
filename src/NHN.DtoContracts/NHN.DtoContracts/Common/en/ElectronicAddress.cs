@@ -45,7 +45,7 @@ namespace NHN.DtoContracts.Common.en
 
         /// <summary>
         /// Type elektronisk adresse.
-        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/type_adressekomponeneter">type_adressekomponeneter</see> (OID 9044).
+        /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/type_adressekomponenter">type_adressekomponenter</see> (OID 9044).
         /// Gyldige verdier er verdiene som starter med E_.
         /// </summary>
         [DataMember]
@@ -54,7 +54,7 @@ namespace NHN.DtoContracts.Common.en
             get
             {
                 if (_type == null && !string.IsNullOrEmpty(_typeCodeValue))
-                    _type = new Code("type_adressekomponeneter", 9044, _typeCodeValue);
+                    _type = new Code("type_adressekomponenter", 9044, _typeCodeValue);
 
                 return _type;
             }
@@ -91,7 +91,7 @@ namespace NHN.DtoContracts.Common.en
         /// <returns>Kodeobjekt. Description vil ikke være satt.</returns>
         public static Code CreateAddressTypeCode(string codeValue)
         {
-            return new Code("type_adressekomponeneter", 9044, codeValue);
+            return new Code("type_adressekomponenter", 9044, codeValue);
         }
     }
 }
