@@ -102,7 +102,7 @@ namespace NHN.DtoContracts.Ofr.Data
         public IList<PhysicalAddress> PhysicalAddresses { get; set; }
 
         /// <summary>
-        /// Elektoniske adresser til eieren av registeret. I hovedsak er dette snakk om en Hjemmeside representert av kodeverdien E_URL,
+        /// Elektroniske adresser til eieren av registeret. I hovedsak er dette snakk om en Hjemmeside representert av kodeverdien E_URL,
         /// og en Adresselenke for innsynsrett representert av kodeverdien E_PTL
         /// Kodeverk: <see href="/CodeAdmin/EditCodesInGroup/type_adressekomponenter">type_adressekomponenter</see> (OID 9044).
         /// </summary>
