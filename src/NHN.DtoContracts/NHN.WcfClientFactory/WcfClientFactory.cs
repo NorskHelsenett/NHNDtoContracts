@@ -6,7 +6,6 @@ using NHN.DtoContracts.Flr.Service;
 using NHN.DtoContracts.Logging.Service;
 using NHN.DtoContracts.Ofr.Service;
 using NHN.DtoContracts.ServiceBus.Service;
-using NHN.DtoContracts.ServiceBusConnector.Service;
 
 namespace NHN.WcfClientFactory
 {
@@ -172,10 +171,8 @@ namespace NHN.WcfClientFactory
                 SendTimeout = TimeSpan.FromMinutes(70)
             });
             AddKnownConfig<IServiceBusManagerV2>(new ServiceContractConfig("/v2/servicebusmanager"));
-            AddKnownConfig<IServicebusService>(new ServiceContractConfig("/v1/ServiceBusService"));
             AddKnownConfig<ILogFetchingService>(new ServiceContractConfig("/v1/LogFetching"));
             AddKnownConfig<IOfrService>(new ServiceContractConfig("/v1/ofr"));
-            AddKnownConfig<IOfrService>(new ServiceContractConfig("/v1/krk"));
         }
 
         /// <summary>
