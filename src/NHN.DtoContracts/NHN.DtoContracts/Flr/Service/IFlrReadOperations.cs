@@ -228,7 +228,6 @@ namespace NHN.DtoContracts.Flr.Service
         [FaultContract(typeof(GenericFault))]
         IList<PatientToGPContractAssociation> GetGPPatientListAtTime(long gpContractId, DateTime atTime);
 
-
         /// <summary>
         /// Henter informasjon om fastlege og tilhørende fastlegepraksis(er)
         /// </summary>
