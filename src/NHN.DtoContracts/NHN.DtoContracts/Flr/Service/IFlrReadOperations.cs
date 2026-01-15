@@ -204,6 +204,31 @@ namespace NHN.DtoContracts.Flr.Service
         IList<PatientToGPContractAssociation> GetGPPatientList(long gpContractId);
 
         /// <summary>
+        /// Henter fastlegeliste (alle innbyggere på fastlegens liste) over pasienter på angitt tidspunkt.
+        /// </summary>
+        /// <remarks>
+        /// ##### Krever en av rollene
+        /// * Administrator
+        /// * FlrRead på Unit kontrakten er tilknyttet
+        /// </remarks>
+        /// <param name="gpContractId">Id til fastlegens kontrakt.</param>
+        /// <param name="atTime">Henter fastlegelisten på dette tidspunktet.</param>
+        /// <returns>Liste over aktuelle innbyggere på fastlegens pasientliste</returns>
+        /// <exception cref="ArgumentException">Kastes hvis kontraktens id ikke er høyere enn 0</exception>
+        /// <exception cref="ArgumentException">Kastes hvis en kontrakt ikke finnes</exception>
+        /// <exception cref="ArgumentException">Kastes hvis en kontrakt er assosiert med en enhet uten orgnummer</exception>
+        /// <exception cref="ArgumentException">Kastes hvis en liste ikke kan utleveres</exception>
+        /// <example>
+        /// <code>
+        /// var atTime = DateTime.Now;
+        /// var gpPatientList = flrReadService.GetGPPatientListAtTime(gpContractId, atTime);
+        /// </code>
+        /// </example>
+        [OperationContract]
+        [FaultContract(typeof(GenericFault))]
+        IList<PatientToGPContractAssociation> GetGPPatientListAtTime(long gpContractId, DateTime atTime);
+
+        /// <summary>
         /// Henter informasjon om fastlege og tilhørende fastlegepraksis(er)
         /// </summary>
         /// <remarks>
