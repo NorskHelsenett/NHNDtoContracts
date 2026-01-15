@@ -220,7 +220,8 @@ namespace NHN.DtoContracts.Flr.Service
         /// <exception cref="ArgumentException">Kastes hvis en liste ikke kan utleveres</exception>
         /// <example>
         /// <code>
-        /// var gpPatientList = flrReadService.GetGPPatientList(gpContractId);
+        /// var atTime = DateTime.Now;
+        /// var gpPatientList = flrReadService.GetGPPatientListAtTime(gpContractId, atTime);
         /// </code>
         /// </example>
         [OperationContract]
