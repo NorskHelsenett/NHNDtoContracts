@@ -287,63 +287,6 @@ namespace NHN.DtoContracts.Flr.Service
         GPContract GetGPContractForNav(string doctorNin, string municipalityNr, bool doSubstituteSearch);
 
         /// <summary>
-        /// Returnerer pasientlister på gammelt kith/nav format.
-        /// Se <see cref="NavEncryptedPatientListParameters"/> for inputinfo.
-        /// Stream som returneres er kryptert ved hjelp av CMS/PKCS#7.
-        /// Xml er signert som beskrevet i schema.
-        /// </summary>
-        /// <remarks>
-        /// ##### Krever en av rollene
-        /// * Administrator
-        /// * FlrReadExtended
-        /// </remarks>
-        /// <param name="param">Parametre for uttrekk</param>
-        /// <returns>CMS/PKCS#7 cryptert Stream</returns>
-        /// <exception cref="ArgumentException">Kastes hvis legens NIN ikke er satt</exception>
-        /// <exception cref="ArgumentException">Kastes hvis kommunenummer ikke er satt eller er ugyldig</exception>
-        /// <exception cref="ArgumentException">Kastes hvis listetype har en ugyldig verdi</exception>
-        /// <exception cref="ArgumentException">Kastes hvis angitt måned ikke er satt til den første i måneden</exception>
-        /// <exception cref="ArgumentException">Kastes hvis angitt måned er fram i tid</exception>
-        /// <exception cref="ArgumentException">Kastes hvis X.509-sertifikat ikke er satt eller er ugyldig</exception>
-        /// <exception cref="ArgumentException">Kastes hvis receiverXml mangler eller er ugyldig</exception>
-        /// <exception cref="ArgumentException">Kastes hvis senderXml mangler eller er ugyldig</exception>
-        [OperationContract]
-        [FaultContract(typeof(GenericFault))]
-        Stream NavGetEncryptedPatientList(NavEncryptedPatientListParameters param);
-
-        /// <summary>
-        /// Returnerer pasientlister på gammelt kith/nav format.
-        /// Se <see cref="NavEncryptedPatientListParameters"/> for beskrivelse av de faktiske parameterene.
-        /// Stream som returneres er kryptert ved hjelp av CMS/PKCS#7.
-        /// Xml er signert som beskrevet i schema.
-        /// </summary>
-        /// <remarks>
-        /// ##### Krever en av rollene:
-        /// * Administrator
-        /// * FlrReadExtended
-        /// </remarks>
-        /// <param name="doctorNIN">Se <see cref="NavEncryptedPatientListParameters.DoctorNIN"/></param>
-        /// <param name="municipalityId">Se <see cref="NavEncryptedPatientListParameters.MunicipalityId"/></param>
-        /// <param name="encryptWithX509Certificate">Se <see cref="NavEncryptedPatientListParameters.EncryptWithX509Certificate"/></param>
-        /// <param name="month">Se <see cref="NavEncryptedPatientListParameters.Month"/></param>
-        /// <param name="doSubstituteSearch">Se <see cref="NavEncryptedPatientListParameters.DoSubstituteSearch"/></param>
-        /// <param name="senderXml">Se <see cref="NavEncryptedPatientListParameters.SenderXml"/></param>
-        /// <param name="receiverXml">Se <see cref="NavEncryptedPatientListParameters.ReceiverXml"/></param>
-        /// <param name="listType">Se <see cref="NavEncryptedPatientListParameters.ListType"/></param>
-        /// <returns>CMS/PKCS#7 cryptert Stream</returns>    
-        /// <exception cref="ArgumentException">Kastes hvis legens NIN ikke er satt</exception>
-        /// <exception cref="ArgumentException">Kastes hvis kommunenummer ikke er satt eller er ugyldig</exception>
-        /// <exception cref="ArgumentException">Kastes hvis listetype har en ugyldig verdi</exception>
-        /// <exception cref="ArgumentException">Kastes hvis angitt måned ikke er satt til den første i måneden</exception>
-        /// <exception cref="ArgumentException">Kastes hvis angitt måned er fram i tid</exception>
-        /// <exception cref="ArgumentException">Kastes hvis X.509-sertifikat ikke er satt eller er ugyldig</exception>
-        /// <exception cref="ArgumentException">Kastes hvis receiverXml mangler eller er ugyldig</exception>
-        /// <exception cref="ArgumentException">Kastes hvis senderXml mangler eller er ugyldig</exception>
-        [OperationContract]
-        [FaultContract(typeof(GenericFault))]
-        Stream NavGetEncryptedPatientListAlternate(string doctorNIN, string municipalityId, byte[] encryptWithX509Certificate, DateTime month, bool doSubstituteSearch, string senderXml, string receiverXml, string listType);
-
-        /// <summary>
         /// Hent ut alle GPContractId's på kontrakter hvis legekontor har et postnummer som er lik eller begynner på postNr.
         /// </summary>
         /// <remarks>
