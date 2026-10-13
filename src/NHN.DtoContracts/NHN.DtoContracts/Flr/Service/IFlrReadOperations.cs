@@ -260,33 +260,6 @@ namespace NHN.DtoContracts.Flr.Service
         bool ConfirmGP(string patientNin, int hprNumber, DateTime? atTime);
 
         /// <summary>
-        /// Denne operasjonen er kun tilgjengelig for NAV.
-        /// For å hente fastlegeliste med pasienter basert på personnummer til legen og kommune.
-        /// </summary>
-        /// <remarks>
-        /// ##### Krever en av rollene
-        /// * Administrator
-        /// * FlrRead
-        /// * FlrReadExtended
-        /// </remarks>
-        /// <param name="doctorNin">Legens personnummer</param>
-        /// <param name="municipalityNr">Kommune fastlegelisten gjelder</param>
-        /// <param name="doSubstituteSearch">Hvorvidt legen kan være en vikar. Hvis ikke søker vi utelukkende på legen.</param>
-        /// <returns>GPContract funnet. På kontrakten vil PatientList være fylt ut.</returns>
-        /// <exception cref="ArgumentException">Kastes hvis kommunenr er ugyldig</exception>
-        /// <exception cref="ArgumentException">Kastes hvis personnummer er ugyldig</exception>
-        /// <exception cref="ArgumentException">Kastes hvis aktive fastlegelister i gitt kommune er funnet</exception>
-        /// <exception cref="ArgumentException">Kastes hvis det mer en en aktiv legeperiode</exception>
-        /// <example>
-        /// <code>
-        /// var contract = flrReadService.GetGPContractForNav(doctorNin,municipalityNr, doSubstituteSearch);
-        /// </code>
-        /// </example>
-        [OperationContract]
-        [FaultContract(typeof(GenericFault))]
-        GPContract GetGPContractForNav(string doctorNin, string municipalityNr, bool doSubstituteSearch);
-
-        /// <summary>
         /// Hent ut alle GPContractId's på kontrakter hvis legekontor har et postnummer som er lik eller begynner på postNr.
         /// </summary>
         /// <remarks>
