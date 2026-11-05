@@ -50,6 +50,8 @@ namespace NHN.DtoContracts.Flr.Data
 
         /// <summary>
         /// Når er denne knytningen gyldig.
+        /// From er med i perioden, og To er ikke med: knytningen gjelder på tidspunktet t når From &lt;= t &lt; To.
+        /// Et vikariat som varer ut 31. januar, har To lik 1. februar.
         /// </summary>
         [DataMember]
         public Period Valid { get; set; }

@@ -50,6 +50,7 @@ namespace NHN.DtoContracts.Flr.Data
         /// <summary>
         /// Hvilken periode denne assosiasjonen er gyldig for.
         /// For Move metoden er dette perioden på den nye assosiasjonen. Den gamle assosiasjonen får TilDato satt til ny FraDato.
+        /// From er med i perioden, og To er ikke med: assosiasjonen gjelder på tidspunktet t når From &lt;= t &lt; To.
         /// </summary>
         [DataMember]
         public Period Period { get; set; } //FraDato ?TilDato;
