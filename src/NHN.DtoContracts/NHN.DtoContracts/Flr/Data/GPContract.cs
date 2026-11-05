@@ -76,6 +76,7 @@ namespace NHN.DtoContracts.Flr.Data
 
         /// <summary>
         /// Gyldighetsperiode for avtalen.
+        /// From er med i perioden, og To er ikke med: avtalen gjelder på tidspunktet t når From &lt;= t &lt; To.
         /// </summary>
         [DataMember]
         public Period Valid { get; set; } // FraDato; ?TilDato;
